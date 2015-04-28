@@ -1,0 +1,218 @@
+package com.zaptech.myapp;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SlidingDrawer;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity implements OnClickListener {
+	private EditText edName, edLastname, edEmail, edPassword, edConPassword,
+			edContact;
+	private TextView tvHomeBanner, tvAndroid, tvIos, tvBerry, tvName,
+			tvLastname, tvGender, tvEmail, tvPassword, tvConPassword,
+			tvContact;
+	private RadioButton rdbMale, rdbFemale;
+	private RadioGroup rgGender;
+	private String strName, strLastName, strEmail, strPassword, strConPassword,
+			strContact;
+	private Button btnSubmit, btnCancel;
+	private Spinner spinnerCity;
+	private String spinSelected;
+	private CheckBox chkEnglish, chkHindi;
+	private MyDatabase mdb;
+	private SQLiteDatabase db;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_main);
+		init();
+		spinnerCity();
+
+	}// End of onCreate()
+
+	public void init() {
+
+		mdb = new MyDatabase(getApplicationContext());
+
+		edName = (EditText) findViewById(R.id.home_form_et_name);
+		edLastname = (EditText) findViewById(R.id.home_form_et_lastname);
+		edEmail = (EditText) findViewById(R.id.home_form_et_email);
+		edPassword = (EditText) findViewById(R.id.home_form_et_password);
+		edConPassword = (EditText) findViewById(R.id.home_form_etconfirm_password);
+		edContact = (EditText) findViewById(R.id.home_form_et_contact);
+
+		tvHomeBanner = (TextView) findViewById(R.id.Center_Banner_Text);
+		tvAndroid = (TextView) findViewById(R.id.bannerTv_Android);
+		tvIos = (TextView) findViewById(R.id.bannerTv_IOS);
+		tvBerry = (TextView) findViewById(R.id.bannerTv_Berry);
+		tvName = (TextView) findViewById(R.id.home_form_tv_name);
+		tvLastname = (TextView) findViewById(R.id.home_form_tv_lastname);
+		tvGender = (TextView) findViewById(R.id.home_form_tv_gender);
+		tvPassword = (TextView) findViewById(R.id.home_form_tv_password);
+		tvConPassword = (TextView) findViewById(R.id.home_form_tvconfirm_password);
+		tvContact = (TextView) findViewById(R.id.home_form_tv_contact);
+		tvEmail = (TextView) findViewById(R.id.home_form_tv_email);
+
+		btnSubmit = (Button) findViewById(R.id.btnSubmit);
+		btnCancel = (Button) findViewById(R.id.btnCancel);
+
+		rdbMale = (RadioButton) findViewById(R.id.gender_male);
+		rdbFemale = (RadioButton) findViewById(R.id.gender_female);
+		rgGender = (RadioGroup) findViewById(R.id.gender_group);
+
+		spinnerCity = (Spinner) findViewById(R.id.spinner_city);
+		chkEnglish = (CheckBox) findViewById(R.id.chkboxEnglish);
+		chkHindi = (CheckBox) findViewById(R.id.chkboxHindi);
+
+		// Adding Listeners...
+		tvAndroid.setOnClickListener(this);
+		tvIos.setOnClickListener(this);
+		tvBerry.setOnClickListener(this);
+		btnSubmit.setOnClickListener(this);
+		btnCancel.setOnClickListener(this);
+
+	}// End of init() Method...
+
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId()) {
+		case R.id.bannerTv_Android:
+			tvHomeBanner.setText("Android is Open Platform");
+			break;
+
+		case R.id.bannerTv_IOS:
+			tvHomeBanner.setText("IPhone Operating System");
+			break;
+
+		case R.id.bannerTv_Berry:
+			tvHomeBanner.setText("A Smart-Phone Platform");
+			break;
+
+		case R.id.btnSubmit:
+			// sendData();
+			mdb.insertData(edName.getText().toString(), edLastname.getText()
+					.toString(), edEmail.getText().toString());
+			Toast.makeText(getApplicationContext(), "Record Inserted",
+					Toast.LENGTH_LONG).show();
+			break;
+		case R.id.btnCancel:
+			// openDialog();
+
+			break;
+		default:
+			break;
+		}
+	}// End of OnClick...
+
+	public void sendData() {
+
+		if (edName.getText().toString().trim().length() < 1) {
+			edName.setError("Required");
+		} else if (!edName.getText().toString().trim().matches("[a-zA-Z ]+")) {
+			edName.setError("Accept Alphabets Only.");
+		} else if (!edLastname.getText().toString().trim()
+				.matches("[a-zA-Z ]+")) {
+			edLastname.setError("Accept Alphabets Only.");
+		} else if (edLastname.getText().toString().trim().length() < 1) {
+			edLastname.setError("Required");
+		} else if (edEmail.getText().toString().trim().length() < 1) {
+			edEmail.setError("Required");
+		} else if (!edEmail.getText().toString().trim()
+				.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
+			edEmail.setError("Enter Valid Email Address");
+		} else if (edPassword.getText().toString().trim().length() < 1) {
+			edPassword.setError("Required");
+		} else if (edConPassword.getText().toString().trim().length() < 1) {
+			edConPassword.setError("Required");
+		} else if (!edPassword.getText().toString().trim()
+				.equals(edConPassword.getText().toString().trim())) {
+			edConPassword.setError("Password does not match");
+		} else if (edContact.getText().toString().trim().length() < 1) {
+			edContact.setError("Required");
+		} else if (!edContact.getText().toString().trim().matches("[0-9]{10}")) {
+			edContact.setError("Invalid Contact");
+		} else {
+			/*
+			 * Intent intentSendData = new Intent(getApplicationContext(),
+			 * UserDataActivity.class); intentSendData.putExtra("NAME",
+			 * edName.getText().toString()); intentSendData
+			 * .putExtra("LASTNAME", edLastname.getText().toString());
+			 * intentSendData.putExtra("EMAIL", edEmail.getText().toString());
+			 * intentSendData.putExtra("CONTACT",
+			 * edContact.getText().toString()); // /To Fetch from selected Radio
+			 * Button... final String value = ((RadioButton)
+			 * findViewById(rgGender
+			 * .getCheckedRadioButtonId())).getText().toString();
+			 * intentSendData.putExtra("GENDER", value);
+			 * intentSendData.putExtra("CITY", spinnerCity.getSelectedItem()
+			 * .toString()); startActivity(intentSendData);
+			 */
+		}
+	}// End of sendData...
+
+	public void openDialog() {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setPositiveButton("Yes",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						edName.setText("");
+						edLastname.setText("");
+						edEmail.setText("");
+						edPassword.setText("");
+						edConPassword.setText("");
+						edContact.setText("");
+
+					}
+				});
+		alertDialogBuilder.setNegativeButton("No",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Toast.makeText(getApplicationContext(),
+								"Click on Submit to Continue",
+								Toast.LENGTH_LONG).show();
+
+					}
+				});
+		alertDialogBuilder
+				.setMessage("Are you sure, You want to Cancel Registration ?");
+		alertDialogBuilder.setTitle("Registration Alert");
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+	}// End of openDialog() method...
+
+	public void spinnerCity() {
+		ArrayAdapter<String> adpt = new ArrayAdapter<>(MainActivity.this,
+				android.R.layout.simple_expandable_list_item_1, getResources()
+						.getStringArray(R.array.cityArray));
+		spinnerCity.setAdapter(adpt);
+	}
+
+}// End of Class...

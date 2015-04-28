@@ -1,0 +1,141 @@
+package com.zaptech.studinfopro;
+
+import java.util.ArrayList;
+
+import com.zaptech.studinfopro.SearchStudentActivity.searchStudentAdapter;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.database.Cursor;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class SearchCollegeActivity extends Activity {
+	Spinner spinCollegeName;
+	ListView listSearchColleges;
+	Button btnSearchCollegeNow;
+	DBHelper dbHelper;
+	ProgressDialog pd;
+	LayoutInflater inflator;
+	SearchCollegeAsyn mAdapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.search_college);
+		init();
+		loadCollegeData();
+	}
+
+	public void init() {
+		spinCollegeName = (Spinner) findViewById(R.id.spinnerCollegesearch);
+		listSearchColleges = (ListView) findViewById(R.id.listSearchCollege);
+		btnSearchCollegeNow = (Button) findViewById(R.id.btnSearchCollegeNow);
+		dbHelper = new DBHelper(this);
+
+	}
+
+	public void loadCollegeData() {
+		String strSql = "SELECT CollegeName FROM " + DBHelper.TB_COLLEGE;
+		ArrayList<String> listCollegeNames = new ArrayList<String>();
+		Cursor cursorLoadCollegeData = dbHelper.getDB().rawQuery(strSql, null);
+		if (cursorLoadCollegeData != null) {
+			if (cursorLoadCollegeData.moveToFirst()) {
+				do {
+					listCollegeNames.add(cursorLoadCollegeData
+							.getString(cursorLoadCollegeData
+									.getColumnIndex(DBHelper.COL_CLGNAME)));
+				} while (cursorLoadCollegeData.moveToNext());
+			}
+		}
+		ArrayAdapter<String> adpt = new ArrayAdapter<>(
+				SearchCollegeActivity.this,
+				android.R.layout.simple_dropdown_item_1line, listCollegeNames);
+		spinCollegeName.setAdapter(adpt);
+	}
+
+	class searchCollegeAdapter extends BaseAdapter {
+		Context mContext;
+
+		public searchCollegeAdapter(Context context) {
+			this.mContext = context;
+		}
+
+		@Override
+		public int getCount() {
+
+			return dbHelper.studentList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			return dbHelper.studentList.get(position);
+
+		}
+
+		@Override
+		public long getItemId(int position) {
+
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View converView, ViewGroup parent) {
+			if (inflator == null) {
+				inflator = (LayoutInflater) mContext
+						.getSystemService(LAYOUT_INFLATER_SERVICE);
+			}
+			if (converView == null) {
+				converView = inflator.inflate(R.layout.custom_clg_layout, null);
+			}
+			TextView tvStudName = (TextView) converView
+					.findViewById(R.id.tvStudentName);
+			TextView tvStudRno = (TextView) converView
+					.findViewById(R.id.tvStudentRno);
+
+			return converView;
+		}
+
+	}// END OF SearchCollege Adapter
+
+	class SearchCollegeAsyn extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected void onPreExecute() {
+			pd.setTitle("Loading");
+			pd.setMessage("Please Wait...");
+			pd.setCancelable(false);
+			pd.show();
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			dbHelper.searchCollegeData(spinCollegeName.getSelectedItem()
+					.toString());
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			if (pd.isShowing()) {
+				pd.dismiss();
+			}
+
+			super.onPostExecute(result);
+		}
+
+	}
+}

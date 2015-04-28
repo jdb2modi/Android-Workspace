@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StudInfo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strHeaderText">Student Information System</string>
+    <string name="strFooterText">copyright@jaimin_jd.modi</string>
+    <string name="strCollegePanel">Go to College Panel</string>
+    <string name="strStudentPanel">Go to Student Panel</string>
+
+    <color name="white">#ffffff</color>
+
+    <string name="title_activity_student_">Student_Act</string>
+    <string name="title_activity_college">CollegeActivity</string>
+    <string name="txtCollegeHeader">Manage Colleges</string>
+    <string name="txtStudentHeader">Manage Students</string>
+    <string name="txtAddCollege">Add College</string>
+    <string name="txtRegisterStudent">Register Student</string>
+    <string name="txtUpdateCollege">Update College</string>
+    <string name="txtUpdateStudent">Update Student</string>
+    <string name="txtDeleteCollege">Delete College</string>
+    <string name="txtDeleteAllColleges">Delete All College_Info</string>
+    <string name="txtDeleteStudent">Delete Students</string>
+    <string name="txtDeleteAllStudents">Delete All Student_Info</string>
+    <string name="txtSearchCollege">Search College_Info</string>
+    <string name="txtSearchStudent">Search Student_Info</string>
+    <string name="txtShowAllColleges">Show All Colleges</string>
+    <string name="txtShowAllStudents">Show All Students</string>
+    <string name="txtCollegeFooter">Student Information System | Manage Colleges</string>
+    <string name="txtStudentFooter">Student Information System | Manage Students</string>
+    <string name="title_activity_student">StudentActivity</string>
+    <string name="hintCollegeName">Enter College Name</string>
+    <string name="hintUniversityName">Enter University</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_add_college">AddCollegeActivity</string>
+
+</resources>

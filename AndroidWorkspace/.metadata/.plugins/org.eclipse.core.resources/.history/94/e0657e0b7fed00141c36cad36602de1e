@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/imgCollege"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/college"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:id="@+id/tvCollegeInfoHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:padding="15dp"
+        android:text="Available Colleges"
+        android:textColor="@color/white"
+        android:textStyle="bold" 
+        android:layout_toRightOf="@+id/imgCollege"
+        android:textSize="25dp"
+        android:layout_margin="2dp"/>
+
+    <ListView
+        android:id="@+id/listCollege"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/imgCollege" 
+        android:layout_margin="2dp">
+    </ListView>
+
+</RelativeLayout>

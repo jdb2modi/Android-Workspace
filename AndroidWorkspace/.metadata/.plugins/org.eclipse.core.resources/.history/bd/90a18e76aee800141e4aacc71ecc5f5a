@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StudInfo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strHeaderText">Student Information System</string>
+    <string name="strFooterText">copyright@jaimin_jd.modi</string>
+    <string name="strCollegePanel">Go to College Panel</string>
+    <string name="strStudentPanel">Go to Student Panel</string>
+
+    <color name="white">#ffffff</color>
+
+    <string name="title_activity_student_">Student_Act</string>
+    <string name="title_activity_college">CollegeActivity</string>
+    
+    <string name="txtCollegeHeader">Manage Colleges</string>
+    <string name="txtStudentHeader">Manage Students</string>
+    <string name="txtAddCollege">Add College</string>
+    <string name="txtRegisterCollege">Register Student</string>
+
+</resources>

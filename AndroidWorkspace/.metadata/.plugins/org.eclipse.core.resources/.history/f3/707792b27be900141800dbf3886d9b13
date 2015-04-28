@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StudInfo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strHeaderText">Student Information System</string>
+    <string name="strFooterText">copyright@jaimin_jd.modi</string>
+    <string name="strCollegePanel">Go to College Panel</string>
+    <string name="strStudentPanel">Go to Student Panel</string>
+
+    <color name="white">#ffffff</color>
+
+    <string name="title_activity_student_">Student_Act</string>
+    <string name="title_activity_college">CollegeActivity</string>
+    <string name="txtCollegeHeader">Manage Colleges</string>
+    <string name="txtStudentHeader">Manage Students</string>
+    <string name="txtAddCollege">Add College</string>
+    <string name="txtRegisterStudent">Register Student</string>
+    <string name="txtUpdateCollege">Update College</string>
+    <string name="txtUpdateCollegeNow">Update College Now</string>
+    <string name="txtUpdateCollegeCancel">Cancel</string>
+    <string name="txtUpdateStudent">Update Student</string>
+    <string name="txtDeleteCollege">Delete College</string>
+    <string name="txtDeleteAllColleges">Delete All College_Info</string>
+    <string name="txtDeleteStudent">Delete Students</string>
+    <string name="txtDeleteAllStudents">Delete All Student_Info</string>
+    <string name="txtSearchCollege">Search College_Info</string>
+    <string name="txtSearchStudent">Search Student_Info</string>
+    <string name="txtShowAllColleges">Show All Colleges</string>
+    <string name="txtShowAllStudents">Show All Students</string>
+    <string name="txtCollegeFooter">Student Information System | Manage Colleges</string>
+    <string name="txtStudentFooter">Student Information System | Manage Students</string>
+    <string name="txtAddCollegeFooter">Student Information System | Add College</string>
+    <string name="title_activity_student">StudentActivity</string>
+    <string name="hintCollegeName">Enter College Name</string>
+    <string name="hintUniversityName">Enter University</string>
+    <string name="hintStudentName">Enter Your Name</string>
+    <string name="hintRollNumber">Enter Roll Number</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_add_college">AddCollegeActivity</string>
+    <string name="strCancel">Cancel</string>
+    <string name="strCollegeInserted">College Inserted</string>
+    <string name="strStudentInserted">Student Inserted</string>
+    <string name="title_activity_add_student">AddStudentActivity</string>
+    <string name="title_activity_display_college">DisplayCollegeActivity</string>
+    <string name="title_activity_display_student">DisplayStudentActivity</string>
+    <string name="toastTotalRecordsFound">Total Records Found : </string>
+    <string name="alertDeleteAllMessage">Delete All The Records ? </string>
+    <string name="alertDeleteAllTitle">Delete All Confirmation</string>
+    <string name="alertDeleteTitle">Delete Confirmation</string>
+    <string name="alertDeleteMessage">Are you sure ? You want to delete this Record ? </string>
+    <string name="alertDeleteSuccessful">Delete Successfull</string>
+    <string name="alertDeleteCancel">Nothing Deleted</string>
+    <string name="title_activity_delete_student">DeleteStudentActivity</string>
+    <string name="title_activity_delete_college">DeleteCollegeActivity</string>
+    <string name="title_activity_update_college">UpdateCollegeActivity</string>
+    <string name="txtfooterUpdate">Student Information System | Update College</string>
+    <string name="txtClgNameToUpdate">Update College_Name</string>
+    <string name="txtClgUniversityToUpdate">Update College_University</string>
+    <string name="toastUpdateSuccessful">Update Successfull</string>
+    <string name="title_activity_update_student">UpdateStudentActivity</string>
+
+</resources>

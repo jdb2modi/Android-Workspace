@@ -1,0 +1,87 @@
+package com.zaptech.studinfopro;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class UpdateStudentActivity extends Activity implements OnClickListener {
+	EditText edStdName, edStdRno;
+	Button btnUpdateStudentNow,btnUpdateStudentCancel;
+	DBHelper dbHelper;
+	Spinner spinStudId;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.update_college);
+		init();
+		loadSpinData();
+		// setEditText();
+	}
+
+	public void init() {
+		edStdName = (EditText) findViewById(R.id.edStudentNameToUpdate);
+		edStdRno = (EditText) findViewById(R.id.edStudentRnoToUpdate);
+		
+		dbHelper = new DBHelper(this);
+		spinStudId = (Spinner) findViewById(R.id.spinStudentNameToUpdate);
+
+		// Adding Listeners
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnUpdateStudNow:
+			dbHelper.updateCollegeData(Integer.parseInt(spinStudId
+					.getSelectedItem().toString()), edStdName.getText()
+					.toString(), edStdRno.getText().toString());
+			Toast.makeText(UpdateStudentActivity.this,
+					getResources().getString(R.string.toastUpdateSuccessful),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.btnUpdateStudentCancel:
+			clear();
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	public void loadSpinData() {
+		String sqlLoadData = "SELECT * FROM tbStudent";
+		ArrayList<String> loadStdIds = new ArrayList<String>();
+
+		Cursor selectCursor = dbHelper.getDB().rawQuery(sqlLoadData, null);
+
+		if (selectCursor != null) {
+			if (selectCursor.moveToFirst()) {
+				do {
+					loadStdIds.add(selectCursor.getString(selectCursor
+							.getColumnIndex("CollegeId")));
+
+				} while (selectCursor.moveToNext());
+			}
+		}
+		ArrayAdapter<String> adpt = new ArrayAdapter<String>(
+				UpdateStudentActivity.this,
+				android.R.layout.simple_dropdown_item_1line, loadStdIds);
+		spinStudId.setAdapter(adpt);
+	}
+
+	public void clear() {
+		edStdName.setText("");
+		edStdRno.setText("");
+	}
+}

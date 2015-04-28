@@ -1,0 +1,82 @@
+package com.zaptech.studinfopro;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+public class CollegeActivity extends Activity implements OnClickListener {
+	Button btnAddCollege;
+	Button btnUpdateCollege;
+	Button btnDeleteCollege;
+	Button btnSearchCollege;
+	Button btnShowAllColleges;
+	Button btnDeleteAllColleges;
+	ImageButton btnGoBack;
+	ImageButton btnHome;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_college);
+		init();
+	}
+
+	public void init() {
+		btnAddCollege = (Button) findViewById(R.id.btnRegisterStudent);
+		btnUpdateCollege = (Button) findViewById(R.id.btnUpdateStudent);
+		btnDeleteCollege = (Button) findViewById(R.id.btnDeleteStudent);
+		btnSearchCollege = (Button) findViewById(R.id.btnSearchStudent);
+		btnDeleteAllColleges = (Button) findViewById(R.id.btnDeleteAllColleges);
+		btnShowAllColleges = (Button) findViewById(R.id.btnShowAllColleges);
+		btnGoBack = (ImageButton) findViewById(R.id.gobackFromStudent);
+		btnHome = (ImageButton) findViewById(R.id.gotoHome);
+
+		// Adding Listeners;
+		btnAddCollege.setOnClickListener(this);
+		btnUpdateCollege.setOnClickListener(this);
+		btnDeleteCollege.setOnClickListener(this);
+		btnSearchCollege.setOnClickListener(this);
+		btnDeleteAllColleges.setOnClickListener(this);
+		btnShowAllColleges.setOnClickListener(this);
+		btnGoBack.setOnClickListener(this);
+		btnHome.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnAddCollege:
+
+			break;
+		case R.id.btnUpdateCollege:
+
+			break;
+		case R.id.btnDeleteCollege:
+
+			break;
+		case R.id.btnSearchCollege:
+
+			break;
+		case R.id.btnDeleteAllColleges:
+
+			break;
+		case R.id.btnShowAllColleges:
+
+			break;
+		case R.id.gobackFromCollege:
+			this.finish();
+			break;
+		case R.id.goHomeFromCollege:
+			this.finish();
+			break;
+
+		default:
+			break;
+		}
+	}
+}

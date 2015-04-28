@@ -1,0 +1,90 @@
+package com.zaptech.sqlitedemo;
+
+import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends Activity implements OnClickListener {
+	EditText edRollNo, edName, edMarks;
+	Button btAdd, btModify, btViewAll, btView, btDelete, btShowInfo;
+	String strRollNo,strName,strMarks;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		init();
+		databaseOperations();
+
+	}
+
+	public void init() {
+		edRollNo = (EditText) findViewById(R.id.edRollNo);
+		edName = (EditText) findViewById(R.id.edName);
+		edMarks = (EditText) findViewById(R.id.edMarks);
+
+		btAdd = (Button) findViewById(R.id.btnAdd);
+		btDelete = (Button) findViewById(R.id.btnDelete);
+		btModify = (Button) findViewById(R.id.btnModify);
+		btShowInfo = (Button) findViewById(R.id.btnShow);
+		btView = (Button) findViewById(R.id.btnView);
+		btViewAll = (Button) findViewById(R.id.btnViewAll);
+		
+		strRollNo=edRollNo.getText().toString().trim();
+		strName=edName.getText().toString().trim();
+		strMarks=edMarks.getText().toString().trim();
+
+		// Adding Listener..
+		btAdd.setOnClickListener(this);
+		btDelete.setOnClickListener(this);
+		btModify.setOnClickListener(this);
+		btShowInfo.setOnClickListener(this);
+		btView.setOnClickListener(this);
+		btViewAll.setOnClickListener(this);
+	}
+
+	public void databaseOperations() {
+		SQLiteDatabase db = openOrCreateDatabase("StudentDB", MODE_PRIVATE,
+				null);
+		db.execSQL("CREATE TABLE IF NOT EXISTS studentDetail(RollNo VARCHAR,Name VARCHAR,Marks VARCHAR);");
+		db.execSQL("INSERT INTO studentDetail values('"
+				+ strRollNo + "','"
+				+ strName + "','"
+				+ strMarks + "');");
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.btnAdd:
+				if()
+			break;
+		case R.id.btnDelete:
+
+			break;
+		case R.id.btnModify:
+
+			break;
+		case R.id.btnShow:
+
+			break;
+		case R.id.btnView:
+
+			break;
+		case R.id.btnViewAll:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

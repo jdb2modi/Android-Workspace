@@ -1,0 +1,19 @@
+package com.zaptech.studinfopro;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class UpdateCollegeActivity extends Activity {
+	EditText edClgName, edClgUniversity;
+	Button btnUpdateNow, btnCancel;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.update_college);
+	}
+}

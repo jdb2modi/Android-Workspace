@@ -1,0 +1,57 @@
+package com.zaptech.studinfopro;
+
+import com.zaptech.studinfopro.SearchStudentActivity.SearchStudentAsyn;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+public class SearchCollegeActivity extends Activity {
+	Spinner spinCollegeName;
+	ListView listSearchColleges;
+	Button btnSearchCollegeNow;
+	DBHelper dbHelper;
+	ProgressDialog pd;
+	LayoutInflater inflator;
+	SearchCollegeAsyn mAdapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.search_college);
+		init();
+	}
+
+	public void init() {
+
+	}
+
+	class SearchCollegeAsyn extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected void onPreExecute() {
+			pd.setTitle("");
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+
+			super.onPostExecute(result);
+		}
+
+	}
+}

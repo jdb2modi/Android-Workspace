@@ -1,0 +1,74 @@
+package com.zaptech.studinfopro;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class DeleteStudentActivity extends Activity implements OnClickListener {
+	Spinner spinDeleteStudent;
+	Button btnDeleteStudent;
+	DBHelper dbHelper;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.delete_student);
+		init();
+		loadDataForStudentName();
+	}
+
+	public void init() {
+		spinDeleteStudent = (Spinner) findViewById(R.id.spinCollegeNameToDelete);
+		btnDeleteStudent = (Button) findViewById(R.id.btnDeleteCollege);
+		dbHelper = new DBHelper(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnDeleteStudent:
+			dbHelper.deleteStudentData(spinDeleteStudent.getSelectedItem()
+					.toString());
+			Toast.makeText(DeleteStudentActivity.this,
+					getResources().getString(R.string.toastDeleteSuccessful),
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public void loadDataForStudentName() {
+		String sqlLoadData = "SELECT " + DBHelper.COL_STUDNAME + " FROM "
+				+ DBHelper.TB_STUDENT;
+		ArrayList<String> loadStdNames = new ArrayList<String>();
+
+		Cursor selectCursor = dbHelper.getDB().rawQuery(sqlLoadData, null);
+
+		if (selectCursor != null) {
+			if (selectCursor.moveToFirst()) {
+				do {
+					loadStdNames.add(selectCursor.getString(selectCursor
+							.getColumnIndex(DBHelper.COL_STUDNAME)));
+				} while (selectCursor.moveToNext());
+			}
+		}
+		ArrayAdapter<String> adpt = new ArrayAdapter<String>(
+				DeleteStudentActivity.this,
+				android.R.layout.simple_dropdown_item_1line, loadStdNames);
+		spinDeleteStudent.setAdapter(adpt);
+
+	}// END OF loadDataForCollegeName()
+
+}
