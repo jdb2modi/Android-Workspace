@@ -1,0 +1,64 @@
+package com.zaptech.studinfopro;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class UpdateCollegeActivity extends Activity implements OnClickListener {
+	EditText edClgName, edClgUniversity;
+	Button btnUpdateNow, btnCancel;
+	DBHelper dbHelper;
+	ArrayList<Integer> cldIds=new ArrayList<Integer>();
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.update_college);
+		init();
+	}
+
+	public void init() {
+		edClgName = (EditText) findViewById(R.id.edCollegeNameToUpdate);
+		edClgUniversity = (EditText) findViewById(R.id.edCollegeUniversityToUpdate);
+		btnUpdateNow = (Button) findViewById(R.id.btnUpdateCollegeNow);
+		btnCancel = (Button) findViewById(R.id.btnUpdateCancel);
+		dbHelper = new DBHelper(this);
+
+		// Adding Listeners
+		btnUpdateNow.setOnClickListener(this);
+		btnCancel.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnUpdateCollegeNow:
+
+			break;
+		case R.id.btnUpdateCancel:
+
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	public void loadSpinData() {
+		
+		String sqlQuery = "SELECT CollegeId FROM " + DBHelper.TB_COLLEGE;
+		Cursor cursor=dbHelper.getDB().rawQuery(sqlQuery, null);
+		if(cursor.moveToFirst()){
+			do{
+				
+			}while(cursor.moveToNext());
+		}
+	}
+}

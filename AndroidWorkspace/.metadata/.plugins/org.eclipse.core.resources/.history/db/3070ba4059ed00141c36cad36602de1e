@@ -1,0 +1,18 @@
+package com.zaptech.studinfopro;
+
+public class StudentModel {
+	String stdName;
+	int rno;
+	public String getStdName() {
+		return stdName;
+	}
+	public void setStdName(String stdName) {
+		this.stdName = stdName;
+	}
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+}

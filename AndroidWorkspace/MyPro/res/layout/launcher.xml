@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/home_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/hint_foreground_material_light" >
+
+        <ImageButton
+            android:id="@+id/home_back"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/back"
+            android:padding="5dp" />
+
+        <ImageView
+            android:id="@+id/home_reg_logo"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/home"
+            android:padding="5dp" />
+
+        <ImageButton
+            android:id="@+id/home_info"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/info"
+            android:padding="5dp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/home_banner_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_header" >
+
+        <ImageView
+            android:id="@+id/home_banner"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/home_header"
+            android:background="@drawable/banner"/>
+
+        <TextView
+            android:id="@+id/launcher_bannerTv_IOS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/iostext"/>
+
+        <TextView
+            android:id="@+id/launcher_bannerTv_Android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:padding="5dp"
+            android:text="@string/androidtext" />
+
+        <TextView
+            android:id="@+id/launcher_bannerTv_Berry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:padding="5dp"
+            android:text="@string/berry" />
+
+        <TextView
+            android:id="@+id/Center_Banner_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="MOBILE COMPUTING"
+            android:textColor="@color/white" />
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/home_form_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/home_footer"
+        android:layout_below="@+id/home_banner_container" >
+		<RelativeLayout
+		    android:id="@+id/mainLayout"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="@drawable/bg"
+		    android:orientation="vertical"
+		    android:padding="70dp">
+		    
+		    <Button 
+		        android:id="@+id/login"
+		        android:layout_width="fill_parent"
+		        android:layout_height="50dp"
+		   		android:layout_margin="10dp"
+		   		android:text="Login"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        />
+		    <Button 
+		        android:id="@+id/register"
+		        android:layout_width="fill_parent"
+		        android:layout_height="50dp"
+		        android:layout_below="@+id/login"
+		        android:layout_margin="10dp"
+		        android:text="Register"
+		        android:textAppearance="?android:attr/textAppearanceLarge"/>
+		</RelativeLayout>
+            </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/home_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/hint_foreground_material_light">
+
+        <TextView 
+            android:id="@+id/home_tv_reg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="MOBILE COMPUTING"
+            android:background="@drawable/registration"
+            android:textSize="25dp"
+            android:gravity="bottom" />
+            </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DataOperationApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_update">UpdateActivity</string>
+    <string name="title_activity_delete">DeleteActivity</string>
+    <string name="title_activity_view">ViewActivity</string>
+    <string name="title_activity_view_all">ViewAllActivity</string>
+
+    <color name="Blue">#AA0000ff</color>
+    <color name="Red">#DDff0000</color>
+    <color name="white">#ffffffff</color>
+    <color name="lightBlue">#770000ee</color>
+
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="hintFirstName">Enter Firstname</string>
+    <string name="hintAge">Enter Age</string>
+    <string name="txtRegister">Register</string>
+    <string name="txtUpdate">Update</string>
+    <string name="txtDelete">Delete</string>
+    <string name="txtDeleteAll">Delete All</string>
+    <string name="txtView">View</string>
+    <string name="txtViewAll">View All</string>
+    <string name="txtGoBack">Go Back</string>
+    <string name="txtDeleteNow">Delete Now</string>
+    <string name="txtUpdateFirstname">Update Firstname</string>
+    <string name="txtUpdateNow">Update Now</string>
+    <string name="txtSearch">Search</string>
+    <string name="txtToastNoDataFound">No Data Found</string>
+    <string name="txtToastDataFound">Total Records Found : </string>
+    <string name="title_activity_demo">Demo</string>
+
+</resources>

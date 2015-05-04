@@ -1,0 +1,20 @@
+package com.zaptech.studinfopro;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class HomeActivity extends Activity {
+	DBHelper mDb;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+	}
+
+	public void init() {
+		mDb = new DBHelper(HomeActivity.this);
+	}
+}

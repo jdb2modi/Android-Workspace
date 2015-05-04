@@ -1,0 +1,36 @@
+package com.zaptech.studinfopro;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class UpdateCollegeActivity extends Activity implements OnClickListener {
+	EditText edClgName, edClgUniversity;
+	Button btnUpdateNow, btnCancel;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.update_college);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnUpdateCollegeNow:
+
+			break;
+		case R.id.btnUpdateCancel:
+
+			break;
+		default:
+			break;
+		}
+
+	}
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/banner" android:duration="2500"></item>
+	<item android:drawable="@drawable/back" android:duration="2500"></item>
+	<item android:drawable="@drawable/home" android:duration="2500"></item>
+	<item android:drawable="@drawable/info" android:duration="2500"></item>
+</animation-list>

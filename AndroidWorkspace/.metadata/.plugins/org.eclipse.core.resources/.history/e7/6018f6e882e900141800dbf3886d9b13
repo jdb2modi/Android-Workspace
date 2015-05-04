@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/relativeStudent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp" >
+
+        <ImageButton
+            android:id="@+id/imgBtnStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:background="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvStudentName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_toRightOf="@+id/imgBtnStudent"
+            android:padding="2dp"
+            android:text="Student Name" />
+
+        <TextView
+            android:id="@+id/tvStudentRno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStudentName"
+            android:layout_margin="2dp"
+            android:layout_toRightOf="@+id/imgBtnStudent"
+            android:padding="2dp"
+            android:text="Student Roll Number" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/appHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:text="@string/studentdetails" />
+
+    <TableLayout
+        android:id="@+id/tblayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/appHeader"
+        android:layout_margin="20dp" >
+
+        <TableRow
+            android:id="@+id/tbRawRollNo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <TextView
+                android:id="@+id/tvRollNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Roll Number :" />
+
+            <EditText
+                android:id="@+id/edRollNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Roll Number" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbRawName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Name :" />
+
+            <EditText
+                android:id="@+id/edName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Name" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tbRawMarks"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <TextView
+                android:id="@+id/tvMarks"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Marks :" />
+
+            <EditText
+                android:id="@+id/edMarks"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Marks" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/btRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/btRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/btRow13"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
