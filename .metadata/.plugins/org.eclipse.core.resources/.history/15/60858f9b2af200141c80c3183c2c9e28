@@ -1,0 +1,120 @@
+package com.zaptech.genjson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	EditText edFirstname, edLastname;
+	Button btnSave, btnViewJson, btnParsed;
+	TextView tvJson, tvParsedJson;
+	DBHelper dbHelper;
+	JSONObject mainObj;
+	JSONArray jArray;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		mainObj = new JSONObject();
+		jArray = new JSONArray();
+		edFirstname = (EditText) findViewById(R.id.edFname);
+		edLastname = (EditText) findViewById(R.id.edLname);
+		tvJson = (TextView) findViewById(R.id.tvJson);
+		tvParsedJson = (TextView) findViewById(R.id.tvParsedJson);
+		btnSave = (Button) findViewById(R.id.btnSave);
+		btnSave.setOnClickListener(this);
+		btnViewJson = (Button) findViewById(R.id.btnViewJson);
+		btnViewJson.setOnClickListener(this);
+		btnParsed = (Button) findViewById(R.id.btnParseJson);
+		btnParsed.setOnClickListener(this);
+		dbHelper = new DBHelper(HomeActivity.this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnParseJson:
+			parseJson();
+			break;
+		case R.id.btnViewJson:
+			generateJson();
+			break;
+		case R.id.btnSave:
+			insertJson();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	public void generateJson() {
+
+		try {
+
+			JSONObject jObj = new JSONObject();
+			jObj.put("name", edFirstname.getText().toString());
+			jObj.put("lname", edLastname.getText().toString());
+			jArray.put(jObj);
+			mainObj.put("StudArray", jArray);
+			tvJson.setText(mainObj.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void parseJson() {
+		/*
+		 * String temp; temp = tvJson.getText().toString(); try { JSONObject obj
+		 * = new JSONObject(temp); JSONArray jarr =
+		 * obj.optJSONArray("StudArray"); for (int i = 0; i < jarr.length();
+		 * i++) { JSONObject jSub = jarr.getJSONObject(i);
+		 * 
+		 * jSub.getString("lname"); tvParsedJson.setText("Name : " +
+		 * jSub.getString("name") + "\nLast name : " + jSub.getString("lname") +
+		 * "\n"); } } catch (Exception e) { e.printStackTrace(); }
+		 */
+		String temp;
+		tvParsedJson.setText("");
+		temp = dbHelper.getJson();
+		try {
+			JSONObject obj = new JSONObject(temp);
+			JSONArray jarr = obj.optJSONArray("StudArray");
+			for (int i = 0; i < jarr.length(); i++) {
+				JSONObject jSub = jarr.getJSONObject(i);
+
+				jSub.getString("lname");
+				tvParsedJson.setText("Name : " + jSub.getString("name")
+						+ "\nLast name : " + jSub.getString("lname") + "\n");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void insertJson() {
+		if (tvJson.getText().toString() == "") {
+			Toast.makeText(HomeActivity.this, "Nothing to Insert",
+					Toast.LENGTH_LONG).show();
+		} else {
+			dbHelper.insertJson(tvJson.getText().toString());
+			Toast.makeText(HomeActivity.this, "Inserted", Toast.LENGTH_LONG)
+					.show();
+		}
+	}
+}

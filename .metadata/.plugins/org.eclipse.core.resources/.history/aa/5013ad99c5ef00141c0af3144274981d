@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidNetwokApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="tvTxtHeaderText">Welcome to JSON Parsing</string>
+    <string name="tvNetworkError">Network Connection Problem</string>
+    <string name="edHintEnterURL">Enter URL</string>
+    <string name="btnGetJSON">Get JSON Stream</string>
+    <string name="btnParseStream">Parse JSON</string>
+    <string name="txtPDTile">Loading</string>
+    <string name="txtPDMessage">Please Wait..</string>
+
+    <color name="colorRed">#ffabdf</color>
+
+</resources>

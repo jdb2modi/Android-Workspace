@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/imgMapping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@drawable/student" />
+
+    <TextView
+        android:id="@+id/tvMappingInfoHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@+id/imgMapping"
+        android:padding="15dp"
+        android:text="@string/tvAvailableStudents"
+        android:textColor="@color/blue"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvMappingClgName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:padding="15dp"
+        android:layout_below="@+id/imgMapping"
+        android:text="College"
+        android:textColor="@color/blue"
+        android:textSize="10dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvMappingUniversity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:padding="15dp"
+        android:text="University"
+        android:textColor="@color/blue"
+        android:textSize="10dp"
+        android:textStyle="bold"
+         android:layout_below="@+id/tvMappingClgName" />
+
+    <ListView
+        android:id="@+id/listMappingresult"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tvMappingUniversity" >
+    </ListView>
+
+</RelativeLayout>

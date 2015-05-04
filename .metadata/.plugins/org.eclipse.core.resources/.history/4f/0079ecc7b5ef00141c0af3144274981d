@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_margin="5dp"
+        android:text="@string/tvTxtHeaderText"
+        android:textColor="@color/colorRed"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edURL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvHeaderText"
+        android:layout_margin="5dp"
+        android:hint="@string/edHintEnterURL"
+        android:textColor="@color/colorRed"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnGetJSONStream"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edURL"
+        android:layout_margin="5dp"
+        android:fontFamily="verdana"
+        android:padding="10dp"
+        android:text="@string/btnGetJSON"
+        android:textColor="@color/colorRed"
+        android:textSize="15dp"
+        android:textStyle="bold" >
+    </Button>
+
+    <TextView
+        android:id="@+id/tvJSONStream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGetJSONStream"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="dsfsdf"
+        android:textColor="@color/colorRed"
+        android:textSize="14dp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btnGetParseStream"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvJSONStream"
+        android:layout_margin="5dp"
+        android:fontFamily="verdana"
+        android:padding="10dp"
+        android:text="@string/btnParseStream"
+        android:textColor="@color/colorRed"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="invisible" >
+    </Button>
+
+    <TextView
+        android:id="@+id/tvParsedString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGetParseStream"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="sdfsdf"
+        android:textColor="@color/colorRed"
+        android:textSize="14dp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zaptech.studinfopro"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Student_Act"
+            android:label="@string/title_activity_student_" >
+        </activity>
+        <activity
+            android:name=".CollegeActivity"
+            android:label="@string/title_activity_college" >
+        </activity>
+        <activity
+            android:name=".StudentActivity"
+            android:label="@string/title_activity_student" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".AddCollegeActivity"
+            android:label="@string/title_activity_add_college" >
+        </activity>
+        <activity
+            android:name=".AddStudentActivity"
+            android:label="@string/title_activity_add_student" >
+        </activity>
+        <activity
+            android:name=".DisplayCollegeActivity"
+            android:label="@string/title_activity_display_college" >
+        </activity>
+        <activity
+            android:name=".DisplayStudentActivity"
+            android:label="@string/title_activity_display_student" >
+        </activity>
+        <activity
+            android:name=".DeleteStudentActivity"
+            android:label="@string/title_activity_delete_student" >
+        </activity>
+        <activity
+            android:name=".DeleteCollegeActivity"
+            android:label="@string/title_activity_delete_college" >
+        </activity>
+        <activity
+            android:name=".UpdateCollegeActivity"
+            android:label="@string/title_activity_update_college" >
+        </activity>
+        <activity
+            android:name=".UpdateStudentActivity"
+            android:label="@string/title_activity_update_student" >
+        </activity>
+        <activity
+            android:name=".SearchStudentActivity"
+            android:label="@string/title_activity_search_student" >
+        </activity>
+        <activity
+            android:name=".SearchCollegeActivity"
+            android:label="@string/title_activity_search_college" >
+        </activity>
+        <activity
+            android:name=".MappingResultActivity"
+            android:label="@string/title_activity_mapping_result" >
+        </activity>
+    </application>
+
+</manifest>

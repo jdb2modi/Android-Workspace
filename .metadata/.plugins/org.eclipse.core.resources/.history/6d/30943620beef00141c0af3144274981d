@@ -1,0 +1,130 @@
+package com.zaptech.androidnetwokpro;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class NetworkActivity extends Activity implements OnClickListener {
+	Button btnGetJSON, btnParseJSON;
+	EditText edURL;
+	TextView tvJsonStream, tvParsedStream;
+	ProgressDialog pd;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_network);
+		init();
+	}
+
+	public void init() {
+		btnGetJSON = (Button) findViewById(R.id.btnGetJSONStream);
+		btnParseJSON = (Button) findViewById(R.id.btnGetParseStream);
+		edURL = (EditText) findViewById(R.id.edURL);
+		tvJsonStream = (TextView) findViewById(R.id.tvJSONStream);
+		tvParsedStream = (TextView) findViewById(R.id.tvParsedString);
+		pd = new ProgressDialog(this);
+		// Adding Listeners..
+		btnGetJSON.setOnClickListener(this);
+		btnParseJSON.setOnClickListener(this);
+	}
+
+	public void checkNetworkConnection() {
+		String strURL = edURL.getText().toString();
+		ConnectivityManager CM = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo netInfo = CM.getActiveNetworkInfo();
+		if (netInfo != null || netInfo.isConnected()) {
+			new DownloadTask().execute(strURL);
+		} else {
+			tvJsonStream.setText(getResources().getString(
+					R.string.tvNetworkError));
+		}
+
+	}
+
+	class DownloadTask extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... urlArray) {
+			return DownloadStream(urlArray[0]);
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			if (pd.isShowing()) {
+				pd.dismiss();
+			}
+			tvJsonStream.setText(result);
+			super.onPostExecute(result);
+		}
+
+	}
+
+	public String DownloadStream(String strUrl) {
+		InputStream is;
+		StringBuilder strBuilder;
+		strBuilder = new StringBuilder();
+		try {
+			URL url = new URL(strUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setReadTimeout(15000);
+			conn.setConnectTimeout(15000);
+			conn.setRequestMethod("GET");
+			conn.setDoInput(true);
+			conn.connect();
+			if (conn.getResponseCode() == 200) {
+				is = conn.getInputStream();
+				if (is != null) {
+					BufferedReader br = null;
+					String line;
+
+					br = new BufferedReader(new InputStreamReader(is));
+					if ((line = br.readLine()) != null) {
+						strBuilder.append(line);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Toast.makeText(NetworkActivity.this, strBuilder.toString(),
+				Toast.LENGTH_LONG).show();
+		return strBuilder.toString();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnGetJSONStream:
+			btnParseJSON.setVisibility(1);
+			tvJsonStream.setVisibility(1);
+			try {
+				checkNetworkConnection();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case R.id.btnGetParseStream:
+			tvParsedStream.setVisibility(1);
+			break;
+		default:
+			break;
+		}
+	}
+}

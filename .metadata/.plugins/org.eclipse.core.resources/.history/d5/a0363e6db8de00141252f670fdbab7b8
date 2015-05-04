@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <fragment
+            android:id="@+id/headlines"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp" />
+
+        <fragment
+            android:id="@+id/article"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            class="@string/abc_searchview_description_clear"
+            android:fragmentEnterTransition="@drawable/ic_launcher"
+            android:fragmentExitTransition="@drawable/ic_launcher" />
+
+    </LinearLayout>
+
+</LinearLayout>

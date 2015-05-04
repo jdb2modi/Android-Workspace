@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/hedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Insert/Update Record" />
+
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hedText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:hint="Name" />
+
+    <EditText
+        android:id="@+id/edRno"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edName"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:hint="Roll Number" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edRno"
+        android:text="Add" />
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAdd"
+        android:text="Delete" />
+    
+    <TextView
+        android:id="@+id/tvGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDelete"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Go Back" />
+
+</RelativeLayout>

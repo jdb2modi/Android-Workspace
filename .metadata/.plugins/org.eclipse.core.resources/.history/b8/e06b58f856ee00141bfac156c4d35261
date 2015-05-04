@@ -1,0 +1,32 @@
+package com.zaptech.jsonpro;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+	TextView tv1;
+	String strJson = "{\"employee\":{\"name\":\"Sachin\",\"Salary\":56000,\"Married\":true}}";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		Toast.makeText(getApplicationContext(), " callawd", 250).show();
+		tv1 = (TextView) findViewById(R.id.tvDemo);
+
+		JSONObject jsonObj = new JSONObject(strJson);
+		jsonObj.getJSONObject("employee");
+		String empname = jsonObj.getString("name");
+		String empSalary = jsonObj.getString("Salary");
+		String empStatus = jsonObj.getString("Married");
+		tv1.setText("Name : " + empname + "\n\nSalary : " + empSalary
+				+ "\n\nStatus : " + empStatus);
+	}
+}

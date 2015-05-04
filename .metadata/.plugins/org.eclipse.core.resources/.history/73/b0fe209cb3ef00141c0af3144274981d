@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_margin="5dp"
+        android:text="@string/tvTxtHeaderText"
+        android:textColor="@color/colorRed"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edURL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvHeaderText"
+        android:layout_margin="5dp"
+        android:hint="@string/edHintEnterURL"
+        android:textColor="@color/colorRed"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnGetJSONString"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edURL"
+        android:layout_margin="5dp"
+        android:fontFamily="verdana"
+        android:padding="10dp"
+        android:text="@string/btnGetJSON"
+        android:textColor="@color/colorRed"
+        android:textSize="15dp"
+        android:textStyle="bold" >
+    </Button>
+
+    <TextView
+        android:id="@+id/tvJSONString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/tvTxtHeaderText"
+        android:textColor="@color/colorRed"
+        android:textSize="14dp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible" 
+        android:layout_below="@+id/btnGetJSONString"/>
+
+</RelativeLayout>
