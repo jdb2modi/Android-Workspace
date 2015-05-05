@@ -1,6 +1,8 @@
 package com.zaptech.seekbardemo;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private SeekBar seekBar;
 	private TextView textView;
+	int progress = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,29 +26,31 @@ public class MainActivity extends Activity {
 				+ seekBar.getMax());
 
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			int progress = 0;
 
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progresValue,
 					boolean fromUser) {
 				progress = progresValue;
-				Toast.makeText(getApplicationContext(),
+				/*Toast.makeText(getApplicationContext(),
 						"Changing seekbar's progress", Toast.LENGTH_SHORT)
-						.show();
+						.show();*/
 			}
 
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
-				Toast.makeText(getApplicationContext(),
-						"Started tracking seekbar", Toast.LENGTH_SHORT).show();
+				/*Toast.makeText(getApplicationContext(),
+						"Started tracking seekbar", Toast.LENGTH_SHORT).show();*/
 			}
 
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				textView.setText("Covered: " + progress + "/"
 						+ seekBar.getMax());
-				Toast.makeText(getApplicationContext(),
-						"Stopped tracking seekbar", Toast.LENGTH_SHORT).show();
+				/*Toast.makeText(getApplicationContext(),
+						"Stopped tracking seekbar", Toast.LENGTH_SHORT).show();*/
+				if (progress > 100) {
+					broadcastLimit();
+				}
 			}
 		});
 	}
@@ -53,5 +58,16 @@ public class MainActivity extends Activity {
 	private void initializeVariables() {
 		seekBar = (SeekBar) findViewById(R.id.seekBar1);
 		textView = (TextView) findViewById(R.id.textView1);
+	}
+
+	public void broadcastLimit() {
+		Intent intent = new Intent();
+		intent.putExtra("LIMIT", (CharSequence) String.valueOf(progress));
+		intent.setAction("LIMITPOPUP");
+		
+		sendBroadcast(intent);
+		Dialog dialog = new Dialog(MainActivity.this);
+		dialog.setTitle("Custom Dialog");
+		dialog.show();
 	}
 }

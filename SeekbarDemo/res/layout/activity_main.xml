@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
-        android:max="10" />
+        android:max="200" />
 
     <TextView
         android:id="@+id/textView1"

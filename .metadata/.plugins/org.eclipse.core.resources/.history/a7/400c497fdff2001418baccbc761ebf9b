@@ -1,0 +1,60 @@
+package com.zaptech.Media;
+
+import android.app.Activity;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	Button btnStart, btnStop, btnPause;
+	MediaPlayer mp;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		btnPause = (Button) findViewById(R.id.buttonPause);
+		btnStart = (Button) findViewById(R.id.buttonStart);
+		btnStop = (Button) findViewById(R.id.buttonStop);
+
+		btnPause.setOnClickListener(this);
+		btnStart.setOnClickListener(this);
+		btnStop.setOnClickListener(this);
+
+		try {
+			mp = new MediaPlayer();
+			mp.setDataSource("/sdcard/Music/2.mp3");
+			mp.prepare();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.buttonPause:
+			if(mp.isPlaying()){
+				mp.pause();
+			}
+			break;
+		case R.id.buttonStart:
+			mp.start();
+			mp.setLooping(true);
+			break;
+		case R.id.buttonStop:
+			if(mp.isPlaying()){
+				mp.stop();
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+}

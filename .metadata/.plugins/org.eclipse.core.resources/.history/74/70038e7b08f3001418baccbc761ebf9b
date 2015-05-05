@@ -1,0 +1,52 @@
+package com.zaptech.seekbardemo;
+
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.widget.Toast;
+
+public class SeekLimitReceiver extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		CharSequence chars = intent.getCharSequenceExtra("LIMIT");
+		Toast.makeText(context, "Limit Crossed :  " + chars, Toast.LENGTH_LONG)
+				.show();
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				context);
+ 
+			// set title
+			alertDialogBuilder.setTitle("Your Title");
+ 
+			// set dialog message
+			alertDialogBuilder
+				.setMessage("Limit exceded!")
+				.setCancelable(false)
+				.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						// if this button is clicked, close
+						// current activity
+						
+					}
+				  })
+				.setNegativeButton("No",new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,int id) {
+						// if this button is clicked, just close
+						// the dialog box and do nothing
+						dialog.cancel();
+					}
+				});
+ 
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();
+ 
+				// show it
+				alertDialog.show();
+			
+		}));
+		
+	}
+
+}

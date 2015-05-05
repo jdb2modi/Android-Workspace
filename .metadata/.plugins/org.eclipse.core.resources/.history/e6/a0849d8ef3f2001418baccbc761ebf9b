@@ -1,0 +1,5 @@
+package com.zaptech.broadcastdemo;
+
+public class MyReceiver extends BroadCastReceiver{
+
+}

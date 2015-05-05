@@ -1,0 +1,25 @@
+package com.zaptech.contentpro;
+
+import android.app.Activity;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class HomeActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		MediaPlayer mp=new MediaPlayer();
+		try{
+			mp.setDataSource("/2.mp3");
+			mp.prepare();
+			mp.start();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+}

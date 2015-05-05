@@ -1,0 +1,46 @@
+package com.zaptech.contentpro;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	Button btnStart, btnStop, btnPause;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		btnPause = findViewById(R.id.buttonPause);
+		btnStart = findViewById(R.id.buttonStart);
+		btnStop = findViewById(R.id.buttonStop);
+
+		btnPause.setOnClickListener(this);
+		btnStart.setOnClickListener(this);
+		btnStop.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.buttonPause:
+
+			break;
+		case R.id.buttonStart:
+
+			break;
+		case R.id.buttonStop:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}
