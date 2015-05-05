@@ -1,0 +1,38 @@
+package com.zaptech.sharedpreferencesdemo;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	EditText edName, edLname;
+	Button btnSave;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		edName = (EditText) findViewById(R.id.edName);
+		edLname = (EditText) findViewById(R.id.edLname);
+		btnSave = (Button) findViewById(R.id.btnSave);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnSave:
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+}

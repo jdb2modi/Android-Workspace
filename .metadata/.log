@@ -7385,3 +7385,6 @@ Caused by: java.lang.IllegalStateException: startLine (27) does not match endLin
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2015-05-05 13:34:15.763
 !MESSAGE Failed to load properties file for project 'BroadcastDemo2'
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2015-05-05 15:42:51.918
+!MESSAGE Failed to load properties file for project 'SharedPreferencesDemo'

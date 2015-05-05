@@ -1,0 +1,79 @@
+package com.zaptech.sharedpreferencesdemo;
+
+import java.security.acl.LastOwnerException;
+
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	EditText edName, edLname;
+	Button btnSave;
+	SharedPreferences sp;
+	Editor editor;
+	TextView tvName, tvLname;
+	public static final String MyPREFERENCES = "MyPrefs";
+	public static final String Name = "nameKey";
+	public static final String Lname = "lnameKey";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		edName = (EditText) findViewById(R.id.edName);
+		edLname = (EditText) findViewById(R.id.edLname);
+		btnSave = (Button) findViewById(R.id.btnSave);
+		btnSave.setOnClickListener(this);
+		tvName = (TextView) findViewById(R.id.tvName);
+		tvLname = (TextView) findViewById(R.id.tvLname);
+		sp = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+
+	}
+
+	public void saveData() {
+
+		Editor editor = sp.edit();
+		editor.remove(Name);
+		editor.remove(Lname);
+		editor.putString(Name, edName.getText().toString());
+		editor.putString(Lname, edLname.getText().toString());
+		editor.commit();
+	}
+
+	public void displayData() {
+		if (sp.contains(Name)) {
+			edName.setText(sp.getString(Name, ""));
+			tvName.setText(sp.getString(Name, ""));
+		}
+		if (sp.contains(Lname)) {
+			edLname.setText(sp.getString(Lname, ""));
+			tvLname.setText(sp.getString(Lname, ""));
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnSave:
+			saveData();
+			displayData();
+			Toast.makeText(HomeActivity.this, "Preferences Saved..!",
+					Toast.LENGTH_LONG).show();
+			break;
+
+		default:
+			break;
+		}
+	}
+}
