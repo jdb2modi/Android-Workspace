@@ -1,0 +1,43 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+public class Settings extends Activity implements OnClickListener {
+	Button btnClearExpenceHistory, btnClearIncomeHistory, btnClearAllHistory;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.settings);
+		init();
+	}
+
+	public void init() {
+		btnClearAllHistory = (Button) findViewById(R.id.btnClearAllHistory);
+		btnClearExpenceHistory = (Button) findViewById(R.id.btnClearExpenceHistory);
+		btnClearIncomeHistory = (Button) findViewById(R.id.btnClearIncomeHistory);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnClearAllHistory:
+
+			break;
+		case R.id.btnClearIncomeHistory:
+
+			break;
+		case R.id.btnClearExpenceHistory:
+
+			break;
+
+		default:
+			break;
+		}
+
+	}
+}

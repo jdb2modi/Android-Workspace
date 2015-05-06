@@ -39,7 +39,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		btnSave.setOnClickListener(this);
 		tvName = (TextView) findViewById(R.id.tvName);
 		tvLname = (TextView) findViewById(R.id.tvLname);
-		sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+		sp = getSharedPreferences(MyPREFERENCES, Context.MODE_APPEND);
 
 	}
 
@@ -49,6 +49,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 		editor.putString(Name, edName.getText().toString());
 		editor.putString(Lname, edLname.getText().toString());
 		editor.commit();
+		edLname.setText("");
+		edName.setText("");
 	}
 
 	public void displayData() {

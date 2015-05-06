@@ -1,0 +1,44 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	Button btnAddExpence, btnAddIncome, btnHistory, btnSettings;
+	ImageButton imgBtnHome, imgBtnClose;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	public void init() {
+		btnAddExpence = (Button) findViewById(R.id.btnAddExpence);
+		btnAddIncome = (Button) findViewById(R.id.btnAddIncome);
+		btnHistory = (Button) findViewById(R.id.btnHistory);
+		btnSettings = (Button) findViewById(R.id.btnSettings);
+		// Adding Listeners
+		btnAddExpence.setOnClickListener(this);
+		btnAddIncome.setOnClickListener(this);
+		btnHistory.setOnClickListener(this);
+		btnSettings.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnAddExpence:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

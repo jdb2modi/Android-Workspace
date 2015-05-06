@@ -1,0 +1,27 @@
+package com.zaptech.sessionmanagement;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class Welcome extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.welcome);
+	}
+	public void logout(View view){
+	      SharedPreferences sharedpreferences = getSharedPreferences
+	      (MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+	      Editor editor = sharedpreferences.edit();
+	      editor.clear();
+	      editor.commit();
+	      moveTaskToBack(true); 
+	      Welcome.this.finish();
+	   }
+	   public void exit(View view){
+	      moveTaskToBack(true); 
+	      Welcome.this.finish();
+	   }
+
+}

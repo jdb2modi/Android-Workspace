@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JMoney</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="textLogo">JMoney</string>
+
+    <color name="red">#ff0000</color>
+
+</resources>

@@ -1,0 +1,70 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/layoutIncomeHistoryHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/imageButtonHomeOnIncomeHistory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:background="@drawable/home" />
+
+        <TextView
+            android:id="@+id/tvIncomeHistoryLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/textIncomeHistory"
+            android:textColor="@color/red"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageButtonBackOnIncomeHistory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/imageButtonCloseOnIncomeHistory"
+            android:background="@drawable/back" />
+
+        <ImageButton
+            android:id="@+id/imageButtonCloseOnIncomeHistory"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/close" />
+    </RelativeLayout>
+<ScrollView
+        android:id="@+id/scrollIncomeHistoryContent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutIncomeHistoryHeader
+        android:layout_margin="2dp" >
+
+        <RelativeLayout
+            android:id="@+id/layoutIncomeHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" >
+
+            <ImageView
+                android:id="@+id/incomeHistoryBanner"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/banner" />
+    
+</RelativeLayout>

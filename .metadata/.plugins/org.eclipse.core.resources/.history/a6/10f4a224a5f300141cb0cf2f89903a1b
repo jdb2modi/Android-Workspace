@@ -1,0 +1,50 @@
+package com.zaptech.sessionmanagement2;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class WelcomeActivity extends Activity implements OnClickListener {
+	TextView tvWelcome;
+	Button btnLogout;
+	SharedPreferences sharedPreferences;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_welcome);
+		init();
+	}
+
+	public void init() {
+		btnLogout = (Button) findViewById(R.id.btnLogout);
+		tvWelcome = (TextView) findViewById(R.id.tvWelcome);
+		sharedPreferences = getSharedPreferences(HomeActivity.PRE_NAME,
+				Context.MODE_PRIVATE);
+	}
+
+	public void logout() {
+		Editor editor = sharedPreferences.edit();
+		editor.clear();
+		editor.commit();
+		this.finish();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnLogout:
+			logout();
+			break;
+
+		default:
+			break;
+		}
+	}
+}

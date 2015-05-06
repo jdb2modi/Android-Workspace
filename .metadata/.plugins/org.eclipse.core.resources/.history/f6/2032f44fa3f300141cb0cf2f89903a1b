@@ -1,0 +1,50 @@
+package com.zaptech.sessionmanagement2;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class HomeActivity extends Activity implements OnClickListener {
+	EditText edUsername, edPassword;
+	Button btnLogin;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_home);
+		init();
+	}
+
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+	}
+
+	public void init() {
+		btnLogin = (Button) findViewById(R.id.btnLogin);
+		edPassword = (EditText) findViewById(R.id.edPassword);
+		edUsername = (EditText) findViewById(R.id.edUsername);
+	}
+
+	public void login() {
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnLogin:
+			login();
+			break;
+
+		default:
+			break;
+		}
+	}
+}

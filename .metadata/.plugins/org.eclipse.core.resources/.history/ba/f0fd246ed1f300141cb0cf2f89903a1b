@@ -1,0 +1,37 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class AddExpence extends Activity implements OnClickListener {
+	EditText edTitle, edAmount, edDescription;
+	Button btnAdd;
+	DBHelper dbHelper;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.add_expence);
+		init();
+	}
+
+	public void init() {
+		edTitle = (EditText) findViewById(R.id.edExpenceTitle);
+		edAmount = (EditText) findViewById(R.id.edExpenceAmount);
+		edDescription = (EditText) findViewById(R.id.edExpenceDecription);
+		btnAdd = (Button) findViewById(R.id.btnAddExpence);
+		btnAdd.setOnClickListener(this);
+		dbHelper = new DBHelper(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+
+	}
+}

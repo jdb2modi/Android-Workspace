@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JMoney</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="textLogo">JMoney</string>
+    <string name="textAddExpenceHed">JMoney | Add Expence</string>
+    <string name="textAddIncomeHed">JMoney | Add Income</string>
+    <string name="textHistoryHed">JMoney | History</string>
+    <string name="textSettingsHed">JMoney | Settings</string>
+    <string name="textFooter">copyright@JModi 2015</string>
+    <string name="textIncomeTitle">Income Title</string>
+    <string name="textAmountIncome">Amount of Income</string>
+    <string name="textIncomeDescription">Income Description</string>
+    <string name="textExpenceTitle">Expence Title</string>
+    <string name="textAmountExpence">Amount of Expence</string>
+    <string name="textExpenceDescription">Expence Description</string>
+    <string name="textTotalExpence">Total Expence : </string>
+    <string name="textTotalIncome">Total Income : </string>
+    <string name="textTotalBalance">Total Balance : </string>
+    <string name="textSummary">Summary : </string>
+    <string name="btnAddExpence">Add Expence</string>
+    <string name="btnAddIncome">Add Income</string>
+    <string name="btnHistory">History</string>
+    <string name="btnSettings">Settings</string>
+    <string name="btnExpenceHistory">Show Expence History</string>
+    <string name="btnIncomeHistory">Show Income History</string>
+    <string name="toastExpenceAdded">Expence Added</string>
+    <string name="toastIncomeAdded">Income Added</string>
+
+    <color name="red">#aaff0000</color>
+
+    <string name="title_activity_add_expence">AddExpence</string>
+    <string name="title_activity_add_income">AddIncome</string>
+    <string name="title_activity_history">History</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_expence_history">ExpenceHistory</string>
+
+</resources>
