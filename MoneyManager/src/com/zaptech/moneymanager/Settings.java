@@ -1,15 +1,25 @@
 package com.zaptech.moneymanager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Settings extends Activity implements OnClickListener {
-	Button btnClearExpenceHistory, btnClearIncomeHistory, btnClearAllHistory;
+	Button btnClearExpenceHistory, btnClearIncomeHistory, btnClearAllHistory,
+			btnSetMinBalance, btnSaveMinBalance;
+	ImageButton imgBtnClose, imgBtnBack, imgBtnHome;
 	DBHelper dbHelper;
+	AlertDialog.Builder ab;
+	EditText edMinBalance;
+	Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,31 +35,146 @@ public class Settings extends Activity implements OnClickListener {
 		btnClearExpenceHistory.setOnClickListener(this);
 		btnClearIncomeHistory = (Button) findViewById(R.id.btnClearIncomeHistory);
 		btnClearIncomeHistory.setOnClickListener(this);
+		btnSetMinBalance = (Button) findViewById(R.id.btnSetMinBalance);
+		btnSetMinBalance.setOnClickListener(this);
+		btnSaveMinBalance = (Button) findViewById(R.id.btnSaveMinimumBalance);
+		btnSaveMinBalance.setOnClickListener(this);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnSettings);
+		imgBtnClose.setOnClickListener(this);
+		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnSettings);
+		imgBtnBack.setOnClickListener(this);
+		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnSettings);
+		imgBtnHome.setOnClickListener(this);
+		edMinBalance = (EditText) findViewById(R.id.edMinimumBalance);
 		dbHelper = new DBHelper(this);
+	}
+
+	public void clearAllHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete All History");
+		ab.setMessage("Do you want to Delete all the History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearAllHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastAllHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		ab.show();
+	}
+
+	public void clearIncomeHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete Income History");
+		ab.setMessage("Do you want to Delete Income History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearIncomeHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastIncomeHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		ab.show();
+	}
+
+	public void clearExpenceHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete Expence History");
+		ab.setMessage("Do you want to Delete Expence History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearExpenceHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastExpenceHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		ab.show();
+	}
+
+	public void exitConfirmation() {
+		AlertDialog.Builder ab = new AlertDialog.Builder(Settings.this);
+		ab.setTitle(getString(R.string.alertExitTitle));
+		ab.setMessage(getString(R.string.alertExitMessege));
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Settings.this.finish();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		ab.show();
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnClearAllHistory:
-			dbHelper.clearAllHistory();
-			Toast.makeText(Settings.this,
-					getString(R.string.toastAllHistoryDeleted),
-					Toast.LENGTH_LONG).show();
+			clearAllHistory();
 			break;
 		case R.id.btnClearIncomeHistory:
-			dbHelper.clearIncomeHistory();
-			Toast.makeText(Settings.this,
-					getString(R.string.toastIncomeHistoryDeleted),
-					Toast.LENGTH_LONG).show();
+			clearIncomeHistory();
 			break;
 		case R.id.btnClearExpenceHistory:
-			dbHelper.clearExpenceHistory();
-			Toast.makeText(Settings.this,
-					getString(R.string.toastExpenceHistoryDeleted),
-					Toast.LENGTH_LONG).show();
+			clearExpenceHistory();
 			break;
-
+		case R.id.btnSetMinBalance:
+			edMinBalance.setVisibility(1);
+			btnSaveMinBalance.setVisibility(1);
+			break;
+		case R.id.btnSaveMinimumBalance:
+			Toast.makeText(Settings.this, getString(R.string.toastSaveMinBal),
+					Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.imageButtonCloseOnSettings:
+			exitConfirmation();
+			break;
+		case R.id.imageButtonBackOnSettings:
+			this.finish();
+			intent = new Intent(Settings.this, HomeActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.imageButtonHomeOnSettings:
+			this.finish();
+			intent = new Intent(Settings.this, HomeActivity.class);
+			startActivity(intent);
+			break;
 		default:
 			break;
 		}

@@ -1,0 +1,152 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ExpenceHistory extends Activity implements OnClickListener {
+	ImageButton imgBtnHome, imgBtnBack, imgBtnClose;
+	ListView listExpenceHistory;
+	DBHelper dbHelper;
+	LayoutInflater inflator;
+	ExpenceHistoryAdapter ehAdapter;
+	ProgressDialog pd;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.expence_history);
+		init();
+		new ExpenceLoad().execute();
+
+	}
+
+	public void init() {
+		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnExpenceHistory);
+		imgBtnBack.setOnClickListener(this);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnExpenceHistory);
+		imgBtnClose.setOnClickListener(this);
+		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnExpenceHistory);
+		imgBtnHome.setOnClickListener(this);
+		listExpenceHistory = (ListView) findViewById(R.id.listExpenceHistory);
+
+		dbHelper = new DBHelper(this);
+		ehAdapter = new ExpenceHistoryAdapter(ExpenceHistory.this);
+		pd = new ProgressDialog(this);
+	}
+
+	class ExpenceHistoryAdapter extends BaseAdapter {
+		Context mContext;
+
+		public ExpenceHistoryAdapter(Context context) {
+			this.mContext = context;
+		}
+
+		@Override
+		public int getCount() {
+
+			return dbHelper.eHistoryModelList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+
+			return dbHelper.eHistoryModelList.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView,
+				ViewGroup parentGroup) {
+			if (inflator == null) {
+				inflator = (LayoutInflater) mContext
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			}
+			if (convertView == null) {
+				convertView = inflator.inflate(R.layout.expence_history_layout,
+						null);
+			}
+			TextView tvTitle = (TextView) convertView
+					.findViewById(R.id.tvModelExpenceTitleValue);
+			TextView tvAmount = (TextView) convertView
+					.findViewById(R.id.tvModelExpenceAmountValue);
+			TextView tvDescription = (TextView) convertView
+					.findViewById(R.id.tvModelExpenceDescriptionValue);
+
+			tvTitle.setText(dbHelper.eHistoryModelList.get(position).getTitle());
+			tvTitle.setText(dbHelper.eHistoryModelList.get(position)
+					.getAmount());
+			tvTitle.setText(dbHelper.eHistoryModelList.get(position)
+					.getDescription());
+			return convertView;
+		}
+
+	}
+
+	class ExpenceLoad extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected void onPreExecute() {
+			pd.setTitle("Loading");
+			pd.setMessage("Please Wait...");
+			pd.setCancelable(false);
+			pd.show();
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			dbHelper.displayExpenceHistory();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			if (pd.isShowing()) {
+				pd.dismiss();
+			}
+			listExpenceHistory.setAdapter(new ExpenceHistoryAdapter(
+					ExpenceHistory.this));
+
+			Toast.makeText(ExpenceHistory.this, "Success", Toast.LENGTH_LONG)
+					.show();
+
+			super.onPostExecute(result);
+		}
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.imageButtonBackOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonCloseOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonHomeOnExpenceHistory:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

@@ -32,6 +32,14 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/imageButtonBackOnSettings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/imageButtonCloseOnSettings"
+            android:background="@drawable/back" />
+
+        <ImageButton
             android:id="@+id/imageButtonCloseOnSettings"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -62,31 +70,62 @@
                 android:background="@drawable/banner" />
         </RelativeLayout>
     </ScrollView>
-	  <LinearLayout
-            android:id="@+id/layoutSettingsBtn"
+
+    <LinearLayout
+        android:id="@+id/layoutSettingsBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="2dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btnClearExpenceHistory"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical" 
-            android:layout_margin="2dp">
+            android:text="@string/btnClearExpenceHistory" />
+
+        <Button
+            android:id="@+id/btnClearIncomeHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnClearIncomeHistory" />
+
+        <Button
+            android:id="@+id/btnClearAllHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnClearAllHistory" />
+
+        <Button
+            android:id="@+id/btnSetMinBalance"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnSetMinBalance" />
+
+        <LinearLayout
+            android:id="@+id/layoutSub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/edMinimumBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Minimum Balance Level"
+                android:numeric="decimal"
+                android:visibility="invisible" />
 
             <Button
-                android:id="@+id/btnClearExpenceHistory"
-                android:layout_width="fill_parent"
+                android:id="@+id/btnSaveMinimumBalance"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btnClearExpenceHistory" />
-
-            <Button
-                android:id="@+id/btnClearIncomeHistory"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btnClearIncomeHistory" />
-            <Button
-                android:id="@+id/btnClearAllHistory"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btnClearAllHistory" />
+                android:text="@string/btnSaveMinBalance"
+                android:visibility="invisible" />
         </LinearLayout>
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/layoutSettingsFooter"
         android:layout_width="fill_parent"

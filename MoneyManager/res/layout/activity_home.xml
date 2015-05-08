@@ -32,14 +32,6 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/imageButtonBack1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_toLeftOf="@+id/imageButtonClose1"
-            android:background="@drawable/back" 
-            android:layout_marginRight="2dp"/>
-
-        <ImageButton
             android:id="@+id/imageButtonClose1"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -96,6 +88,25 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btnHistory"
                 android:text="@string/btnSettings" />
+
+            <TextView
+                android:id="@+id/tvSummaryOnHome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnSettings"
+                android:layout_marginTop="4dp"
+                android:text="@string/textSummary"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/tvTotalSummaryOnHome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSummaryOnHome"
+                android:text="@string/textTotalBalance"
+                android:textColor="@color/red"
+                android:textSize="15dp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </ScrollView>
 

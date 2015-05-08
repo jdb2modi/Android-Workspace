@@ -47,35 +47,28 @@
             android:background="@drawable/close" />
     </RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scrollExpenceHistoryContent"
+    <RelativeLayout
+        android:id="@+id/layoutExpenceHistory"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/layoutExpenceHistoryHeader"
         android:layout_margin="2dp" >
 
-        <RelativeLayout
-            android:id="@+id/layoutExpenceHistory"
+        <ImageView
+            android:id="@+id/expenceHistoryBanner"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp" >
+            android:layout_height="70dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/banner" />
 
-            <ImageView
-                android:id="@+id/expenceHistoryBanner"
-                android:layout_width="fill_parent"
-                android:layout_height="70dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:background="@drawable/banner" />
-
-            <ListView
-                android:id="@+id/listExpenceHistory"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/expenceHistoryBanner" >
-            </ListView>
-        </RelativeLayout>
-    </ScrollView>
+        <ListView
+            android:id="@+id/listExpenceHistory"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/expenceHistoryBanner" >
+        </ListView>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layoutExpenceHistoryFooter"

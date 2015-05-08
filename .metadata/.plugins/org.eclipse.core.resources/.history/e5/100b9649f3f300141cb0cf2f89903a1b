@@ -1,0 +1,121 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class Settings extends Activity implements OnClickListener {
+	Button btnClearExpenceHistory, btnClearIncomeHistory, btnClearAllHistory;
+	DBHelper dbHelper;
+	AlertDialog.Builder ab;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.settings);
+		init();
+	}
+
+	public void init() {
+		btnClearAllHistory = (Button) findViewById(R.id.btnClearAllHistory);
+		btnClearAllHistory.setOnClickListener(this);
+		btnClearExpenceHistory = (Button) findViewById(R.id.btnClearExpenceHistory);
+		btnClearExpenceHistory.setOnClickListener(this);
+		btnClearIncomeHistory = (Button) findViewById(R.id.btnClearIncomeHistory);
+		btnClearIncomeHistory.setOnClickListener(this);
+		dbHelper = new DBHelper(this);
+	}
+
+	public void clearAllHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete All History");
+		ab.setMessage("Do you want to Delete all the History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearAllHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastAllHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+	}
+
+	public void clearIncomeHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete Income History");
+		ab.setMessage("Do you want to Delete Income History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearIncomeHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastIncomeHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+	}
+
+	public void clearExpenceHistory() {
+		ab = new AlertDialog.Builder(this);
+		ab.setTitle("Delete Expence History");
+		ab.setMessage("Do you want to Delete Expence History ?");
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dbHelper.clearExpenceHistory();
+				Toast.makeText(Settings.this,
+						getString(R.string.toastExpenceHistoryDeleted),
+						Toast.LENGTH_LONG).show();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnClearAllHistory:
+			clearAllHistory();
+			break;
+		case R.id.btnClearIncomeHistory:
+			clearIncomeHistory();
+			break;
+		case R.id.btnClearExpenceHistory:
+			clearExpenceHistory();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+}

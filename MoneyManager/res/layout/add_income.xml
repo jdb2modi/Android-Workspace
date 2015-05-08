@@ -116,29 +116,16 @@
                 android:text="@string/textSummary"
                 android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/tvTotalExpenceOnIncome"
+             <TextView
+                android:id="@+id/tvTotalSummaryOnIncome"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSummaryOnIncome"
                 android:layout_marginTop="2dp"
-                android:text="@string/textTotalExpence" />
-
-            <TextView
-                android:id="@+id/tvTotalIncomeOnIncome"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalExpenceOnIncome"
-                android:layout_marginTop="2dp"
-                android:text="@string/textTotalIncome" />
-
-            <TextView
-                android:id="@+id/tvTotalBalanceOnIncome"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvTotalIncomeOnIncome"
-                android:layout_marginTop="2dp"
-                android:text="@string/textTotalBalance" />
+                android:text="@string/textTotalBalance" 
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
         </RelativeLayout>
     </ScrollView>
 

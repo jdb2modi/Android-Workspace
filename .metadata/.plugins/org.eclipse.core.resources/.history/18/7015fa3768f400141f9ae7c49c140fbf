@@ -1,0 +1,27 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+public class ExpenceHistory extends Activity {
+	ImageButton imgBtnHome, imgBtnBack, imgBtnClose;
+	ListView listExpenceHistory;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.expence_history);
+		init();
+	}
+
+	public void init() {
+		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnExpenceHistory);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnExpenceHistory);
+		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnExpenceHistory);
+		listExpenceHistory=(ListView)findViewById(R.id.listExpenceHistory);
+	}
+}

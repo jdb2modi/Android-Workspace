@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="20" version="2.0">
+<workbench progressCount="21" version="2.0">
 <workbenchAdvisor/>
 <window height="681" maximized="true" width="1006" x="65" y="24">
 <fastViewData fastViewLocation="1024">
@@ -7,7 +7,7 @@
 <orientation position="512" view="com.android.ide.eclipse.ddms.views.LogCatView"/>
 <orientation position="512" view="com.android.ide.eclipse.ddms.views.FileExplorerView"/>
 <orientation position="512" view="com.android.ide.eclipse.ddms.views.DeviceView"/>
-<orientation position="512" view="org.eclipse.jdt.ui.PackageExplorer"/>
+<orientation position="256" view="org.eclipse.jdt.ui.PackageExplorer"/>
 <orientation position="512" view="org.eclipse.pde.runtime.LogView"/>
 <orientation position="512" view="com.android.ide.eclipse.ddms.views.OldLogCatView"/>
 </fastViewData>
@@ -33,7 +33,7 @@
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -49,36 +49,29 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
-<part id="5"/>
-<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" partName="HomeActivity.java" path="/home/jaimin/AndroidWorkspace/SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java" title="HomeActivity.java" tooltip="SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1339" selectionTopPixel="617"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Settings.java" partName="Settings.java" path="/home/jaimin/AndroidWorkspace/MoneyManager/src/com/zaptech/moneymanager/Settings.java" title="Settings.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/Settings.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MoneyManager/src/com/zaptech/moneymanager/Settings.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4156" selectionTopPixel="1120"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_home.xml" partName="activity_home.xml" path="/home/jaimin/AndroidWorkspace/SessionManagement/res/layout/activity_home.xml" title="activity_home.xml" tooltip="SessionManagement/res/layout/activity_home.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SessionManagement/res/layout/activity_home.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" partName="HomeActivity.java" path="/home/jaimin/AndroidWorkspace/MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java" title="HomeActivity.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="567" selectionOffset="1908" selectionTopPixel="880"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Welcome.java" partName="Welcome.java" path="/home/jaimin/AndroidWorkspace/SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java" title="Welcome.java" tooltip="SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="462" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddIncome.java" partName="AddIncome.java" path="/home/jaimin/AndroidWorkspace/MoneyManager/src/com/zaptech/moneymanager/AddIncome.java" title="AddIncome.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/AddIncome.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MoneyManager/src/com/zaptech/moneymanager/AddIncome.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2265" selectionTopPixel="1101"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="welcome.xml" partName="welcome.xml" path="/home/jaimin/AndroidWorkspace/SessionManagement/res/layout/welcome.xml" title="welcome.xml" tooltip="SessionManagement/res/layout/welcome.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SessionManagement/res/layout/welcome.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpenceHistory.java" partName="ExpenceHistory.java" path="/home/jaimin/AndroidWorkspace/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java" title="ExpenceHistory.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1240" selectionTopPixel="415"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" partName="SessionManagement Manifest" path="/home/jaimin/AndroidWorkspace/SessionManagement/AndroidManifest.xml" title="SessionManagement Manifest" tooltip="SessionManagement/AndroidManifest.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SessionManagement/AndroidManifest.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" partName="HomeActivity.java" path="/home/jaimin/AndroidWorkspace/BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java" title="HomeActivity.java" tooltip="BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="250"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NewsReceiver.java" partName="NewsReceiver.java" path="/home/jaimin/AndroidWorkspace/BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java" title="NewsReceiver.java" tooltip="BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="IncomeHistory.java" partName="IncomeHistory.java" path="/home/jaimin/AndroidWorkspace/MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java" title="IncomeHistory.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2474" selectionTopPixel="1239"/>
 </editor>
 </editors>
 <views>
@@ -136,7 +129,7 @@
 </viewState>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -264,8 +257,8 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <fastViews>
 <view id="com.android.ide.eclipse.ddms.views.FileExplorerView" ratio="0.2999345"/>
@@ -273,15 +266,7 @@
 <fastViewBars/>
 <layout>
 <mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6db0983b">
-<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
-</folder>
-</info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@3b925c6b" ratio="0.14304462" ratioLeft="218" ratioRight="1306" relationship="2" relative="org.eclipse.ui.internal.ViewStack@6db0983b">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@3b925c6b">
 <folder appearance="2" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -309,8 +294,8 @@
 </info>
 <info folder="true" part="bottom" ratio="0.943609" ratioLeft="753" ratioRight="45" relationship="4" relative="org.eclipse.ui.internal.ViewStack@55102405">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="LabelNotFound"/>
@@ -349,7 +334,15 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="321" ratioRight="963" relationship="2" relative="org.eclipse.ui.internal.ViewStack@723de8fe"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@41d4c818" ratio="0.25" ratioLeft="321" ratioRight="963" relationship="2" relative="org.eclipse.ui.internal.ViewStack@723de8fe">
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.1437008" ratioLeft="219" ratioRight="1305" relationship="2" relative="org.eclipse.ui.internal.ViewStack@41d4c818"/>
 </mainWindow>
 <hiddenWindow height="764" width="452" x="75" y="70">
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
@@ -387,7 +380,6 @@
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="com.android.ide.eclipse.ddms.views.FileExplorerView"/>
 <fastViewBars/>
 <layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="devices">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.DeviceView:*" label="LabelNotFound"/>
 <page content="com.android.ide.eclipse.ddms.views.DeviceView" label="LabelNotFound"/>
@@ -405,7 +397,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.2999345" ratioLeft="458" ratioRight="1069" relationship="2" relative="devices"/>
-<info folder="true" part="ddms-detail" ratio="0.49953228" ratioLeft="534" ratioRight="535" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="com.android.ide.eclipse.ddms.views.FileExplorerView" appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.FileExplorerView" label="File Explorer"/>
+<info folder="true" part="ddms-detail" ratio="0.49953228" ratioLeft="534" ratioRight="535" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.FileExplorerView" label="LabelNotFound"/>
 <page content="com.android.ide.eclipse.ddms.views.ThreadView:*" label="LabelNotFound"/>
 <page content="com.android.ide.eclipse.ddms.views.ThreadView" label="LabelNotFound"/>
 <page content="com.android.ide.eclipse.ddms.views.HeapView" label="LabelNotFound"/>
@@ -414,8 +406,7 @@
 <page content="com.android.ide.eclipse.ddms.views.EmulatorControlView" label="LabelNotFound"/>
 <page content="com.android.ide.eclipse.ddms.views.SysInfoView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -425,146 +416,156 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SharedPreferencesDemo/src/com/zaptech/sharedpreferencesdemo/HomeActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/SharedPreferencesDemo/res/layout/activity_home.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/SessionManagement/res/layout/welcome.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/SessionManagement/AndroidManifest.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/DBHelper.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/MoneyManager/res/layout/activity_home.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/History.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/MoneyManager/AndroidManifest.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/MoneyManager/res/values/strings.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/AddExpence.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/AddIncome.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistoryModel.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/MoneyManager/res/layout/history.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/Settings.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/AddIncome.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java"/>
 </editors>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="DBHelper.java" index="0">
+<position info="not_deleted" x="1135" y="0"/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
+<item historyLabel="DBHelper.java" index="0">
+<position info="not_deleted" x="1135" y="0"/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
+<item historyLabel="DBHelper.java" index="0">
+<position info="not_deleted" x="3159" y="0"/>
 </item>
-<item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
+<item historyLabel="DBHelper.java" index="0">
+<position info="not_deleted" x="3161" y="0"/>
 </item>
-<item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="0">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
 <item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="History.java" index="3">
 <position/>
 </item>
-<item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="activity_home.xml" index="1">
+<position info="not_deleted" x="1259" y="0"/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="MoneyManager Manifest" index="4"/>
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="HomeActivity.java" index="2">
 <position/>
 </item>
-<item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="0">
+<item historyLabel="strings.xml" index="5"/>
+<item historyLabel="HomeActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="strings.xml" index="5"/>
+<item historyLabel="HomeActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
+<position/>
+</item>
+<item historyLabel="strings.xml" index="5"/>
+<item historyLabel="AddExpence.java" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="HomeActivity.java" index="0">
-<position info="not_deleted" x="1576" y="0"/>
+<item historyLabel="AddExpence.java" index="6">
+<position info="not_deleted" x="2659" y="0"/>
+</item>
+<item historyLabel="HomeActivity.java" index="2">
+<position info="not_deleted" x="1908" y="567"/>
+</item>
+<item historyLabel="AddExpence.java" index="6">
+<position info="not_deleted" x="2014" y="0"/>
+</item>
+<item historyLabel="AddIncome.java" index="7">
+<position info="not_deleted" x="2150" y="0"/>
+</item>
+<item historyLabel="ExpenceHistory.java" index="8">
+<position info="not_deleted" x="4665" y="0"/>
+</item>
+<item historyLabel="ExpenceHistoryModel.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="History.java" index="3">
+<position info="not_deleted" x="442" y="0"/>
+</item>
+<item historyLabel="history.xml" index="10"/>
+<item historyLabel="History.java" index="3">
+<position info="not_deleted" x="1813" y="0"/>
+</item>
+<item historyLabel="ExpenceHistoryModel.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="History.java" index="3">
+<position info="not_deleted" x="1813" y="0"/>
+</item>
+<item historyLabel="ExpenceHistory.java" index="8">
+<position info="not_deleted" x="3903" y="572"/>
+</item>
+<item historyLabel="History.java" index="3">
+<position info="not_deleted" x="2240" y="0"/>
 </item>
 <item historyLabel="activity_home.xml" index="1"/>
-<item historyLabel="HomeActivity.java" index="2">
+<item historyLabel="History.java" index="3">
+<position info="not_deleted" x="2240" y="0"/>
+</item>
+<item historyLabel="history.xml" index="10"/>
+<item historyLabel="Settings.java" index="11">
+<position info="not_deleted" x="4159" y="0"/>
+</item>
+<item historyLabel="HomeActivity.java" index="12">
+<position info="not_deleted" x="1908" y="567"/>
+</item>
+<item historyLabel="Settings.java" index="11">
+<position info="not_deleted" x="4752" y="0"/>
+</item>
+<item historyLabel="AddIncome.java" index="13">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1818" y="0"/>
+<item historyLabel="AddIncome.java" index="13">
+<position info="not_deleted" x="2265" y="0"/>
 </item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="839" y="0"/>
+<item historyLabel="ExpenceHistory.java" index="14">
+<position info="not_deleted" x="1240" y="0"/>
 </item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="814" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="867" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="924" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="977" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1290" y="0"/>
-</item>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="436" y="0"/>
-</item>
-<item historyLabel="welcome.xml" index="4"/>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="436" y="0"/>
-</item>
-<item historyLabel="welcome.xml" index="4"/>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1642" y="0"/>
-</item>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="543" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1642" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1779" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1645" y="0"/>
-</item>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="543" y="0"/>
-</item>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="462" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1645" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position/>
-</item>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1339" y="0"/>
-</item>
-<item historyLabel="SessionManagement Manifest" index="5"/>
-<item historyLabel="HomeActivity.java" index="2">
-<position info="not_deleted" x="1339" y="0"/>
-</item>
-<item historyLabel="Welcome.java" index="3">
-<position info="not_deleted" x="462" y="0"/>
-</item>
-<item historyLabel="HomeActivity.java" index="6">
+<item historyLabel="IncomeHistory.java" index="15">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="NewsReceiver.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="IncomeHistory.java" index="15">
+<position info="not_deleted" x="2450" y="0"/>
+</item>
+<item historyLabel="IncomeHistory.java" index="15">
+<position info="not_deleted" x="2474" y="0"/>
+</item>
+<item historyLabel="Settings.java" index="11">
+<position info="not_deleted" x="4752" y="0"/>
+</item>
+<item active="true" historyLabel="Settings.java" index="11">
+<position info="not_deleted" x="1446" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -583,50 +584,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NewsReceiver.java" tooltip="BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java">
-<persistable path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/NewsReceiver.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="IncomeHistory.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/IncomeHistory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" tooltip="BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java">
-<persistable path="/BroadcastDemo2/src/com/zaptech/broadcastdemo2/HomeActivity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpenceHistory.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistory.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="SessionManagement/AndroidManifest.xml">
-<persistable path="/SessionManagement/AndroidManifest.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddIncome.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/AddIncome.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/AddIncome.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="welcome.xml" tooltip="SessionManagement/res/layout/welcome.xml">
-<persistable path="/SessionManagement/res/layout/welcome.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/HomeActivity.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Welcome.java" tooltip="SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java">
-<persistable path="/SessionManagement/src/com/zaptech/sessionmanagement/Welcome.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Settings.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/Settings.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/Settings.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_home.xml" tooltip="SessionManagement/res/layout/activity_home.xml">
-<persistable path="/SessionManagement/res/layout/activity_home.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="history.xml" tooltip="MoneyManager/res/layout/history.xml">
+<persistable path="/MoneyManager/res/layout/history.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" tooltip="SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java">
-<persistable path="/SessionManagement/src/com/zaptech/sessionmanagement/HomeActivity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="History.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/History.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/History.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomeActivity.java" tooltip="SharedPreferencesDemo/src/com/zaptech/sharedpreferencesdemo/HomeActivity.java">
-<persistable path="/SharedPreferencesDemo/src/com/zaptech/sharedpreferencesdemo/HomeActivity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpenceHistoryModel.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/ExpenceHistoryModel.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/ExpenceHistoryModel.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_home.xml" tooltip="SharedPreferencesDemo/res/layout/activity_home.xml">
-<persistable path="/SharedPreferencesDemo/res/layout/activity_home.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AddExpence.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/AddExpence.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/AddExpence.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="SeekbarDemo/src/com/zaptech/seekbardemo/MainActivity.java">
-<persistable path="/SeekbarDemo/src/com/zaptech/seekbardemo/MainActivity.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="strings.xml" tooltip="MoneyManager/res/values/strings.xml">
+<persistable path="/MoneyManager/res/values/strings.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="SeekbarDemo/AndroidManifest.xml">
-<persistable path="/SeekbarDemo/AndroidManifest.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="MoneyManager/AndroidManifest.xml">
+<persistable path="/MoneyManager/AndroidManifest.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SeekLimitReceiver.java" tooltip="SeekbarDemo/src/com/zaptech/seekbardemo/SeekLimitReceiver.java">
-<persistable path="/SeekbarDemo/src/com/zaptech/seekbardemo/SeekLimitReceiver.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_home.xml" tooltip="MoneyManager/res/layout/activity_home.xml">
+<persistable path="/MoneyManager/res/layout/activity_home.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_main.xml" tooltip="SeekbarDemo/res/layout/activity_main.xml">
-<persistable path="/SeekbarDemo/res/layout/activity_main.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="add_expence.xml" tooltip="MoneyManager/res/layout/add_expence.xml">
+<persistable path="/MoneyManager/res/layout/add_expence.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="BroadcastDemo2/AndroidManifest.xml">
-<persistable path="/BroadcastDemo2/AndroidManifest.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DBHelper.java" tooltip="MoneyManager/src/com/zaptech/moneymanager/DBHelper.java">
+<persistable path="/MoneyManager/src/com/zaptech/moneymanager/DBHelper.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_home.xml" tooltip="BroadcastDemo2/res/layout/activity_home.xml">
-<persistable path="/BroadcastDemo2/res/layout/activity_home.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="income_history_layout.xml" tooltip="MoneyManager/res/layout/income_history_layout.xml">
+<persistable path="/MoneyManager/res/layout/income_history_layout.xml"/>
 </file>
 </mruList>
 </workbench>

@@ -1,0 +1,50 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+public class ExpenceHistory extends Activity implements OnClickListener {
+	ImageButton imgBtnHome, imgBtnBack, imgBtnClose;
+	ListView listExpenceHistory;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.expence_history);
+		init();
+	}
+
+	public void init() {
+		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnExpenceHistory);
+		imgBtnBack.setOnClickListener(this);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnExpenceHistory);
+		imgBtnClose.setOnClickListener(this);
+		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnExpenceHistory);
+		imgBtnHome.setOnClickListener(this);
+		listExpenceHistory = (ListView) findViewById(R.id.listExpenceHistory);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.imageButtonBackOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonCloseOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonHomeOnExpenceHistory:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvModelExpenceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="sdfsdf"
+        android:textColor="@color/red"
+        android:textStyle="bold|italic"
+      android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tvModelExpenceAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvModelExpenceTitle"
+        android:layout_marginTop="2dp"
+        android:text="sdfsdf"
+        android:textColor="@color/red"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/tvModelExpenceDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvModelExpenceAmount"
+        android:layout_marginTop="2dp"
+        android:text="sdfsddf"
+        android:textColor="@color/red"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>

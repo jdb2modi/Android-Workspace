@@ -1,0 +1,89 @@
+package com.zaptech.moneymanager;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+public class ExpenceHistory extends Activity implements OnClickListener {
+	ImageButton imgBtnHome, imgBtnBack, imgBtnClose;
+	ListView listExpenceHistory;
+	DBHelper dbHelper;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.expence_history);
+		init();
+
+	}
+
+	public void init() {
+		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnExpenceHistory);
+		imgBtnBack.setOnClickListener(this);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnExpenceHistory);
+		imgBtnClose.setOnClickListener(this);
+		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnExpenceHistory);
+		imgBtnHome.setOnClickListener(this);
+		listExpenceHistory = (ListView) findViewById(R.id.listExpenceHistory);
+		dbHelper = new DBHelper(this);
+	}
+
+	class eHistoryAdapter extends BaseAdapter {
+		Context context;
+
+		public eHistoryAdapter(Context context) {
+			this.context = context;
+		}
+
+		@Override
+		public int getCount() {
+
+			return dbHelper.eHistoryModelList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+
+			return dbHelper.eHistoryModelList.get(position);
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+
+			return 0;
+		}
+
+		@Override
+		public View getView(int arg0, View arg1, ViewGroup arg2) {
+
+			return null;
+		}
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.imageButtonBackOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonCloseOnExpenceHistory:
+
+			break;
+		case R.id.imageButtonHomeOnExpenceHistory:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

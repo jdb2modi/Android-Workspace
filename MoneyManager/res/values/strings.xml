@@ -21,6 +21,12 @@
     <string name="textSummary">Summary : </string>
     <string name="textExpenceHistory">Expence History</string>
     <string name="textIncomeHistory">Income History</string>
+    <string name="textModelExpenceTitle">Expence Title : </string>
+    <string name="textModelExpenceAmount">Expence Amount : </string>
+    <string name="textModelExpenceDescription">Expence Description : </string>
+    <string name="textModelIncomeTitle">Income Title : </string>
+    <string name="textModelIncomeAmount">Income Amount : </string>
+    <string name="textModelIncomeDescription">Income Description : </string>
     <string name="btnAddExpence">Add Expence</string>
     <string name="btnAddIncome">Add Income</string>
     <string name="btnHistory">History</string>
@@ -30,11 +36,16 @@
     <string name="btnClearExpenceHistory">Clear Expence History</string>
     <string name="btnClearIncomeHistory">Clear Income History</string>
     <string name="btnClearAllHistory">Clear All History</string>
+    <string name="btnSetMinBalance">Set Minimum Balance Alert</string>
+    <string name="btnSaveMinBalance">Save</string>
     <string name="toastExpenceAdded">Expence Added</string>
     <string name="toastIncomeAdded">Income Added</string>
     <string name="toastAllHistoryDeleted">All History Deleted</string>
-    <string name="toastIncomeHistoryDeleted">All History Deleted</string>
-    <string name="toastExpenceHistoryDeleted">All History Deleted</string>
+    <string name="toastIncomeHistoryDeleted">Income History Deleted</string>
+    <string name="toastExpenceHistoryDeleted">Expence History Deleted</string>
+    <string name="toastSaveMinBal">Minimum Balance level Saved</string>
+    <string name="alertExitTitle">Exit Now</string>
+    <string name="alertExitMessege">Do you want to Exit ?</string>
 
     <color name="red">#aaff0000</color>
 

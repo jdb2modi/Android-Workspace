@@ -1,6 +1,8 @@
 package com.zaptech.moneymanager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class History extends Activity implements OnClickListener {
-	ImageButton imgBtnHome, imgBtnBack;
+	ImageButton imgBtnHome, imgBtnBack, imgBtnClose;
 	Button btnExpenceHistory, btnIncomeHistory;
 	Intent intent;
 
@@ -29,6 +31,29 @@ public class History extends Activity implements OnClickListener {
 		imgBtnHome.setOnClickListener(this);
 		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnHistory);
 		imgBtnBack.setOnClickListener(this);
+		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnHistory);
+		imgBtnClose.setOnClickListener(this);
+	}
+
+	public void exitConfirmation() {
+		AlertDialog.Builder ab = new AlertDialog.Builder(History.this);
+		ab.setTitle(getString(R.string.alertExitTitle));
+		ab.setMessage(getString(R.string.alertExitMessege));
+		ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				History.this.finish();
+			}
+		});
+		ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		ab.show();
 	}
 
 	@Override
@@ -44,12 +69,17 @@ public class History extends Activity implements OnClickListener {
 			intent = new Intent(History.this, HomeActivity.class);
 			startActivity(intent);
 			break;
+		case R.id.imageButtonCloseOnHistory:
+			exitConfirmation();
+			break;
 		case R.id.btnExpenceHistory:
+			this.finish();
 			intent = new Intent(History.this, ExpenceHistory.class);
 			startActivity(intent);
 			break;
 		case R.id.btnIncomeHistory:
-			intent = new Intent(History.this,IncomeHistory.class);
+			this.finish();
+			intent = new Intent(History.this, IncomeHistory.class);
 			startActivity(intent);
 			break;
 

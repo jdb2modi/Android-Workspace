@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/layoutSettingsHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/imageButtonHomeOnSettings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:background="@drawable/home" />
+
+        <TextView
+            android:id="@+id/tvSettingsLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/textSettingsHed"
+            android:textColor="@color/red"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageButtonCloseOnSettings"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/close" />
+    </RelativeLayout>
+    <!-- Main Content -->
+
+    <ScrollView
+        android:id="@+id/scrollSettingsContent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutSettingsHeader"
+        android:layout_margin="2dp" >
+
+        <RelativeLayout
+            android:id="@+id/layoutSettingsContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" >
+
+            <ImageView
+                android:id="@+id/settingsBanner"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/banner" />
+        </RelativeLayout>
+    </ScrollView>
+	  <LinearLayout
+            android:id="@+id/layoutSettingsBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical" 
+            android:layout_margin="2dp">
+
+            <Button
+                android:id="@+id/btnClearExpenceHistory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnClearExpenceHistory" />
+
+            <Button
+                android:id="@+id/btnClearIncomeHistory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnClearIncomeHistory" />
+            <Button
+                android:id="@+id/btnClearAllHistory"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnClearAllHistory" />
+        </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/layoutSettingsFooter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvSettingsFooterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/textFooter"
+            android:textColor="@color/red"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>
