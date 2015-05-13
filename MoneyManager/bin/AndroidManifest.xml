@@ -46,6 +46,12 @@
             android:name=".IncomeHistory"
             android:label="@string/title_activity_income_history" >
         </activity>
+
+        <receiver android:name="MinBalReceiver" >
+            <intent-filter>
+                <action android:name="MinimumBalance" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

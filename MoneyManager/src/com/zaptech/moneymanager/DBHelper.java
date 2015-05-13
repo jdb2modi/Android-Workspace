@@ -206,16 +206,18 @@ public class DBHelper extends SQLiteOpenHelper {
 	public String getData() {
 		db = getDB();
 		String sql = "SELECT * FROM " + TB;
+		int tempBalance;
 		Cursor cursor = db.rawQuery(sql, null);
 		if (cursor != null) {
 			if (cursor.moveToFirst()) {
 				do {
-
+					tempBalance = cursor.getInt(cursor
+							.getColumnIndex(COL_BALANCE));
+					if (tempBalance <= 0) {
+						tempBalance = 0;
+					}
 					strDataToDisplay = "Total Balance   : "
-							+ String.valueOf(
-									cursor.getInt(cursor
-											.getColumnIndex(COL_BALANCE)))
-									.toString()
+							+ String.valueOf(tempBalance).toString()
 							+ "\nTotal Expence   : "
 							+ String.valueOf(
 									cursor.getInt(cursor
@@ -229,20 +231,65 @@ public class DBHelper extends SQLiteOpenHelper {
 				} while (cursor.moveToNext());
 
 			}
-		} else {
-			strDataToDisplay = "\nTotal Balance   : "
-					+ String.valueOf(
-							cursor.getInt(cursor.getColumnIndex(COL_BALANCE)))
-							.toString()
-					+ "\nTotal Expence   : "
-					+ String.valueOf(
-							cursor.getInt(cursor.getColumnIndex(COL_EXPENCE)))
-							.toString()
-					+ "\nTotal Income     : "
-					+ String.valueOf(
-							cursor.getInt(cursor.getColumnIndex(COL_INCOME)))
-							.toString() + "\nHistory has been cleared.";
 		}
 		return strDataToDisplay;
 	}
+
+	public String getBalance() {
+		db = getDB();
+		String sql = "SELECT " + COL_BALANCE + " FROM " + TB;
+		int tempBalance;
+		Cursor cursor = db.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					tempBalance = cursor.getInt(cursor
+							.getColumnIndex(COL_BALANCE));
+					if (tempBalance <= 0) {
+						tempBalance = 0;
+					}
+					strDataToDisplay = String.valueOf(tempBalance).toString();
+				} while (cursor.moveToNext());
+
+			}
+		}
+		return strDataToDisplay;
+	}
+
+	public String getIncome() {
+		db = getDB();
+		int tempIncome;
+		String sql = "SELECT " + COL_INCOME + " FROM " + TB;
+		Cursor cursor = db.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					tempIncome = cursor.getInt(cursor
+							.getColumnIndex(COL_INCOME));
+					strDataToDisplay = String.valueOf(tempIncome).toString();
+				} while (cursor.moveToNext());
+
+			}
+		}
+		return strDataToDisplay;
+	}
+
+	public String getExpence() {
+		db = getDB();
+		int tempExpence;
+		String sql = "SELECT " + COL_EXPENCE + " FROM " + TB;
+		Cursor cursor = db.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					tempExpence = cursor.getInt(cursor
+							.getColumnIndex(COL_EXPENCE));
+					strDataToDisplay = String.valueOf(tempExpence).toString();
+				} while (cursor.moveToNext());
+
+			}
+		}
+		return strDataToDisplay;
+	}
+
 }

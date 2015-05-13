@@ -3,10 +3,7 @@ package com.zaptech.databasehelperpro;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.v4.app.NotificationCompat.Builder;
-import android.widget.Toast;
 
 public class MyDatabase extends SQLiteOpenHelper {
 
@@ -36,7 +33,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			
+
 	}
 
 	public SQLiteDatabase getDB() {

@@ -99,14 +99,71 @@
                 android:textStyle="bold|italic" />
 
             <TextView
-                android:id="@+id/tvTotalSummaryOnHome"
-                android:layout_width="fill_parent"
+                android:id="@+id/tvTitleTotalBalance"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSummaryOnHome"
+                android:layout_margin="5dp"
                 android:text="@string/textTotalBalance"
                 android:textColor="@color/red"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitleTotalExpence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleTotalBalance"
+                android:layout_margin="5dp"
+                android:text="@string/textTotalExpence"
+                android:textColor="@color/red"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitleTotalIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleTotalExpence"
+                android:layout_margin="5dp"
+                android:text="@string/textTotalIncome"
+                android:textColor="@color/red"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <!-- TextViews That will display atual values -->
+
+            <TextView
+                android:id="@+id/tvTotalBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSummaryOnHome"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/tvTitleTotalBalance"
+                android:text="@string/textTotalBalance"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvTotalExpence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleTotalBalance"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/tvTitleTotalExpence"
+                android:text="@string/textTotalExpence"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvTotalIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitleTotalExpence"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@+id/tvTitleTotalIncome"
+                android:text="@string/textTotalIncome"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
         </RelativeLayout>
     </ScrollView>
 

@@ -23,15 +23,15 @@ public class AddIncome extends Activity implements OnClickListener {
 	DBHelper dbHelper;
 	Intent intent;
 	String strDataToDisplay;
-	TextView tvTotalSummary;
+	TextView tvBalance, tvExpence, tvIncome;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_income);
 		init();
-		strDataToDisplay = dbHelper.getData();
-		tvTotalSummary.setText(strDataToDisplay);
+		displayData();
+
 	}
 
 	public void init() {
@@ -40,14 +40,25 @@ public class AddIncome extends Activity implements OnClickListener {
 		edDescription = (EditText) findViewById(R.id.edIncomeDecription);
 		btnAdd = (Button) findViewById(R.id.btnAddIncome);
 		btnAdd.setOnClickListener(this);
+
+		tvBalance = (TextView) findViewById(R.id.tvTotalBalanceOnIncome);
+		tvExpence = (TextView) findViewById(R.id.tvTotalExpenceOnIncome);
+		tvIncome = (TextView) findViewById(R.id.tvTotalIncomeOnIncome);
+
 		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonCloseOnIncome);
 		imgBtnClose.setOnClickListener(this);
 		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnIncome);
 		imgBtnBack.setOnClickListener(this);
 		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHomeOnIncome);
 		imgBtnHome.setOnClickListener(this);
-		tvTotalSummary = (TextView) findViewById(R.id.tvTotalSummaryOnIncome);
+
 		dbHelper = new DBHelper(this);
+	}
+
+	public void displayData() {
+		tvBalance.setText(dbHelper.getBalance());
+		tvExpence.setText(dbHelper.getExpence());
+		tvIncome.setText(dbHelper.getIncome());
 	}
 
 	public void exitConfirmation() {
@@ -85,7 +96,7 @@ public class AddIncome extends Activity implements OnClickListener {
 			dbHelper.insertIncomeHistory(edTitle.getText().toString(),
 					Integer.parseInt(edAmount.getText().toString()),
 					edDescription.getText().toString());
-			tvTotalSummary.setText(dbHelper.getData());
+			displayData();
 			Toast.makeText(AddIncome.this,
 					getString(R.string.toastIncomeAdded), Toast.LENGTH_SHORT)
 					.show();

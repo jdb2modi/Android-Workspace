@@ -1,29 +1,24 @@
 package com.zaptech.moneymanager;
 
-import java.sql.Date;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.text.format.Time;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener {
 	Button btnAddExpence, btnAddIncome, btnHistory, btnSettings;
 	ImageButton imgBtnHome, imgBtnClose;
-	TextView tvTotalSummary;
+	TextView tvBalance, tvExpence, tvIncome;
 	Intent intent;
 	DateFormat df;
 	DBHelper dbHelper;
-	String strDataToDisplay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +26,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_home);
 
 		init();
-		strDataToDisplay = dbHelper.getData();
-		tvTotalSummary.setText(strDataToDisplay);
+		displayData();
 	}
 
 	public void init() {
@@ -42,7 +36,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		btnHistory = (Button) findViewById(R.id.btnHistory);
 		btnSettings = (Button) findViewById(R.id.btnSettings);
 
-		tvTotalSummary = (TextView) findViewById(R.id.tvTotalSummaryOnHome);
+		tvBalance = (TextView) findViewById(R.id.tvTotalBalance);
+		tvExpence = (TextView) findViewById(R.id.tvTotalExpence);
+		tvIncome = (TextView) findViewById(R.id.tvTotalIncome);
 
 		imgBtnClose = (ImageButton) findViewById(R.id.imageButtonClose1);
 		imgBtnHome = (ImageButton) findViewById(R.id.imageButtonHome1);
@@ -55,6 +51,12 @@ public class HomeActivity extends Activity implements OnClickListener {
 		imgBtnClose.setOnClickListener(this);
 		imgBtnHome.setOnClickListener(this);
 
+	}
+
+	public void displayData() {
+		tvBalance.setText(dbHelper.getBalance());
+		tvExpence.setText(dbHelper.getExpence());
+		tvIncome.setText(dbHelper.getIncome());
 	}
 
 	public void exitConfirmation() {

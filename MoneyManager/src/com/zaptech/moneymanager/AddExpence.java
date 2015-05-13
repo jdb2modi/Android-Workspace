@@ -18,19 +18,17 @@ import android.widget.Toast;
 public class AddExpence extends Activity implements OnClickListener {
 	EditText edTitle, edAmount, edDescription;
 	Button btnAdd;
-	TextView tvTotalSummary;
+	TextView tvBalance, tvExpence, tvIncome;
 	ImageButton imgBtnExit, imgBtnBack, imgBtnHome;
 	DBHelper dbHelper;
 	Intent intent;
-	String strDataToDisplay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_expence);
 		init();
-		strDataToDisplay = dbHelper.getData();
-		tvTotalSummary.setText(strDataToDisplay);
+		displayData();
 	}
 
 	public void init() {
@@ -39,7 +37,11 @@ public class AddExpence extends Activity implements OnClickListener {
 		edDescription = (EditText) findViewById(R.id.edExpenceDecription);
 		btnAdd = (Button) findViewById(R.id.btnAddExpence);
 		btnAdd.setOnClickListener(this);
-		tvTotalSummary = (TextView) findViewById(R.id.tvTotalSummaryOnExpence);
+
+		tvBalance = (TextView) findViewById(R.id.tvTotalBalanceOnExpence);
+		tvExpence = (TextView) findViewById(R.id.tvTotalExpenceOnExpence);
+		tvIncome = (TextView) findViewById(R.id.tvTotalIncomeOnExpence);
+
 		imgBtnExit = (ImageButton) findViewById(R.id.imageButtonCloseOnExpence);
 		imgBtnExit.setOnClickListener(this);
 		imgBtnBack = (ImageButton) findViewById(R.id.imageButtonBackOnExpence);
@@ -48,6 +50,13 @@ public class AddExpence extends Activity implements OnClickListener {
 		imgBtnHome.setOnClickListener(this);
 
 		dbHelper = new DBHelper(this);
+
+	}
+
+	public void displayData() {
+		tvBalance.setText(dbHelper.getBalance());
+		tvExpence.setText(dbHelper.getExpence());
+		tvIncome.setText(dbHelper.getIncome());
 	}
 
 	public void clear() {
@@ -85,7 +94,7 @@ public class AddExpence extends Activity implements OnClickListener {
 			dbHelper.insertExpenceHistory(edTitle.getText().toString(),
 					Integer.parseInt(edAmount.getText().toString()),
 					edDescription.getText().toString());
-			tvTotalSummary.setText(dbHelper.getData());
+			displayData();
 			Toast.makeText(AddExpence.this,
 					getString(R.string.toastExpenceAdded), Toast.LENGTH_SHORT)
 					.show();

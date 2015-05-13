@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TextToSpeech</string>
+    <string name="hello_world">Hello world!</string>
+    <string-array name="Languages">
+        <item >CANADA_LOCALE</item>
+        <item >CANADA_FRENCH</item>
+    </string-array>
+
+</resources>
