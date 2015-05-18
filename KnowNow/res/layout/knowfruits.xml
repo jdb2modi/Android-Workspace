@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageviewFruits"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_launcher" />
+
+        <RadioGroup
+            android:id="@+id/radiogroupFruits"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <RadioButton
+                android:id="@+id/rbPineapple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Pineapple" />
+
+            <RadioButton
+                android:id="@+id/rbOrange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orange" />
+
+            <RadioButton
+                android:id="@+id/rbGrapes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grapes" />
+
+            <RadioButton
+                android:id="@+id/rbApple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apple" />
+
+            <RadioButton
+                android:id="@+id/rbBanana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banana" />
+
+            <RadioButton
+                android:id="@+id/rbWatermalon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Watermalon" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonVerifyFruit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify" />
+
+        <LinearLayout
+            android:id="@+id/layoutFruitScore"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textviewTitleFruitScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Known Fruits : " />
+
+            <TextView
+                android:id="@+id/textviewFruitScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

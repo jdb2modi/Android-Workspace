@@ -1,0 +1,16 @@
+Steps for Fragmentation in Android : 
+
+1) create the .xml file for fragment as needed.
+
+2) Create the classes for all the .xml file of Fragments.
+
+3) override onCreateView method in that.
+
+4) In .xml file of MainActivity take the <fragment> tag as of many needed.
+
+5) In Class file for MainActivity create FragmentManager, FragmentTransaction and add it using object of FragmentTransaction.
+
+
+
+XML Pull Parser : http://www.tutorialspoint.com/android/android_xml_parsers.html
+

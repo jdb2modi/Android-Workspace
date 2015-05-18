@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ScrollView
+        android:id="@+id/scrollHome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <LinearLayout
+            android:id="@+id/layoutKnowButtons"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnKnowFruits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Fruits" />
+
+            <Button
+                android:id="@+id/btnKnowVegetables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Vegetables" />
+
+            <Button
+                android:id="@+id/btnKnowAnimals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Animals" />
+
+            <Button
+                android:id="@+id/btnKnowBirds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Birds" />
+
+            <Button
+                android:id="@+id/btnKnowPlaces"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Places" />
+
+            <Button
+                android:id="@+id/btnKnowDevices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Know Devices" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

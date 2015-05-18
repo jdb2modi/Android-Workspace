@@ -1,0 +1,40 @@
+MOST IMPORTANT LINK :
+
+http://stackoverflow.com/questions/14421171/adb-error-on-android-sdk-using-linux-ubuntu-64-bit-12-10
+
+
+
+
+
+
+
+
+
+
+http://code2care.org/pages/appcompat_v7-errors-after-updates-to-api-level-21-material-theme/
+To resolve this issue,
+
+    Right Click on appcompat_v7 library and select Properties
+    Now, Click on Android Option,
+    Set Project Build Path as Android 5.0 (API level 21)
+    Apply Changes.
+    Now go to project.properties file under appcompat_v7 library,
+    Set the project target as : target=android-21
+    Now Clean + Build appcompat_v7 library and your projects
+
+
+
+
+BACKUP LINK
+Your key is:
+AEdPqrEAAAAI2TIgCCI-jkADYKtD2zX4UOztEn8HzRkJmWeNeQ
+This key is good for the app with the package name:
+com.zaptech.Backup
+Provide this key in your AndroidManifest.xml file with the following<meta-data> element, placed inside the<application> element:
+<meta-data android:name="com.google.android.backup.api_key" android:value="AEdPqrEAAAAI2TIgCCI-jkADYKtD2zX4UOztEn8HzRkJmWeNeQ" />
+
+
+
+Link to download Custom Fonts in Android :
+http://www.1001freefonts.com/android_nation.font
+http://www.careerjournalonline.com/newsupdate/workfromhome/015/in5/?subid1=trifubizin
