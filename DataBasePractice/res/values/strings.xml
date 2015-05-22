@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DataBasePractice</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="edUsername">Username</string>
+    <string name="edPasswrod">Password</string>
+    <string name="edConfirmPassword">Confirm Password</string>
+    <string name="btnRegister">Register</string>
+    <string name="btnUpdate">Update</string>
+    <string name="btnDisplay">Display</string>
+    <string name="btnDisplayAll">Display All</string>
+    <string name="btnSearch">Search</string>
+    <string name="btnDelete">Delete</string>
+    <string name="btnDeleteAll">Delete All</string>
+    <string name="toastRegistration">Registration Successful</string>
+    <string name="toastUpdate">Update Successful</string>
+    <string name="toastDelete">Delete Successful</string>
+    <string name="toastDeleteAll">Deleted All the Records</string>
+    <string name="toastDisplay">Total Record Found : </string>
+    <string name="tvUsername">tvUsername</string>
+    <string name="tvPassword">tvPassword</string>
+    <string name="title_activity_activity__display">Activity_Display</string>
+    <string name="progressDialogTitleLoading">Loading</string>
+    <string name="progressDialogMessageLoading">Please wait..</string>
+    <string name="title_activity_activity__search">Activity_Search</string>
+
+</resources>
