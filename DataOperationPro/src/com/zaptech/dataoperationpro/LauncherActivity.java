@@ -7,7 +7,7 @@ import android.os.Handler;
 
 public class LauncherActivity extends Activity {
 
-	private final int SPLASH_DISPLAY_LENGTH = 2000;
+	private final int SPLASH_DISPLAY_LENGTH = 1200;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

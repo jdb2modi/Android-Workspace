@@ -75,6 +75,7 @@
         android:id="@+id/layoutSettingsBtn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollSettingsContent"
         android:layout_centerInParent="true"
         android:layout_margin="2dp"
         android:orientation="vertical" >
@@ -102,6 +103,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnSetMinBalance" />
+
+        <CheckBox
+            android:id="@+id/checkboxAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alertDisable" />
 
         <LinearLayout
             android:id="@+id/layoutSub"

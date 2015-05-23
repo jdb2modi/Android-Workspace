@@ -4,71 +4,104 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <EditText
-        android:id="@+id/edUsername"
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/edUsername" />
+        android:layout_height="fill_parent" >
 
-    <EditText
-        android:id="@+id/edPassword"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edUsername"
-        android:hint="@string/edPasswrod" />
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-    <EditText
-        android:id="@+id/edConfirmPassword"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edPassword"
-        android:hint="@string/edConfirmPassword" />
+            <EditText
+                android:id="@+id/edUsername"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edUsername" />
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edConfirmPassword"
-        android:text="@string/btnRegister"
-        android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edUsername"
+                android:hint="@string/edPasswrod" />
 
-    <Button
-        android:id="@+id/btnUpdate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnRegister"
-        android:text="@string/btnUpdate"
-        android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edConfirmPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edPassword"
+                android:hint="@string/edConfirmPassword" />
 
-    <Button
-        android:id="@+id/btnDisplay"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnUpdate"
-        android:text="@string/btnDisplay"
-        android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edFirstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edConfirmPassword"
+                android:hint="Firstname" />
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnDisplay"
-        android:text="@string/btnSearch" />
+            <EditText
+                android:id="@+id/edLastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edFirstname"
+                android:hint="Lastname" />
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSearch"
-        android:text="@string/btnDelete"
-        android:textColor="@android:color/white" />
+            <EditText
+                android:id="@+id/edAge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edLastname"
+                android:hint="Age" />
 
-    <Button
-        android:id="@+id/btnDeleteAll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnDelete"
-        android:text="@string/btnDeleteAll"
-        android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edAge"
+                android:text="@string/btnRegister"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnRegister"
+                android:text="@string/btnUpdate"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnDisplay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnUpdate"
+                android:text="@string/btnDisplay"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnDisplay"
+                android:text="@string/btnSearch" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnSearch"
+                android:text="@string/btnDelete"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnDeleteAll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnDelete"
+                android:text="@string/btnDeleteAll"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

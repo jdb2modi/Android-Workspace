@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +33,15 @@ public class Activity_Display extends Activity {
 		listData = (ListView) findViewById(R.id.listData);
 		myDB = new DBHelper(Activity_Display.this);
 		pd = new ProgressDialog(Activity_Display.this);
+		listData.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Toast.makeText(Activity_Display.this, "Clicked",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	class CustomAdapter extends BaseAdapter {
@@ -85,7 +96,7 @@ public class Activity_Display extends Activity {
 			pd.setTitle(R.string.progressDialogTitleLoading);
 			pd.setMessage(String.valueOf(R.string.progressDialogMessageLoading));
 			pd.setCancelable(false);
-			//pd.show();
+			// pd.show();
 			super.onPreExecute();
 		}
 
@@ -107,4 +118,5 @@ public class Activity_Display extends Activity {
 			super.onPostExecute(result);
 		}
 	}
+
 }

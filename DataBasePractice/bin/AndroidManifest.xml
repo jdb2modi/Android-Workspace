@@ -30,6 +30,8 @@
             android:name=".Activity_Search"
             android:label="@string/title_activity_activity__search" >
         </activity>
+        <activity android:name=".Activity_MappingResult" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,5 @@
 package com.zaptech.databasepractice;
 
-import com.zaptech.databasepractice.Activity_Display.CustomAdapter;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,6 +9,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,6 +36,21 @@ public class Activity_Search extends Activity {
 		listSearchData = (ListView) findViewById(R.id.listSearchData);
 		myDB = new DBHelper(Activity_Search.this);
 		pd = new ProgressDialog(Activity_Search.this);
+		listSearchData.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				intent = new Intent(Activity_Search.this,
+						Activity_MappingResult.class);
+				intent.putExtra("USERNAMEMAP", myDB.al.get(position)
+						.getStrUsername().toString());
+				Toast.makeText(Activity_Search.this,
+						myDB.al.get(position).getStrUsername().toString(),
+						Toast.LENGTH_LONG).show();
+				startActivity(intent);
+			}
+		});
 
 	}
 
@@ -67,14 +82,14 @@ public class Activity_Search extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
-			//if (inflator == null) {
-				inflator = (LayoutInflater) context
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			//}
+			// if (inflator == null) {
+			inflator = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			// }
 
-			//if (convertView == null) {
-				convertView = inflator.inflate(R.layout.customlayout, null);
-			//}
+			// if (convertView == null) {
+			convertView = inflator.inflate(R.layout.customlayout, null);
+			// }
 			TextView tvUsername = (TextView) convertView
 					.findViewById(R.id.tvUsername);
 			TextView tvPassword = (TextView) convertView

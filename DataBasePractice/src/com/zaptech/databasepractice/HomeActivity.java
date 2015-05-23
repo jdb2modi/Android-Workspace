@@ -15,7 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity implements OnClickListener {
-	EditText edUsername, edPassword, edConfirmPassword;
+	EditText edUsername, edPassword, edConfirmPassword, edFirstname,
+			edLastname, edAge;
 	Button btnRegister, btnUpdate, btnSearch, btnDisplay, btnDelete,
 			btnDeleteAll;
 	DBHelper myDB;
@@ -26,12 +27,16 @@ public class HomeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
+		this.deleteDatabase("DBNewone.db");
 	}
 
 	public void init() {
 		edUsername = (EditText) findViewById(R.id.edUsername);
 		edPassword = (EditText) findViewById(R.id.edPassword);
 		edConfirmPassword = (EditText) findViewById(R.id.edConfirmPassword);
+		edFirstname = (EditText) findViewById(R.id.edFirstname);
+		edLastname = (EditText) findViewById(R.id.edLastname);
+		edAge = (EditText) findViewById(R.id.edAge);
 
 		btnRegister = (Button) findViewById(R.id.btnRegister);
 		btnUpdate = (Button) findViewById(R.id.btnUpdate);
@@ -58,7 +63,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btnRegister:
 			myDB.register(edUsername.getText().toString(), edPassword.getText()
-					.toString());
+					.toString(), edFirstname.getText().toString(), edLastname
+					.getText().toString(), Integer.parseInt(edAge.getText()
+					.toString()));
 			Toast.makeText(HomeActivity.this, R.string.toastRegistration,
 					Toast.LENGTH_SHORT).show();
 			break;

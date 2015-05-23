@@ -1,7 +1,5 @@
 package com.zaptech.sharedpreferencesdemo;
 
-import java.security.acl.LastOwnerException;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -49,14 +47,13 @@ public class HomeActivity extends Activity implements OnClickListener {
 		editor.putString(Name, edName.getText().toString());
 		editor.putString(Lname, edLname.getText().toString());
 		editor.commit();
-		edLname.setText("");
-		edName.setText("");
+		
 	}
 
 	public void displayData() {
 		if (sp.contains(Name)) {
-			edName.setText(sp.getString(Name, ""));
-			tvName.setText(sp.getString(Name, ""));
+			edName.setText(sp.getString(Name,""));
+			tvName.setText(sp.getString(Name,""));
 		}
 		if (sp.contains(Lname)) {
 			edLname.setText(sp.getString(Lname, ""));
