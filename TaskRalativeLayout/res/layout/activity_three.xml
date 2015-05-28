@@ -1,0 +1,339 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/button1OnActivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/strOne" />
+
+    <Button
+        android:id="@+id/button2OnActivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/strTwo" />
+
+    <Button
+        android:id="@+id/button3OnActivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/strThree" />
+
+    <Button
+        android:id="@+id/button4OnActivity3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/strFour" />
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <HorizontalScrollView
+            android:id="@+id/scrollHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" >
+
+            <RelativeLayout
+                android:id="@+id/relativeanother"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonHome1OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/buttonBack1OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonHome1OnActivity3"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonNext1OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonBack1OnActivity3"
+                    android:text="N" />
+
+                <Button
+                    android:id="@+id/buttonp1OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonNext1OnActivity3"
+                    android:text="p1" />
+
+                <Button
+                    android:id="@+id/buttonp2OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp1OnActivity3"
+                    android:text="p2" />
+
+                <Button
+                    android:id="@+id/buttonp3OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp2OnActivity3"
+                    android:text="p3" />
+
+                <Button
+                    android:id="@+id/buttonp4OnActivity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp3OnActivity3"
+                    android:text="p4" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <ScrollView
+            android:id="@+id/scrollVerticle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scrollHorizontal"
+            android:layout_centerHorizontal="true" >
+
+            <RelativeLayout
+                android:id="@+id/relative2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonHome1OnActivity3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/buttonBack1OnActivity3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonHome1OnActivity3_2"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonNext1OnActivity3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonBack1OnActivity3_2"
+                    android:text="N" />
+
+                <Button
+                    android:id="@+id/buttonp1OnActivity3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonNext1OnActivity3_2"
+                    android:text="p1" />
+
+                <Button
+                    android:id="@+id/buttonp2OnActivity3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonp1OnActivity3_2"
+                    android:text="p2" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollHorizontalanother"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:layout_toLeftOf="@+id/scrollVerticle" >
+
+            <RelativeLayout
+                android:id="@+id/relativeanotheranother"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonHome1OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/buttonBack1OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonHome1OnActivity3another"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonNext1OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonBack1OnActivity3another"
+                    android:text="N" />
+
+                <Button
+                    android:id="@+id/buttonp1OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonNext1OnActivity3another"
+                    android:text="p1" />
+
+                <Button
+                    android:id="@+id/buttonp2OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp1OnActivity3another"
+                    android:text="p2" />
+
+                <Button
+                    android:id="@+id/buttonp3OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp2OnActivity3another"
+                    android:text="p3" />
+
+                <Button
+                    android:id="@+id/buttonp4OnActivity3another"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp3OnActivity3another"
+                    android:text="p4" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollHorizontalanothe"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/scrollVerticle" >
+
+            <RelativeLayout
+                android:id="@+id/relativeanotheranothe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonHome1OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/buttonBack1OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonHome1OnActivity3anothe"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonNext1OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonBack1OnActivity3anothe"
+                    android:text="N" />
+
+                <Button
+                    android:id="@+id/buttonp1OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonNext1OnActivity3anothe"
+                    android:text="p1" />
+
+                <Button
+                    android:id="@+id/buttonp2OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp1OnActivity3anothe"
+                    android:text="p2" />
+
+                <Button
+                    android:id="@+id/buttonp3OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp2OnActivity3anothe"
+                    android:text="p3" />
+
+                <Button
+                    android:id="@+id/buttonp4OnActivity3anothe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp3OnActivity3anothe"
+                    android:text="p4" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollHorizontal1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scrollVerticle"
+            android:layout_margin="5dp" >
+
+            <RelativeLayout
+                android:id="@+id/relativeanother1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonHome1OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/buttonBack1OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonHome1OnActivity31"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/buttonNext1OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonBack1OnActivity31"
+                    android:text="N" />
+
+                <Button
+                    android:id="@+id/buttonp1OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonNext1OnActivity31"
+                    android:text="p1" />
+
+                <Button
+                    android:id="@+id/buttonp2OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp1OnActivity31"
+                    android:text="p2" />
+
+                <Button
+                    android:id="@+id/buttonp3OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp2OnActivity31"
+                    android:text="p3" />
+
+                <Button
+                    android:id="@+id/buttonp4OnActivity31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/buttonp3OnActivity31"
+                    android:text="p4" />
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

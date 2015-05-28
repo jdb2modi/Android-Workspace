@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaskRalativeLayout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity_two">ActivityTwo</string>
+    <string name="strOne">1</string>
+    <string name="strTwo">2</string>
+    <string name="strThree">3</string>
+    <string name="strFour">4</string>
+    <string name="strFive">5</string>
+    <string name="strSix">6</string>
+    <string name="strSeven">7</string>
+    <string name="strEight">8</string>
+    <string name="strNine">9</string>
+    <string name="strZero">0</string>
+
+    <color name="colorRed">#ff0000</color>
+
+    <string name="title_activity_activity_three">ActivityThree</string>
+    <string name="title_activity_activity_four">ActivityFour</string>
+    <string name="title_activity_activity_five">ActivityFive</string>
+
+</resources>

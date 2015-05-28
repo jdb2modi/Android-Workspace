@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaskLinearLayout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_third">ThirdActivity</string>
+    <string name="title_activity_fourth">FourthActivity</string>
+    <string name="title_activity_fifth">FifthActivity</string>
+    <string name="textVisitControls">Visit Controls</string>
+    <string name="buttonVisitButtons">Visit Buttons</string>
+    <string name="buttonVisitAnotherControls">Visit Other Controls</string>
+    <string name="toastMovedtoSecond">Moved to Visit Buttons</string>
+
+    <string-array name="arrayColor">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+
+    <color name="Red">#ff0000</color>
+    <color name="Green">#00ff00</color>
+    <color name="Blue">#0000ff</color>
+    <color name="White">#ffffff</color>
+
+    <string name="action_settings">Settings</string>
+    <!-- Text For Form -->
+    <string name="back">Back</string>
+    <string name="info">Info</string>
+    <string name="name">Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="sumbmit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="dob">DOB</string>
+    <string name="phonenumber">Phone</string>
+
+</resources>

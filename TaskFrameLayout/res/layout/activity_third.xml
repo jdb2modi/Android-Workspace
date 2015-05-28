@@ -1,0 +1,68 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/imgLion"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="top"
+        android:alpha="0.3"
+        android:background="@drawable/lion" />
+
+    <ImageView
+        android:id="@+id/imgTiger"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:alpha="0.3"
+        android:background="@drawable/pig" />
+
+    <ImageView
+        android:id="@+id/imgCow"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:alpha="0.3"
+        android:background="@drawable/tiger" />
+
+    <ImageView
+        android:id="@+id/imgDog"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_gravity="left"
+        android:alpha="0.3"
+        android:background="@drawable/cow" />
+
+    <ImageView
+        android:id="@+id/imgPig"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="right"
+        android:alpha="0.3"
+        android:background="@drawable/dog" />
+    <ImageView
+        android:id="@+id/imgGoat"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="right|center"
+        android:alpha="0.3"
+        android:background="@drawable/goat" />
+
+    <EditText
+        android:id="@+id/edit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:hint="Number Of Animals" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="CLICK HERE" />
+
+</FrameLayout>
