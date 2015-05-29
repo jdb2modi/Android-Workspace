@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
+   
+
     <ImageView
         android:id="@+id/imgLion"
         android:layout_width="300dp"
@@ -43,6 +45,7 @@
         android:layout_gravity="right"
         android:alpha="0.3"
         android:background="@drawable/dog" />
+
     <ImageView
         android:id="@+id/imgGoat"
         android:layout_width="90dp"
@@ -64,5 +67,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:text="CLICK HERE" />
-
+ <Button
+        android:id="@+id/btnHomeFromThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:text="Home" />
 </FrameLayout>

@@ -4,9 +4,15 @@
     android:layout_height="match_parent" >
 
     <ImageView
+        android:id="@+id/imgBackHome"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/cloud" />
+    <ImageView
         android:id="@+id/img4OnHome"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="310dp"
+        android:layout_height="310dp"
         android:layout_gravity="center"
         android:background="@drawable/four" />
 
@@ -19,16 +25,23 @@
 
     <ImageView
         android:id="@+id/img2OnHome"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:background="@drawable/two" />
 
     <ImageView
         android:id="@+id/img1OnHome"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:background="@drawable/three" />
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Exit" />
 
 </FrameLayout>

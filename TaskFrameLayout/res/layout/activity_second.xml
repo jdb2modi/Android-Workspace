@@ -3,6 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+   
+    <ImageView
+        android:id="@+id/imgBackSecond"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/cloud" />
+
     <ImageView
         android:id="@+id/img4OnSecond"
         android:layout_width="300dp"
@@ -30,5 +38,10 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:background="@drawable/krishana" />
-
+ <Button
+        android:id="@+id/btnHomeFromSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:text="Home" />
 </FrameLayout>

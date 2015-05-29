@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class ThirdActivity extends Activity {
-	Button button1;
+	Button button1, buttonHome;
 	EditText ed1;
 	Intent intent;
 
@@ -19,6 +19,7 @@ public class ThirdActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_third);
 		button1 = (Button) findViewById(R.id.button1);
+		buttonHome = (Button) findViewById(R.id.btnHomeFromThird);
 		ed1 = (EditText) findViewById(R.id.edit1);
 		button1.setOnClickListener(new OnClickListener() {
 
@@ -28,12 +29,25 @@ public class ThirdActivity extends Activity {
 				if (ed1.getText().toString().equals("6")) {
 					Toast.makeText(ThirdActivity.this, "Correct Answer",
 							Toast.LENGTH_SHORT).show();
-					intent=new Intent(ThirdActivity.this, FourthActivity.class);
+					finish();
+					intent = new Intent(ThirdActivity.this,
+							FourthActivity.class);
 					startActivity(intent);
 				} else {
 					Toast.makeText(ThirdActivity.this, "Wrong Answer",
 							Toast.LENGTH_SHORT).show();
 				}
+
+			}
+		});
+		buttonHome.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent intent = new Intent(getApplicationContext(),
+						HomeActivity.class);
+				startActivity(intent);
 
 			}
 		});

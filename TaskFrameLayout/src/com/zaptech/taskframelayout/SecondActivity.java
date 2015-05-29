@@ -1,16 +1,19 @@
 package com.zaptech.taskframelayout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class SecondActivity extends Activity implements OnClickListener {
 	ImageView imgGanesha, img2, img3, img4;
 	Animation rotateAnimation;
+	Button buttonHome;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +23,19 @@ public class SecondActivity extends Activity implements OnClickListener {
 		rotateAnimation = AnimationUtils.loadAnimation(SecondActivity.this,
 				R.anim.rotateanimation);
 		img2.startAnimation(rotateAnimation);
-		//imgGanesha.startAnimation(rotateAnimation);
+		buttonHome = (Button) findViewById(R.id.btnHomeFromSecond);
+		buttonHome.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent intent = new Intent(getApplicationContext(),
+						HomeActivity.class);
+				startActivity(intent);
+
+			}
+		});
+		// imgGanesha.startAnimation(rotateAnimation);
 	}
 
 	public void init() {
