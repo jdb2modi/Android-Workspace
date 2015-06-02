@@ -1892,7 +1892,16 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020038;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020039;
         public static final int abc_textfield_search_material=0x7f02003a;
-        public static final int ic_launcher=0x7f02003b;
+        public static final int eight=0x7f02003b;
+        public static final int five=0x7f02003c;
+        public static final int four=0x7f02003d;
+        public static final int ic_launcher=0x7f02003e;
+        public static final int nine=0x7f02003f;
+        public static final int one=0x7f020040;
+        public static final int seven=0x7f020041;
+        public static final int six=0x7f020042;
+        public static final int three=0x7f020043;
+        public static final int two=0x7f020044;
     }
     public static final class id {
         public static final int action_bar=0x7f090040;
@@ -1911,7 +1920,6 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f090026;
         public static final int alertTitle=0x7f090030;
         public static final int always=0x7f090019;
-        public static final int article=0x7f090050;
         public static final int beginning=0x7f090020;
         public static final int buttonPanel=0x7f090036;
         public static final int checkbox=0x7f090038;
@@ -1928,12 +1936,13 @@ containing a value of this type.
         public static final int end=0x7f090021;
         public static final int expand_activities_button=0x7f090027;
         public static final int expanded_menu=0x7f090037;
-        public static final int headlines=0x7f09004f;
+        public static final int gallery1=0x7f09004f;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
+        public static final int image1=0x7f090050;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
         public static final int middle=0x7f090022;
@@ -2032,7 +2041,7 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
-        public static final int activity_main=0x7f030019;
+        public static final int activity_home=0x7f030019;
         public static final int select_dialog_item_material=0x7f03001a;
         public static final int select_dialog_multichoice_material=0x7f03001b;
         public static final int select_dialog_singlechoice_material=0x7f03001c;
@@ -4158,6 +4167,25 @@ containing a value of this type.
           @attr name com.zaptech.gallarydemo:preserveIconSpacing
         */
         public static final int MenuView_preserveIconSpacing = 7;
+        /** Attributes that can be used with a MyGallery.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MyGallery_android_galleryItemBackground android:galleryItemBackground}</code></td><td></td></tr>
+           </table>
+           @see #MyGallery_android_galleryItemBackground
+         */
+        public static final int[] MyGallery = {
+            0x0101004c
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#galleryItemBackground}
+          attribute's value can be found in the {@link #MyGallery} array.
+          @attr name android:galleryItemBackground
+        */
+        public static final int MyGallery_android_galleryItemBackground = 0;
         /** Attributes that can be used with a PopupWindow.
            <p>Includes the following attributes:</p>
            <table>

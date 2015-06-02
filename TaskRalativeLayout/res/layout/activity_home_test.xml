@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/buttonOneOnHome"
+        android:layout_width="250dip"
+        android:layout_height="250dip"
+        android:text="Pattern1" />
+
+    <Button
+        android:id="@+id/buttonTwoOnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="Pattern2" />
+
+    <Button
+        android:id="@+id/buttonThreeOnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:text="Pattern3" />
+
+    <Button
+        android:id="@+id/buttonFourOnHome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Pattern4" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO TO :" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/home" />
+
+    <ImageView
+        android:id="@+id/img5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/img1"
+        android:layout_centerInParent="true"
+        android:background="@drawable/exit" />
+
+</LinearLayout>

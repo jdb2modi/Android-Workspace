@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaskDesign1</string>
+    <string name="hello_world">Hello world!</string>
+
+    <color name="white">#ffffff</color>
+    <color name="colorSongTitle">#d3b256</color>
+	<color name="colorLightBlue">#033044</color>
+	<color name="colorSongHeader">#4D83C9</color>
+</resources>

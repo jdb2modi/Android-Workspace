@@ -401,7 +401,16 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f020037
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020038
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020039
 int drawable abc_textfield_search_material 0x7f02003a
-int drawable ic_launcher 0x7f02003b
+int drawable eight 0x7f02003b
+int drawable five 0x7f02003c
+int drawable four 0x7f02003d
+int drawable ic_launcher 0x7f02003e
+int drawable nine 0x7f02003f
+int drawable one 0x7f020040
+int drawable seven 0x7f020041
+int drawable six 0x7f020042
+int drawable three 0x7f020043
+int drawable two 0x7f020044
 int id action_bar 0x7f090040
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f09003f
@@ -418,7 +427,6 @@ int id action_mode_close_button 0x7f090025
 int id activity_chooser_view_content 0x7f090026
 int id alertTitle 0x7f090030
 int id always 0x7f090019
-int id article 0x7f090050
 int id beginning 0x7f090020
 int id buttonPanel 0x7f090036
 int id checkbox 0x7f090038
@@ -435,12 +443,13 @@ int id edit_query 0x7f090042
 int id end 0x7f090021
 int id expand_activities_button 0x7f090027
 int id expanded_menu 0x7f090037
-int id headlines 0x7f09004f
+int id gallery1 0x7f09004f
 int id home 0x7f090000
 int id homeAsUp 0x7f09000e
 int id icon 0x7f09002b
 int id ifRoom 0x7f09001b
 int id image 0x7f090028
+int id image1 0x7f090050
 int id listMode 0x7f09000a
 int id list_item 0x7f09002a
 int id middle 0x7f090022
@@ -511,7 +520,7 @@ int layout abc_search_dropdown_item_icons_2line 0x7f030015
 int layout abc_search_view 0x7f030016
 int layout abc_select_dialog_material 0x7f030017
 int layout abc_simple_dropdown_hint 0x7f030018
-int layout activity_main 0x7f030019
+int layout activity_home 0x7f030019
 int layout select_dialog_item_material 0x7f03001a
 int layout select_dialog_multichoice_material 0x7f03001b
 int layout select_dialog_singlechoice_material 0x7f03001c
@@ -934,6 +943,8 @@ int styleable MenuView_android_itemTextAppearance 1
 int styleable MenuView_android_verticalDivider 3
 int styleable MenuView_android_windowAnimationStyle 0
 int styleable MenuView_preserveIconSpacing 7
+int[] styleable MyGallery { 0x0101004c }
+int styleable MyGallery_android_galleryItemBackground 0
 int[] styleable PopupWindow { 0x01010176, 0x7f0100b1 }
 int styleable PopupWindow_android_popupBackground 0
 int styleable PopupWindow_overlapAnchor 1
