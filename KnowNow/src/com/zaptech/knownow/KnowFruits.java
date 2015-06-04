@@ -45,7 +45,7 @@ public class KnowFruits extends Activity implements OnClickListener,
 		tvFruitScore = (TextView) findViewById(R.id.textviewFruitScore);
 
 		rg = (RadioGroup) findViewById(R.id.radiogroupFruits);
-		int selected = rg.getCheckedRadioButtonId();
+		selected = rg.getCheckedRadioButtonId();
 		rb = (RadioButton) findViewById(selected);
 
 	}

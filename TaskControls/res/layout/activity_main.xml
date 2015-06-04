@@ -1,0 +1,234 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_RelativeLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/rel_SubLayout"
+            android:layout_width="match_parent"
+            android:layout_height="109dp" >
+
+            <TextView
+                android:id="@+id/txt_TextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/textView" />
+
+            <Button
+                android:id="@+id/btn_Button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_TextView1"
+                android:layout_centerHorizontal="true"
+                android:text="@string/button" />
+
+            <CheckBox
+                android:id="@+id/chk_CheckBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_Button1"
+                android:layout_centerHorizontal="true"
+                android:checked="true"
+                android:text="@string/chkText" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup_RadioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chk_CheckBox1"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radioBtn_Male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/rdMale" />
+
+                <RadioButton
+                    android:id="@+id/radioBtn_Female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rdFemale" />
+            </RadioGroup>
+
+            <CheckedTextView
+                android:id="@+id/chktxt_CheckedTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioGroup_RadioGroup1"
+                android:layout_centerHorizontal="true"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="@string/chkTextView" />
+
+            <Spinner
+                android:id="@+id/spinner_Spinner1"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chktxt_CheckedTextView1"
+                android:layout_centerHorizontal="true" />
+
+            <ProgressBar
+                android:id="@+id/pBar_Large"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner_Spinner1"
+                android:layout_centerHorizontal="true" />
+
+            <ProgressBar
+                android:id="@+id/pBar_Horizontal"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pBar_Large"
+                android:layout_centerHorizontal="true" />
+
+            <ProgressBar
+                android:id="@+id/pBar_Inverce"
+                style="?android:attr/progressBarStyleInverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pBar_Horizontal"
+                android:layout_centerHorizontal="true" />
+
+            <ProgressBar
+                android:id="@+id/pBar_Small"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pBar_Inverce"
+                android:layout_centerHorizontal="true" />
+
+            <SeekBar
+                android:id="@+id/seekBar_Seekbar1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pBar_Small"
+                android:layout_centerHorizontal="true"
+                android:max="100"
+                android:progress="10" />
+
+            <RatingBar
+                android:id="@+id/rtBar_RatingBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seekBar_Seekbar1"
+                android:layout_centerHorizontal="true"
+                android:numStars="5"
+                android:rating="2" />
+
+            <Switch
+                android:id="@+id/switch_Switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rtBar_RatingBar1"
+                android:layout_centerHorizontal="true"
+                android:checked="true" />
+
+            <EditText
+                android:id="@+id/edt_EditText1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/switch_Switch1"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/edName" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoTxt_AutocomepleteTextview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_EditText1"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/autocomplete" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/multiAutoTxt_Multi1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/autoTxt_AutocomepleteTextview1"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/multiAutocomplete" />
+
+            <ToggleButton
+                android:id="@+id/tgBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/multiAutoTxt_Multi1"
+                android:layout_centerHorizontal="true"
+                android:checked="true" />
+
+            <ImageView
+                android:id="@+id/img_ImageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tgBtn1"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_ImageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_ImageView1"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_launcher" />
+
+            <Chronometer
+                android:id="@+id/chronometer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgBtn_ImageButton1"
+                android:layout_centerHorizontal="true"
+                android:text="Chronometer"
+                android:textColor="#4169E1"
+                android:textSize="40dp" />
+
+            <LinearLayout
+                android:id="@+id/lin_LayoutChronometer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chronometer1" >
+
+                <Button
+                    android:id="@+id/btn_Start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start" />
+
+                <Button
+                    android:id="@+id/btn_Stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stop" />
+
+                <Button
+                    android:id="@+id/btn_Restart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Restart" />
+
+                <Button
+                    android:id="@+id/btn_Set"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set" />
+
+                <Button
+                    android:id="@+id/btn_Clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

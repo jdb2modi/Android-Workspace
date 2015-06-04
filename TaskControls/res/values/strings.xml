@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaskControls</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="textView">I am TextView</string>
+    <string name="button">I am Button</string>
+    <string name="toggleOn">On</string>
+    <string name="chkText">Selected</string>
+    <string name="rdMale">Male</string>
+    <string name="rdFemale">Female</string>
+    <string name="chkTextView">CheckedTextView</string>
+    <string name="edName">Your Name</string>
+    <string name="autocomplete">Enter City Name</string>
+    <string name="multiAutocomplete">Enter Multiple City (Use Comma)</string>
+    <string-array name="arr_City">
+        <item >Ahmedabad</item>
+        <item >Mumbai</item>
+        <item >Himmatnagar</item>
+        <item >Surat</item>
+    </string-array>
+
+</resources>
