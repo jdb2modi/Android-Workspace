@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,10 @@ public class HomeActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+
+				msqlist.clear();
+				
+			
 				walkdir(file);
 			}
 		});
@@ -40,12 +45,13 @@ public class HomeActivity extends Activity {
 		btnLoadSongs = (Button) findViewById(R.id.btnLoadSongs);
 		listSongs = (ListView) findViewById(R.id.listSongs);
 		msqlist = new ArrayList();
-		file = new File("/sdcard/");
 		
-		
-		Log.i("here file display or not", "++++++++++++++++"+file.listFiles());
-		
-		
+//		absolutepath = new ArrayList<String>();
+		file = new File(Environment.getExternalStorageDirectory()
+				.getAbsolutePath() + "/Download");
+
+		Log.i("here file display or not", "++++++++++++++++" + file.listFiles());
+
 	}
 
 	public void walkdir(File dir) {
@@ -60,16 +66,12 @@ public class HomeActivity extends Activity {
 		if (listFile != null) {
 			for (int i = 0; i < listFile.length; i++) {
 
-				if (listFile[i].isDirectory()) {
-					walkdir(listFile[i]);
-				} else {
-					if (listFile[i].getName().endsWith(msqPattern)) {
-						msqlist.add(listFile[i].getName());
-						absolutepath.add(listFile[i].getAbsolutePath());
-						Toast.makeText(getApplicationContext(),
-								String.valueOf(listFile[i].getName()),
-								Toast.LENGTH_LONG).show();
-					}
+				if (listFile[i].getName().endsWith(msqPattern)) {
+					msqlist.add(listFile[i].getName());
+//					absolutepath.add(listFile[i].getAbsolutePath());
+					Toast.makeText(getApplicationContext(),
+							String.valueOf(listFile[i].getName()),
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		} else {
@@ -79,6 +81,7 @@ public class HomeActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, android.R.id.text1,
 				msqlist);
+		
 		listSongs.setAdapter(adapter);
 	}
 }

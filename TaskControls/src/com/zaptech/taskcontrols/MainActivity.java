@@ -1,6 +1,10 @@
 package com.zaptech.taskcontrols;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,24 +17,27 @@ import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
-import android.widget.SeekBar;
-import android.widget.ToggleButton;
 import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends Activity implements OnClickListener,
 		android.widget.RadioGroup.OnCheckedChangeListener,
 		OnItemSelectedListener, OnSeekBarChangeListener,
 		OnRatingBarChangeListener {
-	Button btn_Button1, start, stop, restart, set, clear;
+	Button btn_Button1, btn_Start, btn_Stop, btn_Restart, btn_Set, btn_Clear;
 	CheckBox chk_CheckBox1;
 	RadioGroup rg;
 	RadioButton rb_Male, rb_Female;
@@ -44,7 +51,17 @@ public class MainActivity extends Activity implements OnClickListener,
 	ToggleButton tgBtn1;
 	AutoCompleteTextView autoTxt1;
 	MultiAutoCompleteTextView multiAutoTxt1;
-	Chronometer chronometer1;
+	Chronometer mChronometer;
+	// For Date-Picker
+	private DatePicker datePicker;
+	private Calendar calendar;
+	private TextView txt_dateView;
+	private int int_year, int_month, int_day;
+
+	// For Time-Picker
+	private TimePicker timePicker1;
+	private TextView time;
+	private String format = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,56 +82,41 @@ public class MainActivity extends Activity implements OnClickListener,
 				}
 			}
 		});
-		// //Chronometer
-		start.setOnClickListener(new View.OnClickListener() {
+
+		// For Switch
+		switch1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				Toast.makeText(MainActivity.this, isChecked ? "On" : "Off",
+						Toast.LENGTH_SHORT).show();
 
-				chronometer1.start();
+			}
+		});
+		// For Toggle button
+		tgBtn1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				Toast.makeText(MainActivity.this, isChecked ? "On" : "Off",
+						Toast.LENGTH_SHORT).show();
+
 			}
 		});
 
-		stop.setOnClickListener(new View.OnClickListener() {
+		// For Date-Picker
+		int_year = calendar.get(Calendar.YEAR);
+		int_month = calendar.get(Calendar.MONTH);
+		int_day = calendar.get(Calendar.DAY_OF_MONTH);
+		showDate(int_year, int_month + 1, int_day);
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
+		// For Time-Picker
+		int hour = calendar.get(Calendar.HOUR_OF_DAY);
+		int min = calendar.get(Calendar.MINUTE);
+		showTime(hour, min);
 
-				chronometer1.stop();
-			}
-		});
-
-		restart.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				// chronometer1.setBase(SystemClock.elapsedRealtime());
-			}
-		});
-
-		set.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				chronometer1.setFormat("Formated Time - %s");
-			}
-		});
-
-		clear.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				chronometer1.setFormat(null);
-			}
-		});
 	}
 
 	public void init() {
@@ -143,27 +145,9 @@ public class MainActivity extends Activity implements OnClickListener,
 
 		switch1 = (Switch) findViewById(R.id.switch_Switch1);
 		// switch1.setOnCheckedChangeListener(this);
-		switch1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				Toast.makeText(MainActivity.this, isChecked ? "On" : "Off",
-						Toast.LENGTH_SHORT).show();
-
-			}
-		});
 		tgBtn1 = (ToggleButton) findViewById(R.id.tgBtn1);
-		tgBtn1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				Toast.makeText(MainActivity.this, isChecked ? "On" : "Off",
-						Toast.LENGTH_SHORT).show();
-
-			}
-		});
 		autoTxt1 = (AutoCompleteTextView) findViewById(R.id.autoTxt_AutocomepleteTextview1);
 		autoTxt1.setThreshold(1);
 		autoTxt1.setAdapter(adpt_City);
@@ -174,21 +158,46 @@ public class MainActivity extends Activity implements OnClickListener,
 				.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 		ed = (EditText) findViewById(R.id.edt_EditText1);
 
-		start = (Button) findViewById(R.id.btn_Start);
-		stop = (Button) findViewById(R.id.btn_Stop);
-		restart = (Button) findViewById(R.id.btn_Restart);
-		set = (Button) findViewById(R.id.btn_Set);
-		clear = (Button) findViewById(R.id.btn_Clear);
-		chronometer1 = (Chronometer) findViewById(R.id.chronometer1);
+		btn_Start = (Button) findViewById(R.id.btn_Start);
+		btn_Start.setOnClickListener(this);
+		btn_Stop = (Button) findViewById(R.id.btn_Stop);
+		btn_Stop.setOnClickListener(this);
+		btn_Restart = (Button) findViewById(R.id.btn_Restart);
+		btn_Restart.setOnClickListener(this);
+		btn_Set = (Button) findViewById(R.id.btn_Set);
+		btn_Set.setOnClickListener(this);
+		btn_Clear = (Button) findViewById(R.id.btn_Clear);
+		btn_Clear.setOnClickListener(this);
+		mChronometer = (Chronometer) findViewById(R.id.chronometer1);
+
+		calendar = Calendar.getInstance();
+		// For Date-Picker
+		txt_dateView = (TextView) findViewById(R.id.textView3);
+		// For Time-Picker
+		timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
+		time = (TextView) findViewById(R.id.textView1);
+
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_Button1:
-
+		case R.id.btn_Start:
+			mChronometer.start();
 			break;
-
+		case R.id.btn_Stop:
+			mChronometer.stop();
+			break;
+		case R.id.btn_Restart:
+			mChronometer.setText("00:00");
+			mChronometer.start();
+			break;
+		case R.id.btn_Set:
+			mChronometer.setFormat("Formated Time - %s");
+			break;
+		case R.id.btn_Clear:
+			mChronometer.setFormat(null);
+			break;
 		default:
 			break;
 		}
@@ -260,4 +269,72 @@ public class MainActivity extends Activity implements OnClickListener,
 		Toast.makeText(MainActivity.this, String.valueOf(rating),
 				Toast.LENGTH_SHORT).show();
 	}
+
+	// For Date-Picker
+	public void setDate(View view) {
+		showDialog(999);
+		Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
+				.show();
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		// TODO Auto-generated method stub
+		if (id == 999) {
+			return new DatePickerDialog(this, myDateListener, int_year,
+					int_month, int_day);
+		}
+		return null;
+	}
+
+	private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+		@Override
+		public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+			// TODO Auto-generated method stub
+			// arg1 = year
+			// arg2 = month
+			// arg3 = day
+			showDate(arg1, arg2 + 1, arg3);
+		}
+	};
+
+	private void showDate(int year, int month, int day) {
+		txt_dateView.setText(new StringBuilder().append(day).append("/")
+				.append(month).append("/").append(year));
+	}
+
+	// For Time-Picker
+	public void setTime(View view) {
+		int hour = timePicker1.getCurrentHour();
+		int min = timePicker1.getCurrentMinute();
+		showTime(hour, min);
+	}
+
+	public void showTime(int hour, int min) {
+		if (hour == 0) {
+			hour += 12;
+			format = "AM";
+		} else if (hour == 12) {
+			format = "PM";
+		} else if (hour > 12) {
+			hour -= 12;
+			format = "PM";
+		} else {
+			format = "AM";
+		}
+		if (min < 10) {
+			time.setText(new StringBuilder().append(hour).append(" : 0")
+					.append(min).append(" ").append(format));
+		} else if (hour < 10) {
+			time.setText(new StringBuilder().append(" 0").append(hour)
+					.append(" : ").append(min).append(" ").append(format));
+		} else if (min < 10 && hour < 10) {
+			time.setText(new StringBuilder().append(" 0").append(hour)
+					.append(" : 0").append(min).append(" ").append(format));
+		} else {
+			time.setText(new StringBuilder().append(hour).append(" : ")
+					.append(min).append(" ").append(format));
+		}
+	}
+
 }

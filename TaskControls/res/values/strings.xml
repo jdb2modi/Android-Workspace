@@ -13,11 +13,22 @@
     <string name="edName">Your Name</string>
     <string name="autocomplete">Enter City Name</string>
     <string name="multiAutocomplete">Enter Multiple City (Use Comma)</string>
+    <string name="action_settings">Settings</string>
+    <string name="time_picker_example">Time Picker Example</string>
+    <string name="time_pick">Pick the time and press save button</string>
+    <string name="time_save">Save</string>
+    <string name="time_selected"></string>
+    <string name="time_current">The Time is:</string>
+
     <string-array name="arr_City">
-        <item >Ahmedabad</item>
-        <item >Mumbai</item>
-        <item >Himmatnagar</item>
-        <item >Surat</item>
+        <item>Ahmedabad</item>
+        <item>Mumbai</item>
+        <item>Himmatnagar</item>
+        <item>Surat</item>
     </string-array>
+
+    <color name="colorChronometer">#110000aa</color>
+    <color name="colorRed">#11aa0000</color>
+    <color name="colorGreen">#1100aa00</color>
 
 </resources>
