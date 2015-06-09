@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_Home extends Activity implements OnClickListener {
 	Button btn_logout, btn_addExpence, btn_history, btn_banking;
+	TextView txt_dailyExpence;
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";
@@ -35,6 +38,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
 		btn_history = (Button) findViewById(R.id.btn_history);
 		btn_history.setOnClickListener(this);
+		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
 	}
 
 	@Override
@@ -48,21 +52,36 @@ public class Activity_Home extends Activity implements OnClickListener {
 					Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.btn_addExpence:
+			finish();
 			intent = new Intent(getApplicationContext(),
 					Activity_AddExpence.class);
 			startActivity(intent);
 			break;
 		case R.id.btn_history:
+			finish();
 			intent = new Intent(Activity_Home.this, Activity_History.class);
 			startActivity(intent);
 			break;
 		case R.id.btn_banking:
+			finish();
 			intent = new Intent(Activity_Home.this, Activity_Banking.class);
 			startActivity(intent);
 			break;
 		default:
 			break;
 		}
+
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		btn_logout.setTypeface(tyFace);
+		btn_addExpence.setTypeface(tyFace);
+		btn_history.setTypeface(tyFace);
+		btn_banking.setTypeface(tyFace);
+		txt_dailyExpence.setTypeface(tyFace);
 
 	}
 }

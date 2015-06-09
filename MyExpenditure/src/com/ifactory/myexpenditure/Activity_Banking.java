@@ -10,6 +10,6 @@ public class Activity_Banking extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_banking);
+		setContentView(R.layout.activity_add_bank_details);
 	}
 }

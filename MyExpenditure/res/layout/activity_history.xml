@@ -20,15 +20,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Logout" />
-
-        <TextView
-            android:id="@+id/txt_welcomeOnHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_homeLogout"
-            android:text="Welcome, ITFUser" />
+            android:background="@drawable/mybutton"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_welcomeOnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_historyHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Welcome, ITFUser"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:id="@+id/rel_contentOnHistory"
@@ -40,59 +49,96 @@
             android:id="@+id/txt_contentHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="History" />
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="History"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/lin_startingDate"
+        <View
+            android:id="@+id/viewSeperatorTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="2dp"
             android:layout_below="@+id/txt_contentHistory"
-            android:orientation="horizontal" >
+            android:layout_margin="5dp"
+            android:background="@drawable/mybutton" />
 
-            <Button
-                android:id="@+id/btn_startingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="setDate"
-                android:text="Set Starting Date" />
-
-            <TextView
-                android:id="@+id/txt_startingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Start Date" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_endingDate"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btn_startingDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lin_startingDate"
-            android:orientation="horizontal" >
+            android:layout_below="@+id/viewSeperatorTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/mybutton"
+            android:ems="10"
+            android:onClick="setDate"
+            android:text="Starting Date"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
 
-            <Button
-                android:id="@+id/btn_endingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="setDate2"
-                android:text="Set Ending Date" />
+        <TextView
+            android:id="@+id/txt_startingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_startingDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="Sdate"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_endingDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="End date" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_endingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_startingDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/mybutton"
+            android:ems="10"
+            android:onClick="setDate2"
+            android:text="Ending Date"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/txt_endingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_endingDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="Edate"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/viewSeperator"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/txt_endingDate"
+            android:layout_margin="5dp"
+            android:background="@drawable/mybutton" />
 
         <Button
             android:id="@+id/btn_showHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lin_endingDate"
+            android:layout_below="@+id/viewSeperator"
             android:layout_centerHorizontal="true"
-            android:text="Show History" />
+            android:layout_marginTop="2dp"
+            android:background="@drawable/mybutton"
+            android:ems="10"
+            android:text="Show History"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
 </RelativeLayout>

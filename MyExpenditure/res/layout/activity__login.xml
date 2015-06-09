@@ -5,40 +5,54 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
+        android:id="@+id/rel_loginHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" >
+
+        <ImageView
+            android:id="@+id/img_loginLogo"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/itfactory" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/rel_Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="10dp" >
+        android:layout_margin="5dp" >
 
         <TextView
             android:id="@+id/txt_EnterPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/strEnterPassword" />
+            android:text="@string/strEnterPassword"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/ed_Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_EnterPassword"
-            android:background="@android:drawable/editbox_background_normal"
             android:hint="Password to Login"
-            android:password="true" />
+            android:password="true"
+            android:textAllCaps="false"
+            android:textColor="#0072B2" />
 
         <Button
             android:id="@+id/btn_LoginNow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ed_Password"
-            android:text="Login Now" />
-
-        <TextView
-            android:id="@+id/txt_PasswordHint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_LoginNow"
-            android:text="Your OTP is 12345" />
+            android:background="@drawable/mybutton"
+            android:text="Login Now"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
 </RelativeLayout>

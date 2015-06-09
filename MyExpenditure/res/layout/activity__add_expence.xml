@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/rel_addExpenceHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp" >
 
         <ImageView
             android:id="@+id/img_logoOnAddExpence"
@@ -20,49 +21,93 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="Logout" />
-
-        <TextView
-            android:id="@+id/txt_welcomeOnAddExpence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_homeLogout"
-            android:text="Welcome, ITFUser" />
+            android:background="@drawable/mybutton"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_welcomeOnAddExpence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_addExpenceHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Welcome, ITFUser"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:id="@+id/contentOnAddExpence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_addExpenceHeader" >
+        android:layout_below="@+id/txt_welcomeOnAddExpence"
+        android:layout_margin="5dp" >
 
         <TextView
             android:id="@+id/txt_addYourExpence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Your Expence" />
+            android:layout_centerHorizontal="true"
+            android:text="Add Your Expence"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view_devider"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/txt_addYourExpence"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/mybutton" />
 
         <Button
             android:id="@+id/btn_setDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_addYourExpence"
+            android:layout_below="@+id/view_devider"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/mybutton"
             android:onClick="setDate"
-            android:text="Set Date" />
+            android:text="Date of Expence"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/txt_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_setDate"
-            android:text="Date will display heres" />
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:text="Date will display heres"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp" />
+
+        <View
+            android:id="@+id/view1OnAddExpence"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/txt_date"
+            android:layout_margin="5dp"
+            android:background="@drawable/mybutton" />
 
         <TextView
             android:id="@+id/txt_ExpenceOnAddExpence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_date"
-            android:text="Expence : " />
+            android:layout_below="@+id/view1OnAddExpence"
+            android:text="Expence : "
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spin_expenceOnAddExpence"
@@ -77,7 +122,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spin_expenceOnAddExpence"
-            android:hint="Expence Description" />
+            android:hint="Expence Description"
+            android:textAllCaps="false"
+            android:textColor="#0072B2" />
 
         <EditText
             android:id="@+id/ed_Amount"
@@ -85,7 +132,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ed_Description"
             android:ems="10"
-            android:hint="Amount" />
+            android:hint="Amount"
+            android:textAllCaps="false"
+            android:textColor="#0072B2" />
 
         <Spinner
             android:id="@+id/spin_currency"
@@ -96,12 +145,24 @@
             android:ems="10"
             android:entries="@array/array_Currency" />
 
+        <View
+            android:id="@+id/view2OnAddExpence"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/spin_currency"
+            android:layout_margin="5dp"
+            android:background="@drawable/mybutton" />
+
         <TextView
             android:id="@+id/txt_paymentModeOnAddExpence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spin_currency"
-            android:text="Payment Mode : " />
+            android:layout_below="@+id/view2OnAddExpence"
+            android:text="Payment Mode : "
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spin_paymentMode"
@@ -116,21 +177,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spin_paymentMode"
+            android:layout_margin="5dp"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/btn_saveOnAddExpence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Save" />
+                android:background="@drawable/mybutton"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btn_cancelOnAddExpence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Cancel" />
+                android:background="@drawable/mybutton"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </RelativeLayout>
 
