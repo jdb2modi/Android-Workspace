@@ -13,6 +13,7 @@ public class NewsReceiver extends BroadcastReceiver {
 
 		CharSequence seq = intent.getCharSequenceExtra("NEWS");
 		Toast.makeText(context, "Breaking News : "+seq, Toast.LENGTH_LONG).show();
+		//Toast.makeText(context, "Breaking News : ", Toast.LENGTH_LONG).show();
 	}
 
 }

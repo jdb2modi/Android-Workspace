@@ -29,6 +29,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 	public void broadcast() {
 		Intent intent = new Intent();
+
 		intent.putExtra("NEWS", (CharSequence) edBroadcast.getText().toString());
 		intent.setAction("BORADCAST_NEWS");
 		sendBroadcast(intent);

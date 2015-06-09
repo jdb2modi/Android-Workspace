@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BudgeManagement</string>
+    <string name="strOverView">Overview</string>
+    <string name="strHistory">History</string>
+    <string name="strExpences">Expences</string>
+    <string name="strSettings">Settings</string>
+    <string name="strIncomes">Incomes</string>
+    <string name="strBudgetManagement">Budget Management</string>
+
+    <color name="colorBlue">#0000ff</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <string name="title_activity_activity__overview">Activity_Overview</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_activity__expences">Activity_Expences</string>
+    <string name="title_activity_activity__incomes">Activity_Incomes</string>
+    <string name="title_activity_activity__settings">Activity_Settings</string>
+    <string name="title_activity_activity__history">Activity_History</string>
+    <string name="strTotalExpence">Total Expence : </string>
+
+</resources>

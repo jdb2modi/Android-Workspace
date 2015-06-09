@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_bankDetailsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/img_logoOnBankDetails"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/itfactory" />
+
+        <Button
+            android:id="@+id/btn_logoutOnBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Logout" />
+
+        <TextView
+            android:id="@+id/txt_welcomeOnBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_homeLogout"
+            android:text="Welcome, ITFUser" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_contentOnBankDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_bankDetailsHeader" >
+
+        <TextView
+            android:id="@+id/txt_currentBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current Balance : 9850 /-INR" />
+
+        <TextView
+            android:id="@+id/txt_AddBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_currentBalance"
+            android:text="Add Bank Details" />
+
+        <EditText
+            android:id="@+id/ed_accountNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_AddBankDetails"
+            android:layout_centerHorizontal="true"
+            android:hint="Account Number" />
+
+        <EditText
+            android:id="@+id/ed_bankName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_accountNumber"
+            android:layout_centerHorizontal="true"
+            android:hint="Bank Name" />
+
+        <EditText
+            android:id="@+id/ed_currentBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_bankName"
+            android:layout_centerHorizontal="true"
+            android:hint="Current Balance" />
+
+        <LinearLayout
+            android:id="@+id/lin_contentBankDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_currentBalance"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_addBankDetailsNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Bank" />
+
+            <Button
+                android:id="@+id/btn_cancelBankDetailsNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancel" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@+id/lin_contentBankDetails"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/txt_addBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:text="Add Balance" />
+
+        <EditText
+            android:id="@+id/ed_accountNumberAddBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_addBalance"
+            android:layout_centerHorizontal="true"
+            android:hint="Account Number" />
+
+        <EditText
+            android:id="@+id/ed_addBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_accountNumberAddBalance"
+            android:layout_centerHorizontal="true"
+            android:hint="Add Balance" />
+
+        <LinearLayout
+            android:id="@+id/lin_contentAddBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_addBalance"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_addBalanceNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Balance" />
+
+            <Button
+                android:id="@+id/btn_cancelAddBalanceNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancel" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

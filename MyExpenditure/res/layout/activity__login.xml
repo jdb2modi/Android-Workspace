@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/txt_EnterPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strEnterPassword" />
+
+        <EditText
+            android:id="@+id/ed_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_EnterPassword"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="Password to Login"
+            android:password="true" />
+
+        <Button
+            android:id="@+id/btn_LoginNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ed_Password"
+            android:text="Login Now" />
+
+        <TextView
+            android:id="@+id/txt_PasswordHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_LoginNow"
+            android:text="Your OTP is 12345" />
+    </RelativeLayout>
+
+</RelativeLayout>

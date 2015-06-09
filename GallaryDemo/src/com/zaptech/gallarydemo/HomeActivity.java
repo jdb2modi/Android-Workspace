@@ -25,25 +25,13 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 
 		init();
+		setGallary();
 	}
 
 	public void init() {
 
 		mGallary = (Gallery) findViewById(R.id.gallery1);
-		mGallary.setAdapter(new ImageAdapter(this));
-		mGallary.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Toast.makeText(getBaseContext(),
-						"pic" + (position + 1) + " selected",
-						Toast.LENGTH_SHORT).show();
-				// display the images selected
-				ImageView imageView = (ImageView) findViewById(R.id.image1);
-				imageView.setImageResource(imgIds[position]);
-			}
-		});
 	}
 
 	public class ImageAdapter extends BaseAdapter {
@@ -86,5 +74,22 @@ public class HomeActivity extends Activity {
 
 		}
 
+	}
+
+	public void setGallary() {
+		mGallary.setAdapter(new ImageAdapter(this));
+		mGallary.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Toast.makeText(getBaseContext(),
+						"pic" + (position + 1) + " selected",
+						Toast.LENGTH_SHORT).show();
+				// display the images selected
+				ImageView imageView = (ImageView) findViewById(R.id.image1);
+				imageView.setImageResource(imgIds[position]);
+			}
+		});
 	}
 }

@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_homeHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/img_homeLogo"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/itfactory" />
+
+        <Button
+            android:id="@+id/btn_homeLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Logout" />
+
+        <TextView
+            android:id="@+id/txt_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_homeLogout"
+            android:text="Welcome, ITFUser" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_homeContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_HomeHeader"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/txt_dailyExpence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily Expence" />
+
+        <LinearLayout
+            android:id="@+id/lin_mainButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_dailyExpence"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="History" />
+
+            <Button
+                android:id="@+id/btn_banking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Banking" />
+
+            <Button
+                android:id="@+id/btn_addExpence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Add Expence" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

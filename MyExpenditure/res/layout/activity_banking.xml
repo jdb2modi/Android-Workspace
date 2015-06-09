@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_bankingHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/img_logoOnBanking"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/itfactory" />
+
+        <Button
+            android:id="@+id/btn_logoutOnBanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Logout" />
+
+        <TextView
+            android:id="@+id/txt_welcomeOnBanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_homeLogout"
+            android:text="Welcome, ITFUser" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_contentOnBanking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <Button
+            android:id="@+id/btn_addBankDetailsOnBanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:text="Add Bank Details" />
+
+        <Button
+            android:id="@+id/btn_addBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_addBankDetails"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:text="Add Balance" />
+    </RelativeLayout>
+
+</RelativeLayout>
