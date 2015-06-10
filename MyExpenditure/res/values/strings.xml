@@ -204,5 +204,6 @@
     </string-array>
 
     <string name="title_activity_activity__history">Activity_History</string>
+    <string name="title_activity_activity__view_history">Activity_ViewHistory</string>
 
 </resources>

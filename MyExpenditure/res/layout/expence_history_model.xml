@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txt_ExpenceCategoryH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category to display" />
+
+    <TextView
+        android:id="@+id/txt_ExpenceDateH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ExpenceCategoryH"
+        android:text="Expence Date to display" />
+
+    <TextView
+        android:id="@+id/txt_ExpenceModeH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ExpenceDateH"
+        android:text="Mode to display" />
+
+    <TextView
+        android:id="@+id/txt_ChequeNoH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ExpenceModeH"
+        android:text="CheckNo to display" />
+
+    <TextView
+        android:id="@+id/txt_TransactionIdH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ChequeNoH"
+        android:text="TransactionId to display" />
+
+    <TextView
+        android:id="@+id/txt_ExpenceAmountH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_TransactionIdH"
+        android:text="Amount to display" />
+
+    <TextView
+        android:id="@+id/txt_ExpenceDescriptionH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ExpenceAmountH"
+        android:text="Description to display" />
+
+</RelativeLayout>

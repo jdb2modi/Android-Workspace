@@ -5,38 +5,39 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity_History extends Activity {
-	private Button btn_date;
+public class Activity_History extends Activity implements OnClickListener {
+	private Button btn_date, btn_showHistory;
 	private DatePicker datePicker;
 	private Calendar calendar;
 	private int int_year, int_month, int_day;
 	private int int_year2, int_month2, int_day2;
 
 	TextView txt_startDate, txt_endDate;
+	Intent intent;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_history);
 		init();
-		// FOR DATE-PICKER
-		int_year = calendar.get(Calendar.YEAR);
-		int_month = calendar.get(Calendar.MONTH);
-		int_day = calendar.get(Calendar.DAY_OF_MONTH);
-		int_year2 = calendar.get(Calendar.YEAR);
-		int_month2 = calendar.get(Calendar.MONTH);
-		int_day2 = calendar.get(Calendar.DAY_OF_MONTH);
-
+		
 		showDate(int_year, int_month + 1, int_day);
 		showDate2(int_year2, int_month2 + 1, int_day2);
 
@@ -45,7 +46,19 @@ public class Activity_History extends Activity {
 	public void init() {
 		txt_endDate = (TextView) findViewById(R.id.txt_endingDate);
 		txt_startDate = (TextView) findViewById(R.id.txt_startingDate);
+		// FOR DATE-PICKER
 		calendar = Calendar.getInstance();
+		int_year = calendar.get(Calendar.YEAR);
+		int_month = calendar.get(Calendar.MONTH);
+		int_day = calendar.get(Calendar.DAY_OF_MONTH);
+		int_year2 = calendar.get(Calendar.YEAR);
+		int_month2 = calendar.get(Calendar.MONTH);
+		int_day2 = calendar.get(Calendar.DAY_OF_MONTH);
+
+		btn_showHistory = (Button) findViewById(R.id.btn_showHistory);
+		btn_showHistory.setOnClickListener(this);
+		
+		
 	}
 
 	// /////FOR DATE-PICKER
@@ -108,4 +121,20 @@ public class Activity_History extends Activity {
 		txt_endDate.setText(new StringBuilder().append(day).append("/")
 				.append(month).append("/").append(year));
 	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_showHistory:
+			intent = new Intent(Activity_History.this,
+					Activity_ViewHistory.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
+
+	}
+	
 }

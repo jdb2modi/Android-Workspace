@@ -1,34 +1,47 @@
 package com.ifactory.myexpenditure;
 
+import java.nio.channels.AsynchronousCloseException;
 import java.util.Calendar;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity_AddExpence extends Activity implements OnClickListener,
-		OnItemSelectedListener {
-	private Button btn_date;
-	private DatePicker datePicker;
+public class Activity_AddExpence extends Activity implements OnClickListener {
+	// FOR DATE-PICKER...
+	private Button btn_date, btn_addExpence;
 	private Calendar calendar;
-	private TextView txt_date;
+	private TextView txt_ExpenseDate;// Used for Date of Expence...
 	private int int_year, int_month, int_day;
 
+	// FOR ADD EXPENCE...
+	Spinner spin_ExpenceCategory, spin_ExpenceCurrency, spin_ExpenceMode;
+	EditText ed_ExpenceDescription, ed_ExpenceAmount;
+	DBHelper dbHelper;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity__add_expence);
+		// DATABASE object..
+		dbHelper = new DBHelper(Activity_AddExpence.this);
 		init();
 		// FOR DATE-PICKER
 		int_year = calendar.get(Calendar.YEAR);
@@ -44,15 +57,37 @@ public class Activity_AddExpence extends Activity implements OnClickListener,
 		 * btn_date.setOnClickListener(this);
 		 */
 		// FOR DATE-PICKER
-		txt_date = (TextView) findViewById(R.id.txt_date);
+		txt_ExpenseDate = (TextView) findViewById(R.id.txt_date);
 		calendar = Calendar.getInstance();
+
+		// FOR ADD EXPENCE...
+		spin_ExpenceCategory = (Spinner) findViewById(R.id.spin_expenceOnAddExpence);
+		spin_ExpenceCurrency = (Spinner) findViewById(R.id.spin_currency);
+		spin_ExpenceMode = (Spinner) findViewById(R.id.spin_paymentMode);
+		ed_ExpenceDescription = (EditText) findViewById(R.id.ed_Description);
+		ed_ExpenceAmount = (EditText) findViewById(R.id.ed_Amount);
+		btn_addExpence = (Button) findViewById(R.id.btn_saveOnAddExpence);
+		btn_addExpence.setOnClickListener(this);
+
+		
 
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-
+		case R.id.btn_saveOnAddExpence:
+			// Inserting Expence Data..
+			dbHelper.insertExpence(String.valueOf(spin_ExpenceCategory
+					.getSelectedItem().toString()), String
+					.valueOf(txt_ExpenseDate.getText().toString()), String
+					.valueOf(spin_ExpenceMode.getSelectedItem().toString()),
+					"NULL", "NULL", Integer.parseInt(ed_ExpenceAmount.getText()
+							.toString()), String.valueOf(ed_ExpenceDescription
+							.getText().toString()));
+			Toast.makeText(Activity_AddExpence.this,
+					"Expence Successfully Added", Toast.LENGTH_SHORT).show();
+			break;
 		default:
 			break;
 		}
@@ -88,21 +123,10 @@ public class Activity_AddExpence extends Activity implements OnClickListener,
 	};
 
 	private void showDate(int year, int month, int day) {
-		txt_date.setText(new StringBuilder().append(day).append("/")
+		txt_ExpenseDate.setText(new StringBuilder().append(day).append("/")
 				.append(month).append("/").append(year));
 	}
 
-	// ///////////FOR SPINNER
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int position,
-			long id) {
-
-	}
-
-	@Override
-	public void onNothingSelected(AdapterView<?> parent) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

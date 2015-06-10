@@ -1970,6 +1970,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
         public static final int img_Splash=0x7f09006a;
+        public static final int img_historyLogo=0x7f090099;
         public static final int img_homeLogo=0x7f09008f;
         public static final int img_loginLogo=0x7f090065;
         public static final int img_logoOnAddExpence=0x7f090050;
@@ -1979,6 +1980,7 @@ containing a value of this type.
         public static final int lin_contentAddBalance=0x7f09007d;
         public static final int lin_contentBankDetails=0x7f090076;
         public static final int lin_mainButtons=0x7f090095;
+        public static final int listHistory=0x7f09009a;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
         public static final int middle=0x7f090022;
@@ -2031,8 +2033,15 @@ containing a value of this type.
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
         public static final int txt_AddBankDetails=0x7f090072;
+        public static final int txt_ChequeNoH=0x7f09009e;
         public static final int txt_EnterPassword=0x7f090067;
+        public static final int txt_ExpenceAmountH=0x7f0900a0;
+        public static final int txt_ExpenceCategoryH=0x7f09009b;
+        public static final int txt_ExpenceDateH=0x7f09009c;
+        public static final int txt_ExpenceDescriptionH=0x7f0900a1;
+        public static final int txt_ExpenceModeH=0x7f09009d;
         public static final int txt_ExpenceOnAddExpence=0x7f090059;
+        public static final int txt_TransactionIdH=0x7f09009f;
         public static final int txt_addBalance=0x7f09007a;
         public static final int txt_addYourExpence=0x7f090054;
         public static final int txt_contentHistory=0x7f090086;
@@ -2120,10 +2129,12 @@ containing a value of this type.
         public static final int activity_add_bank_details=0x7f03001c;
         public static final int activity_history=0x7f03001d;
         public static final int activity_home=0x7f03001e;
-        public static final int select_dialog_item_material=0x7f03001f;
-        public static final int select_dialog_multichoice_material=0x7f030020;
-        public static final int select_dialog_singlechoice_material=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int activity_view_history=0x7f03001f;
+        public static final int expence_history_model=0x7f030020;
+        public static final int select_dialog_item_material=0x7f030021;
+        public static final int select_dialog_multichoice_material=0x7f030022;
+        public static final int select_dialog_singlechoice_material=0x7f030023;
+        public static final int support_simple_spinner_dropdown_item=0x7f030024;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2195,6 +2206,7 @@ containing a value of this type.
         public static final int title_activity_activity__history=0x7f0a001a;
         public static final int title_activity_activity__home=0x7f0a0015;
         public static final int title_activity_activity__login=0x7f0a0013;
+        public static final int title_activity_activity__view_history=0x7f0a001b;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b0040;
