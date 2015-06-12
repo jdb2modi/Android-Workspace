@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_History extends Activity implements OnClickListener {
-	private Button btn_date, btn_showHistory;
+	private Button btn_date, btn_showAllHistory, btn_showSpecificHistory;
 	private DatePicker datePicker;
 	private Calendar calendar;
 	private int int_year, int_month, int_day;
@@ -30,14 +30,13 @@ public class Activity_History extends Activity implements OnClickListener {
 
 	TextView txt_startDate, txt_endDate;
 	Intent intent;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_history);
 		init();
-		
+
 		showDate(int_year, int_month + 1, int_day);
 		showDate2(int_year2, int_month2 + 1, int_day2);
 
@@ -55,10 +54,11 @@ public class Activity_History extends Activity implements OnClickListener {
 		int_month2 = calendar.get(Calendar.MONTH);
 		int_day2 = calendar.get(Calendar.DAY_OF_MONTH);
 
-		btn_showHistory = (Button) findViewById(R.id.btn_showHistory);
-		btn_showHistory.setOnClickListener(this);
-		
-		
+		btn_showAllHistory = (Button) findViewById(R.id.btn_showAllHistory);
+		btn_showAllHistory.setOnClickListener(this);
+		btn_showSpecificHistory = (Button) findViewById(R.id.btn_showSpecificHistory);
+		btn_showSpecificHistory.setOnClickListener(this);
+
 	}
 
 	// /////FOR DATE-PICKER
@@ -125,9 +125,16 @@ public class Activity_History extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_showHistory:
+		case R.id.btn_showAllHistory:
 			intent = new Intent(Activity_History.this,
 					Activity_ViewHistory.class);
+			intent.putExtra("HISTORY", "ALL");
+			startActivity(intent);
+			break;
+		case R.id.btn_showSpecificHistory:
+			intent = new Intent(Activity_History.this,
+					Activity_ViewHistory.class);
+			intent.putExtra("HISTORY", "SPECIFIC");
 			startActivity(intent);
 			break;
 
@@ -136,5 +143,5 @@ public class Activity_History extends Activity implements OnClickListener {
 		}
 
 	}
-	
+
 }

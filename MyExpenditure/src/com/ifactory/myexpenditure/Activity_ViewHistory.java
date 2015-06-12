@@ -3,17 +3,17 @@ package com.ifactory.myexpenditure;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Activity_ViewHistory extends Activity implements OnClickListener {
 
@@ -21,6 +21,8 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 	ProgressDialog mProgressDialog;
 	DBHelper dbHelper;
 	ListView listExpenceHistory;
+	Intent intent;
+	String strHistory;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,12 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 		init();
 		dbHelper = new DBHelper(Activity_ViewHistory.this);
 		dbHelper.getWritableDatabase();
-
+		intent = getIntent();
+		strHistory = intent.getStringExtra("HISTORY");
 		new ExpenceAsync().execute();
+
+		Toast.makeText(Activity_ViewHistory.this, strHistory,
+				Toast.LENGTH_SHORT).show();
 	}
 
 	public void init() {
@@ -119,7 +125,12 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			dbHelper.displayHistory();
+			if (strHistory.equals("ALL")) {
+				dbHelper.displayHistory();
+			} else if (strHistory.equals("SPECIFIC")) {
+				dbHelper.displaySpecificHistory();
+			}
+
 			return null;
 		}
 

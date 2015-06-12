@@ -119,16 +119,29 @@
             android:textSize="15dp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/btn_showSpecificHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_endingDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/mybutton"
+            android:ems="10"
+            android:text="Show History"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
         <View
             android:id="@+id/viewSeperator"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@+id/txt_endingDate"
+            android:layout_below="@+id/btn_showSpecificHistory"
             android:layout_margin="5dp"
             android:background="@drawable/mybutton" />
 
         <Button
-            android:id="@+id/btn_showHistory"
+            android:id="@+id/btn_showAllHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/viewSeperator"
@@ -136,7 +149,7 @@
             android:layout_marginTop="2dp"
             android:background="@drawable/mybutton"
             android:ems="10"
-            android:text="Show History"
+            android:text="Show All History"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
     </RelativeLayout>

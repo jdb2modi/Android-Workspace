@@ -117,4 +117,45 @@ public class DBHelper extends SQLiteOpenHelper {
 		return arrayListExpence;
 	}
 
+	public ArrayList<ExpenceModel> displaySpecificHistory() {
+		mDatabase = getDB();
+		String strFetchExpence = "SELECT * FROM " + TBEXPENCE + " where "
+				+ COL_EXPENSEDATE + " between '12/01/2015' AND '13/01/2015'";
+
+		cursor = mDatabase.rawQuery(strFetchExpence, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+
+					String strExpenceId, strCategory, strDate, strMode, strChequeNo, strTransactionId, strAmount, strDescription;
+					strExpenceId = String.valueOf(cursor.getInt(cursor
+							.getColumnIndex(COL_EXPENSECATEGORY)));
+					strDate = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEDATE));
+					strMode = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEMODE));
+					strChequeNo = cursor.getString(cursor
+							.getColumnIndex(COL_CHEQUENO));
+					strTransactionId = cursor.getString(cursor
+							.getColumnIndex(COL_TRANSACTIONID));
+					strAmount = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEAMOUNT));
+					strDescription = cursor.getString(cursor
+							.getColumnIndex(COL_DESCRIPTION));
+
+					// /CREATING OBJECT for Model class
+					ExpenceModel em = new ExpenceModel();
+					em.setExpenseId(Integer.parseInt(strExpenceId));
+					em.setExpenseDate(strDate);
+					em.setExpenseMode(strMode);
+					em.setChequeNo(strChequeNo);
+					em.setTransactionId(strTransactionId);
+					em.setExpenseAmount(Integer.parseInt(strAmount));
+					em.setDescription(strDescription);
+					arrayListExpence.add(em);
+				} while (cursor.moveToNext());
+			}
+		}
+		return arrayListExpence;
+	}
 }
