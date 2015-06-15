@@ -24,7 +24,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,8 @@ public class HomeActivity extends Activity {
 	ProgressDialog mProgress;
 	TextView txt_Json;
 	ListView listParsedData;
+	DBHelper dbHelper;
+
 	// JSON Variables
 
 	String strIncludeImageLayout, strIncludeTitleInLayout,
@@ -52,6 +57,7 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 		init();
 		new GetData().execute();
+
 	}
 
 	public void init() {
@@ -62,6 +68,10 @@ public class HomeActivity extends Activity {
 		model_JSON = new JSON();
 		model_HomeItems = new HomeItems();
 		model_HomeItemImage = new HomeItemIMAGE();
+
+		// Database object..
+		dbHelper = new DBHelper(HomeActivity.this);
+		dbHelper.getWritableDatabase();
 
 	}
 
@@ -80,7 +90,6 @@ public class HomeActivity extends Activity {
 		@Override
 		protected Void doInBackground(Void... params) {
 			str = GET("http://80.93.28.24/json/autoexpress.json");
-
 			return null;
 		}
 
@@ -91,26 +100,6 @@ public class HomeActivity extends Activity {
 			}
 			txt_Json.setText(str);
 			JsonParsing(str);
-			/*
-			 * arrayParsed.add(model_JSON.getStrAppMetaData());
-			 * arrayParsed.add("Version Number : " +
-			 * model_JSON.getVersionNumber());
-			 * arrayParsed.add("Tab Version number : " +
-			 * model_JSON.getTabVersionNumber());
-			 * arrayParsed.add("Webservice URL : " +
-			 * model_JSON.getWebServiceURL()); arrayParsed.add("AppName : " +
-			 * model_JSON.getAppName());
-			 */
-			/*
-			 * arrayParsed.add("IncludeImageLayout : " + strIncludeImageLayout);
-			 * arrayParsed .add("IncludeTitleInLayout : " +
-			 * strIncludeTitleInLayout);
-			 * arrayParsed.add("IncludeTextInLayout : " +
-			 * strIncludeTextInLayout); arrayParsed.add("ImagePosition : " +
-			 * strImagePosition); arrayParsed.add("TitlePosition : " +
-			 * strTitlePosition); arrayParsed.add("TextPosition : " +
-			 * strTextPosition);
-			 */
 
 			super.onPostExecute(result);
 		}
@@ -171,6 +160,7 @@ public class HomeActivity extends Activity {
 
 			for (int i = 0; i < arrayhomeItems.length(); i++) {
 				JSONObject HomeItemsSub = arrayhomeItems.getJSONObject(i);
+				model_HomeItems.setHomeItem_id(HomeItemsSub.getString("id"));
 				model_HomeItems.setHomeItem_includeImageInLayout(HomeItemsSub
 						.getString("includeImageInLayout"));
 				model_HomeItems.setHomeItem_includeTitleInLayout(HomeItemsSub
@@ -216,6 +206,8 @@ public class HomeActivity extends Activity {
 				// FOR HOME ITEM : IMAGE OBJECT
 				JSONObject JObjHomeItemImage = HomeItemsSub
 						.getJSONObject("image");
+				model_HomeItemImage.setHomeItemImage_Id(JObjHomeItemImage
+						.getString("Id"));
 				model_HomeItemImage.setHomeItemImage_Width(JObjHomeItemImage
 						.getString("width"));
 				model_HomeItemImage.setHomeItemImage_Height(JObjHomeItemImage
@@ -246,11 +238,59 @@ public class HomeActivity extends Activity {
 				Toast.makeText(HomeActivity.this,
 						model_HomeItemImage.getHomeItemImage_Name(),
 						Toast.LENGTH_SHORT).show();
+				insertHomeItmes();
+				insertHomeItemsImage();
 			}
 
 		} catch (JSONException e) {
 
 			e.printStackTrace();
 		}
+	}
+
+	public void insertHomeItmes() {
+		dbHelper.insertHomeItems(
+				Integer.parseInt(model_HomeItems.getHomeItem_id()),
+				model_HomeItems.getHomeItem_includeImageInLayout(),
+				model_HomeItems.getHomeItem_includeTitleInLayout(),
+				model_HomeItems.getHomeItem_includeTextInLayout(),
+				model_HomeItems.getHomeItem_imagePosition(),
+				model_HomeItems.getHomeItem_titlePosition(),
+				model_HomeItems.getHomeItem_textPosition(),
+				model_HomeItems.getHomeItem_title(),
+				model_HomeItems.getHomeItem_text(),
+				model_HomeItems.getHomeItem_textHTML(),
+				Integer.parseInt(model_HomeItems.getHomeItem_tabPosition()),
+				model_HomeItems.getHomeItem_tabText(),
+				model_HomeItems.getHomeItem_tabIcon(),
+				model_HomeItems.getHomeItem_dateChanged(),
+				model_HomeItems.getHomeItem_isDirty(),
+				model_HomeItems.getHomeItem_tempUniqueUID(),
+				Integer.parseInt(model_HomeItems.getHomeItem_Type()),
+				model_HomeItems.getHomeItem_useTabIcon(),
+				Integer.parseInt(model_HomeItems.getHomeItem_sortPosition()),
+				model_HomeItems.getHomeItem_archived(),
+				model_HomeItems.getHomeItem_listIcon());
+		Toast.makeText(HomeActivity.this, "Records Inserted..!",
+				Toast.LENGTH_SHORT).show();
+	}
+
+	public void insertHomeItemsImage() {
+		dbHelper.insertHomeItemImage(
+				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Id()),
+				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Width()),
+				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Height()),
+				model_HomeItemImage.getHomeItemImage_OriginalName(),
+				model_HomeItemImage.getHomeItemImage_LocationLocal(),
+				model_HomeItemImage.getHomeItemImage_Type(),
+				model_HomeItemImage.getHomeItemImage_BaseURL(),
+				model_HomeItemImage.getHomeItemImage_mimeType(),
+				model_HomeItemImage.getHomeItemImage__Base64Version(),
+				model_HomeItemImage.getHomeItemImage_IsDirty(),
+				model_HomeItemImage.getHomeItemImage_Archived(),
+				model_HomeItemImage.getHomeItemImage_Name(),
+				Integer.parseInt(model_HomeItems.getHomeItem_id()));
+		Toast.makeText(HomeActivity.this, "Images Records Inserted..!",
+				Toast.LENGTH_SHORT).show();
 	}
 }
