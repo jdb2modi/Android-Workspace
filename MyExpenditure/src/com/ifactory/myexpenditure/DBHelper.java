@@ -74,6 +74,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		mContent.put(COL_EXPENSEAMOUNT, amount);
 		mContent.put(COL_DESCRIPTION, strDescription);
 		mDatabase.insert(TBEXPENCE, null, mContent);
+		mDatabase.close();
 	}
 
 	public ArrayList<ExpenceModel> displayHistory() {
@@ -114,13 +115,14 @@ public class DBHelper extends SQLiteOpenHelper {
 				} while (cursor.moveToNext());
 			}
 		}
+		mDatabase.close();
 		return arrayListExpence;
 	}
 
 	public ArrayList<ExpenceModel> displaySpecificHistory() {
 		mDatabase = getDB();
 		String strFetchExpence = "SELECT * FROM " + TBEXPENCE + " where "
-				+ COL_EXPENSEDATE + " between '12/01/2015' AND '13/01/2015'";
+				+ COL_EXPENSEDATE + " between '12/6/2015' AND '14/6/2015'";
 
 		cursor = mDatabase.rawQuery(strFetchExpence, null);
 		if (cursor != null) {
@@ -156,6 +158,13 @@ public class DBHelper extends SQLiteOpenHelper {
 				} while (cursor.moveToNext());
 			}
 		}
+		mDatabase.close();
 		return arrayListExpence;
+	}
+
+	public void deleteHistory() {
+		mDatabase = getDB();
+		mDatabase.delete(TBEXPENCE, null, null);
+		mDatabase.close();
 	}
 }

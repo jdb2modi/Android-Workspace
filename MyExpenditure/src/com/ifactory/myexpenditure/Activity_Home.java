@@ -1,6 +1,8 @@
 package com.ifactory.myexpenditure;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -13,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_Home extends Activity implements OnClickListener {
-	Button btn_logout, btn_addExpence, btn_history, btn_banking;
+	Button btn_logout, btn_addExpence, btn_history, btn_banking,btn_settings;
 	TextView txt_dailyExpence;
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
@@ -29,7 +31,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 	}
 
 	public void init() {
-		btn_logout = (Button) findViewById(R.id.btn_homeLogout);
+		btn_logout = (Button) findViewById(R.id.btn_homeExit);
 		btn_logout.setOnClickListener(this);
 		btn_addExpence = (Button) findViewById(R.id.btn_addExpence);
 		btn_addExpence.setOnClickListener(this);
@@ -39,17 +41,43 @@ public class Activity_Home extends Activity implements OnClickListener {
 		btn_history = (Button) findViewById(R.id.btn_history);
 		btn_history.setOnClickListener(this);
 		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
+		btn_settings=(Button)findViewById(R.id.btn_Settings);
+		btn_settings.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_homeLogout:
+		case R.id.btn_homeExit:
+
 			Editor edit = sp.edit();
 			edit.clear();
 			edit.commit();
-			Toast.makeText(getApplicationContext(), "Logging out...",
+			Toast.makeText(getApplicationContext(), "Exiting...",
 					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder alert = new AlertDialog.Builder(
+					Activity_Home.this);
+			alert.setTitle("Exit Confirmation");
+			alert.setMessage("Are you want to Close the Application ?");
+			alert.setCancelable(false);
+			alert.setPositiveButton("EXIT",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();
+
+						}
+					});
+			alert.setNegativeButton("CANCEL",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			alert.show();
 			break;
 		case R.id.btn_addExpence:
 			finish();
@@ -65,6 +93,11 @@ public class Activity_Home extends Activity implements OnClickListener {
 		case R.id.btn_banking:
 			finish();
 			intent = new Intent(Activity_Home.this, Activity_Banking.class);
+			startActivity(intent);
+			break;
+		case R.id.btn_Settings:
+			finish();
+			intent = new Intent(Activity_Home.this, Activity_Settings.class);
 			startActivity(intent);
 			break;
 		default:

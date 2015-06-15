@@ -1,22 +1,18 @@
 package com.ifactory.myexpenditure;
 
-import java.nio.channels.AsynchronousCloseException;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,7 +22,7 @@ import android.widget.Toast;
 
 public class Activity_AddExpence extends Activity implements OnClickListener {
 	// FOR DATE-PICKER...
-	private Button btn_date, btn_addExpence;
+	private Button btn_date, btn_addExpence, btn_exit, btn_back;
 	private Calendar calendar;
 	private TextView txt_ExpenseDate;// Used for Date of Expence...
 	private int int_year, int_month, int_day;
@@ -35,7 +31,10 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 	Spinner spin_ExpenceCategory, spin_ExpenceCurrency, spin_ExpenceMode;
 	EditText ed_ExpenceDescription, ed_ExpenceAmount;
 	DBHelper dbHelper;
-	
+	Intent intent;
+	SharedPreferences sp;
+	public static final String MyPREFERENCES = "MyPrefs";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,9 +67,11 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		ed_ExpenceAmount = (EditText) findViewById(R.id.ed_Amount);
 		btn_addExpence = (Button) findViewById(R.id.btn_saveOnAddExpence);
 		btn_addExpence.setOnClickListener(this);
-
-		
-
+		btn_exit = (Button) findViewById(R.id.btn_exitFromAddExpence);
+		btn_exit.setOnClickListener(this);
+		btn_back = (Button) findViewById(R.id.btn_backFromAddExpence);
+		btn_back.setOnClickListener(this);
+		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
 	}
 
 	@Override
@@ -87,6 +88,41 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 							.getText().toString()));
 			Toast.makeText(Activity_AddExpence.this,
 					"Expence Successfully Added", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.btn_exitFromAddExpence:
+			Editor edit = sp.edit();
+			edit.clear();
+			edit.commit();
+			Toast.makeText(getApplicationContext(), "Exiting...",
+					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder alert = new AlertDialog.Builder(
+					Activity_AddExpence.this);
+			alert.setTitle("Exit Confirmation");
+			alert.setMessage("Are you want to Close the Application ?");
+			alert.setCancelable(false);
+			alert.setPositiveButton("EXIT",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();
+
+						}
+					});
+			alert.setNegativeButton("CANCEL",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			alert.show();
+			break;
+		case R.id.btn_backFromAddExpence:
+			finish();
+			intent = new Intent(Activity_AddExpence.this, Activity_Home.class);
+			startActivity(intent);
 			break;
 		default:
 			break;
@@ -126,7 +162,5 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		txt_ExpenseDate.setText(new StringBuilder().append(day).append("/")
 				.append(month).append("/").append(year));
 	}
-
-	
 
 }

@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="#110072B2" >
 
     <RelativeLayout
         android:id="@+id/rel_homeHeader"
@@ -16,12 +17,12 @@
             android:background="@drawable/itfactory" />
 
         <Button
-            android:id="@+id/btn_homeLogout"
+            android:id="@+id/btn_homeExit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:background="@drawable/mybutton"
-            android:text="Logout"
+            android:text="Exit"
             android:textAllCaps="false"
             android:textColor="#ffffff" />
     </RelativeLayout>
@@ -96,6 +97,17 @@
                 android:background="@drawable/mybutton"
                 android:ems="10"
                 android:text="Add Expence"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_Settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Settings"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </LinearLayout>

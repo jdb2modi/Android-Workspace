@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="#110072B2" >
 
     <RelativeLayout
         android:id="@+id/rel_addExpenceHeader"
@@ -17,12 +18,24 @@
             android:background="@drawable/itfactory" />
 
         <Button
-            android:id="@+id/btn_logoutOnAddExpence"
+            android:id="@+id/btn_exitFromAddExpence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
             android:background="@drawable/mybutton"
             android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_backFromAddExpence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_toLeftOf="@+id/btn_exitFromAddExpence"
+            android:background="@drawable/mybutton"
+            android:text="Back"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
     </RelativeLayout>
@@ -64,7 +77,7 @@
             android:layout_height="2dp"
             android:layout_below="@+id/txt_addYourExpence"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/mybutton" />
+            android:background="#440072B2" />
 
         <Button
             android:id="@+id/btn_setDate"
@@ -96,7 +109,7 @@
             android:layout_height="2dp"
             android:layout_below="@+id/txt_date"
             android:layout_margin="5dp"
-            android:background="@drawable/mybutton" />
+            android:background="#440072B2" />
 
         <TextView
             android:id="@+id/txt_ExpenceOnAddExpence"
@@ -151,7 +164,7 @@
             android:layout_height="2dp"
             android:layout_below="@+id/spin_currency"
             android:layout_margin="5dp"
-            android:background="@drawable/mybutton" />
+           android:background="#440072B2" />
 
         <TextView
             android:id="@+id/txt_paymentModeOnAddExpence"

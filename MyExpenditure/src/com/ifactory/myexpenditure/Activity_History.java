@@ -3,11 +3,15 @@ package com.ifactory.myexpenditure;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +34,10 @@ public class Activity_History extends Activity implements OnClickListener {
 
 	TextView txt_startDate, txt_endDate;
 	Intent intent;
+
+	Button btn_exit, btn_back;
+	SharedPreferences sp;
+	public static final String MyPREFERENCES = "MyPrefs";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,11 @@ public class Activity_History extends Activity implements OnClickListener {
 		btn_showAllHistory.setOnClickListener(this);
 		btn_showSpecificHistory = (Button) findViewById(R.id.btn_showSpecificHistory);
 		btn_showSpecificHistory.setOnClickListener(this);
-
+		btn_exit = (Button) findViewById(R.id.btn_exitFromHistory);
+		btn_exit.setOnClickListener(this);
+		btn_back = (Button) findViewById(R.id.btn_backFromHistory);
+		btn_back.setOnClickListener(this);
+		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
 	}
 
 	// /////FOR DATE-PICKER
@@ -126,18 +138,54 @@ public class Activity_History extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_showAllHistory:
+			finish();
 			intent = new Intent(Activity_History.this,
 					Activity_ViewHistory.class);
 			intent.putExtra("HISTORY", "ALL");
 			startActivity(intent);
 			break;
 		case R.id.btn_showSpecificHistory:
+			finish();
 			intent = new Intent(Activity_History.this,
 					Activity_ViewHistory.class);
 			intent.putExtra("HISTORY", "SPECIFIC");
 			startActivity(intent);
 			break;
+		case R.id.btn_exitFromHistory:
+			Editor edit = sp.edit();
+			edit.clear();
+			edit.commit();
+			Toast.makeText(getApplicationContext(), "Exiting...",
+					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder alert = new AlertDialog.Builder(
+					Activity_History.this);
+			alert.setTitle("Exit Confirmation");
+			alert.setMessage("Are you want to Close the Application ?");
+			alert.setCancelable(false);
+			alert.setPositiveButton("EXIT",
+					new DialogInterface.OnClickListener() {
 
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();
+
+						}
+					});
+			alert.setNegativeButton("CANCEL",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			alert.show();
+			break;
+		case R.id.btn_backFromHistory:
+			finish();
+			intent = new Intent(Activity_History.this, Activity_Home.class);
+			startActivity(intent);
+			break;
 		default:
 			break;
 		}

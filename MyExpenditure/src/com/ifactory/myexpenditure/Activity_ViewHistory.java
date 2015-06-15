@@ -1,9 +1,13 @@
 package com.ifactory.myexpenditure;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +28,9 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 	ListView listExpenceHistory;
 	Intent intent;
 	String strHistory;
+	Button btnExit, btnBack;
+	SharedPreferences sp;
+	public static final String MyPREFERENCES = "MyPrefs";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,12 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 		mProgressDialog.setMessage("Loading Expence History...");
 		mProgressDialog.setCancelable(false);
 		listExpenceHistory = (ListView) findViewById(R.id.listHistory);
+
+		btnExit = (Button) findViewById(R.id.btn_exitFromViewHistory);
+		btnExit.setOnClickListener(this);
+		btnBack = (Button) findViewById(R.id.btn_backFromViewHistory);
+		btnBack.setOnClickListener(this);
+		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
 	}
 
 	class DisplayHistoryAdpt extends BaseAdapter {
@@ -141,6 +155,16 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			}
 			listExpenceHistory.setAdapter(new DisplayHistoryAdpt(
 					Activity_ViewHistory.this));
+			if (listExpenceHistory.getCount() <= 0) {
+				Toast.makeText(Activity_ViewHistory.this,
+						"No Records Found.!!", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(
+						Activity_ViewHistory.this,
+						"Total Records Found : "
+								+ listExpenceHistory.getCount(),
+						Toast.LENGTH_SHORT).show();
+			}
 			super.onPostExecute(result);
 		}
 
@@ -149,7 +173,43 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.btn_exitFromViewHistory:
+			Editor edit = sp.edit();
+			edit.clear();
+			edit.commit();
+			Toast.makeText(getApplicationContext(), "Exiting...",
+					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder alert = new AlertDialog.Builder(
+					Activity_ViewHistory.this);
+			alert.setTitle("Exit Confirmation");
+			alert.setMessage("Are you want to Close the Application ?");
+			alert.setCancelable(false);
+			alert.setPositiveButton("EXIT",
+					new DialogInterface.OnClickListener() {
 
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							finish();
+
+						}
+					});
+			alert.setNegativeButton("CANCEL",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+
+						}
+					});
+			alert.show();
+
+			break;
+		case R.id.btn_backFromViewHistory:
+			finish();
+			intent = new Intent(Activity_ViewHistory.this,
+					Activity_History.class);
+			startActivity(intent);
+			break;
 		default:
 			break;
 		}

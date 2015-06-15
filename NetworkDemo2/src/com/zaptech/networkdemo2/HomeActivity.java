@@ -1,3 +1,7 @@
+/*Bitmap bitmap = BitmapFactory.decodeStream(is);
+ImageView imageView = (ImageView) findViewById(R.id.image_view);
+imageView.setImageBitmap(bitmap);*/
+//http://80.93.28.24/json/autoexpress.json
 package com.zaptech.networkdemo2;
 
 import java.io.BufferedReader;

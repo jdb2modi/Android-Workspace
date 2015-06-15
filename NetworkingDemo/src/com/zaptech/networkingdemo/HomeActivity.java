@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -56,6 +57,18 @@ public class HomeActivity extends Activity implements OnClickListener {
 	}
 
 	private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
+		ProgressDialog mProgress;
+
+		@Override
+		protected void onPreExecute() {
+			mProgress = new ProgressDialog(HomeActivity.this);
+			mProgress.setTitle("Loading Stream");
+			mProgress.setMessage("Please wait, Loading Stream data...");
+			mProgress.setCancelable(false);
+			mProgress.show();
+			super.onPreExecute();
+		}
+
 		@Override
 		protected String doInBackground(String... urls) {
 			try {
@@ -68,7 +81,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPostExecute(String result) {
-
+			if (mProgress.isShowing()) {
+				mProgress.dismiss();
+			}
 			urlText.setText(result);
 			try {
 				jsonParsing();
@@ -83,7 +98,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 	private String downloadUrl(String myurl) throws IOException {
 		InputStream is = null;
-		//int len = 500;
+		// int len = 500;
 
 		try {
 			URL url = new URL(myurl);
@@ -98,7 +113,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 			Log.d(DEBUG_TAG, "The response is: " + response);
 			is = conn.getInputStream();
 
-			//Converting InputStream into String..
+			// Converting InputStream into String..
 			if (is != null) {
 				BufferedReader br = null;
 				sb = new StringBuilder();
