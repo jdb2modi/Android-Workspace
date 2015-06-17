@@ -4,4 +4,23 @@
     <string name="app_name">TaskPasedJson</string>
     <string name="hello_world">Hello world!</string>
 
+    <string-array name="arrayDataItems">
+        <item>JSON</item>
+        <item>Contact Items</item>
+        <item>News Items</item>
+        <item>Gallary Items</item>
+        <item>Youtube Items</item>
+        <item>Twitter Items</item>
+        <item>RSS Items</item>
+        <item>Web Items</item>
+        <item>Home Items</item>
+        <item>Feedback Items</item>
+        <item>Geo-Location Items</item>
+        <item>Data-Graph Items</item>
+        <item>Video Items</item>
+    </string-array>
+
+    <string name="title_activity_activity__home_items">Activity_HomeItems</string>
+    <string name="title_activity_activity__home_items_detail">Activity_HomeItemsDetail</string>
+
 </resources>

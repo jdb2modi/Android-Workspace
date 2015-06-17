@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -22,13 +21,19 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SlidingDrawer;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
+import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,31 +43,49 @@ public class HomeActivity extends Activity {
 	ListView listParsedData;
 	DBHelper dbHelper;
 
-	// JSON Variables
-
-	String strIncludeImageLayout, strIncludeTitleInLayout,
-			strIncludeTextInLayout, strImagePosition, strTitlePosition,
-			strTextPosition;
-	ArrayList<JSON> arrayParsed = new ArrayList<JSON>();
-	ArrayAdapter<JSON> adpt;
-
 	// Model Objects..
 	JSON model_JSON;
 	HomeItems model_HomeItems;
 	HomeItemIMAGE model_HomeItemImage;
+
+	// FOR Sliding Drawer..
+	private SlidingDrawer drawer;
+	private Button handle;
+	ArrayAdapter<String> adptDataItems;
+
+	// BASE ADAPTER PURPOSE..
+	LayoutInflater inflater;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
-		new GetData().execute();
 
+		new GetData().execute();
+		manageDrawer();
+		listParsedData.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				String strTemp = String.valueOf(listParsedData
+						.getItemAtPosition(position));
+				if (strTemp.equalsIgnoreCase("Home Items")) {
+					Intent intent;
+					intent = new Intent(HomeActivity.this,
+							Activity_HomeItems.class);
+					startActivity(intent);
+				}
+
+			}
+		});
 	}
 
 	public void init() {
 		mProgress = new ProgressDialog(HomeActivity.this);
-		txt_Json = (TextView) findViewById(R.id.txt_json);
+
 		listParsedData = (ListView) findViewById(R.id.listParsedData);
 		// MODEL
 		model_JSON = new JSON();
@@ -73,6 +96,14 @@ public class HomeActivity extends Activity {
 		dbHelper = new DBHelper(HomeActivity.this);
 		dbHelper.getWritableDatabase();
 
+		// TO Handle Sliding Drawer
+		handle = (Button) findViewById(R.id.handle);
+		drawer = (SlidingDrawer) findViewById(R.id.slidingDrawer);
+		adptDataItems = new ArrayAdapter<String>(HomeActivity.this,
+				android.R.layout.simple_list_item_1, getResources()
+						.getStringArray(R.array.arrayDataItems));
+		listParsedData.setAdapter(adptDataItems);
+
 	}
 
 	class GetData extends AsyncTask<Void, Void, Void> {
@@ -80,7 +111,7 @@ public class HomeActivity extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-			mProgress.setTitle("Stream Loder");
+			mProgress.setTitle("Stream Loader");
 			mProgress.setMessage("Please wait, Loading Stream...");
 			mProgress.setCancelable(false);
 			mProgress.show();
@@ -98,9 +129,13 @@ public class HomeActivity extends Activity {
 			if (mProgress.isShowing()) {
 				mProgress.dismiss();
 			}
-			txt_Json.setText(str);
-			JsonParsing(str);
 
+			if (str != null) {
+
+				JsonParsing(str);
+			} else {
+				System.err.println("Sorry Please Connect the internet");
+			}
 			super.onPostExecute(result);
 		}
 	}
@@ -233,6 +268,8 @@ public class HomeActivity extends Activity {
 						.getString("archived"));
 				model_HomeItemImage.setHomeItemImage_Id(JObjHomeItemImage
 						.getString("Id"));
+				model_HomeItemImage
+						.setHomeItem_Id(HomeItemsSub.getString("id"));
 				model_HomeItemImage.setHomeItemImage_Name(JObjHomeItemImage
 						.getString("name"));
 				Toast.makeText(HomeActivity.this,
@@ -240,6 +277,7 @@ public class HomeActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 				insertHomeItmes();
 				insertHomeItemsImage();
+
 			}
 
 		} catch (JSONException e) {
@@ -249,48 +287,79 @@ public class HomeActivity extends Activity {
 	}
 
 	public void insertHomeItmes() {
-		dbHelper.insertHomeItems(
-				Integer.parseInt(model_HomeItems.getHomeItem_id()),
-				model_HomeItems.getHomeItem_includeImageInLayout(),
-				model_HomeItems.getHomeItem_includeTitleInLayout(),
-				model_HomeItems.getHomeItem_includeTextInLayout(),
-				model_HomeItems.getHomeItem_imagePosition(),
-				model_HomeItems.getHomeItem_titlePosition(),
-				model_HomeItems.getHomeItem_textPosition(),
-				model_HomeItems.getHomeItem_title(),
-				model_HomeItems.getHomeItem_text(),
-				model_HomeItems.getHomeItem_textHTML(),
-				Integer.parseInt(model_HomeItems.getHomeItem_tabPosition()),
-				model_HomeItems.getHomeItem_tabText(),
-				model_HomeItems.getHomeItem_tabIcon(),
-				model_HomeItems.getHomeItem_dateChanged(),
-				model_HomeItems.getHomeItem_isDirty(),
-				model_HomeItems.getHomeItem_tempUniqueUID(),
-				Integer.parseInt(model_HomeItems.getHomeItem_Type()),
-				model_HomeItems.getHomeItem_useTabIcon(),
-				Integer.parseInt(model_HomeItems.getHomeItem_sortPosition()),
-				model_HomeItems.getHomeItem_archived(),
-				model_HomeItems.getHomeItem_listIcon());
+		dbHelper.insertHomeItems(model_HomeItems);
 		Toast.makeText(HomeActivity.this, "Records Inserted..!",
 				Toast.LENGTH_SHORT).show();
 	}
 
 	public void insertHomeItemsImage() {
-		dbHelper.insertHomeItemImage(
-				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Id()),
-				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Width()),
-				Integer.parseInt(model_HomeItemImage.getHomeItemImage_Height()),
-				model_HomeItemImage.getHomeItemImage_OriginalName(),
-				model_HomeItemImage.getHomeItemImage_LocationLocal(),
-				model_HomeItemImage.getHomeItemImage_Type(),
-				model_HomeItemImage.getHomeItemImage_BaseURL(),
-				model_HomeItemImage.getHomeItemImage_mimeType(),
-				model_HomeItemImage.getHomeItemImage__Base64Version(),
-				model_HomeItemImage.getHomeItemImage_IsDirty(),
-				model_HomeItemImage.getHomeItemImage_Archived(),
-				model_HomeItemImage.getHomeItemImage_Name(),
-				Integer.parseInt(model_HomeItems.getHomeItem_id()));
+		dbHelper.insertHomeItemImage(model_HomeItemImage);
 		Toast.makeText(HomeActivity.this, "Images Records Inserted..!",
 				Toast.LENGTH_SHORT).show();
 	}
+
+	public void manageDrawer() {
+		drawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
+
+			@Override
+			public void onDrawerOpened() {
+				handle.setText("-");
+
+			}
+		});
+		drawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
+
+			@Override
+			public void onDrawerClosed() {
+				handle.setText("+");
+
+			}
+		});
+
+	}
+
 }
+
+/*
+ * public void insertHomeItmes() { dbHelper.insertHomeItems(
+ * Integer.parseInt(model_HomeItems.getHomeItem_id()),
+ * model_HomeItems.getHomeItem_includeImageInLayout(),
+ * model_HomeItems.getHomeItem_includeTitleInLayout(),
+ * model_HomeItems.getHomeItem_includeTextInLayout(),
+ * model_HomeItems.getHomeItem_imagePosition(),
+ * model_HomeItems.getHomeItem_titlePosition(),
+ * model_HomeItems.getHomeItem_textPosition(),
+ * model_HomeItems.getHomeItem_title(), model_HomeItems.getHomeItem_text(),
+ * model_HomeItems.getHomeItem_textHTML(),
+ * Integer.parseInt(model_HomeItems.getHomeItem_tabPosition()),
+ * model_HomeItems.getHomeItem_tabText(), model_HomeItems.getHomeItem_tabIcon(),
+ * model_HomeItems.getHomeItem_dateChanged(),
+ * model_HomeItems.getHomeItem_isDirty(),
+ * model_HomeItems.getHomeItem_tempUniqueUID(),
+ * Integer.parseInt(model_HomeItems.getHomeItem_Type()),
+ * model_HomeItems.getHomeItem_useTabIcon(),
+ * Integer.parseInt(model_HomeItems.getHomeItem_sortPosition()),
+ * model_HomeItems.getHomeItem_archived(),
+ * model_HomeItems.getHomeItem_listIcon()); Toast.makeText(HomeActivity.this,
+ * "Records Inserted..!", Toast.LENGTH_SHORT).show(); }
+ */
+
+/*
+ * public void insertHomeItemsImage() { dbHelper.insertHomeItemImage(
+ * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Id()),
+ * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Width()),
+ * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Height()),
+ * model_HomeItemImage.getHomeItemImage_OriginalName(),
+ * model_HomeItemImage.getHomeItemImage_LocationLocal(),
+ * model_HomeItemImage.getHomeItemImage_Type(),
+ * model_HomeItemImage.getHomeItemImage_BaseURL(),
+ * model_HomeItemImage.getHomeItemImage_mimeType(),
+ * model_HomeItemImage.getHomeItemImage__Base64Version(),
+ * model_HomeItemImage.getHomeItemImage_IsDirty(),
+ * model_HomeItemImage.getHomeItemImage_Archived(),
+ * model_HomeItemImage.getHomeItemImage_Name(),
+ * Integer.parseInt(model_HomeItems.getHomeItem_id()));
+ * Toast.makeText(HomeActivity.this, "Images Records Inserted..!",
+ * Toast.LENGTH_SHORT).show(); }
+ */
+

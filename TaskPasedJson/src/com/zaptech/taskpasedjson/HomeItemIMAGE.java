@@ -5,7 +5,15 @@ public class HomeItemIMAGE {
 			HomeItemImage_OriginalName, HomeItemImage_LocationLocal,
 			HomeItemImage_Type, HomeItemImage_BaseURL, HomeItemImage_mimeType,
 			HomeItemImage__Base64Version, HomeItemImage_IsDirty,
-			HomeItemImage_Archived, HomeItemImage_Id, HomeItemImage_Name;
+			HomeItemImage_Archived, HomeItemImage_Id, HomeItemImage_Name,HomeItem_Id;
+
+	public String getHomeItem_Id() {
+		return HomeItem_Id;
+	}
+
+	public void setHomeItem_Id(String homeItem_Id) {
+		HomeItem_Id = homeItem_Id;
+	}
 
 	public String getHomeItemImage_Width() {
 		return HomeItemImage_Width;

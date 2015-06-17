@@ -20,6 +20,9 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040008;
         public static final int abc_slide_out_top=0x7f040009;
     }
+    public static final class array {
+        public static final int arrayDataItems=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1893,6 +1896,9 @@ containing a value of this type.
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020039;
         public static final int abc_textfield_search_material=0x7f02003a;
         public static final int ic_launcher=0x7f02003b;
+        public static final int mybutton=0x7f02003c;
+        public static final int mytextview=0x7f02003d;
+        public static final int shape=0x7f02003e;
     }
     public static final class id {
         public static final int action_bar=0x7f090040;
@@ -1915,6 +1921,7 @@ containing a value of this type.
         public static final int buttonPanel=0x7f090036;
         public static final int checkbox=0x7f090038;
         public static final int collapseActionView=0x7f09001a;
+        public static final int content=0x7f090050;
         public static final int contentPanel=0x7f090031;
         public static final int custom=0x7f090035;
         public static final int customPanel=0x7f090034;
@@ -1927,13 +1934,18 @@ containing a value of this type.
         public static final int end=0x7f090021;
         public static final int expand_activities_button=0x7f090027;
         public static final int expanded_menu=0x7f090037;
+        public static final int handle=0x7f090051;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
+        public static final int img_HomeItemDetail=0x7f090056;
+        public static final int img_HomeItems=0x7f09005c;
+        public static final int lin_Text=0x7f09005d;
         public static final int listMode=0x7f09000a;
-        public static final int listParsedData=0x7f090051;
+        public static final int listParsedData=0x7f090052;
+        public static final int list_HomeItems=0x7f090053;
         public static final int list_item=0x7f09002a;
         public static final int middle=0x7f090022;
         public static final int multiply=0x7f090014;
@@ -1944,8 +1956,9 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09003a;
+        public static final int rel_HomeItemCenterContent=0x7f090055;
         public static final int screen=0x7f090015;
-        public static final int scrollJson=0x7f09004f;
+        public static final int scrollHomeItemDetails=0x7f090054;
         public static final int scrollView=0x7f090032;
         public static final int search_badge=0x7f090044;
         public static final int search_bar=0x7f090043;
@@ -1962,6 +1975,7 @@ containing a value of this type.
         public static final int showCustom=0x7f090010;
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
+        public static final int slidingDrawer=0x7f09004f;
         public static final int split_action_bar=0x7f090004;
         public static final int src_atop=0x7f090016;
         public static final int src_in=0x7f090017;
@@ -1972,9 +1986,14 @@ containing a value of this type.
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
-        public static final int txt_json=0x7f090050;
+        public static final int txt_HomeItemTitle=0x7f09005e;
+        public static final int txt_text=0x7f090059;
+        public static final int txt_textHtml=0x7f09005b;
+        public static final int txt_title=0x7f090057;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
+        public static final int view1=0x7f090058;
+        public static final int view2=0x7f09005a;
         public static final int withText=0x7f09001d;
         public static final int wrap_content=0x7f090009;
     }
@@ -2034,10 +2053,13 @@ containing a value of this type.
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
         public static final int activity_home=0x7f030019;
-        public static final int select_dialog_item_material=0x7f03001a;
-        public static final int select_dialog_multichoice_material=0x7f03001b;
-        public static final int select_dialog_singlechoice_material=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int activity_home_items=0x7f03001a;
+        public static final int activity_home_items_detail=0x7f03001b;
+        public static final int custom_homeitems=0x7f03001c;
+        public static final int select_dialog_item_material=0x7f03001d;
+        public static final int select_dialog_multichoice_material=0x7f03001e;
+        public static final int select_dialog_singlechoice_material=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2101,6 +2123,8 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
         public static final int app_name=0x7f0a0011;
         public static final int hello_world=0x7f0a0012;
+        public static final int title_activity_activity__home_items=0x7f0a0013;
+        public static final int title_activity_activity__home_items_detail=0x7f0a0014;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b0040;
