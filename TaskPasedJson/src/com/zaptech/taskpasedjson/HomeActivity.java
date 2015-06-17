@@ -24,6 +24,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,6 +48,12 @@ public class HomeActivity extends Activity {
 	JSON model_JSON;
 	HomeItems model_HomeItems;
 	HomeItemIMAGE model_HomeItemImage;
+	Model_NewsItem model_newsItem;
+	Model_NewsItem_Items model_NewsItem_Items;
+	Model_NewsImage model_NewsImage;
+	Model_Headline model_HeadLine;
+	Model_Description model_Description;
+	Model_DescriptionHMTL model_DescriptionHTML;
 
 	// FOR Sliding Drawer..
 	private SlidingDrawer drawer;
@@ -73,6 +80,7 @@ public class HomeActivity extends Activity {
 				String strTemp = String.valueOf(listParsedData
 						.getItemAtPosition(position));
 				if (strTemp.equalsIgnoreCase("Home Items")) {
+					finish();
 					Intent intent;
 					intent = new Intent(HomeActivity.this,
 							Activity_HomeItems.class);
@@ -91,6 +99,12 @@ public class HomeActivity extends Activity {
 		model_JSON = new JSON();
 		model_HomeItems = new HomeItems();
 		model_HomeItemImage = new HomeItemIMAGE();
+		model_newsItem = new Model_NewsItem();
+		model_NewsItem_Items = new Model_NewsItem_Items();
+		model_NewsImage = new Model_NewsImage();
+		model_HeadLine = new Model_Headline();
+		model_Description = new Model_Description();
+		model_DescriptionHTML = new Model_DescriptionHMTL();
 
 		// Database object..
 		dbHelper = new DBHelper(HomeActivity.this);
@@ -131,10 +145,11 @@ public class HomeActivity extends Activity {
 			}
 
 			if (str != null) {
-
 				JsonParsing(str);
 			} else {
-				System.err.println("Sorry Please Connect the internet");
+				Toast.makeText(HomeActivity.this,
+						"ERROR : Stream did not initialized.",
+						Toast.LENGTH_LONG).show();
 			}
 			super.onPostExecute(result);
 		}
@@ -272,30 +287,146 @@ public class HomeActivity extends Activity {
 						.setHomeItem_Id(HomeItemsSub.getString("id"));
 				model_HomeItemImage.setHomeItemImage_Name(JObjHomeItemImage
 						.getString("name"));
-				Toast.makeText(HomeActivity.this,
-						model_HomeItemImage.getHomeItemImage_Name(),
-						Toast.LENGTH_SHORT).show();
-				insertHomeItmes();
-				insertHomeItemsImage();
 
+			}
+
+			// Parsing for NewsItem...
+
+			JSONArray arrayNewsItems = JSON.getJSONArray("newsItems");
+
+			System.err.println("+++++++++++++++" + arrayNewsItems.length());
+			for (int j = 0; j < arrayNewsItems.length(); j++) {
+				JSONObject jNewsItemSub = arrayNewsItems.getJSONObject(j);
+
+				model_newsItem.setVideos(jNewsItemSub.getString("videos"));
+
+				System.err.println("----------------------------------"
+						+ jNewsItemSub.getString("id"));
+
+				model_newsItem.setSortType(jNewsItemSub.getString("sortType"));
+				model_newsItem.setSharePointURL(jNewsItemSub
+						.getString("SharepointUrl"));
+				model_newsItem.setDisplayAsGantt(jNewsItemSub
+						.getString("DisplayAsGantt"));
+				model_newsItem.setId(Integer.parseInt(jNewsItemSub
+						.getString("id")));
+				model_newsItem.setTabPosition(jNewsItemSub
+						.getString("tabPosition"));
+
+				/*
+				 * System.err.println("/////////////////////////////////" +
+				 * jNewsItemSub.getString("tabPosition"));
+				 */
+				model_newsItem.setTabText(jNewsItemSub.getString("tabText"));
+				model_newsItem.setTabIcon(jNewsItemSub.getString("tabIcon"));
+				model_newsItem.setDateChanged(jNewsItemSub
+						.getString("dateChanged"));
+				model_newsItem.setIsDirty(jNewsItemSub.getString("isDirty"));
+				model_newsItem.setTempUniqueUID(jNewsItemSub
+						.getString("tempUniqueUID"));
+				model_newsItem.setType(jNewsItemSub.getString("type"));
+				model_newsItem.setUseTabIcon(jNewsItemSub
+						.getString("useTabIcon"));
+				model_newsItem.setSortPosition(jNewsItemSub
+						.getString("sortPosition"));
+				model_newsItem.setArchived(jNewsItemSub.getString("archived"));
+				model_newsItem.setListIcon(jNewsItemSub.getString("listIcon"));
+
+				// Parsing items in NewsITEM
+				JSONArray arrayJItems = jNewsItemSub.optJSONArray("items");
+				for (int k = 0; k < arrayJItems.length(); k++) {
+					JSONObject jObjItems = arrayJItems.getJSONObject(k);
+					model_NewsItem_Items.setId(Integer.parseInt(jObjItems
+							.getString("id")));
+					model_NewsItem_Items.setUrl(jObjItems.getString("url"));
+					model_NewsItem_Items.setDatePublished(jObjItems
+							.getString("datePublished"));
+					model_NewsItem_Items.setDateChanged(jObjItems
+							.getString("dateChanged"));
+					model_NewsItem_Items.setIsDirty(jObjItems
+							.getString("isDirty"));
+					model_NewsItem_Items.setEventFlag(jObjItems
+							.getString("eventFlag"));
+					model_NewsItem_Items.setEventDate(jObjItems
+							.getString("eventDate"));
+					model_NewsItem_Items.setPublishToFacebook(jObjItems
+							.getString("publishToFacebook"));
+					model_NewsItem_Items.setTempUniqueUID(jObjItems
+							.getString("tempUniqueUID"));
+					model_NewsItem_Items.setEventDateFinish(jObjItems
+							.getString("EventDateFinish"));
+					model_NewsItem_Items.setSortPosition(jObjItems
+							.getString("sortPosition"));
+					model_NewsItem_Items.setArchived(jObjItems
+							.getString("archived"));
+					model_NewsItem_Items.setListIcon(jObjItems
+							.getString("listIcon"));
+
+					// Parsing for NewsImage in NewsItems
+					JSONObject jObjNewsImage = jObjItems
+							.getJSONObject("newsImage");
+					model_NewsImage.setWidth(Integer.parseInt(jObjNewsImage
+							.getString("width")));
+					model_NewsImage.setHeight(Integer.parseInt(jObjNewsImage
+							.getString("height")));
+					model_NewsImage.setOriginalName(jObjNewsImage
+							.getString("originalName"));
+					model_NewsImage.setLocationLocal(jObjNewsImage
+							.getString("locationLocal"));
+					model_NewsImage.setType(jObjNewsImage.getString("type"));
+					model_NewsImage.setBaseURL(jObjNewsImage
+							.getString("baseURL"));
+					model_NewsImage.setMimeType(jObjNewsImage
+							.getString("mimeType"));
+					model_NewsImage.setBase64Version(jObjNewsImage
+							.getString("base64Version"));
+					model_NewsImage.setIsDirty(jObjNewsImage
+							.getString("isDirty"));
+					model_NewsImage.setArchived(jObjNewsImage
+							.getString("archived"));
+					model_NewsImage.setId(Integer.parseInt(jObjNewsImage
+							.getString("Id")));
+					model_NewsImage.setName(jObjNewsImage.getString("name"));
+
+					// /Parsing HeadLine...
+					JSONObject jObjHeadLine = jObjItems
+							.getJSONObject("headline");
+					model_HeadLine.setTheString(jObjHeadLine
+							.getString("theString"));
+
+					// Parsing Description...
+					JSONObject jObjDescription = jObjItems
+							.getJSONObject("description");
+					model_Description.setTheString(jObjDescription
+							.getString("theString"));
+
+					// Parsing DescriptionHTML
+					JSONObject jObjDescriptionHTML = jObjItems
+							.getJSONObject("descriptionHTML");
+					model_DescriptionHTML.setTheString(Html.fromHtml(
+							jObjDescriptionHTML.getString("theString"))
+							.toString());
+
+				}
 			}
 
 		} catch (JSONException e) {
 
 			e.printStackTrace();
 		}
+		insertHomeItmes();
+		insertHomeItemsImage();
+
 	}
 
 	public void insertHomeItmes() {
 		dbHelper.insertHomeItems(model_HomeItems);
-		Toast.makeText(HomeActivity.this, "Records Inserted..!",
-				Toast.LENGTH_SHORT).show();
+
 	}
 
 	public void insertHomeItemsImage() {
 		dbHelper.insertHomeItemImage(model_HomeItemImage);
-		Toast.makeText(HomeActivity.this, "Images Records Inserted..!",
-				Toast.LENGTH_SHORT).show();
+
 	}
 
 	public void manageDrawer() {
