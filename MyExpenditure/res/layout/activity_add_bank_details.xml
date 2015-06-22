@@ -7,12 +7,13 @@
     <RelativeLayout
         android:id="@+id/rel_bankDetailsHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="#224581ff" >
 
         <ImageView
             android:id="@+id/img_logoOnBankDetails"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
+           android:layout_width="110dp"
+            android:layout_height="50dp"
             android:background="@drawable/itfactory" />
 
         <Button

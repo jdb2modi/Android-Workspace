@@ -37,7 +37,7 @@
             android:orientation="vertical" >
 
             <ListView
-                android:id="@+id/listParsedData"
+                android:id="@+id/listview_MenuItems"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"

@@ -11,7 +11,7 @@ public class Model_NewsImage {
 	String base64Version;
 	String isDirty;
 	String archived;
-	int id;
+	int newsImageId;
 	String name;
 
 	public int getWidth() {
@@ -94,12 +94,14 @@ public class Model_NewsImage {
 		this.archived = archived;
 	}
 
-	public int getId() {
-		return id;
+	
+
+	public int getNewsImageId() {
+		return newsImageId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNewsImageId(int newsImageId) {
+		this.newsImageId = newsImageId;
 	}
 
 	public String getName() {

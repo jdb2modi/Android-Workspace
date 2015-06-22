@@ -1,48 +1,23 @@
 package com.zaptech.taskpasedjson;
 
 public class Model_NewsItem_Items {
-	int id;
+	int id, newsItemId;
+
 	String url, datePublished, dateChanged, isDirty, eventFlag, eventDate,
 			publishToFacebook, tempUniqueUID, eventDateFinish, sortPosition,
 			archived, listIcon;
 
-	Model_NewsImage newsImgge;
-	Model_Headline headline;
-	Model_Description description;
-	Model_DescriptionHMTL descriptionHTML;
-	
-	
-	
-	public Model_NewsImage getNewsImgge() {
-		return newsImgge;
+	Model_NewsImage model_newsImgge;
+	Model_Headline model_headline;
+	Model_Description model_description;
+	Model_DescriptionHMTL model_descriptionHTML;
+
+	public int getNewsItemId() {
+		return newsItemId;
 	}
 
-	public void setNewsImgge(Model_NewsImage newsImgge) {
-		this.newsImgge = newsImgge;
-	}
-
-	public Model_Headline getHeadline() {
-		return headline;
-	}
-
-	public void setHeadline(Model_Headline headline) {
-		this.headline = headline;
-	}
-
-	public Model_Description getDescription() {
-		return description;
-	}
-
-	public void setDescription(Model_Description description) {
-		this.description = description;
-	}
-
-	public Model_DescriptionHMTL getDescriptionHTML() {
-		return descriptionHTML;
-	}
-
-	public void setDescriptionHTML(Model_DescriptionHMTL descriptionHTML) {
-		this.descriptionHTML = descriptionHTML;
+	public void setNewsItemId(int newsItemId) {
+		this.newsItemId = newsItemId;
 	}
 
 	public int getId() {
@@ -148,4 +123,38 @@ public class Model_NewsItem_Items {
 	public void setListIcon(String listIcon) {
 		this.listIcon = listIcon;
 	}
+
+	public Model_NewsImage getModel_newsImgge() {
+		return model_newsImgge;
+	}
+
+	public void setModel_newsImgge(Model_NewsImage model_newsImgge) {
+		this.model_newsImgge = model_newsImgge;
+	}
+
+	public Model_Headline getModel_headline() {
+		return model_headline;
+	}
+
+	public void setModel_headline(Model_Headline model_headline) {
+		this.model_headline = model_headline;
+	}
+
+	public Model_Description getModel_description() {
+		return model_description;
+	}
+
+	public void setModel_description(Model_Description model_description) {
+		this.model_description = model_description;
+	}
+
+	public Model_DescriptionHMTL getModel_descriptionHTML() {
+		return model_descriptionHTML;
+	}
+
+	public void setModel_descriptionHTML(
+			Model_DescriptionHMTL model_descriptionHTML) {
+		this.model_descriptionHTML = model_descriptionHTML;
+	}
+
 }

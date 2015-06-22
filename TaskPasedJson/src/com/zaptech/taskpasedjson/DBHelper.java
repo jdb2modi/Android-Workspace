@@ -1,17 +1,35 @@
 package com.zaptech.taskpasedjson;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+
+import org.json.JSONObject;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
-	public static final String DB_JSON = "JsonDB.db";
+	// public static final String DB_JSON = "JsonDB.db";
 	public static final String TB_HomeItems = "TB_HomeItems";
 	public static final String TB_HomeItemsImage = "TB_HomeItemsImage";
+	public static final String TB_MenuItems = "TB_MenuItems";
+	public static final String TB_NewsItems = "tbnewsitems";
+	public static final String TB_NewsItems_Items = "TB_NewsItems_Items";
+	public static final String TB_NewsImages = "TB_NewsImage";
+	public static final String TB_HeadLine = "TB_Headline";
+	public static final String TB_Description = "TB_Description";
+	public static final String TB_DescriptionHtml = "TB_DescriptionHtml";
 
 	// COLUMNS FOR TB_HOMEITEMS
 	public static final String COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT = "IncludeImageInLayout";
@@ -54,52 +72,210 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String COL_IMAGE_ID = "ImageId";
 	public static final String COL_IMAGE_NAME = "Name";
 
+	// COLUMNS FOR TB_MENU_ITEMNS...
+
+	public static final String COL_MenuItemName = "item_name";
+
+	// COLUMNS FOR TB_NEWS_ITEMS...
+	public static final String COL_NEWSITEM_NewsId = "newsItemId";
+	public static final String COL_NEWSITEM_Videos = "videos";
+	public static final String COL_NEWSITEM_SortType = "sortType";
+	public static final String COL_NEWSITEM_SharePointURL = "sharePointURL";
+	public static final String COL_NEWSITEM_DisplayAsGantt = "displayAsGantt";
+	public static final String COL_NEWSITEM_TabPosition = "tabPosition";
+	public static final String COL_NEWSITEM_TabText = "tabText";
+	public static final String COL_NEWSITEM_TabIcon = "tabIcon";
+	public static final String COL_NEWSITEM_DateChanged = "dateChanged";
+	public static final String COL_NEWSITEM_IsDirty = "isDirty";
+	public static final String COL_NEWSITEM_TempUniqueUID = "tempUniqueUID";
+	public static final String COL_NEWSITEM_Type = "type";
+	public static final String COL_NEWSITEM_UseTabIcon = "useTabIcon";
+	public static final String COL_NEWSITEM_SortPosition = "sortPosition";
+	public static final String COL_NEWSITEM_Archived = "archived";
+	public static final String COL_NEWSITEM_ListIcon = "listIcon";
+
+	// COLUMNS FOR TB_NEWSITEMS_ITEMS...
+	public static final String COL_NEWSITEM_ItemId = "newsItems_ItemId";
+	public static final String COL_NEWSITEM_Items_url = "url";
+	public static final String COL_NEWSITEM_Items_datePublished = "datePublished";
+	public static final String COL_NEWSITEM_Items_dateChanged = "dateChanged";
+	public static final String COL_NEWSITEM_Items_isDirty = "isDirty";
+	public static final String COL_NEWSITEM_Items_eventFlag = "eventFlag";
+	public static final String COL_NEWSITEM_Items_eventDate = "eventDate";
+	public static final String COL_NEWSITEM_Items_publishToFacebook = "publishToFacebook";
+	public static final String COL_NEWSITEM_Items_tempUniqueUid = "tempUniqueUid";
+	public static final String COL_NEWSITEM_Items_eventDateFinish = "eventDateFinish";
+	public static final String COL_NEWSITEM_Items_sortPosition = "sortPosition";
+	public static final String COL_NEWSITEM_Items_archived = "archived";
+	public static final String COL_NEWSITEM_Items_listIcon = "listIcon";
+	public static final String COL_NEWSITEM_Items_sortType = "sortType";
+	// public static final String COL_NEWSITEM_NewsId = "newsItemId";..AS ABOVE
+
+	// COLUMNS FOR TB_NEWSImages...
+	public static final String COL_NEWSIMAGE_newsImageId = "newsImageId";
+	public static final String COL_NEWSIMAGE_width = "width";
+	public static final String COL_NEWSIMAGE_height = "height";
+	public static final String COL_NEWSIMAGE_originalName = "originalName";
+	public static final String COL_NEWSIMAGE_locationLocal = "locationLocal";
+	public static final String COL_NEWSIMAGE_type = "type";
+	public static final String COL_NEWSIMAGE_baseUrl = "baseUrl";
+	public static final String COL_NEWSIMAGE_mimeType = "mimeType";
+	public static final String COL_NEWSIMAGE_base64Version = "base64Version";
+	public static final String COL_NEWSIMAGE_isDirty = "isDirty";
+	public static final String COL_NEWSIMAGE_archived = "archived";
+	public static final String COL_NEWSIMAGE_name = "name";
+	public static final String COL_NEWSIMAGE_newsItems_ItemId = "newsItems_ItemId";
+
+	// COLUMNS FOR HEADLINES...
+	public static final String COL_HEADLINE_theString = "theString";
+	// COLUMNS FOR Description...
+	public static final String COL_Description_theString = "theString";
+	// COLUMNS FOR DescriptionHtml...
+	public static final String COL_DESCRIPTION_HTML_theString = "theString";
+
 	SQLiteDatabase sqlite;
 	ContentValues contentValues;
 
 	ArrayList<HomeItems> arrayListHomeItems;
+	ArrayList<Model_MenuItems> arrayListMenuItems;
+	ArrayList<Model_NewsItem> arrayListNewsItems;
+
+	// CONCEPT ASSET...
+	private static SQLiteDatabase myDataBase;
+	private static Context myContext;
+	public int count = 0;
 
 	public DBHelper(Context context) {
-		super(context, DB_JSON, null, 1);
+
+		super(context, context.getResources().getString(R.string.DB_NAME),
+				null, 1);
+		DBHelper.myContext = context;
+
+		try {
+			createDataBase();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// ---Create the database---
+	public void createDataBase() throws IOException {
+
+		// ---Check whether database is already created or not---
+		boolean dbExist = checkDataBase();
+
+		if (!dbExist) {
+			this.getReadableDatabase();
+			try {
+				// ---If not created then copy the database---
+				copyDataBase();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// --- Check whether database already created or not---
+	private boolean checkDataBase() {
+		try {
+			String myPath = myContext.getString(R.string.DB_PATH)
+					+ myContext.getString(R.string.DB_NAME);
+			File f = new File(myPath);
+			if (f.exists())
+				return true;
+			else
+				return false;
+		} catch (SQLiteException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	// --- Copy the database to the output stream---
+	private void copyDataBase() throws IOException {
+
+		InputStream myInput = myContext.getAssets().open(
+				myContext.getString(R.string.DB_NAME));
+
+		String outFileName = myContext.getString(R.string.DB_PATH)
+				+ myContext.getString(R.string.DB_NAME);
+
+		OutputStream myOutput = new FileOutputStream(outFileName);
+
+		byte[] buffer = new byte[1024];
+		int length;
+		while ((length = myInput.read(buffer)) > 0) {
+			myOutput.write(buffer, 0, length);
+		}
+
+		myOutput.flush();
+		myOutput.close();
+		myInput.close();
+
+	}
+
+	public static void openDataBase() throws SQLException {
+
+		// --- Open the database---
+		String myPath = myContext.getString(R.string.DB_PATH)
+				+ myContext.getString(R.string.DB_NAME);
+		myDataBase = SQLiteDatabase.openDatabase(myPath, null,
+				SQLiteDatabase.OPEN_READWRITE);
 
 	}
 
 	@Override
+	public synchronized void close() {
+
+		if (myDataBase != null)
+			myDataBase.close();
+
+		super.close();
+
+	}
+
+	/*
+	 * public DBHelper(Context context) { super(context, DB_JSON, null, 1);
+	 * 
+	 * }
+	 */
+
+	@Override
 	public void onCreate(SQLiteDatabase db) {
 
-		String CREATE_TB_HOMEITEMIMAGE = "CREATE TABLE IF NOT EXISTS "
-				+ TB_HomeItemsImage + " (" + COL_IMAGE_ID + " INTEGER,"
-				+ COL_IMAGE_WIDTH + " INTEGER," + COL_IMAGE_HEIGHT
-				+ " INTEGER," + COL_IMAGE_ORIGINAL_NAME + " VARCHAR,"
-				+ COL_IMAGE_LOCATION_LOCAL + " VARCHAR," + COL_IMAGE_TYPE
-				+ " INTEGER," + COL_IMAGE_BASE_URL + " VARCHAR,"
-				+ COL_IMAGE_MIME_TYPE + " VARCHAR," + COL_IMAGE_BASE64_VERSION
-				+ " VARCHAR," + COL_IMAGE_IS_DIRTY + " VARCHAR,"
-				+ COL_IMAGE_ARCHIVED + " VARCHAR," + COL_IMAGE_NAME
-				+ " VARCHAR," + COL_HOMEITEM_ID + " INTEGER REFERENCES "
-				+ TB_HomeItems + "(" + COL_HOMEITEM_ID + "));";
-		String CREATE_TB_HOME_ITEMS = "CREATE TABLE IF NOT EXISTS "
-				+ TB_HomeItems + " (" + COL_HOMEITEM_ID
-				+ " INTEGER PRIMARY KEY,"
-				+ COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT + " VARCHAR,"
-				+ COL_HOMEITEM_INCLUDE_TITLE_IN_LAYOUT + " VARCHAR,"
-				+ COL_HOMEITEM_INCLUDE_TEXT_IN_LAYOUT + " VARCHAR,"
-				+ COL_HOMEITEM_IMAGE_POSITION + " VARCHAR,"
-				+ COL_HOMEITEM_TITLE_POSITION + " VARCHAR,"
-				+ COL_HOMEITEM_TEXT_POSITION + " VARCHAR," + COL_HOMEITEM_TITLE
-				+ " VARCHAR," + COL_HOMEITEM_TEXT + " VARCHAR,"
-				+ COL_HOMEITEM_TEXT_HTML + " VARCHAR,"
-				+ COL_HOMEITEM_TAB_POSITION + " INTEGER,"
-				+ COL_HOMEITEM_TAB_TEXT + " VARCHAR," + COL_HOMEITEM_TAB_ICON
-				+ " VARCHAR," + COL_HOMEITEM_DATE_CHANGED + " VARCHAR,"
-				+ COL_HOMEITEM_IS_DIRTY + " VARCHAR,"
-				+ COL_HOMEITEM_TEMP_UNIQUE_UID + " VARCHAR,"
-				+ COL_HOMEITEM_TYPE + " INTEGER," + COL_HOMEITEM_USE_TAB_ICON
-				+ " VARCHAR," + COL_HOMEITEM_SORT_POSITION + " INTEGER,"
-				+ COL_HOMEITEM_ARCHIVED + " VARCHAR," + COL_HOMEITEM_LIST_ICON
-				+ " VARCHAR);";
-		db.execSQL(CREATE_TB_HOME_ITEMS);
-		db.execSQL(CREATE_TB_HOMEITEMIMAGE);
+		/*
+		 * String CREATE_TB_HOMEITEMIMAGE = "CREATE TABLE IF NOT EXISTS " +
+		 * TB_HomeItemsImage + " (" + COL_IMAGE_ID + " INTEGER," +
+		 * COL_IMAGE_WIDTH + " INTEGER," + COL_IMAGE_HEIGHT + " INTEGER," +
+		 * COL_IMAGE_ORIGINAL_NAME + " VARCHAR," + COL_IMAGE_LOCATION_LOCAL +
+		 * " VARCHAR," + COL_IMAGE_TYPE + " INTEGER," + COL_IMAGE_BASE_URL +
+		 * " VARCHAR," + COL_IMAGE_MIME_TYPE + " VARCHAR," +
+		 * COL_IMAGE_BASE64_VERSION + " VARCHAR," + COL_IMAGE_IS_DIRTY +
+		 * " VARCHAR," + COL_IMAGE_ARCHIVED + " VARCHAR," + COL_IMAGE_NAME +
+		 * " VARCHAR," + COL_HOMEITEM_ID + " INTEGER REFERENCES " + TB_HomeItems
+		 * + "(" + COL_HOMEITEM_ID + "));"; String CREATE_TB_HOME_ITEMS =
+		 * "CREATE TABLE IF NOT EXISTS " + TB_HomeItems + " (" + COL_HOMEITEM_ID
+		 * + " INTEGER PRIMARY KEY," + COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT +
+		 * " VARCHAR," + COL_HOMEITEM_INCLUDE_TITLE_IN_LAYOUT + " VARCHAR," +
+		 * COL_HOMEITEM_INCLUDE_TEXT_IN_LAYOUT + " VARCHAR," +
+		 * COL_HOMEITEM_IMAGE_POSITION + " VARCHAR," +
+		 * COL_HOMEITEM_TITLE_POSITION + " VARCHAR," +
+		 * COL_HOMEITEM_TEXT_POSITION + " VARCHAR," + COL_HOMEITEM_TITLE +
+		 * " VARCHAR," + COL_HOMEITEM_TEXT + " VARCHAR," +
+		 * COL_HOMEITEM_TEXT_HTML + " VARCHAR," + COL_HOMEITEM_TAB_POSITION +
+		 * " INTEGER," + COL_HOMEITEM_TAB_TEXT + " VARCHAR," +
+		 * COL_HOMEITEM_TAB_ICON + " VARCHAR," + COL_HOMEITEM_DATE_CHANGED +
+		 * " VARCHAR," + COL_HOMEITEM_IS_DIRTY + " VARCHAR," +
+		 * COL_HOMEITEM_TEMP_UNIQUE_UID + " VARCHAR," + COL_HOMEITEM_TYPE +
+		 * " INTEGER," + COL_HOMEITEM_USE_TAB_ICON + " VARCHAR," +
+		 * COL_HOMEITEM_SORT_POSITION + " INTEGER," + COL_HOMEITEM_ARCHIVED +
+		 * " VARCHAR," + COL_HOMEITEM_LIST_ICON + " VARCHAR);";
+		 * 
+		 * db.execSQL(CREATE_TB_HOME_ITEMS);
+		 * db.execSQL(CREATE_TB_HOMEITEMIMAGE);
+		 */
 	}
 
 	@Override
@@ -112,14 +288,10 @@ public class DBHelper extends SQLiteOpenHelper {
 		return sqlite;
 	}
 
-	public ContentValues getContentValues() {
-		contentValues = new ContentValues();
-
-		return contentValues;
-	}
-
+	// ///////////////////////////////////INSERT//////////////////////////////////
 	public void insertHomeItems(HomeItems model_HomeItems) {
-		contentValues = getContentValues();
+		openDataBase();
+		contentValues = new ContentValues();
 		sqlite = getDB();
 		contentValues.put(COL_HOMEITEM_ID, model_HomeItems.getHomeItem_id());
 		contentValues.put(COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT,
@@ -162,11 +334,13 @@ public class DBHelper extends SQLiteOpenHelper {
 				model_HomeItems.getHomeItem_listIcon());
 		sqlite.insert(TB_HomeItems, null, contentValues);
 		sqlite.close();
+		close();
+
 	}
 
 	public void insertHomeItemImage(HomeItemIMAGE model_HomeItemImage) {
-
-		contentValues = getContentValues();
+		openDataBase();
+		contentValues = new ContentValues();
 		sqlite = getDB();
 		contentValues.put(COL_IMAGE_ID,
 				model_HomeItemImage.getHomeItemImage_Id());
@@ -196,10 +370,175 @@ public class DBHelper extends SQLiteOpenHelper {
 				.put(COL_HOMEITEM_ID, model_HomeItemImage.getHomeItem_Id());
 		sqlite.insert(TB_HomeItemsImage, null, contentValues);
 		sqlite.close();
+		close();
 	}
 
+	public void insertMenuItems(Model_MenuItems model_MenuItems) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_MenuItemName, model_MenuItems.getItem_name());
+		sqlite.insert(TB_MenuItems, null, contentValues);
+		close();
+	}
+
+	public void insertNewsItems(Model_NewsItem model_NewsItem) {
+		openDataBase();
+
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_NEWSITEM_NewsId, model_NewsItem.getId());
+		contentValues.put(COL_NEWSITEM_Videos, model_NewsItem.getVideos());
+		contentValues.put(COL_NEWSITEM_SortType, model_NewsItem.getSortType());
+		contentValues.put(COL_NEWSITEM_SharePointURL,
+				model_NewsItem.getSharePointURL());
+		contentValues.put(COL_NEWSITEM_DisplayAsGantt,
+				model_NewsItem.getDisplayAsGantt());
+		contentValues.put(COL_NEWSITEM_TabPosition,
+				model_NewsItem.getTabPosition());
+		contentValues.put(COL_NEWSITEM_TabText, model_NewsItem.getTabText());
+		contentValues.put(COL_NEWSITEM_TabIcon, model_NewsItem.getTabIcon());
+		contentValues.put(COL_NEWSITEM_DateChanged,
+				model_NewsItem.getDateChanged());
+		contentValues.put(COL_NEWSITEM_IsDirty, model_NewsItem.getIsDirty());
+		contentValues.put(COL_NEWSITEM_TempUniqueUID,
+				model_NewsItem.getTempUniqueUID());
+		contentValues.put(COL_NEWSITEM_Type, model_NewsItem.getType());
+		contentValues.put(COL_NEWSITEM_UseTabIcon,
+				model_NewsItem.getUseTabIcon());
+		contentValues.put(COL_NEWSITEM_SortPosition,
+				model_NewsItem.getSortPosition());
+		contentValues.put(COL_NEWSITEM_Archived, model_NewsItem.getArchived());
+		contentValues.put(COL_NEWSITEM_ListIcon, model_NewsItem.getListIcon());
+		sqlite.insert(TB_NewsItems, null, contentValues);
+
+		close();
+	}
+
+	public void insertNewsItem_Items(Model_NewsItem_Items model_NewsItem_Items,
+			Model_NewsItem obj_newsItem) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_NEWSITEM_ItemId, model_NewsItem_Items.getId());
+
+		contentValues
+				.put(COL_NEWSITEM_Items_url, model_NewsItem_Items.getUrl());
+
+		contentValues.put(COL_NEWSITEM_Items_datePublished,
+				model_NewsItem_Items.getDatePublished());
+		contentValues.put(COL_NEWSITEM_Items_dateChanged,
+				model_NewsItem_Items.getDateChanged());
+		contentValues.put(COL_NEWSITEM_Items_isDirty,
+				model_NewsItem_Items.getIsDirty());
+		contentValues.put(COL_NEWSITEM_Items_eventFlag,
+				model_NewsItem_Items.getEventFlag());
+		contentValues.put(COL_NEWSITEM_Items_eventDate,
+				model_NewsItem_Items.getEventDate());
+		contentValues.put(COL_NEWSITEM_Items_publishToFacebook,
+				model_NewsItem_Items.getPublishToFacebook());
+		contentValues.put(COL_NEWSITEM_Items_tempUniqueUid,
+				model_NewsItem_Items.getTempUniqueUID());
+		contentValues.put(COL_NEWSITEM_Items_eventDateFinish,
+				model_NewsItem_Items.getEventDateFinish());
+		contentValues.put(COL_NEWSITEM_Items_sortPosition,
+				model_NewsItem_Items.getSortPosition());
+		contentValues.put(COL_NEWSITEM_Items_archived,
+				model_NewsItem_Items.getArchived());
+		contentValues.put(COL_NEWSITEM_Items_listIcon,
+				model_NewsItem_Items.getListIcon());
+		contentValues.put(COL_NEWSITEM_NewsId, obj_newsItem.getId());
+
+		sqlite.insert(TB_NewsItems_Items, null, contentValues);
+		close();
+	}
+
+	public void insertNewsImages(Model_NewsImage model_NewsImage,
+			Model_NewsItem_Items model_NewsItem_Items) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_NEWSIMAGE_newsImageId,
+				model_NewsImage.getNewsImageId());
+
+		contentValues.put(COL_NEWSIMAGE_width, model_NewsImage.getWidth());
+		contentValues.put(COL_NEWSIMAGE_height, model_NewsImage.getHeight());
+		contentValues.put(COL_NEWSIMAGE_originalName,
+				model_NewsImage.getOriginalName());
+		contentValues.put(COL_NEWSIMAGE_locationLocal,
+				model_NewsImage.getLocationLocal());
+		contentValues.put(COL_NEWSIMAGE_type, model_NewsImage.getType());
+		contentValues.put(COL_NEWSIMAGE_baseUrl, model_NewsImage.getBaseURL());
+		contentValues
+				.put(COL_NEWSIMAGE_mimeType, model_NewsImage.getMimeType());
+		contentValues.put(COL_NEWSIMAGE_base64Version,
+				model_NewsImage.getBase64Version());
+		contentValues.put(COL_NEWSIMAGE_isDirty, model_NewsImage.getIsDirty());
+		contentValues
+				.put(COL_NEWSIMAGE_archived, model_NewsImage.getArchived());
+		contentValues.put(COL_NEWSIMAGE_name, model_NewsImage.getName());
+		contentValues.put(COL_NEWSIMAGE_newsItems_ItemId,
+				model_NewsItem_Items.getId());
+
+		sqlite.insert(TB_NewsImages, null, contentValues);
+		close();
+	}
+
+	public void insertHeadlines(Model_Headline model_Headline,
+			Model_NewsItem_Items model_NewsItem_Items) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+
+		contentValues
+				.put(COL_HEADLINE_theString, model_Headline.getTheString());
+		contentValues.put("newsItem_ItemId", model_NewsItem_Items.getId());
+		sqlite.insert(TB_HomeItems, null, contentValues);
+		sqlite.close();
+		close();
+		/*
+		 * System.err.println(">>>>>>>>>>>>>>>>>>>>>>>HEADLINESTRING : " +
+		 * model_Headline.getTheString());
+		 * System.err.println(">>>>>>>>>>>>>>>>>>>>>>> : " +
+		 * model_NewsItem_Items.getId());
+		 */
+	}
+
+	public void insertDescription(Model_Description model_Description,
+			Model_NewsItem_Items modelNewsItem_Items) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_Description_theString,
+				model_Description.getTheString());
+		contentValues.put(COL_NEWSITEM_ItemId, modelNewsItem_Items.getId());
+		sqlite.insert(TB_Description, null, contentValues);
+		sqlite.close();
+		close();
+	}
+
+	public void insertDescriptionHtml(
+			Model_DescriptionHMTL modelDescriptionHMTL,
+			Model_NewsItem_Items modelNewsItem_Items) {
+		openDataBase();
+		contentValues = new ContentValues();
+		sqlite = getDB();
+		contentValues.put(COL_DESCRIPTION_HTML_theString,
+				modelDescriptionHMTL.getTheString());
+		contentValues.put(COL_NEWSITEM_ItemId, modelNewsItem_Items.getId());
+		sqlite.insert(TB_DescriptionHtml, null, contentValues);
+		sqlite.close();
+		close();
+
+	}
+
+	// //////////////////////////INSERT COMPLETE///////////////////////////////
+
+	//
+	// //////////////////////////////DISPLAY//////////////////////////////
 	public ArrayList<HomeItems> displayHomeItems() {
 		arrayListHomeItems = new ArrayList<HomeItems>();
+		openDataBase();
 		sqlite = getDB();
 		String getHomeItems = "SELECT * FROM " + TB_HomeItems;
 		Cursor cursor = sqlite.rawQuery(getHomeItems, null);
@@ -268,61 +607,104 @@ public class DBHelper extends SQLiteOpenHelper {
 			}
 
 		}
+		close();
 		return arrayListHomeItems;
 	}
 
-	/*
-	 * public void insertHomeItems(int homeId, String includeImageInLayout,
-	 * String includeTitleInLayout, String includeTextInLayout, String
-	 * imagePosition, String titlePosition, String textPosition, String title,
-	 * String text, String textHtml, int tabPosition, String tabText, String
-	 * tabIcon, String dateChanged, String isDirty, String tempUniqueUID, int
-	 * type, String useTabIcon, int sortPosition, String archived, String
-	 * listIcon) { contentValues = getContentValues(); sqlite = getDB();
-	 * contentValues.put(COL_HOMEITEM_ID, homeId);
-	 * contentValues.put(COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT,
-	 * includeImageInLayout);
-	 * contentValues.put(COL_HOMEITEM_INCLUDE_TITLE_IN_LAYOUT,
-	 * includeTitleInLayout);
-	 * contentValues.put(COL_HOMEITEM_INCLUDE_TEXT_IN_LAYOUT,
-	 * includeTextInLayout); contentValues.put(COL_HOMEITEM_IMAGE_POSITION,
-	 * imagePosition); contentValues.put(COL_HOMEITEM_TITLE_POSITION,
-	 * titlePosition); contentValues.put(COL_HOMEITEM_TEXT_POSITION,
-	 * textPosition); contentValues.put(COL_HOMEITEM_TITLE, title);
-	 * contentValues.put(COL_HOMEITEM_TEXT, text);
-	 * contentValues.put(COL_HOMEITEM_TEXT_HTML, textHtml);
-	 * contentValues.put(COL_HOMEITEM_TAB_TEXT, tabText);
-	 * contentValues.put(COL_HOMEITEM_TAB_ICON, tabIcon);
-	 * contentValues.put(COL_HOMEITEM_DATE_CHANGED, dateChanged);
-	 * contentValues.put(COL_HOMEITEM_IS_DIRTY, isDirty);
-	 * contentValues.put(COL_HOMEITEM_TEMP_UNIQUE_UID, tempUniqueUID);
-	 * contentValues.put(COL_HOMEITEM_TYPE, type);
-	 * contentValues.put(COL_HOMEITEM_USE_TAB_ICON, useTabIcon);
-	 * contentValues.put(COL_HOMEITEM_SORT_POSITION, sortPosition);
-	 * contentValues.put(COL_HOMEITEM_ARCHIVED, archived);
-	 * contentValues.put(COL_HOMEITEM_LIST_ICON, listIcon);
-	 * sqlite.insert(TB_HomeItems, null, contentValues); sqlite.close(); }
-	 */
+	public ArrayList<Model_MenuItems> displayMenuItems() {
+		arrayListMenuItems = new ArrayList<Model_MenuItems>();
+		openDataBase();
+		sqlite = getDB();
+		String sql = "SELECT * FROM " + TB_MenuItems;
+		Cursor cursor = sqlite.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					Model_MenuItems model_MenuItems = new Model_MenuItems();
+					model_MenuItems.setItem_name(cursor.getString(cursor
+							.getColumnIndex(COL_MenuItemName)));
+					arrayListMenuItems.add(model_MenuItems);
+				} while (cursor.moveToNext());
+			}
+		}
+		close();
+		return arrayListMenuItems;
+	}
 
-	/*
-	 * public void insertHomeItemImage(int imageId, int width, int height,
-	 * String originalName, String locationLocal, String imageType, String
-	 * baseURL, String mimeType, String base64Version, String isDirty, String
-	 * archive, String name, int homeItemId) { contentValues =
-	 * getContentValues(); sqlite = getDB(); contentValues.put(COL_IMAGE_ID,
-	 * imageId); contentValues.put(COL_IMAGE_WIDTH, width);
-	 * contentValues.put(COL_IMAGE_HEIGHT, height);
-	 * contentValues.put(COL_IMAGE_ORIGINAL_NAME, originalName);
-	 * contentValues.put(COL_IMAGE_LOCATION_LOCAL, locationLocal);
-	 * contentValues.put(COL_IMAGE_TYPE, imageType);
-	 * contentValues.put(COL_IMAGE_BASE_URL, baseURL);
-	 * contentValues.put(COL_IMAGE_MIME_TYPE, mimeType);
-	 * contentValues.put(COL_IMAGE_BASE64_VERSION, base64Version);
-	 * contentValues.put(COL_IMAGE_IS_DIRTY, isDirty);
-	 * contentValues.put(COL_IMAGE_ARCHIVED, archive);
-	 * contentValues.put(COL_IMAGE_NAME, name);
-	 * contentValues.put(COL_HOMEITEM_ID, homeItemId);
-	 * sqlite.insert(TB_HomeItemsImage, null, contentValues); sqlite.close(); }
-	 */
+	public ArrayList<Model_NewsItem> displayNewsItems() {
+		arrayListNewsItems = new ArrayList<Model_NewsItem>();
+		openDataBase();
+		sqlite = getDB();
+		String sql = "SELECT * FROM " + TB_NewsItems;
+		Cursor cursor = sqlite.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					Model_NewsItem model_NewsItems = new Model_NewsItem();
+					model_NewsItems.setId(cursor.getInt(cursor
+							.getColumnIndex(COL_NEWSITEM_NewsId)));
 
+					model_NewsItems.setTabText(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_TabText)));
+					arrayListNewsItems.add(model_NewsItems);
+
+				} while (cursor.moveToLast());
+			}
+		}
+		close();
+		return arrayListNewsItems;
+	}
+	// ///////////////////////DISPLAY COMPLETE/////////////////////////
 }
+/*
+ * public void insertHomeItems(int homeId, String includeImageInLayout, String
+ * includeTitleInLayout, String includeTextInLayout, String imagePosition,
+ * String titlePosition, String textPosition, String title, String text, String
+ * textHtml, int tabPosition, String tabText, String tabIcon, String
+ * dateChanged, String isDirty, String tempUniqueUID, int type, String
+ * useTabIcon, int sortPosition, String archived, String listIcon) {
+ * contentValues = getContentValues(); sqlite = getDB();
+ * contentValues.put(COL_HOMEITEM_ID, homeId);
+ * contentValues.put(COL_HOMEITEM_INCLUDE_IMAGE_IN_LAYOUT,
+ * includeImageInLayout);
+ * contentValues.put(COL_HOMEITEM_INCLUDE_TITLE_IN_LAYOUT,
+ * includeTitleInLayout); contentValues.put(COL_HOMEITEM_INCLUDE_TEXT_IN_LAYOUT,
+ * includeTextInLayout); contentValues.put(COL_HOMEITEM_IMAGE_POSITION,
+ * imagePosition); contentValues.put(COL_HOMEITEM_TITLE_POSITION,
+ * titlePosition); contentValues.put(COL_HOMEITEM_TEXT_POSITION, textPosition);
+ * contentValues.put(COL_HOMEITEM_TITLE, title);
+ * contentValues.put(COL_HOMEITEM_TEXT, text);
+ * contentValues.put(COL_HOMEITEM_TEXT_HTML, textHtml);
+ * contentValues.put(COL_HOMEITEM_TAB_TEXT, tabText);
+ * contentValues.put(COL_HOMEITEM_TAB_ICON, tabIcon);
+ * contentValues.put(COL_HOMEITEM_DATE_CHANGED, dateChanged);
+ * contentValues.put(COL_HOMEITEM_IS_DIRTY, isDirty);
+ * contentValues.put(COL_HOMEITEM_TEMP_UNIQUE_UID, tempUniqueUID);
+ * contentValues.put(COL_HOMEITEM_TYPE, type);
+ * contentValues.put(COL_HOMEITEM_USE_TAB_ICON, useTabIcon);
+ * contentValues.put(COL_HOMEITEM_SORT_POSITION, sortPosition);
+ * contentValues.put(COL_HOMEITEM_ARCHIVED, archived);
+ * contentValues.put(COL_HOMEITEM_LIST_ICON, listIcon);
+ * sqlite.insert(TB_HomeItems, null, contentValues); sqlite.close(); }
+ */
+
+/*
+ * public void insertHomeItemImage(int imageId, int width, int height, String
+ * originalName, String locationLocal, String imageType, String baseURL, String
+ * mimeType, String base64Version, String isDirty, String archive, String name,
+ * int homeItemId) { contentValues = getContentValues(); sqlite = getDB();
+ * contentValues.put(COL_IMAGE_ID, imageId); contentValues.put(COL_IMAGE_WIDTH,
+ * width); contentValues.put(COL_IMAGE_HEIGHT, height);
+ * contentValues.put(COL_IMAGE_ORIGINAL_NAME, originalName);
+ * contentValues.put(COL_IMAGE_LOCATION_LOCAL, locationLocal);
+ * contentValues.put(COL_IMAGE_TYPE, imageType);
+ * contentValues.put(COL_IMAGE_BASE_URL, baseURL);
+ * contentValues.put(COL_IMAGE_MIME_TYPE, mimeType);
+ * contentValues.put(COL_IMAGE_BASE64_VERSION, base64Version);
+ * contentValues.put(COL_IMAGE_IS_DIRTY, isDirty);
+ * contentValues.put(COL_IMAGE_ARCHIVED, archive);
+ * contentValues.put(COL_IMAGE_NAME, name); contentValues.put(COL_HOMEITEM_ID,
+ * homeItemId); sqlite.insert(TB_HomeItemsImage, null, contentValues);
+ * sqlite.close(); }
+ */
+

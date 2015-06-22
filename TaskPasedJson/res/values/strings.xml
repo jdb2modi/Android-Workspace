@@ -22,5 +22,8 @@
 
     <string name="title_activity_activity__home_items">Activity_HomeItems</string>
     <string name="title_activity_activity__home_items_detail">Activity_HomeItemsDetail</string>
+    <string name="DB_PATH">/data/data/com.zaptech.taskpasedjson/databases/</string>
+    <string name="DB_NAME">jsondb</string>
+    <string name="title_activity_activity__news_items">Activity_NewsItems</string>
 
 </resources>

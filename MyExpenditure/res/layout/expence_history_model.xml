@@ -7,48 +7,62 @@
         android:id="@+id/txt_ExpenceCategoryH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category to display" />
+        android:text="Category to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_ExpenceDateH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ExpenceCategoryH"
-        android:text="Expence Date to display" />
+        android:text="Expence Date to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_ExpenceModeH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ExpenceDateH"
-        android:text="Mode to display" />
+        android:text="Mode to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_ChequeNoH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ExpenceModeH"
-        android:text="CheckNo to display" />
+        android:text="CheckNo to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_TransactionIdH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ChequeNoH"
-        android:text="TransactionId to display" />
+        android:text="TransactionId to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_ExpenceAmountH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_TransactionIdH"
-        android:text="Amount to display" />
+        android:text="Amount to display"
+        android:textColor="#ff2112"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_ExpenceDescriptionH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_ExpenceAmountH"
-        android:text="Description to display" />
+        android:text="Description to display"
+        android:textColor="#0072B2"
+        android:textStyle="bold" />
 
 </RelativeLayout>

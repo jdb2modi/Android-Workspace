@@ -111,19 +111,19 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			TextView txt_DescriptionD = (TextView) convertView
 					.findViewById(R.id.txt_ExpenceDescriptionH);
 
-			txt_ExpenseCategoryD.setText(dbHelper.arrayListExpence
+			txt_ExpenseCategoryD.setText("Expence Category : "+dbHelper.arrayListExpence
 					.get(position).getExpenseCategory());
-			txt_ExpenseDateD.setText(dbHelper.arrayListExpence.get(position)
+			txt_ExpenseDateD.setText("Expence Date : "+dbHelper.arrayListExpence.get(position)
 					.getExpenseDate());
-			txt_ExpenseModeD.setText(dbHelper.arrayListExpence.get(position)
+			txt_ExpenseModeD.setText("Expence Mode : "+dbHelper.arrayListExpence.get(position)
 					.getExpenseMode());
-			txt_ChequeNoD.setText(dbHelper.arrayListExpence.get(position)
+			txt_ChequeNoD.setText("Cheque Number : "+dbHelper.arrayListExpence.get(position)
 					.getChequeNo());
-			txt_TransactionIdD.setText(dbHelper.arrayListExpence.get(position)
+			txt_TransactionIdD.setText("Transaction Id : "+dbHelper.arrayListExpence.get(position)
 					.getTransactionId());
-			txt_ExpenseAmountD.setText(String.valueOf(dbHelper.arrayListExpence
+			txt_ExpenseAmountD.setText(String.valueOf("Expence Amount : "+dbHelper.arrayListExpence
 					.get(position).getExpenseAmount()));
-			txt_DescriptionD.setText(dbHelper.arrayListExpence.get(position)
+			txt_DescriptionD.setText("Expence Description : "+dbHelper.arrayListExpence.get(position)
 					.getDescription());
 			return convertView;
 		}
