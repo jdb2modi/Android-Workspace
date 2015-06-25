@@ -1,7 +1,7 @@
 package com.zaptech.taskpasedjson;
 
 public class Model_NewsItem_Items {
-	int id, newsItemId;
+	int newsItems_ItemId, newsItemId;
 
 	String url, datePublished, dateChanged, isDirty, eventFlag, eventDate,
 			publishToFacebook, tempUniqueUID, eventDateFinish, sortPosition,
@@ -20,12 +20,12 @@ public class Model_NewsItem_Items {
 		this.newsItemId = newsItemId;
 	}
 
-	public int getId() {
-		return id;
+	public int getNewsItems_ItemId() {
+		return newsItems_ItemId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNewsItems_ItemId(int newsItems_ItemId) {
+		this.newsItems_ItemId = newsItems_ItemId;
 	}
 
 	public String getUrl() {

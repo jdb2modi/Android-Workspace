@@ -95,6 +95,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String COL_NEWSITEM_ListIcon = "listIcon";
 
 	// COLUMNS FOR TB_NEWSITEMS_ITEMS...
+	// public static final String COL_NEWSITEM_NewsId = "newsItemId";
 	public static final String COL_NEWSITEM_ItemId = "newsItems_ItemId";
 	public static final String COL_NEWSITEM_Items_url = "url";
 	public static final String COL_NEWSITEM_Items_datePublished = "datePublished";
@@ -139,6 +140,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	ArrayList<HomeItems> arrayListHomeItems;
 	ArrayList<Model_MenuItems> arrayListMenuItems;
 	ArrayList<Model_NewsItem> arrayListNewsItems;
+	ArrayList<Model_NewsItem_Items> arrayListNewsItems_Items;
+	ArrayList<Model_Headline> arrayListHeadLines;
 
 	// CONCEPT ASSET...
 	private static SQLiteDatabase myDataBase;
@@ -274,7 +277,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		 * " VARCHAR," + COL_HOMEITEM_LIST_ICON + " VARCHAR);";
 		 * 
 		 * db.execSQL(CREATE_TB_HOME_ITEMS);
-		 * db.execSQL(CREATE_TB_HOMEITEMIMAGE);
+		 * db.execSQL(CREATE_TB_HOMEITEMIMAGE);COL_NEWSITEM_ItemId
 		 */
 	}
 
@@ -334,6 +337,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				model_HomeItems.getHomeItem_listIcon());
 		sqlite.insert(TB_HomeItems, null, contentValues);
 		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 
 	}
@@ -370,6 +374,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				.put(COL_HOMEITEM_ID, model_HomeItemImage.getHomeItem_Id());
 		sqlite.insert(TB_HomeItemsImage, null, contentValues);
 		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 	}
 
@@ -379,6 +384,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		sqlite = getDB();
 		contentValues.put(COL_MenuItemName, model_MenuItems.getItem_name());
 		sqlite.insert(TB_MenuItems, null, contentValues);
+		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 	}
 
@@ -411,7 +418,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		contentValues.put(COL_NEWSITEM_Archived, model_NewsItem.getArchived());
 		contentValues.put(COL_NEWSITEM_ListIcon, model_NewsItem.getListIcon());
 		sqlite.insert(TB_NewsItems, null, contentValues);
-
+		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 	}
 
@@ -420,7 +428,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		openDataBase();
 		contentValues = new ContentValues();
 		sqlite = getDB();
-		contentValues.put(COL_NEWSITEM_ItemId, model_NewsItem_Items.getId());
+		contentValues.put(COL_NEWSITEM_ItemId,
+				model_NewsItem_Items.getNewsItems_ItemId());
 
 		contentValues
 				.put(COL_NEWSITEM_Items_url, model_NewsItem_Items.getUrl());
@@ -450,6 +459,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		contentValues.put(COL_NEWSITEM_NewsId, obj_newsItem.getId());
 
 		sqlite.insert(TB_NewsItems_Items, null, contentValues);
+		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 	}
 
@@ -478,30 +489,30 @@ public class DBHelper extends SQLiteOpenHelper {
 				.put(COL_NEWSIMAGE_archived, model_NewsImage.getArchived());
 		contentValues.put(COL_NEWSIMAGE_name, model_NewsImage.getName());
 		contentValues.put(COL_NEWSIMAGE_newsItems_ItemId,
-				model_NewsItem_Items.getId());
+				model_NewsItem_Items.getNewsItems_ItemId());
 
 		sqlite.insert(TB_NewsImages, null, contentValues);
+		sqlite.close();
+		sqlite.releaseMemory();
 		close();
+
 	}
 
-	public void insertHeadlines(Model_Headline model_Headline,
-			Model_NewsItem_Items model_NewsItem_Items) {
+	public void insertHeadlines(Model_Headline model_HeadLine,
+			Model_NewsItem_Items model_newsItem_Items) {
 		openDataBase();
 		contentValues = new ContentValues();
 		sqlite = getDB();
 
 		contentValues
-				.put(COL_HEADLINE_theString, model_Headline.getTheString());
-		contentValues.put("newsItem_ItemId", model_NewsItem_Items.getId());
-		sqlite.insert(TB_HomeItems, null, contentValues);
+				.put(COL_HEADLINE_theString, model_HeadLine.getTheString());
+		contentValues.put("newsItem_ItemId",
+				model_newsItem_Items.getNewsItems_ItemId());
+		sqlite.insert(TB_HeadLine, null, contentValues);
 		sqlite.close();
+		sqlite.releaseMemory();
 		close();
-		/*
-		 * System.err.println(">>>>>>>>>>>>>>>>>>>>>>>HEADLINESTRING : " +
-		 * model_Headline.getTheString());
-		 * System.err.println(">>>>>>>>>>>>>>>>>>>>>>> : " +
-		 * model_NewsItem_Items.getId());
-		 */
+
 	}
 
 	public void insertDescription(Model_Description model_Description,
@@ -509,11 +520,14 @@ public class DBHelper extends SQLiteOpenHelper {
 		openDataBase();
 		contentValues = new ContentValues();
 		sqlite = getDB();
+
 		contentValues.put(COL_Description_theString,
 				model_Description.getTheString());
-		contentValues.put(COL_NEWSITEM_ItemId, modelNewsItem_Items.getId());
+		contentValues.put("newsItem_ItemId",
+				modelNewsItem_Items.getNewsItems_ItemId());
 		sqlite.insert(TB_Description, null, contentValues);
 		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 	}
 
@@ -523,11 +537,14 @@ public class DBHelper extends SQLiteOpenHelper {
 		openDataBase();
 		contentValues = new ContentValues();
 		sqlite = getDB();
+
 		contentValues.put(COL_DESCRIPTION_HTML_theString,
 				modelDescriptionHMTL.getTheString());
-		contentValues.put(COL_NEWSITEM_ItemId, modelNewsItem_Items.getId());
+		contentValues.put("newsItem_ItemId",
+				modelNewsItem_Items.getNewsItems_ItemId());
 		sqlite.insert(TB_DescriptionHtml, null, contentValues);
 		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 
 	}
@@ -607,6 +624,8 @@ public class DBHelper extends SQLiteOpenHelper {
 			}
 
 		}
+		sqlite.close();
+		sqlite.releaseMemory();
 		close();
 		return arrayListHomeItems;
 	}
@@ -628,6 +647,8 @@ public class DBHelper extends SQLiteOpenHelper {
 			}
 		}
 		close();
+		sqlite.close();
+		sqlite.releaseMemory();
 		return arrayListMenuItems;
 	}
 
@@ -646,16 +667,181 @@ public class DBHelper extends SQLiteOpenHelper {
 
 					model_NewsItems.setTabText(cursor.getString(cursor
 							.getColumnIndex(COL_NEWSITEM_TabText)));
+
 					arrayListNewsItems.add(model_NewsItems);
 
-				} while (cursor.moveToLast());
+				} while (cursor.moveToNext());
 			}
 		}
 		close();
+		sqlite.close();
+		sqlite.releaseMemory();
 		return arrayListNewsItems;
 	}
-	// ///////////////////////DISPLAY COMPLETE/////////////////////////
+
+	public ArrayList<Model_NewsItem_Items> getItems(int id) {
+		openDataBase();
+		sqlite = getDB();
+		arrayListNewsItems_Items = new ArrayList<Model_NewsItem_Items>();
+
+		Cursor cursor = sqlite.rawQuery("select * from " + TB_NewsItems_Items
+				+ " where " + COL_NEWSITEM_NewsId + "='" + id + "'", null);
+
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					Model_NewsItem_Items model_newsItem_Items = new Model_NewsItem_Items();
+					model_newsItem_Items.setNewsItems_ItemId(Integer
+							.parseInt(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_ItemId))));
+					model_newsItem_Items.setUrl(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_url)));
+					model_newsItem_Items
+							.setDatePublished(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_Items_datePublished)));
+					model_newsItem_Items.setDateChanged(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_dateChanged)));
+					model_newsItem_Items.setIsDirty(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_isDirty)));
+					model_newsItem_Items.setEventFlag(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_eventFlag)));
+					model_newsItem_Items.setEventDate(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_eventDate)));
+					model_newsItem_Items
+							.setPublishToFacebook(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_Items_publishToFacebook)));
+					model_newsItem_Items
+							.setTempUniqueUID(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_Items_tempUniqueUid)));
+					model_newsItem_Items
+							.setEventDateFinish(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_Items_eventDateFinish)));
+					model_newsItem_Items
+							.setSortPosition(cursor.getString(cursor
+									.getColumnIndex(COL_NEWSITEM_Items_sortPosition)));
+					model_newsItem_Items.setArchived(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_archived)));
+					model_newsItem_Items.setListIcon(cursor.getString(cursor
+							.getColumnIndex(COL_NEWSITEM_Items_listIcon)));
+					// //FOR HEADLINE
+					Cursor cursor1 = myDataBase
+							.rawQuery(
+									"select * from "
+											+ TB_HeadLine
+											+ " where "
+											+ "newsItem_ItemId"
+											+ "='"
+											+ cursor.getString(cursor
+													.getColumnIndex(COL_NEWSITEM_ItemId))
+											+ "'", null);
+
+					if (cursor1 != null) {
+						if (cursor1.moveToFirst()) {
+							do {
+								Model_Headline tempHeadLine = new Model_Headline();
+								tempHeadLine
+										.setTheString(cursor1.getString(cursor1
+												.getColumnIndex(COL_HEADLINE_theString)));
+
+								tempHeadLine
+										.setNewsItem_ItemId(cursor.getInt(cursor
+												.getColumnIndex(COL_NEWSITEM_ItemId)));
+								model_newsItem_Items
+										.setModel_headline(tempHeadLine);
+
+							} while (cursor1.moveToNext());
+						}
+					}
+
+					arrayListNewsItems_Items.add(model_newsItem_Items);
+				} while (cursor.moveToNext());
+			}
+		}
+		myDataBase.close();
+		return arrayListNewsItems_Items;
+	}
+
+	public Model_NewsItem_Items getNewsDetails(int id) {
+		openDataBase();
+		ArrayList<Model_NewsItem_Items> tempList = new ArrayList<Model_NewsItem_Items>();
+		Model_NewsItem_Items model_newsItem_Items = new Model_NewsItem_Items();
+		Cursor cursor1 = myDataBase.rawQuery("select * from " + TB_HeadLine
+				+ " where " + "newsItem_ItemId " + "='" + id + "'", null);
+		if (cursor1.getCount() > 0) {
+			if (cursor1 != null) {
+				if (cursor1.moveToFirst()) {
+					do {
+						Model_Headline model_Headline = new Model_Headline();
+						model_Headline.setTheString(cursor1.getString(cursor1
+								.getColumnIndex(COL_HEADLINE_theString)));
+						model_newsItem_Items.setModel_headline(model_Headline);
+
+					} while (cursor1.moveToNext());
+				}
+			}
+		}
+		Cursor cursor2 = myDataBase.rawQuery("select * from " + TB_Description
+				+ " where " + "newsItem_ItemId" + "='" + id + "'", null);
+		if (cursor2.getCount() > 0) {
+			if (cursor2 != null) {
+				if (cursor2.moveToFirst()) {
+					do {
+						Model_Description model_description = new Model_Description();
+						model_description
+								.setTheString(cursor2.getString(cursor2
+										.getColumnIndex(COL_HEADLINE_theString)));
+						model_newsItem_Items
+								.setModel_description(model_description);
+
+					} while (cursor2.moveToNext());
+				}
+			}
+		}
+		Cursor cursor3 = myDataBase.rawQuery("select * from "
+				+ TB_DescriptionHtml + " where " + "newsItem_ItemId" + "='"
+				+ id + "'", null);
+		if (cursor3.getCount() > 0) {
+			if (cursor3 != null) {
+				if (cursor3.moveToFirst()) {
+					do {
+						Model_DescriptionHMTL model_decriptionHtml = new Model_DescriptionHMTL();
+						model_decriptionHtml
+								.setTheString(cursor3.getString(cursor3
+										.getColumnIndex(COL_HEADLINE_theString)));
+						model_newsItem_Items
+								.setModel_descriptionHTML(model_decriptionHtml);
+
+					} while (cursor3.moveToNext());
+				}
+			}
+		}
+		myDataBase.close();
+		return model_newsItem_Items;
+	}
+	/*
+	 * public Model_NewsItem_Items getDescription(){ return }
+	 */
+
 }
+/*
+ * public ArrayList<Model_Headline> displayHeadlines() { arrayListHeadLines=new
+ * ArrayList<Model_Headline>(); openDataBase(); sqlite = getDB(); String sql =
+ * "SELECT * FROM " + TB_HeadLine; Cursor cursor = sqlite.rawQuery(sql, null);
+ * if (cursor != null) { if (cursor.moveToFirst()) { do { Model_Headline
+ * model_headline=new Model_Headline();
+ * model_NewsItems.setId(cursor.getInt(cursor
+ * .getColumnIndex(COL_NEWSITEM_NewsId)));
+ * 
+ * model_NewsItems.setTabText(cursor.getString(cursor
+ * .getColumnIndex(COL_NEWSITEM_TabText)));
+ * 
+ * arrayListNewsItems.add(model_NewsItems);
+ * 
+ * } while (cursor.moveToNext()); } } close(); sqlite.close();
+ * sqlite.releaseMemory(); return arrayListNewsItems; }
+ */
+// ///////////////////////DISPLAY COMPLETE/////////////////////////
+
 /*
  * public void insertHomeItems(int homeId, String includeImageInLayout, String
  * includeTitleInLayout, String includeTextInLayout, String imagePosition,

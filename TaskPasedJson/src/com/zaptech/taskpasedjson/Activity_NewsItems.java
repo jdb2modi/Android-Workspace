@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Activity_NewsItems extends Activity implements OnClickListener {
 	Button btn_backFromNewsItem;
@@ -28,7 +31,24 @@ public class Activity_NewsItems extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newsitems);
 		init();
+
 		new DisplayNewsItemsAsync().execute();
+
+		listview_NewsItem.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				int intId = dbHelper.arrayListNewsItems.get(position).getId();
+				finish();
+				Intent intent = new Intent(Activity_NewsItems.this,
+						Activity_NewsItem_Items.class);
+				intent.putExtra("NEWSID", intId);
+				startActivity(intent);
+				
+			}
+		});
+
 	}
 
 	public void init() {
@@ -61,6 +81,8 @@ public class Activity_NewsItems extends Activity implements OnClickListener {
 
 		DisplayNewsItems(Context context) {
 			this.mContext = context;
+			inflater = (LayoutInflater) mContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
 
 		@Override
@@ -84,28 +106,37 @@ public class Activity_NewsItems extends Activity implements OnClickListener {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
-			if (inflater == null) {
-				inflater = (LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			}
+			ViewHolder holder;
+
 			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.custom_newsitems, null);
+				convertView = inflater.inflate(R.layout.custom_newsitems,
+						parent, false);
+				holder = new ViewHolder();
+				holder.txt_NewsId = (TextView) convertView
+						.findViewById(R.id.txt_NewsItemId);
+				holder.txt_NewsTabText = (TextView) convertView
+						.findViewById(R.id.txt_NewsItemTabText);
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
 			}
-			TextView txt_NewsId, txt_NewsTabText;
-			txt_NewsId = (TextView) convertView
-					.findViewById(R.id.txt_NewsItemId);
-			txt_NewsTabText = (TextView) convertView
-					.findViewById(R.id.txt_NewsItemTabText);
-			txt_NewsId.setText(dbHelper.arrayListNewsItems.get(position)
-					.getId());
-			txt_NewsTabText.setText(dbHelper.arrayListNewsItems.get(position)
-					.getTabText());
+
+			holder.txt_NewsId.setText(""
+					+ dbHelper.arrayListNewsItems.get(position).getId());
+			holder.txt_NewsTabText.setText(""
+					+ dbHelper.arrayListNewsItems.get(position).getTabText());
 			return convertView;
 		}
 
 	}
 
+	static class ViewHolder {
+		TextView txt_NewsId;
+		TextView txt_NewsTabText;
+	}
+
 	class DisplayNewsItemsAsync extends AsyncTask<Void, Void, Void> {
+
 		@Override
 		protected void onPreExecute() {
 			mProgress.setTitle("News Loader");
@@ -117,6 +148,7 @@ public class Activity_NewsItems extends Activity implements OnClickListener {
 
 		@Override
 		protected Void doInBackground(Void... params) {
+
 			dbHelper.displayNewsItems();
 			return null;
 		}
@@ -125,11 +157,14 @@ public class Activity_NewsItems extends Activity implements OnClickListener {
 		protected void onPostExecute(Void result) {
 			if (mProgress.isShowing()) {
 				mProgress.dismiss();
+
 			}
+
 			listview_NewsItem.setAdapter(new DisplayNewsItems(
 					Activity_NewsItems.this));
 			super.onPostExecute(result);
 		}
 
 	}
+
 }

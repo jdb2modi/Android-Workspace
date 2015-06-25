@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="CLICK + TO NAVIGATE"
-        android:textColor="#5544ff"
+        android:text="@string/txt_welcome"
+        android:textColor="@color/lblue"
         android:textStyle="bold" />
 
     <SlidingDrawer
@@ -28,7 +28,7 @@
             android:id="@+id/handle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="@string/btn_handle" />
 
         <LinearLayout
             android:id="@+id/content"

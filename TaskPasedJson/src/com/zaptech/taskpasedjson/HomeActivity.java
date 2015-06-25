@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -43,9 +44,9 @@ import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements OnClickListener {
 	ProgressDialog mProgress;
-	TextView txt_Json;
+	TextView txt_Json, txt_welcome;
 	ListView listview_MenuItems;
 	DBHelper dbHelper;
 
@@ -76,7 +77,6 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
-
 		new GetData().execute();
 		manageDrawer();
 
@@ -88,36 +88,30 @@ public class HomeActivity extends Activity {
 				// TODO Auto-generated method stub
 				String strTemp = String.valueOf(dbHelper.arrayListMenuItems
 						.get(position).item_name);
-				switch (strTemp) {
-				case "homeItems":
+				if (strTemp.equals("homeItems")) {
+
 					finish();
 					Intent intent;
 					intent = new Intent(HomeActivity.this,
 							Activity_HomeItems.class);
 					startActivity(intent);
-					break;
-				case "newsItems":
+				}
+				if (strTemp.equals("newsItems")) {
+
 					finish();
 					Intent intent2;
 					intent2 = new Intent(HomeActivity.this,
 							Activity_NewsItems.class);
 					startActivity(intent2);
-					break;
 
-				default:
-					break;
 				}
-				/*
-				 * if (strTemp.equalsIgnoreCase("homeItems")) { finish(); Intent
-				 * intent; intent = new Intent(HomeActivity.this,
-				 * Activity_HomeItems.class); startActivity(intent); }
-				 */
 
 			}
 		});
 	}
 
 	public void init() {
+		txt_welcome = (TextView) findViewById(R.id.txt_welcome);
 		mProgress = new ProgressDialog(HomeActivity.this);
 
 		listview_MenuItems = (ListView) findViewById(R.id.listview_MenuItems);
@@ -139,6 +133,7 @@ public class HomeActivity extends Activity {
 
 		// TO Handle Sliding Drawer
 		handle = (Button) findViewById(R.id.handle);
+		handle.setOnClickListener(this);
 		drawer = (SlidingDrawer) findViewById(R.id.slidingDrawer);
 		adptDataItems = new ArrayAdapter<String>(HomeActivity.this,
 				android.R.layout.simple_list_item_1, getResources()
@@ -146,7 +141,6 @@ public class HomeActivity extends Activity {
 		listview_MenuItems.setAdapter(adptDataItems);
 		arraylist_NewsItems_Items = new ArrayList<Model_NewsItem_Items>();
 		arraylist_NewsItems = new ArrayList<Model_NewsItem>();
-
 	}
 
 	// //////////////////////////ASYNKTASK///////////////////////////////////
@@ -379,13 +373,12 @@ public class HomeActivity extends Activity {
 				for (int k = 0; k < arrayJItems.length(); k++) {
 
 					JSONObject jObjItems = arrayJItems.getJSONObject(k);
-					model_NewsItem_Items.setId(Integer.parseInt(jObjItems
-							.getString("id")));
-
+					model_NewsItem_Items.setNewsItems_ItemId(Integer
+							.parseInt(jObjItems.getString("id")));
+					model_NewsItem_Items.setNewsItemId(Integer
+							.parseInt(jNewsItemSub.getString("id")));
 					model_NewsItem_Items.setUrl(jObjItems.getString("url"));
-					Toast.makeText(getApplicationContext(),
-							"" + jObjItems.getString("url"), Toast.LENGTH_LONG)
-							.show();
+
 					model_NewsItem_Items.setDatePublished(jObjItems
 							.getString("datePublished"));
 					model_NewsItem_Items.setDateChanged(jObjItems
@@ -408,8 +401,7 @@ public class HomeActivity extends Activity {
 							.getString("archived"));
 					model_NewsItem_Items.setListIcon(jObjItems
 							.getString("listIcon"));
-					model_NewsItem_Items.setNewsItemId(Integer
-							.parseInt(jNewsItemSub.getString("id")));
+
 					insertNewsItems_Items();
 					// Parsing for NewsImage in NewsItems
 					JSONObject jObjNewsImage = jObjItems
@@ -485,10 +477,6 @@ public class HomeActivity extends Activity {
 				model_MenuItems.setItem_name(key);
 				dbHelper.insertMenuItems(model_MenuItems);
 
-				/*
-				 * Toast.makeText(HomeActivity.this, "" + key,
-				 * Toast.LENGTH_SHORT).show();
-				 */
 			}
 		} catch (Exception e) {
 
@@ -630,6 +618,24 @@ public class HomeActivity extends Activity {
 
 			super.onPostExecute(result);
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.handle:
+			if (txt_welcome.getText().equals("+")) {
+				txt_welcome.setText("");
+			}
+			if (txt_welcome.getText().equals("-")) {
+				//txt_welcome.setVisibility(1);
+			}
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 }

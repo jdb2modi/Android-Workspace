@@ -7,9 +7,9 @@
     <RelativeLayout
         android:id="@+id/rel_HeaderNewsItems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="2dp"
-        android:background="#110000ff" >
+        android:background="@color/lblue" >
 
         <Button
             android:id="@+id/btn_BackFromNewsItems"
@@ -24,7 +24,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="News Items"
-            android:textSize="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textSize="20dp"
             android:textStyle="bold" />
     </RelativeLayout>
 

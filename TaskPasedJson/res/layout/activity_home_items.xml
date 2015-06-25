@@ -4,10 +4,36 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <RelativeLayout
+        android:id="@+id/rel_HeaderHomeItems_Items"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
+        android:background="@color/lblue" >
+
+        <Button
+            android:id="@+id/btn_BackFromHomeItems_Items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_Back" />
+
+        <TextView
+            android:id="@+id/txt_HomeItem_Items_Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/txt_homeItems"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/list_HomeItems"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rel_HeaderHomeItems_Items" >
     </ListView>
 
 </RelativeLayout>

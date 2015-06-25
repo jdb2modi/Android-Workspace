@@ -18,12 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity_HomeItems extends Activity {
+public class Activity_HomeItems extends Activity implements OnClickListener {
 	ListView listHomeItems;
 	DBHelper dbHelper;
 	LayoutInflater inflater;
 	ProgressDialog mProgress;
 	Intent intent;
+	Button btn_back;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class Activity_HomeItems extends Activity {
 		listHomeItems = (ListView) findViewById(R.id.list_HomeItems);
 		dbHelper = new DBHelper(Activity_HomeItems.this);
 		mProgress = new ProgressDialog(this);
+		btn_back = (Button) findViewById(R.id.btn_BackFromHomeItems_Items);
+		btn_back.setOnClickListener(this);
 	}
 
 	class DisplayData extends BaseAdapter {
@@ -126,5 +129,21 @@ public class Activity_HomeItems extends Activity {
 
 			super.onPostExecute(result);
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_BackFromHomeItems_Items:
+			finish();
+			Intent intent = new Intent(Activity_HomeItems.this,
+					HomeActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
+
 	}
 }
