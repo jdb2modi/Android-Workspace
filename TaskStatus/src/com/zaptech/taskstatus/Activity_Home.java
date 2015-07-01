@@ -1,20 +1,7 @@
 package com.zaptech.taskstatus;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +16,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -44,18 +30,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.zaptech.taskstatus.Models.Model_Json;
+import com.zaptech.taskstatus.utility.JSONParser;
+import com.zaptech.taskstatus.utility.MapUtility;
 
 public class Activity_Home extends Activity implements OnClickListener {
 	private ProgressDialog mProgress;
-	private TextView txt_batteryPercent;
-	private TextView txt_batteryDistance;
-	private TextView txt_dateTime;
-	private ImageButton imgBtn_referesh;
+	private TextView mTxt_BatteryPercent;
+	private TextView mTxt_BatteryDistance;
+	private TextView mTxt_DateTime;
+	private ImageButton mImgBtn_Referesh;
 	private LocationManager mLocationManager;
 	private Location mLocation;
-	private GoogleMap googleMap;
-
+	private GoogleMap mGoogleMap;
 	private Model_Json mModelJson;
+	private MapUtility mMapUtility;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,72 +60,20 @@ public class Activity_Home extends Activity implements OnClickListener {
 		mModelJson = new Model_Json();
 		mProgress = new ProgressDialog(Activity_Home.this);
 
-		txt_batteryPercent = (TextView) findViewById(R.id.txt_batteryStatus);
-		txt_batteryDistance = (TextView) findViewById(R.id.txt_batteryDistance);
-		txt_dateTime = (TextView) findViewById(R.id.txt_dateTime);
+		mTxt_BatteryPercent = (TextView) findViewById(R.id.txt_batteryStatus);
+		mTxt_BatteryDistance = (TextView) findViewById(R.id.txt_batteryDistance);
+		mTxt_DateTime = (TextView) findViewById(R.id.txt_dateTime);
 
-		imgBtn_referesh = (ImageButton) findViewById(R.id.imgBtn_refresh);
-		imgBtn_referesh.setOnClickListener(Activity_Home.this);
+		mImgBtn_Referesh = (ImageButton) findViewById(R.id.imgBtn_refresh);
+		mImgBtn_Referesh.setOnClickListener(Activity_Home.this);
 
-	}
-
-	public void initializeMap() {
-		if (googleMap == null) {
-			googleMap = ((MapFragment) getFragmentManager().findFragmentById(
-					R.id.map)).getMap();
-			if (googleMap == null) {
-				Toast.makeText(Activity_Home.this, "Sorry! Map Is Not Created",
-						Toast.LENGTH_SHORT).show();
-			}
-			// Getting Current Location..
-			googleMap.setMyLocationEnabled(true);
-			mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-			Criteria criteria = new Criteria();
-			String bestProvider = mLocationManager.getBestProvider(criteria,
-					true);
-			mLocation = mLocationManager.getLastKnownLocation(bestProvider);
-			googleMap.addMarker(new MarkerOptions().position(new LatLng(Double
-					.parseDouble(mModelJson.getLatitude()), Double
-					.parseDouble(mModelJson.getLongitude()))));
-
-			googleMap.addMarker(new MarkerOptions().position(
-					new LatLng(mLocation.getLatitude(), mLocation
-							.getLongitude())).icon(
-					BitmapDescriptorFactory
-							.fromResource(R.drawable.currentlocation)));
-			// Drawing Line...
-			Polyline line = googleMap.addPolyline(new PolylineOptions()
-					.add(new LatLng(mLocation.getLatitude(), mLocation
-							.getLongitude()),
-							new LatLng(Double.parseDouble(mModelJson
-									.getLatitude()), Double
-									.parseDouble(mModelJson.getLongitude())))
-					.width(5).color(Color.RED));
-
-			// Getting URL...
-			String strULL = makeURL(mLocation.getLatitude(),
-					mLocation.getLongitude(),
-					Double.parseDouble(mModelJson.getLatitude()),
-					Double.parseDouble(mModelJson.getLongitude()));
-			// Parsing URL Data...
-			/*
-			 * JSONParser jParser = new JSONParser(); String json =
-			 * jParser.getJSONFromUrl(strULL); drawPath(json);
-			 */
-
-			new connectAsyncTask(strULL).execute();
-			Toast.makeText(getApplicationContext(), strULL, 2000).show();
-
-		}
+		mMapUtility = new MapUtility();
 
 	}
 
-	
-
-	// An Async class
+	// Class to Parse the Main Json Stream..
 	class ParsingData extends AsyncTask<Void, Void, Void> {
-		String str;
+		String strStream;
 
 		@Override
 		protected void onPreExecute() {
@@ -152,7 +88,9 @@ public class Activity_Home extends Activity implements OnClickListener {
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			str = GET(getResources().getString(R.string.strUrl));
+
+			strStream = mMapUtility.GET(getResources().getString(
+					R.string.strUrl));
 			return null;
 		}
 
@@ -166,7 +104,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 			super.onPostExecute(result);
 
 			// Call to Parse Data..
-			parseJson(str);
+			parseJson(strStream);
 
 			// Initialize Map..
 			try {
@@ -177,48 +115,32 @@ public class Activity_Home extends Activity implements OnClickListener {
 
 		}
 
-		// A function to Parse Json Stream..
-		public String GET(String url) {
-			InputStream inputStream = null;
-			String result = "";
-			try {
+	}// END of the Class ParsingData
 
-				HttpClient httpclient = new DefaultHttpClient();
+	/*
+	 * // A function to Parse Json Stream.. public String GET(String url) {
+	 * InputStream inputStream = null; String result = ""; try { HttpClient
+	 * httpclient = new DefaultHttpClient(); HttpResponse httpResponse =
+	 * httpclient.execute(new HttpGet(url)); inputStream =
+	 * httpResponse.getEntity().getContent(); if (inputStream != null) result =
+	 * convertInputStreamToString(inputStream); else result = "Did not work!";
+	 * 
+	 * } catch (Exception e) { Log.d("InputStream", e.getLocalizedMessage()); }
+	 * 
+	 * return result; }
+	 * 
+	 * // convert Main inputstream to String private static String
+	 * convertInputStreamToString(InputStream inputStream) throws IOException {
+	 * BufferedReader bufferedReader = new BufferedReader( new
+	 * InputStreamReader(inputStream)); String line = ""; String result = "";
+	 * while ((line = bufferedReader.readLine()) != null) result += line;
+	 * 
+	 * inputStream.close(); return result;
+	 * 
+	 * }
+	 */
 
-				HttpResponse httpResponse = httpclient
-						.execute(new HttpGet(url));
-
-				inputStream = httpResponse.getEntity().getContent();
-
-				if (inputStream != null)
-					result = convertInputStreamToString(inputStream);
-				else
-					result = "Did not work!";
-
-			} catch (Exception e) {
-				Log.d("InputStream", e.getLocalizedMessage());
-			}
-
-			return result;
-		}
-
-	}
-
-	// convert Main inputstream to String
-	private static String convertInputStreamToString(InputStream inputStream)
-			throws IOException {
-		BufferedReader bufferedReader = new BufferedReader(
-				new InputStreamReader(inputStream));
-		String line = "";
-		String result = "";
-		while ((line = bufferedReader.readLine()) != null)
-			result += line;
-
-		inputStream.close();
-		return result;
-
-	}
-
+	// Function to Parse Main Json Stream..
 	public void parseJson(String str) {
 		try {
 			JSONObject objRootJson = new JSONObject(str);
@@ -246,29 +168,31 @@ public class Activity_Home extends Activity implements OnClickListener {
 
 	}
 
-	public void setControls(Model_Json mModelJson) {
+	// Function to set Values..
+	protected void setControls(Model_Json mModelJson) {
 
-		txt_batteryPercent.setText(txt_batteryPercent.getText().toString()
-				+ " " + mModelJson.getCharge().toString());
+		mTxt_BatteryPercent.setText(mTxt_BatteryPercent.getText().toString() + " "
+				+ mModelJson.getCharge().toString());
 
-		txt_batteryDistance.setText(txt_batteryDistance.getText().toString()
-				+ " " + Integer.parseInt(mModelJson.getDistance()) / 1000);
+		mTxt_BatteryDistance.setText(mTxt_BatteryDistance.getText().toString() + " "
+				+ Integer.parseInt(mModelJson.getDistance()) / 1000);
 		convertDate(mModelJson);
 
 	}
 
-	// Function to Convert date...
-	public void convertDate(Model_Json mModelJson) {
+	// Function to Convert date in dd/mm/yyyy HH:mm:ss format...
+	protected void convertDate(Model_Json mModelJson) {
 
 		String strDateTime = mModelJson.getDatetime();
 		String[] Str_Format = strDateTime.split("T");
-		txt_dateTime.setText(txt_dateTime.getText().toString() + " "
-				+ Str_Format[0].trim() + " , "
+		mTxt_DateTime.setText(mTxt_DateTime.getText().toString() + " "
+				+ strDateTime.format(Str_Format[0].trim()) + " , "
 				+ strDateTime.format(Str_Format[1].trim()));
+
 	}
 
 	// Function to Restart Activity...
-	public void onRestart() {
+	protected void onRestart() {
 
 		super.onRestart();
 		Intent i = new Intent(Activity_Home.this, Activity_Home.class);
@@ -289,166 +213,188 @@ public class Activity_Home extends Activity implements OnClickListener {
 		}
 
 	}
-	///////////
-	// Drawing Path..
-		public String makeURL(double sourcelat, double sourcelog, double destlat,
-				double destlog) {
-			StringBuilder urlString = new StringBuilder();
-			urlString.append("http://maps.googleapis.com/maps/api/directions/json");
-			urlString.append("?origin=");// from
-			urlString.append(Double.toString(sourcelat));
-			urlString.append(",");
-			urlString.append(Double.toString(sourcelog));
-			urlString.append("&destination=");// to
-			urlString.append(Double.toString(destlat));
-			urlString.append(",");
-			urlString.append(Double.toString(destlog));
-			urlString.append("&sensor=false&mode=driving&alternatives=true");
-			return urlString.toString();
+
+	// To Initialize Map..
+	protected void initializeMap() {
+		if (mGoogleMap == null) {
+			mGoogleMap = ((MapFragment) getFragmentManager().findFragmentById(
+					R.id.map)).getMap();
+			if (mGoogleMap == null) {
+				Toast.makeText(Activity_Home.this, "Sorry! Map Is Not Created",
+						Toast.LENGTH_SHORT).show();
+			}
+			// Getting Current Location..
+			mGoogleMap.setMyLocationEnabled(true);
+			mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+			Criteria criteria = new Criteria();
+			String bestProvider = mLocationManager.getBestProvider(criteria,
+					true);
+			mLocation = mLocationManager.getLastKnownLocation(bestProvider);
+
+			// Adding Marker...
+			mGoogleMap.addMarker(new MarkerOptions().position(
+					new LatLng(Double.parseDouble(mModelJson.getLatitude()),
+							Double.parseDouble(mModelJson.getLongitude())))
+					.icon(BitmapDescriptorFactory
+							.fromResource(R.drawable.destination)));
+			mGoogleMap.addMarker(new MarkerOptions().position(new LatLng(
+					mLocation.getLatitude(), mLocation.getLongitude())));
+
+			/*
+			 * // Drawing Line... Polyline line = mGoogleMap.addPolyline(new
+			 * PolylineOptions() .add(new LatLng(mLocation.getLatitude(),
+			 * mLocation .getLongitude()), new
+			 * LatLng(Double.parseDouble(mModelJson .getLatitude()), Double
+			 * .parseDouble(mModelJson.getLongitude())))
+			 * .width(5).color(Color.RED));
+			 */
+
+			// Getting URL...
+			String strURL = mMapUtility.makeURL(mLocation.getLatitude(),
+					mLocation.getLongitude(),
+					Double.parseDouble(mModelJson.getLatitude()),
+					Double.parseDouble(mModelJson.getLongitude()));
+			// Calling Asynctask for mapUrl..
+			new ConnectAsyncTask(strURL).execute();
+
 		}
 
-		public static class JSONParser {
+	}
 
-			static InputStream is = null;
-			static JSONObject jObj = null;
-			static String json = "";
+	/*
+	 * // Drawing Path.. protected String makeURL(double sourcelat, double
+	 * sourcelog, double destlat, double destlog) { StringBuilder urlString =
+	 * new StringBuilder();
+	 * urlString.append("http://maps.googleapis.com/maps/api/directions/json");
+	 * urlString.append("?origin=");// from
+	 * urlString.append(Double.toString(sourcelat)); urlString.append(",");
+	 * urlString.append(Double.toString(sourcelog));
+	 * urlString.append("&destination=");// to
+	 * urlString.append(Double.toString(destlat)); urlString.append(",");
+	 * urlString.append(Double.toString(destlog));
+	 * urlString.append("&sensor=false&mode=driving&alternatives=true"); return
+	 * urlString.toString(); }
+	 */
+	/*
+	 * protected static class JSONParser {
+	 * 
+	 * static InputStream is = null; static JSONObject jObj = null; static
+	 * String json = "";
+	 * 
+	 * // constructor public JSONParser() { }
+	 * 
+	 * public String getJSONFromUrl(String url) {
+	 * 
+	 * // Making HTTP request try { // defaultHttpClient DefaultHttpClient
+	 * httpClient = new DefaultHttpClient(); HttpPost httpPost = new
+	 * HttpPost(url);
+	 * 
+	 * HttpResponse httpResponse = httpClient.execute(httpPost); HttpEntity
+	 * httpEntity = httpResponse.getEntity(); is = httpEntity.getContent();
+	 * 
+	 * } catch (UnsupportedEncodingException e) { e.printStackTrace(); } catch
+	 * (ClientProtocolException e) { e.printStackTrace(); } catch (IOException
+	 * e) { e.printStackTrace(); } try { BufferedReader reader = new
+	 * BufferedReader( new InputStreamReader(is, "iso-8859-1"), 8);
+	 * StringBuilder sb = new StringBuilder(); String line = null; while ((line
+	 * = reader.readLine()) != null) { sb.append(line + "\n"); }
+	 * 
+	 * json = sb.toString(); is.close(); } catch (Exception e) {
+	 * Log.e("Buffer Error", "Error converting result " + e.toString()); }
+	 * return json;
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 
-			// constructor
-			public JSONParser() {
+	// A Function to Draw a Path
+	protected void drawPath(String result) {
+		try {
+
+			final JSONObject json = new JSONObject(result);
+			JSONArray routeArray = json.getJSONArray("routes");
+			JSONObject routes = routeArray.getJSONObject(0);
+			JSONObject overviewPolylines = routes
+					.getJSONObject("overview_polyline");
+			String encodedString = overviewPolylines.getString("points");
+			List<LatLng> list = mMapUtility.decodePoly(encodedString);
+
+			for (int z = 0; z < list.size() - 1; z++) {
+				LatLng src = list.get(z);
+				LatLng dest = list.get(z + 1);
+				Polyline line = mGoogleMap.addPolyline(new PolylineOptions()
+						.add(new LatLng(src.latitude, src.longitude),
+								new LatLng(dest.latitude, dest.longitude))
+						.width(6).color(Color.RED).geodesic(true));
 			}
 
-			public String getJSONFromUrl(String url) {
+		} catch (JSONException e) {
 
-				// Making HTTP request
-				try {
-					// defaultHttpClient
-					DefaultHttpClient httpClient = new DefaultHttpClient();
-					HttpPost httpPost = new HttpPost(url);
+		}
+	}
 
-					HttpResponse httpResponse = httpClient.execute(httpPost);
-					HttpEntity httpEntity = httpResponse.getEntity();
-					is = httpEntity.getContent();
+	/*
+	 * private List<LatLng> decodePoly(String encoded) {
+	 * 
+	 * List<LatLng> poly = new ArrayList<LatLng>(); int index = 0, len =
+	 * encoded.length(); int lat = 0, lng = 0;
+	 * 
+	 * while (index < len) { int b, shift = 0, result = 0; do { b =
+	 * encoded.charAt(index++) - 63; result |= (b & 0x1f) << shift; shift += 5;
+	 * } while (b >= 0x20); int dlat = ((result & 1) != 0 ? ~(result >> 1) :
+	 * (result >> 1)); lat += dlat;
+	 * 
+	 * shift = 0; result = 0; do { b = encoded.charAt(index++) - 63; result |=
+	 * (b & 0x1f) << shift; shift += 5; } while (b >= 0x20); int dlng = ((result
+	 * & 1) != 0 ? ~(result >> 1) : (result >> 1)); lng += dlng;
+	 * 
+	 * LatLng p = new LatLng((((double) lat / 1E5)), (((double) lng / 1E5)));
+	 * poly.add(p); }
+	 * 
+	 * return poly; }
+	 */
 
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-				} catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+	private class ConnectAsyncTask extends AsyncTask<Void, Void, String> {
+		private ProgressDialog mProgressRoute;
+		String url;
+
+		ConnectAsyncTask(String urlPass) {
+			url = urlPass;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+			super.onPreExecute();
+			mProgressRoute = new ProgressDialog(Activity_Home.this);
+			mProgressRoute.setTitle("Route Loader");
+			mProgressRoute.setMessage("Fetching route, Please wait...");
+			mProgressRoute.setIndeterminate(true);
+			mProgressRoute.show();
+		}
+
+		@Override
+		protected String doInBackground(Void... params) {
+			JSONParser jParser = new JSONParser();
+			String json = jParser.getJSONFromUrl(url);
+			return json;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			if (mProgressRoute != null) {
+				if (mProgressRoute.isShowing()) {
+					mProgressRoute.dismiss();
+
 				}
-				try {
-					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(is, "iso-8859-1"), 8);
-					StringBuilder sb = new StringBuilder();
-					String line = null;
-					while ((line = reader.readLine()) != null) {
-						sb.append(line + "\n");
-					}
-
-					json = sb.toString();
-					is.close();
-				} catch (Exception e) {
-					Log.e("Buffer Error", "Error converting result " + e.toString());
-				}
-				return json;
-
 			}
-
-		}
-
-		public void drawPath(String result) {
-
-			try {
-
-				final JSONObject json = new JSONObject(result);
-				JSONArray routeArray = json.getJSONArray("routes");
-				JSONObject routes = routeArray.getJSONObject(0);
-				JSONObject overviewPolylines = routes
-						.getJSONObject("overview_polyline");
-				String encodedString = overviewPolylines.getString("points");
-				List<LatLng> list = decodePoly(encodedString);
-
-				for (int z = 0; z < list.size() - 1; z++) {
-					LatLng src = list.get(z);
-					LatLng dest = list.get(z + 1);
-					Polyline line = googleMap.addPolyline(new PolylineOptions()
-							.add(new LatLng(src.latitude, src.longitude),
-									new LatLng(dest.latitude, dest.longitude))
-							.width(2).color(Color.BLUE).geodesic(true));
-				}
-
-			} catch (JSONException e) {
-
+			if (result != null) {
+				drawPath(result);
 			}
 		}
-
-		private List<LatLng> decodePoly(String encoded) {
-
-			List<LatLng> poly = new ArrayList<LatLng>();
-			int index = 0, len = encoded.length();
-			int lat = 0, lng = 0;
-
-			while (index < len) {
-				int b, shift = 0, result = 0;
-				do {
-					b = encoded.charAt(index++) - 63;
-					result |= (b & 0x1f) << shift;
-					shift += 5;
-				} while (b >= 0x20);
-				int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-				lat += dlat;
-
-				shift = 0;
-				result = 0;
-				do {
-					b = encoded.charAt(index++) - 63;
-					result |= (b & 0x1f) << shift;
-					shift += 5;
-				} while (b >= 0x20);
-				int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
-				lng += dlng;
-
-				LatLng p = new LatLng((((double) lat / 1E5)),
-						(((double) lng / 1E5)));
-				poly.add(p);
-			}
-
-			return poly;
-		}
-
-		private class connectAsyncTask extends AsyncTask<Void, Void, String> {
-			private ProgressDialog progressDialog;
-			String url;
-
-			connectAsyncTask(String urlPass) {
-				url = urlPass;
-			}
-
-			@Override
-			protected void onPreExecute() {
-				// TODO Auto-generated method stub
-				super.onPreExecute();
-				progressDialog = new ProgressDialog(Activity_Home.this);
-				progressDialog.setMessage("Fetching route, Please wait...");
-				progressDialog.setIndeterminate(true);
-				progressDialog.show();
-			}
-
-			@Override
-			protected String doInBackground(Void... params) {
-				JSONParser jParser = new JSONParser();
-				String json = jParser.getJSONFromUrl(url);
-				return json;
-			}
-
-			@Override
-			protected void onPostExecute(String result) {
-				super.onPostExecute(result);
-				progressDialog.hide();
-				if (result != null) {
-					drawPath(result);
-				}
-			}
-		}
+	}
 
 }
