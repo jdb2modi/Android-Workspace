@@ -1908,14 +1908,15 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f02003a;
         public static final int back=0x7f02003b;
         public static final int backicon=0x7f02003c;
-        public static final int home_page_icon=0x7f02003d;
-        public static final int ic_launcher=0x7f02003e;
-        public static final int menuitems=0x7f02003f;
-        public static final int mybutton=0x7f020040;
-        public static final int mytextview=0x7f020041;
-        public static final int news_icon=0x7f020042;
-        public static final int newsdetails=0x7f020043;
-        public static final int shape=0x7f020044;
+        public static final int details=0x7f02003d;
+        public static final int home_page_icon=0x7f02003e;
+        public static final int ic_launcher=0x7f02003f;
+        public static final int menuitems=0x7f020040;
+        public static final int mybutton=0x7f020041;
+        public static final int mytextview=0x7f020042;
+        public static final int news_icon=0x7f020043;
+        public static final int newsdetails=0x7f020044;
+        public static final int shape=0x7f020045;
     }
     public static final class id {
         public static final int action_bar=0x7f090040;

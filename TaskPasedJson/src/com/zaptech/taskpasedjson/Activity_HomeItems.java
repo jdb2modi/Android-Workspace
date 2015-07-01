@@ -47,6 +47,13 @@ public class Activity_HomeItems extends Activity implements OnClickListener {
 		});
 	}
 
+	public void onBackPressed() {
+
+		super.onBackPressed();
+		finish();
+
+	}
+
 	public void init() {
 		listHomeItems = (ListView) findViewById(R.id.list_HomeItems);
 		dbHelper = new DBHelper(Activity_HomeItems.this);

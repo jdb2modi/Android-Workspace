@@ -25,6 +25,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -49,6 +51,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 	TextView txt_Json, txt_welcome;
 	ListView listview_MenuItems;
 	DBHelper dbHelper;
+	SharedPreferences shred;
+	int parsed = 0;
 
 	// Model Objects..
 	JSON model_JSON;
@@ -65,6 +69,8 @@ public class HomeActivity extends Activity implements OnClickListener {
 	// FOR Sliding Drawer..
 	private SlidingDrawer drawer;
 	private Button handle;
+
+	// ArrayLists
 	ArrayAdapter<String> adptDataItems;
 	ArrayList<Model_NewsItem_Items> arraylist_NewsItems_Items;
 	ArrayList<Model_NewsItem> arraylist_NewsItems;
@@ -77,15 +83,22 @@ public class HomeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
-		new GetData().execute();
 		manageDrawer();
+		if (shred.contains("PARSED")) {
+			Editor editor = shred.edit();
+			editor.putInt("PARSED", 1);
+			editor.commit();
+
+		} else {
+			new GetData().execute();
+		}
 
 		listview_MenuItems.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
+
 				String strTemp = String.valueOf(dbHelper.arrayListMenuItems
 						.get(position).item_name);
 				if (strTemp.equals("homeItems")) {
@@ -138,12 +151,15 @@ public class HomeActivity extends Activity implements OnClickListener {
 		adptDataItems = new ArrayAdapter<String>(HomeActivity.this,
 				android.R.layout.simple_list_item_1, getResources()
 						.getStringArray(R.array.arrayDataItems));
-		listview_MenuItems.setAdapter(adptDataItems);
+
 		arraylist_NewsItems_Items = new ArrayList<Model_NewsItem_Items>();
 		arraylist_NewsItems = new ArrayList<Model_NewsItem>();
+
+		shred = getSharedPreferences("Parsed", MODE_PRIVATE);// CHECK FOR
+																// PARSING DONE
 	}
 
-	// //////////////////////////ASYNKTASK///////////////////////////////////
+	// //////////////////ASYNKTASK TO GET JSON STREAM///////////////////////////
 	class GetData extends AsyncTask<Void, Void, Void> {
 		String str;
 
@@ -169,8 +185,11 @@ public class HomeActivity extends Activity implements OnClickListener {
 			}
 
 			if (str != null) {
+				// /IF Parsing completes
+
 				JsonParsing(str);
 				getJsonKeys(str);
+
 			} else {
 				Toast.makeText(HomeActivity.this,
 						"ERROR : Stream did not initialized.",
@@ -181,7 +200,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	// ////////////////////////ASYNKTASK_COMPLETES///////////////////////////////////
+	// ////////////////////////ASYNKTASK_COMPLETES/////////////////////////
 	public String GET(String str) {
 		InputStream inputstream;
 		String strConverted = "";
@@ -219,6 +238,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		return result;
 	}
 
+	// ////PARSING DONE HERE...
 	public void JsonParsing(String str) {
 		try {
 
@@ -346,10 +366,6 @@ public class HomeActivity extends Activity implements OnClickListener {
 				model_NewsItem.setTabPosition(jNewsItemSub
 						.getString("tabPosition"));
 
-				/*
-				 * System.err.println("/////////////////////////////////" +
-				 * jNewsItemSub.getString("tabPosition"));
-				 */
 				model_NewsItem.setTabText(jNewsItemSub.getString("tabText"));
 				model_NewsItem.setTabIcon(jNewsItemSub.getString("tabIcon"));
 				model_NewsItem.setDateChanged(jNewsItemSub
@@ -402,7 +418,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 					model_NewsItem_Items.setListIcon(jObjItems
 							.getString("listIcon"));
 
+					// /INSERTING...
 					insertNewsItems_Items();
+
 					// Parsing for NewsImage in NewsItems
 					JSONObject jObjNewsImage = jObjItems
 							.getJSONObject("newsImage");
@@ -428,13 +446,18 @@ public class HomeActivity extends Activity implements OnClickListener {
 					model_NewsImage.setNewsImageId(Integer
 							.parseInt(jObjNewsImage.getString("Id")));
 					model_NewsImage.setName(jObjNewsImage.getString("name"));
+
+					// INSERTING...
 					insertNewsImages();
+
 					// /Parsing HeadLine...
 					JSONObject jObjHeadLine = jObjItems
 							.getJSONObject("headline");
 					model_HeadLine.setTheString(jObjHeadLine
 							.getString("theString"));
 					model_NewsItem_Items.setModel_headline(model_HeadLine);
+
+					// INSERTING...
 					insertHeadLine();
 
 					// Parsing Description...
@@ -444,7 +467,10 @@ public class HomeActivity extends Activity implements OnClickListener {
 							.getString("theString"));
 					model_NewsItem_Items
 							.setModel_description(model_Description);
+
+					// INSERTING..
 					insertDescription();
+
 					// Parsing DescriptionHTML
 					JSONObject jObjDescriptionHTML = jObjItems
 							.getJSONObject("descriptionHTML");
@@ -453,6 +479,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 							.toString());
 					model_NewsItem_Items
 							.setModel_descriptionHTML(model_DescriptionHTML);
+					// INSERTING..
 					insertDescriptionHTML();
 				}
 
@@ -462,7 +489,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 			e.printStackTrace();
 		}
-
+		parsed = 1;
 	}
 
 	// ///////////////////INSERT PANEL HERE/////////////////////
@@ -549,6 +576,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 	}
 
 	// /////////////////MANAGE_DRAWER_PANEL_COMPLETES////////////////////
+
 	class DisplayMenuItems extends BaseAdapter {
 		Context context;
 
@@ -628,7 +656,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 				txt_welcome.setText("");
 			}
 			if (txt_welcome.getText().equals("-")) {
-				//txt_welcome.setVisibility(1);
+				// txt_welcome.setVisibility(1);
 			}
 			break;
 
@@ -639,47 +667,3 @@ public class HomeActivity extends Activity implements OnClickListener {
 	}
 
 }
-
-/*
- * public void insertHomeItmes() { dbHelper.insertHomeItems(
- * Integer.parseInt(model_HomeItems.getHomeItem_id()),
- * model_HomeItems.getHomeItem_includeImageInLayout(),
- * model_HomeItems.getHomeItem_includeTitleInLayout(),
- * model_HomeItems.getHomeItem_includeTextInLayout(),
- * model_HomeItems.getHomeItem_imagePosition(),
- * model_HomeItems.getHomeItem_titlePosition(),
- * model_HomeItems.getHomeItem_textPosition(),
- * model_HomeItems.getHomeItem_title(), model_HomeItems.getHomeItem_text(),
- * model_HomeItems.getHomeItem_textHTML(),
- * Integer.parseInt(model_HomeItems.getHomeItem_tabPosition()),
- * model_HomeItems.getHomeItem_tabText(), model_HomeItems.getHomeItem_tabIcon(),
- * model_HomeItems.getHomeItem_dateChanged(),
- * model_HomeItems.getHomeItem_isDirty(),
- * model_HomeItems.getHomeItem_tempUniqueUID(),
- * Integer.parseInt(model_HomeItems.getHomeItem_Type()),
- * model_HomeItems.getHomeItem_useTabIcon(),
- * Integer.parseInt(model_HomeItems.getHomeItem_sortPosition()),
- * model_HomeItems.getHomeItem_archived(),
- * model_HomeItems.getHomeItem_listIcon()); Toast.makeText(HomeActivity.this,
- * "Records Inserted..!", Toast.LENGTH_SHORT).show(); }
- */
-
-/*
- * public void insertHomeItemsImage() { dbHelper.insertHomeItemImage(
- * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Id()),
- * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Width()),
- * Integer.parseInt(model_HomeItemImage.getHomeItemImage_Height()),
- * model_HomeItemImage.getHomeItemImage_OriginalName(),
- * model_HomeItemImage.getHomeItemImage_LocationLocal(),
- * model_HomeItemImage.getHomeItemImage_Type(),
- * model_HomeItemImage.getHomeItemImage_BaseURL(),
- * model_HomeItemImage.getHomeItemImage_mimeType(),
- * model_HomeItemImage.getHomeItemImage__Base64Version(),
- * model_HomeItemImage.getHomeItemImage_IsDirty(),
- * model_HomeItemImage.getHomeItemImage_Archived(),
- * model_HomeItemImage.getHomeItemImage_Name(),
- * Integer.parseInt(model_HomeItems.getHomeItem_id()));
- * Toast.makeText(HomeActivity.this, "Images Records Inserted..!",
- * Toast.LENGTH_SHORT).show(); }
- */
-

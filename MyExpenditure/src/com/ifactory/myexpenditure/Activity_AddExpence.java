@@ -86,8 +86,10 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 					"NULL", "NULL", Integer.parseInt(ed_ExpenceAmount.getText()
 							.toString()), String.valueOf(ed_ExpenceDescription
 							.getText().toString()));
+			ed_ExpenceDescription.requestFocus();
+			clearInputs();
 			Toast.makeText(Activity_AddExpence.this,
-					"Expence Successfully Added", Toast.LENGTH_SHORT).show();
+					"Expence Successfully Added", 500).show();
 			break;
 		case R.id.btn_exitFromAddExpence:
 			Editor edit = sp.edit();
@@ -161,6 +163,14 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 	private void showDate(int year, int month, int day) {
 		txt_ExpenseDate.setText(new StringBuilder().append(day).append("/")
 				.append(month).append("/").append(year));
+	}
+
+	public void clearInputs() {
+		spin_ExpenceCategory.setSelected(false);
+		spin_ExpenceCurrency.setSelected(false);
+		spin_ExpenceMode.setSelected(false);
+		ed_ExpenceDescription.setText("");
+		ed_ExpenceAmount.setText("");
 	}
 
 }

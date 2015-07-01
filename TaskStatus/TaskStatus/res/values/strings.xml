@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaskStatus</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strUrl">https://dl.dropboxusercontent.com/u/7409975/findmybike.json</string>
+    <string name="strDialogTitle">Stream Loader</string>
+    <string name="strDialogMessage">Please wait, Loading Stream...</string>
+    <string name="strBatteryStatus">Percentage : </string>
+    <string name="strBatteryDistance">Distance : </string>
+    <string name="strDateTime">Date/Time :  </string>
+
+    <color name="colorSkyBlue">#330000ff</color>
+    <color name="colorLayoutBody">#22345456</color>
+    <color name="colorWhite">#ffffff</color>
+
+</resources>

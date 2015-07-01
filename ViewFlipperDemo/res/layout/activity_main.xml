@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ViewFlipper
+        android:id="@+id/vf1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- Layout 1 for 1st Screen -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:text="This Is Screen 1"
+                android:textColor="#191975"
+                android:textSize="25dp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/one" />
+        </LinearLayout>
+
+        <!-- Layout 2 for 2nd Screen -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:text="This Is Screen 2"
+                android:textColor="#191975"
+                android:textSize="25dp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/two" />
+        </LinearLayout>
+        <!-- Layout 3 for 1st Screen -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:text="This Is Screen 3"
+                android:textColor="#191975"
+                android:textSize="25dp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img3"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/three" />
+        </LinearLayout>
+        <!-- Layout 4 for 1st Screen -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:text="This Is Screen 4"
+                android:textColor="#191975"
+                android:textSize="25dp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img4"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/four" />
+        </LinearLayout>
+    </ViewFlipper>
+
+</RelativeLayout>

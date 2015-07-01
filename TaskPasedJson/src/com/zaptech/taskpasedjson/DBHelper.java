@@ -789,7 +789,7 @@ public class DBHelper extends SQLiteOpenHelper {
 						Model_Description model_description = new Model_Description();
 						model_description
 								.setTheString(cursor2.getString(cursor2
-										.getColumnIndex(COL_HEADLINE_theString)));
+										.getColumnIndex(COL_Description_theString)));// //
 						model_newsItem_Items
 								.setModel_description(model_description);
 
@@ -807,7 +807,7 @@ public class DBHelper extends SQLiteOpenHelper {
 						Model_DescriptionHMTL model_decriptionHtml = new Model_DescriptionHMTL();
 						model_decriptionHtml
 								.setTheString(cursor3.getString(cursor3
-										.getColumnIndex(COL_HEADLINE_theString)));
+										.getColumnIndex(COL_DESCRIPTION_HTML_theString)));// ///
 						model_newsItem_Items
 								.setModel_descriptionHTML(model_decriptionHtml);
 
