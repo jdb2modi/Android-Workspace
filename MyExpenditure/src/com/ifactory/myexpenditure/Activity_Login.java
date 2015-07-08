@@ -18,15 +18,28 @@ public class Activity_Login extends Activity implements OnClickListener {
 	EditText edPassword;
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
-	public static final String PASSWORD = "password";
+	public static final String CODE = "code";
 	Button btn_Login, btn_Exit;
 	Intent intent;
+	DBHelper dbHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity__login);
 		init();
+		savePreferences();
+		checkPref();
+	}
+
+	public void savePreferences() {
+
+		if (!sp.contains(CODE)) {
+			Editor editor = sp.edit();
+			editor.putString(CODE, "0");
+			editor.commit();
+
+		}
 
 	}
 
@@ -37,31 +50,50 @@ public class Activity_Login extends Activity implements OnClickListener {
 		btn_Login.setOnClickListener(this);
 		btn_Exit = (Button) findViewById(R.id.btn_exitFromLogin);
 		btn_Exit.setOnClickListener(this);
+		dbHelper = new DBHelper(Activity_Login.this);
 	}
 
-	public void savePreferences() {
+	public void checkPref() {
+		if (sp.contains(CODE)) {
+			String strCode = sp.getString(CODE, "");
+			if (strCode.equals("1")) {
+				String myPass = dbHelper.checkPassword().toString();
+				if (edPassword.getText().toString().equals(myPass)) {
+					finish();
+					intent = new Intent(Activity_Login.this,
+							Activity_Home.class);
+					startActivity(intent);
+				} else {
+					Toast.makeText(Activity_Login.this, "Wrong Password",
+							Toast.LENGTH_LONG).show();
+					Toast.makeText(Activity_Login.this, "Wrong Password",
+							Toast.LENGTH_LONG).show();
+				}
 
-		Editor editor = sp.edit();
-		editor.putString(PASSWORD, edPassword.getText().toString());
-		editor.commit();
-
+			} else {
+				if (edPassword.getText().toString().equals("12345")) {
+					finish();
+					intent = new Intent(Activity_Login.this,
+							Activity_Home.class);
+					startActivity(intent);
+				} else {
+					Toast.makeText(Activity_Login.this,
+							"Current Security Code is 12345", Toast.LENGTH_LONG).show();
+					Toast.makeText(Activity_Login.this,
+							"Your Password is 12345", Toast.LENGTH_LONG).show();
+				}
+			}
+		}
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_authenticateNow:
-			savePreferences();
-			Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT)
-					.show();
-			finish();
-			intent = new Intent(Activity_Login.this, Activity_Home.class);
-			startActivity(intent);
+			checkPref();
 			break;
 		case R.id.btn_exitFromLogin:
-			Editor edit = sp.edit();
-			edit.clear();
-			edit.commit();
+
 			Toast.makeText(getApplicationContext(), "Exiting...",
 					Toast.LENGTH_SHORT).show();
 			AlertDialog.Builder alert = new AlertDialog.Builder(

@@ -2,7 +2,7 @@ package com.zaptech.TaskGson2;
 
 public class Model_battery {
 	String charge;
-
+	String distance;
 	public String getCharge() {
 		return charge;
 	}
@@ -19,5 +19,5 @@ public class Model_battery {
 		this.distance = distance;
 	}
 
-	String distance;
+	
 }

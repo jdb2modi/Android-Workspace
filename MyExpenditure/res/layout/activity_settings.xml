@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
-    android:background="#110072B2" >
+    android:background="#110072B2"
+    tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
         android:id="@+id/rel_settingsHeader"
@@ -13,7 +13,7 @@
 
         <ImageView
             android:id="@+id/img_logoOnSettings"
-          android:layout_width="110dp"
+            android:layout_width="110dp"
             android:layout_height="50dp"
             android:background="@drawable/itfactory" />
 
@@ -54,10 +54,9 @@
         android:textStyle="bold" />
 
     <RelativeLayout
-        android:id="@+id/rel_homeContent"
+        android:id="@+id/rel_settingsContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_HomeHeader"
         android:layout_centerInParent="true" >
 
         <TextView

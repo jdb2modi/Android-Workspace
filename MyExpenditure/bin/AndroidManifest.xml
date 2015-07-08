@@ -61,6 +61,10 @@
             android:name=".Activity_Settings"
             android:label="@string/title_activity_activity__settings" >
         </activity>
+        <activity
+            android:name=".Activity_ChangeCode"
+            android:label="@string/title_activity_activity__change_code" >
+        </activity>
     </application>
 
 </manifest>

@@ -34,7 +34,7 @@ public class Activity_Settings extends Activity implements OnClickListener {
 		btn_back.setOnClickListener(this);
 		btn_clearHistory = (Button) findViewById(R.id.btn_clearAllHistory);
 		btn_clearHistory.setOnClickListener(this);
-		btn_changeCode = (Button) findViewById(R.id.btn_setAuthentication);
+		btn_changeCode = (Button) findViewById(R.id.btn_changeCode);
 		btn_changeCode.setOnClickListener(this);
 		btn_setAuthentication = (Button) findViewById(R.id.btn_setAuthentication);
 		btn_setAuthentication.setOnClickListener(this);
@@ -80,6 +80,11 @@ public class Activity_Settings extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.btn_changeCode:
+			finish();
+			intent = new Intent(Activity_Settings.this,
+					Activity_ChangeCode.class);
+			startActivity(intent);
+
 			break;
 		case R.id.btn_clearAllHistory:
 			AlertDialog.Builder alertDeleteHistory = new AlertDialog.Builder(

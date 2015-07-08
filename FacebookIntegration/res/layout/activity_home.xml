@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/btn_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Login To Facebook" />
+
+    <Button
+        android:id="@+id/btn_PostToWall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Login"
+        android:layout_centerInParent="true"
+        android:text="Post To Wall"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_PostToWall"
+        android:layout_centerInParent="true"
+        android:text="Logout"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_ShowTokens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Logout"
+        android:layout_centerInParent="true"
+        android:text="Show Tokens"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_ShowProfileInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ShowTokens"
+        android:layout_centerInParent="true"
+        android:text="Show Profile Information"
+        android:visibility="invisible" />
+
+</RelativeLayout>

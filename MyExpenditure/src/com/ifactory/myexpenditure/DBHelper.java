@@ -15,6 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	public static final String DBNAME = "myexpenditure.db";
 	public static final String TBEXPENCE = "tbExpense";
+	public static final String TBPASSWORD = "tbPassword";
 
 	public static final String COL_EXPENSEID = "ExpenseId";
 	public static final String COL_EXPENSECATEGORY = "ExpenseCategory";
@@ -24,6 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String COL_TRANSACTIONID = "TransactionId";
 	public static final String COL_EXPENSEAMOUNT = "ExpenceAmount";
 	public static final String COL_DESCRIPTION = "Description";
+
+	public static final String COL_PASSWORD = "Password";
 
 	SQLiteDatabase mDatabase;
 	ContentValues mContent;
@@ -43,7 +46,10 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ " VARCHAR," + COL_CHEQUENO + " VARCHAR," + COL_TRANSACTIONID
 				+ " VARHCAR," + COL_EXPENSEAMOUNT + " INTEGER,"
 				+ COL_DESCRIPTION + " VARCHAR);";
+		String CREATE_PASSTABLE = "CREATE TABLE " + TBPASSWORD + "( "
+				+ COL_PASSWORD + " VARCHAR PRIMARY KEY);";
 		db.execSQL(CREATE_TABLE);
+		db.execSQL(CREATE_PASSTABLE);
 	}
 
 	@Override
@@ -75,6 +81,42 @@ public class DBHelper extends SQLiteOpenHelper {
 		mContent.put(COL_DESCRIPTION, strDescription);
 		mDatabase.insert(TBEXPENCE, null, mContent);
 		mDatabase.close();
+	}
+
+	public void updatePassword(String Password) {
+		mDatabase = getDB();
+		mContent = getContentValues();
+		mContent.put(COL_PASSWORD, Password);
+		mDatabase.update(TBPASSWORD, mContent, null, null);
+
+		mDatabase.close();
+	}
+
+	public void insertPassword() {
+		mDatabase = getDB();
+		mContent = getContentValues();
+		mContent.put(COL_PASSWORD, "12345");
+		mDatabase.insert(TBPASSWORD, null, mContent);
+		mDatabase.close();
+	}
+
+	public String checkPassword() {
+		mDatabase = getDB();
+		String pass = "";
+		mContent = getContentValues();
+		String sql = "select * from " + TBPASSWORD;
+		Cursor cursor = mDatabase.rawQuery(sql, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					pass = cursor
+							.getString(cursor.getColumnIndex(COL_PASSWORD));
+				} while (cursor.moveToNext());
+			}
+		}
+
+		mDatabase.close();
+		return pass;
 	}
 
 	public ArrayList<ExpenceModel> displayHistory() {

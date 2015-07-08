@@ -22,7 +22,7 @@
         android:layout_gravity="left"
         android:content="@+id/content"
         android:handle="@+id/handle"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/handle"

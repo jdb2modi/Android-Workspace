@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_Home extends Activity implements OnClickListener {
-	Button btn_logout, btn_addExpence, btn_history, btn_banking,btn_settings;
+	Button btn_logout, btn_addExpence, btn_history, btn_banking, btn_settings;
 	TextView txt_dailyExpence;
-	SharedPreferences sp;
+
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";
+	public static final String CODE = "code";
+	DBHelper dbHelper;
 	Intent intent;
 
 	@Override
@@ -28,20 +30,25 @@ public class Activity_Home extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_home);
 		init();
 
+		String strTemp = dbHelper.checkPassword();
+		if (strTemp == null || strTemp.equals("")) {
+			dbHelper.insertPassword();
+		}
 	}
 
 	public void init() {
+		dbHelper = new DBHelper(this);
 		btn_logout = (Button) findViewById(R.id.btn_homeExit);
 		btn_logout.setOnClickListener(this);
 		btn_addExpence = (Button) findViewById(R.id.btn_addExpence);
 		btn_addExpence.setOnClickListener(this);
 		btn_banking = (Button) findViewById(R.id.btn_banking);
 		btn_banking.setOnClickListener(this);
-		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
+
 		btn_history = (Button) findViewById(R.id.btn_history);
 		btn_history.setOnClickListener(this);
 		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
-		btn_settings=(Button)findViewById(R.id.btn_Settings);
+		btn_settings = (Button) findViewById(R.id.btn_Settings);
 		btn_settings.setOnClickListener(this);
 	}
 
@@ -50,9 +57,6 @@ public class Activity_Home extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btn_homeExit:
 
-			Editor edit = sp.edit();
-			edit.clear();
-			edit.commit();
 			Toast.makeText(getApplicationContext(), "Exiting...",
 					Toast.LENGTH_SHORT).show();
 			AlertDialog.Builder alert = new AlertDialog.Builder(

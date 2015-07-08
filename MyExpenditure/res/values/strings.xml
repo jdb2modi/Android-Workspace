@@ -206,5 +206,6 @@
     <string name="title_activity_activity__history">Activity_History</string>
     <string name="title_activity_activity__view_history">Activity_ViewHistory</string>
     <string name="title_activity_activity__settings">Activity_Settings</string>
+    <string name="title_activity_activity__change_code">Activity_ChangeCode</string>
 
 </resources>

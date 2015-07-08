@@ -11,18 +11,17 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import android.graphics.Color;
+import android.location.Location;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.zaptech.maptask.Activity_Home;
+import com.zaptech.maptask.Models.Model_Json;
 
 public class MapUtility {
+	
 	public List<LatLng> decodePoly(String encoded) {
 
 		List<LatLng> poly = new ArrayList<LatLng>();
@@ -56,55 +55,58 @@ public class MapUtility {
 
 		return poly;
 	}
+
 	// A function to Parse Json Stream..
-		public String GET(String url) {
-			InputStream inputStream = null;
-			String result = "";
-			try {
-				HttpClient httpclient = new DefaultHttpClient();
-				HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-				inputStream = httpResponse.getEntity().getContent();
-				if (inputStream != null)
-					result = convertInputStreamToString(inputStream);
-				else
-					result = "Did not work!";
+	public String GET(String url) {
+		InputStream inputStream = null;
+		String result = "";
+		try {
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+			inputStream = httpResponse.getEntity().getContent();
+			if (inputStream != null)
+				result = convertInputStreamToString(inputStream);
+			else
+				result = "Did not work!";
 
-			} catch (Exception e) {
-				Log.d("InputStream", e.getLocalizedMessage());
-			}
-
-			return result;
+		} catch (Exception e) {
+			Log.d("InputStream", e.getLocalizedMessage());
 		}
 
-		// convert Main inputstream to String
-		private static String convertInputStreamToString(InputStream inputStream)
-				throws IOException {
-			BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(inputStream));
-			String line = "";
-			String result = "";
-			while ((line = bufferedReader.readLine()) != null)
-				result += line;
+		return result;
+	}
 
-			inputStream.close();
-			return result;
+	// convert Main inputstream to String
+	private static String convertInputStreamToString(InputStream inputStream)
+			throws IOException {
+		BufferedReader bufferedReader = new BufferedReader(
+				new InputStreamReader(inputStream));
+		String line = "";
+		String result = "";
+		while ((line = bufferedReader.readLine()) != null)
+			result += line;
 
-		}
-		// Drawing Path..
-		public String makeURL(double sourcelat, double sourcelog,
-				double destlat, double destlog) {
-			StringBuilder urlString = new StringBuilder();
-			urlString.append("http://maps.googleapis.com/maps/api/directions/json");
-			urlString.append("?origin=");// from
-			urlString.append(Double.toString(sourcelat));
-			urlString.append(",");
-			urlString.append(Double.toString(sourcelog));
-			urlString.append("&destination=");// to
-			urlString.append(Double.toString(destlat));
-			urlString.append(",");
-			urlString.append(Double.toString(destlog));
-			urlString.append("&sensor=false&mode=driving&alternatives=true");
-			return urlString.toString();
-		}
+		inputStream.close();
+		return result;
+
+	}
+
+	// Drawing Path..
+	public String makeURL(double sourcelat, double sourcelog, double destlat,
+			double destlog) {
+		StringBuilder urlString = new StringBuilder();
+		urlString.append("http://maps.googleapis.com/maps/api/directions/json");
+		urlString.append("?origin=");// from
+		urlString.append(Double.toString(sourcelat));
+		urlString.append(",");
+		urlString.append(Double.toString(sourcelog));
+		urlString.append("&destination=");// to
+		urlString.append(Double.toString(destlat));
+		urlString.append(",");
+		urlString.append(Double.toString(destlog));
+		urlString.append("&sensor=false&mode=driving&alternatives=true");
+		return urlString.toString();
+	}
+	
 
 }

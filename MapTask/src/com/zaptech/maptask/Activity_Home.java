@@ -22,9 +22,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -172,11 +174,11 @@ public class Activity_Home extends Activity implements OnClickListener {
 	// Function to set Values..
 	protected void setControls(Model_Json mModelJson) {
 
-		mTxt_BatteryPercent.setText(mTxt_BatteryPercent.getText().toString() + " "
-				+ mModelJson.getCharge().toString());
+		mTxt_BatteryPercent.setText(mTxt_BatteryPercent.getText().toString()
+				+ " " + mModelJson.getCharge().toString());
 
-		mTxt_BatteryDistance.setText(mTxt_BatteryDistance.getText().toString() + " "
-				+ Integer.parseInt(mModelJson.getDistance()) / 1000);
+		mTxt_BatteryDistance.setText(mTxt_BatteryDistance.getText().toString()
+				+ " " + Integer.parseInt(mModelJson.getDistance()) / 1000);
 		convertDate(mModelJson);
 
 	}
@@ -234,6 +236,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 			mLocation = mLocationManager.getLastKnownLocation(bestProvider);
 
 			// Adding Marker...
+
 			mGoogleMap.addMarker(new MarkerOptions().position(
 					new LatLng(Double.parseDouble(mModelJson.getLatitude()),
 							Double.parseDouble(mModelJson.getLongitude())))
@@ -258,7 +261,6 @@ public class Activity_Home extends Activity implements OnClickListener {
 					Double.parseDouble(mModelJson.getLongitude()));
 			// Calling Asynctask for mapUrl..
 			new ConnectAsyncTask(strURL).execute();
-
 		}
 
 	}
@@ -336,6 +338,40 @@ public class Activity_Home extends Activity implements OnClickListener {
 		}
 	}
 
+	// Function to calculate Distance between two Locations..
+	public void calculateDistance() {
+		double distance;
+		Location source = new Location("source");
+		source.setLatitude(mLocation.getLatitude());
+		source.setLongitude(mLocation.getLongitude());
+		Location destination = new Location("destination");
+		destination.setLatitude(Double.parseDouble(mModelJson.getLatitude()));
+		destination.setLongitude(Double.parseDouble(mModelJson.getLongitude()));
+		distance = source.distanceTo(destination);
+		Toast.makeText(Activity_Home.this, "Distance : " + distance,
+				Toast.LENGTH_LONG).show();
+	}
+
+	public void autoUpdateLocation() {
+		if (mLocation != null) {
+			mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+					new LatLng(mLocation.getLatitude(), mLocation
+							.getLongitude()), 13));
+
+			CameraPosition cameraPosition = new CameraPosition.Builder()
+					.target(new LatLng(mLocation.getLatitude(), mLocation
+							.getLongitude())) // Sets the center of the map to
+												// location user
+					.zoom(17) // Sets the zoom
+					.bearing(90) // Sets the orientation of the camera to east
+					.tilt(40) // Sets the tilt of the camera to 30 degrees
+					.build(); // Creates a CameraPosition from the builder
+			mGoogleMap.animateCamera(CameraUpdateFactory
+					.newCameraPosition(cameraPosition));
+
+		}
+	}
+
 	/*
 	 * private List<LatLng> decodePoly(String encoded) {
 	 * 
@@ -394,6 +430,8 @@ public class Activity_Home extends Activity implements OnClickListener {
 			}
 			if (result != null) {
 				drawPath(result);
+				calculateDistance();
+				//autoUpdateLocation();
 			}
 		}
 	}
