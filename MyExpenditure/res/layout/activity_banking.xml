@@ -9,12 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <ImageView
-            android:id="@+id/img_logoOnBanking"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:background="@drawable/itfactory" />
-
         <Button
             android:id="@+id/btn_logoutOnBanking"
             android:layout_width="wrap_content"

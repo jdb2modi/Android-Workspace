@@ -32,11 +32,15 @@ public class MainActivity extends Activity {
 
 		int NumberOfPages = 5;
 
-		int[] res = { android.R.drawable.ic_dialog_alert,
-				android.R.drawable.ic_menu_camera,
-				android.R.drawable.ic_menu_compass,
-				android.R.drawable.ic_menu_directions,
-				android.R.drawable.ic_menu_gallery };
+		/*int[] res = { R.layout.l1, R.layout.l2, R.layout.l3, R.layout.l4,
+				R.layout.l5 };*/
+		
+		  int[] res = { android.R.drawable.ic_dialog_alert,
+		  android.R.drawable.ic_menu_camera,
+		  android.R.drawable.ic_menu_compass,
+		  android.R.drawable.ic_menu_directions,
+		  android.R.drawable.ic_menu_gallery };
+		 
 		int[] backgroundcolor = { 0xFF101010, 0xFF202020, 0xFF303030,
 				0xFF404040, 0xFF505050 };
 
@@ -63,6 +67,7 @@ public class MainActivity extends Activity {
 			imageView.setImageResource(res[position]);
 			LayoutParams imageParams = new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
 			imageView.setLayoutParams(imageParams);
 
 			LinearLayout layout = new LinearLayout(MainActivity.this);

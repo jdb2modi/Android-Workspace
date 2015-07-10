@@ -2,6 +2,7 @@ package com.ifactory.myexpenditure;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,13 +11,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class Activity_Settings extends Activity implements OnClickListener {
-	SharedPreferences sp;
+
 	public static final String MyPREFERENCES = "MyPrefs";
 	Button btn_exit, btn_back, btn_changeCode, btn_clearHistory,
 			btn_setAuthentication;
+	Switch switch_securityCode;
+	SharedPreferences spAuthentication;
 	Intent intent;
 	DBHelper dbHelper;
 
@@ -25,6 +31,7 @@ public class Activity_Settings extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		init();
+		checkSwitch();
 	}
 
 	public void init() {
@@ -38,16 +45,25 @@ public class Activity_Settings extends Activity implements OnClickListener {
 		btn_changeCode.setOnClickListener(this);
 		btn_setAuthentication = (Button) findViewById(R.id.btn_setAuthentication);
 		btn_setAuthentication.setOnClickListener(this);
-		dbHelper = new DBHelper(Activity_Settings.this);
+		switch_securityCode = (Switch) findViewById(R.id.switch_SecurityCode);
+		spAuthentication = getSharedPreferences(MyPREFERENCES,
+				Context.MODE_APPEND);
+
+	}
+
+	public void checkSwitch() {
+		if (spAuthentication.contains("ENABLED")) {
+			switch_securityCode.setChecked(true);
+		} else {
+			switch_securityCode.setChecked(false);
+		}
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_exitFromSettings:
-			Editor edit = sp.edit();
-			edit.clear();
-			edit.commit();
+
 			Toast.makeText(getApplicationContext(), "Exiting...",
 					Toast.LENGTH_SHORT).show();
 			AlertDialog.Builder alert = new AlertDialog.Builder(
@@ -115,6 +131,28 @@ public class Activity_Settings extends Activity implements OnClickListener {
 			alertDeleteHistory.show();
 			break;
 		case R.id.btn_setAuthentication:
+			switch_securityCode.setVisibility(1);
+
+			switch_securityCode
+					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+						@Override
+						public void onCheckedChanged(CompoundButton buttonView,
+								boolean isChecked) {
+							Editor ed = spAuthentication.edit();
+							if (switch_securityCode.isChecked()) {
+
+								ed.putBoolean("ENABLED", true);
+								// switch_securityCode.setChecked(true);
+
+							} else {
+								// switch_securityCode.setChecked(false);
+								ed.clear();
+
+							}
+							ed.commit();
+						}
+					});
 			break;
 		default:
 			break;

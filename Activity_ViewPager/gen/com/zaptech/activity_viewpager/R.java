@@ -1971,6 +1971,11 @@ containing a value of this type.
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
+        public static final int tv1=0x7f090050;
+        public static final int tv2=0x7f090051;
+        public static final int tv3=0x7f090052;
+        public static final int tv4=0x7f090053;
+        public static final int tv5=0x7f090054;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f09001d;
@@ -2032,10 +2037,15 @@ containing a value of this type.
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
         public static final int activity_main=0x7f030019;
-        public static final int select_dialog_item_material=0x7f03001a;
-        public static final int select_dialog_multichoice_material=0x7f03001b;
-        public static final int select_dialog_singlechoice_material=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int l1=0x7f03001a;
+        public static final int l2=0x7f03001b;
+        public static final int l3=0x7f03001c;
+        public static final int l4=0x7f03001d;
+        public static final int l5=0x7f03001e;
+        public static final int select_dialog_item_material=0x7f03001f;
+        public static final int select_dialog_multichoice_material=0x7f030020;
+        public static final int select_dialog_singlechoice_material=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

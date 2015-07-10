@@ -40,15 +40,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String CREATE_TABLE = "CREATE TABLE " + TBEXPENCE + " ("
+		String TABLE_EXPENCE = "CREATE TABLE " + TBEXPENCE + " ("
 				+ COL_EXPENSEID + " INTEGER PRIMARY KEY," + COL_EXPENSECATEGORY
-				+ " VARCHAR," + COL_EXPENSEDATE + " DATE," + COL_EXPENSEMODE
+				+ " VARCHAR," + COL_EXPENSEDATE + " TEXT," + COL_EXPENSEMODE
 				+ " VARCHAR," + COL_CHEQUENO + " VARCHAR," + COL_TRANSACTIONID
 				+ " VARHCAR," + COL_EXPENSEAMOUNT + " INTEGER,"
 				+ COL_DESCRIPTION + " VARCHAR);";
 		String CREATE_PASSTABLE = "CREATE TABLE " + TBPASSWORD + "( "
 				+ COL_PASSWORD + " VARCHAR PRIMARY KEY);";
-		db.execSQL(CREATE_TABLE);
+		db.execSQL(TABLE_EXPENCE);
 		db.execSQL(CREATE_PASSTABLE);
 	}
 
@@ -70,6 +70,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void insertExpence(String strCategory, String strDate,
 			String strMode, String strChequeNo, String strTransactionId,
 			int amount, String strDescription) {
+		System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>indatabase>>>>>>>>>>>>>"
+				+ strCategory);
 		mDatabase = getDB();
 		mContent = getContentValues();
 		mContent.put(COL_EXPENSECATEGORY, strCategory);
@@ -100,7 +102,16 @@ public class DBHelper extends SQLiteOpenHelper {
 		mDatabase.close();
 	}
 
-	public String checkPassword() {
+	public int checkRow() {
+		mDatabase = getDB();
+		String pass = "";
+		mContent = getContentValues();
+		String sql = "select * from " + TBPASSWORD;
+		Cursor cursor = mDatabase.rawQuery(sql, null);
+		return cursor.getCount();
+	}
+
+	public String getPassword() {
 		mDatabase = getDB();
 		String pass = "";
 		mContent = getContentValues();
@@ -131,6 +142,8 @@ public class DBHelper extends SQLiteOpenHelper {
 					String strExpenceId, strCategory, strDate, strMode, strChequeNo, strTransactionId, strAmount, strDescription;
 					strExpenceId = String.valueOf(cursor.getInt(cursor
 							.getColumnIndex(COL_EXPENSECATEGORY)));
+					strCategory=cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSECATEGORY));
 					strDate = cursor.getString(cursor
 							.getColumnIndex(COL_EXPENSEDATE));
 					strMode = cursor.getString(cursor
@@ -147,6 +160,7 @@ public class DBHelper extends SQLiteOpenHelper {
 					// /CREATING OBJECT for Model class
 					ExpenceModel em = new ExpenceModel();
 					em.setExpenseId(Integer.parseInt(strExpenceId));
+					em.setExpenseCategory(strCategory);
 					em.setExpenseDate(strDate);
 					em.setExpenseMode(strMode);
 					em.setChequeNo(strChequeNo);
@@ -161,15 +175,22 @@ public class DBHelper extends SQLiteOpenHelper {
 		return arrayListExpence;
 	}
 
-	public ArrayList<ExpenceModel> displaySpecificHistory() {
+	public ArrayList<ExpenceModel> displaySpecificHistory(String strSDate,
+			String strEDate) {
 		mDatabase = getDB();
 		String strFetchExpence = "SELECT * FROM " + TBEXPENCE + " where "
-				+ COL_EXPENSEDATE + " between '12/6/2015' AND '14/6/2015'";
+				+ COL_EXPENSEDATE + " between '" + strSDate + "' AND '"
+				+ strEDate + "'";
+		System.err.println(">>>>>>>>>>>>>>>SFEEXXXX" + strFetchExpence);
+		System.err.println(">>>>>>>>>>>>>>>EDATE" + strEDate);
 
 		cursor = mDatabase.rawQuery(strFetchExpence, null);
 		if (cursor != null) {
 			if (cursor.moveToFirst()) {
 				do {
+
+					// SELECT * FROM tbExpense where ExpenceDate between
+					// '8/7/2015' AND '11/7/2015'
 
 					String strExpenceId, strCategory, strDate, strMode, strChequeNo, strTransactionId, strAmount, strDescription;
 					strExpenceId = String.valueOf(cursor.getInt(cursor

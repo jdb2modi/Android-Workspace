@@ -13,10 +13,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class Activity_Banking extends Activity implements OnClickListener {
-	Button btn_exit, btn_back;
-	Intent intent;
+	private Button mBtn_exit;
+	private Button mBtn_back;
+
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,10 +27,10 @@ public class Activity_Banking extends Activity implements OnClickListener {
 	}
 
 	public void init() {
-		btn_exit = (Button) findViewById(R.id.btn_exitFromBankDetails);
-		btn_back = (Button) findViewById(R.id.btn_backFromBankDetails);
-		btn_exit.setOnClickListener(this);
-		btn_back.setOnClickListener(this);
+		mBtn_exit = (Button) findViewById(R.id.btn_exitFromBankDetails);
+		mBtn_back = (Button) findViewById(R.id.btn_backFromBankDetails);
+		mBtn_exit.setOnClickListener(this);
+		mBtn_back.setOnClickListener(this);
 		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
 	}
 
@@ -36,43 +38,48 @@ public class Activity_Banking extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_exitFromBankDetails:
-			Editor edit = sp.edit();
-			edit.clear();
-			edit.commit();
-			Toast.makeText(getApplicationContext(), "Exiting...",
-					Toast.LENGTH_SHORT).show();
-			AlertDialog.Builder alert = new AlertDialog.Builder(
-					Activity_Banking.this);
-			alert.setTitle("Exit Confirmation");
-			alert.setMessage("Are you want to Close the Application ?");
-			alert.setCancelable(false);
-			alert.setPositiveButton("EXIT",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							finish();
-
-						}
-					});
-			alert.setNegativeButton("CANCEL",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-
-						}
-					});
-			alert.show();
+			exit();
 			break;
 		case R.id.btn_backFromBankDetails:
-			finish();
-			intent = new Intent(Activity_Banking.this, Activity_Home.class);
-			startActivity(intent);
+			back();
 			break;
 		default:
 			break;
 		}
 
+	}
+
+	private void exit() {
+		Toast.makeText(getApplicationContext(), "Exiting...",
+				Toast.LENGTH_SHORT).show();
+		AlertDialog.Builder alert = new AlertDialog.Builder(
+				Activity_Banking.this);
+		alert.setTitle("Exit Confirmation");
+		alert.setMessage("Are you want to Close the Application ?");
+		alert.setCancelable(false);
+		alert.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+
+			}
+		});
+		alert.setNegativeButton("CANCEL",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				});
+		alert.show();
+	}
+
+	private void back() {
+		finish();
+		Intent mIntent;
+		mIntent = new Intent(Activity_Banking.this, Activity_Home.class);
+		startActivity(mIntent);
 	}
 }

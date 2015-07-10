@@ -1,13 +1,18 @@
 package com.zaptech.broadcastthroughservice;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Service;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.util.Log;
 
 public class MyService extends Service {
 	boolean running = true;
+	int i = 0;
+	Timer timer = new Timer();
+	TimerTask mTimerTask;
 	private static final String ACTION_PLAY = "com.example.action.PLAY";
 
 	@Override
@@ -18,23 +23,34 @@ public class MyService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		task();
+		return super.onStartCommand(intent, flags, startId);
+	}
 
-		new Thread(new Runnable() {
-			int i = 0;
+	public void task() {
+		mTimerTask = new TimerTask() {
 
 			@Override
 			public void run() {
-				while (running) {
-					Intent Myintent = new Intent();
-					Myintent.setAction(Activity_Home.BROADCAST);
-					Myintent.putExtra("COUNT", i++);
-					sendBroadcast(Myintent);
-					Log.i("bipin.........", ">>>>>>>>>>>>>" + i++);
-				}
+				/*
+				 * new Thread(new Runnable() {
+				 * 
+				 * @Override public void run() {
+				 */
+
+				Intent Myintent = new Intent();
+				Myintent.putExtra("COUNT", "modi");
+				Myintent.putExtra("CC", i++);
+				Myintent.setAction(Activity_Home.BROADCAST);
+
+				sendBroadcast(Myintent);
 
 			}
-		}).start();
-		return super.onStartCommand(intent, flags, startId);
+			// }).start();
+
+			// }
+		};
+		timer.schedule(mTimerTask, 0, 5000);
 	}
 
 	@Override
@@ -45,8 +61,11 @@ public class MyService extends Service {
 
 	@Override
 	public void onDestroy() {
-		running = false;
 		super.onDestroy();
+		/*if (timer != null) {
+			timer.cancel();
+		}
+		stopSelf();*/
 	}
 
 }

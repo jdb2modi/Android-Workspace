@@ -2,21 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
-    android:background="#110072B2" >
+    android:background="#110072B2"
+    tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
         android:id="@+id/rel_addExpenceHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-          android:background="#224581ff" >
-
-        <ImageView
-            android:id="@+id/img_logoOnAddExpence"
-           android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:background="@drawable/itfactory" />
+        android:background="#224581ff" >
 
         <Button
             android:id="@+id/btn_exitFromAddExpence"
@@ -48,7 +42,7 @@
         android:layout_below="@+id/rel_addExpenceHeader"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:text="Welcome, ITFUser"
+        android:text="@string/strWelcome"
         android:textAllCaps="false"
         android:textColor="#0072B2"
         android:textSize="15dp"
@@ -156,16 +150,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ed_Description"
             android:layout_toRightOf="@+id/ed_Amount"
-            android:ems="10"
-            android:entries="@array/array_Currency" />
+            android:ems="10" />
 
         <View
             android:id="@+id/view2OnAddExpence"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_below="@+id/spin_currency"
             android:layout_margin="5dp"
-           android:background="#440072B2" />
+            android:background="#440072B2" />
 
         <TextView
             android:id="@+id/txt_paymentModeOnAddExpence"

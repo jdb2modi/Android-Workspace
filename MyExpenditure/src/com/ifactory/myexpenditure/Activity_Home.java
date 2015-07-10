@@ -15,12 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_Home extends Activity implements OnClickListener {
-	Button btn_logout, btn_addExpence, btn_history, btn_banking, btn_settings;
-	TextView txt_dailyExpence;
+	private Button btn_logout, btn_addExpence, btn_history, btn_banking,
+			btn_settings, btn_about;
+	private TextView txt_dailyExpence;
 
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";
-	public static final String CODE = "code";
+
 	DBHelper dbHelper;
 	Intent intent;
 
@@ -30,10 +31,6 @@ public class Activity_Home extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_home);
 		init();
 
-		String strTemp = dbHelper.checkPassword();
-		if (strTemp == null || strTemp.equals("")) {
-			dbHelper.insertPassword();
-		}
 	}
 
 	public void init() {
@@ -44,12 +41,14 @@ public class Activity_Home extends Activity implements OnClickListener {
 		btn_addExpence.setOnClickListener(this);
 		btn_banking = (Button) findViewById(R.id.btn_banking);
 		btn_banking.setOnClickListener(this);
-
 		btn_history = (Button) findViewById(R.id.btn_history);
 		btn_history.setOnClickListener(this);
-		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
 		btn_settings = (Button) findViewById(R.id.btn_Settings);
 		btn_settings.setOnClickListener(this);
+		btn_about = (Button) findViewById(R.id.btn_homeAbout);
+		btn_about.setOnClickListener(this);
+		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
+
 	}
 
 	@Override
@@ -102,6 +101,11 @@ public class Activity_Home extends Activity implements OnClickListener {
 		case R.id.btn_Settings:
 			finish();
 			intent = new Intent(Activity_Home.this, Activity_Settings.class);
+			startActivity(intent);
+			break;
+		case R.id.btn_homeAbout:
+			finish();
+			intent = new Intent(Activity_Home.this, Activity_About.class);
 			startActivity(intent);
 			break;
 		default:

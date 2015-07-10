@@ -27,7 +27,7 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 	DBHelper dbHelper;
 	ListView listExpenceHistory;
 	Intent intent;
-	String strHistory;
+	String strHistory, strSDate, strEDate;
 	Button btnExit, btnBack;
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
@@ -41,6 +41,8 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 		dbHelper.getWritableDatabase();
 		intent = getIntent();
 		strHistory = intent.getStringExtra("HISTORY");
+		strEDate = intent.getStringExtra("EDate");
+		strSDate = intent.getStringExtra("SDate");
 		new ExpenceAsync().execute();
 
 		Toast.makeText(Activity_ViewHistory.this, strHistory,
@@ -98,6 +100,7 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			}
 			TextView txt_ExpenseCategoryD = (TextView) convertView
 					.findViewById(R.id.txt_ExpenceCategoryH);
+
 			TextView txt_ExpenseDateD = (TextView) convertView
 					.findViewById(R.id.txt_ExpenceDateH);
 			TextView txt_ExpenseModeD = (TextView) convertView
@@ -111,20 +114,23 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			TextView txt_DescriptionD = (TextView) convertView
 					.findViewById(R.id.txt_ExpenceDescriptionH);
 
-			txt_ExpenseCategoryD.setText("Expence Category : "+dbHelper.arrayListExpence
-					.get(position).getExpenseCategory());
-			txt_ExpenseDateD.setText("Expence Date : "+dbHelper.arrayListExpence.get(position)
-					.getExpenseDate());
-			txt_ExpenseModeD.setText("Expence Mode : "+dbHelper.arrayListExpence.get(position)
-					.getExpenseMode());
-			txt_ChequeNoD.setText("Cheque Number : "+dbHelper.arrayListExpence.get(position)
-					.getChequeNo());
-			txt_TransactionIdD.setText("Transaction Id : "+dbHelper.arrayListExpence.get(position)
-					.getTransactionId());
-			txt_ExpenseAmountD.setText(String.valueOf("Expence Amount : "+dbHelper.arrayListExpence
-					.get(position).getExpenseAmount()));
-			txt_DescriptionD.setText("Expence Description : "+dbHelper.arrayListExpence.get(position)
-					.getDescription());
+			txt_ExpenseCategoryD.setText("Expence Category : "
+					+ dbHelper.arrayListExpence.get(position)
+							.getExpenseCategory());
+			txt_ExpenseDateD.setText("Expence Date : "
+					+ dbHelper.arrayListExpence.get(position).getExpenseDate());
+			txt_ExpenseModeD.setText("Expence Mode : "
+					+ dbHelper.arrayListExpence.get(position).getExpenseMode());
+			txt_ChequeNoD.setText("Cheque Number : "
+					+ dbHelper.arrayListExpence.get(position).getChequeNo());
+			txt_TransactionIdD.setText("Transaction Id : "
+					+ dbHelper.arrayListExpence.get(position)
+							.getTransactionId());
+			txt_ExpenseAmountD.setText(String.valueOf("Expence Amount : "
+					+ dbHelper.arrayListExpence.get(position)
+							.getExpenseAmount()));
+			txt_DescriptionD.setText("Expence Description : "
+					+ dbHelper.arrayListExpence.get(position).getDescription());
 			return convertView;
 		}
 	}
@@ -142,7 +148,7 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			if (strHistory.equals("ALL")) {
 				dbHelper.displayHistory();
 			} else if (strHistory.equals("SPECIFIC")) {
-				dbHelper.displaySpecificHistory();
+				dbHelper.displaySpecificHistory(strSDate, strEDate);
 			}
 
 			return null;

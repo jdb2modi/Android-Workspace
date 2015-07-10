@@ -23,10 +23,18 @@ public class MyService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		mPlayer.start();
+		new Thread(new Runnable() {
 
-		System.err
-				.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ONSTART COM Playing");
+			@Override
+			public void run() {
+
+				mPlayer.start();
+
+				System.err
+						.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ONSTART COM Playing");
+
+			}
+		}).run();
 		return super.onStartCommand(intent, flags, startId);
 	}
 

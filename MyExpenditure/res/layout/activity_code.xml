@@ -10,12 +10,6 @@
         android:layout_height="wrap_content"
         android:background="#224581ff" >
 
-        <ImageView
-            android:id="@+id/img_logoOnChangeCode"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:background="@drawable/itfactory" />
-
         <Button
             android:id="@+id/btn_exitFromChangeCode"
             android:layout_width="wrap_content"

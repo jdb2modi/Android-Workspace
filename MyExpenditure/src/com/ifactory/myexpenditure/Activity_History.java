@@ -123,15 +123,59 @@ public class Activity_History extends Activity implements OnClickListener {
 	};
 
 	private void showDate(int year, int month, int day) {
-		txt_startDate.setText(new StringBuilder().append(day).append("/")
-				.append(month).append("/").append(year));
+
+		if (day < 10) {
+
+			if (month < 10) {
+				txt_startDate.setText(new StringBuilder().append("0" + day)
+						.append("/").append("0" + month).append("/")
+						.append(year));
+			} else {
+				txt_startDate.setText(new StringBuilder().append("0" + day)
+						.append("/").append(month).append("/").append(year));
+			}
+
+		} else {
+
+			if (month < 10) {
+				txt_startDate.setText(new StringBuilder().append(day)
+						.append("/").append("0" + month).append("/")
+						.append(year));
+
+			} else {
+				txt_startDate.setText(new StringBuilder().append(day)
+						.append("/").append(month).append("/").append(year));
+			}
+		}
 
 	}
 
 	private void showDate2(int year, int month, int day) {
 
-		txt_endDate.setText(new StringBuilder().append(day).append("/")
-				.append(month).append("/").append(year));
+		if (day < 10) {
+
+			if (month < 10) {
+				txt_endDate.setText(new StringBuilder().append("0" + day)
+						.append("/").append("0" + month).append("/")
+						.append(year));
+			} else {
+				txt_endDate.setText(new StringBuilder().append("0" + day)
+						.append("/").append(month).append("/").append(year));
+			}
+
+		} else {
+
+			if (month < 10) {
+				txt_endDate.setText(new StringBuilder().append(day).append("/")
+						.append("0" + month).append("/").append(year));
+
+			} else {
+				txt_endDate.setText(new StringBuilder().append(day).append("/")
+						.append(month).append("/").append(year));
+			}
+
+		}
+
 	}
 
 	@Override
@@ -149,6 +193,8 @@ public class Activity_History extends Activity implements OnClickListener {
 			intent = new Intent(Activity_History.this,
 					Activity_ViewHistory.class);
 			intent.putExtra("HISTORY", "SPECIFIC");
+			intent.putExtra("SDate", txt_startDate.getText().toString());
+			intent.putExtra("EDate", txt_endDate.getText().toString());
 			startActivity(intent);
 			break;
 		case R.id.btn_exitFromHistory:

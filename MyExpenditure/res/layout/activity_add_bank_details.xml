@@ -10,12 +10,6 @@
         android:layout_height="wrap_content"
         android:background="#224581ff" >
 
-        <ImageView
-            android:id="@+id/img_logoOnBankDetails"
-           android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:background="@drawable/itfactory" />
-
         <Button
             android:id="@+id/btn_exitFromBankDetails"
             android:layout_width="wrap_content"
@@ -46,7 +40,7 @@
         android:layout_below="@+id/rel_bankDetailsHeader"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:text="Welcome, ITFUser"
+        android:text="@string/strWelcome"
         android:textAllCaps="false"
         android:textColor="#0072B2"
         android:textSize="15dp"

@@ -12,12 +12,6 @@
         android:layout_margin="5dp"
         android:background="#224581ff" >
 
-        <ImageView
-            android:id="@+id/img_historyLogo"
-           android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:background="@drawable/itfactory" />
-
         <Button
             android:id="@+id/btn_exitFromViewHistory"
             android:layout_width="wrap_content"

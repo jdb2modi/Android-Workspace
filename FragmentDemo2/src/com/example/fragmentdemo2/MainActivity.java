@@ -19,6 +19,6 @@ public class MainActivity extends Activity {
 		Fragment2 fr2 = new Fragment2();
 		ft.add(fr1, "");
 		ft.add(fr2, "");
-
+	
 	}
 }

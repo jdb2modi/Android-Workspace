@@ -1,6 +1,9 @@
 package com.ifactory.myexpenditure;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -14,10 +17,14 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";
 	public static final String CODE = "code";
-	SharedPreferences sp;
-	DBHelper dbHelper;
-	EditText edCurrent, edNew, edConfirm;
-	Button btnChangeCode;
+	private SharedPreferences mSp;
+	private DBHelper mDbHelper;
+	private EditText mEdCurrent;
+	private EditText mEdNew;
+	private EditText mEdConfirm;
+	private Button mBtnChangeCode;
+	private Button mBtnExit;
+	private Button mBtnBack;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,32 +35,36 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 	}
 
 	public void init() {
-		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
-		dbHelper = new DBHelper(Activity_ChangeCode.this);
-		edCurrent = (EditText) findViewById(R.id.ed_currentCode);
-		edNew = (EditText) findViewById(R.id.ed_newCode);
-		edConfirm = (EditText) findViewById(R.id.ed_confirmCode);
-		btnChangeCode = (Button) findViewById(R.id.btn_changeAuthentication);
-		btnChangeCode.setOnClickListener(this);
-		dbHelper.insertPassword();
+		mSp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
+		mDbHelper = new DBHelper(Activity_ChangeCode.this);
+		mEdCurrent = (EditText) findViewById(R.id.ed_currentCode);
+		mEdNew = (EditText) findViewById(R.id.ed_newCode);
+		mEdConfirm = (EditText) findViewById(R.id.ed_confirmCode);
+		mBtnChangeCode = (Button) findViewById(R.id.btn_changeAuthentication);
+		mBtnChangeCode.setOnClickListener(this);
+		mBtnExit=(Button) findViewById(R.id.btn_exitFromChangeCode);
+		mBtnExit.setOnClickListener(this);
+		mBtnBack=(Button)findViewById(R.id.btn_backFromChangeCode);
+		mBtnBack.setOnClickListener(this);
+		mDbHelper.insertPassword();
 	}
 
 	public void savePreferences() {
 
-		Editor editor = sp.edit();
+		Editor editor = mSp.edit();
 		editor.putString(CODE, "1");
 		editor.commit();
 
 	}
 
 	public void changeCode() {
-		String strCurrentPass = edCurrent.getText().toString();
-		String strTemp = dbHelper.checkPassword().toString();
+		String strCurrentPass = mEdCurrent.getText().toString();
+		String strTemp = mDbHelper.getPassword().toString();
 		if (strCurrentPass.equals(strTemp)) {
-			String strNewPass = edNew.getText().toString();
-			String strConPass = edConfirm.getText().toString();
+			String strNewPass = mEdNew.getText().toString();
+			String strConPass = mEdConfirm.getText().toString();
 			if (strNewPass.equals(strConPass)) {
-				dbHelper.updatePassword(strNewPass);
+				mDbHelper.updatePassword(strNewPass);
 				Toast.makeText(Activity_ChangeCode.this,
 						"Security Code changed successfully..!",
 						Toast.LENGTH_SHORT).show();
@@ -61,19 +72,19 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 				Toast.makeText(Activity_ChangeCode.this,
 						"Password does not matched..!", Toast.LENGTH_SHORT)
 						.show();
-				edConfirm.setText("");
-				edNew.setText("");
+				mEdConfirm.setText("");
+				mEdNew.setText("");
 
-				edConfirm.setFocusable(true);
+				mEdConfirm.setFocusable(true);
 			}
 		} else {
 			Toast.makeText(Activity_ChangeCode.this,
 					"You entered wrong password..!!!", Toast.LENGTH_SHORT)
 					.show();
-			edConfirm.setText("");
-			edNew.setText("");
-			edCurrent.setText("");
-			edCurrent.setFocusable(true);
+			mEdConfirm.setText("");
+			mEdNew.setText("");
+			mEdCurrent.setText("");
+			mEdCurrent.setFocusable(true);
 		}
 	}
 
@@ -83,10 +94,49 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 		case R.id.btn_changeAuthentication:
 			changeCode();
 			break;
-
+		case R.id.btn_exitFromChangeCode:
+			exit();
+			break;
+		case R.id.btn_backFromChangeCode:
+			back();
+			break;
 		default:
 			break;
 		}
 
+	}
+
+	private void exit() {
+		Toast.makeText(getApplicationContext(), "Exiting...",
+				Toast.LENGTH_SHORT).show();
+		AlertDialog.Builder alert = new AlertDialog.Builder(
+				Activity_ChangeCode.this);
+		alert.setTitle("Exit Confirmation");
+		alert.setMessage("Are you want to Close the Application ?");
+		alert.setCancelable(false);
+		alert.setPositiveButton("EXIT", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+
+			}
+		});
+		alert.setNegativeButton("CANCEL",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				});
+		alert.show();
+	}
+
+	private void back() {
+		finish();
+		Intent mIntent;
+		mIntent = new Intent(Activity_ChangeCode.this, Activity_Settings.class);
+		startActivity(mIntent);
 	}
 }

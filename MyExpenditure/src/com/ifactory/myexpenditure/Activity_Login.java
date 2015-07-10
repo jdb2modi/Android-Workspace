@@ -19,28 +19,18 @@ public class Activity_Login extends Activity implements OnClickListener {
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String CODE = "code";
-	Button btn_Login, btn_Exit;
+	Button btn_Login, btn_Exit, btn_Hint;
 	Intent intent;
 	DBHelper dbHelper;
+	Activity_Settings as;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity__login);
 		init();
-		savePreferences();
-		checkPref();
-	}
 
-	public void savePreferences() {
-
-		if (!sp.contains(CODE)) {
-			Editor editor = sp.edit();
-			editor.putString(CODE, "0");
-			editor.commit();
-
-		}
-
+		checkSecurityPref();
 	}
 
 	public void init() {
@@ -50,38 +40,51 @@ public class Activity_Login extends Activity implements OnClickListener {
 		btn_Login.setOnClickListener(this);
 		btn_Exit = (Button) findViewById(R.id.btn_exitFromLogin);
 		btn_Exit.setOnClickListener(this);
+		btn_Hint = (Button) findViewById(R.id.btn_passwordHint);
+		btn_Hint.setOnClickListener(this);
 		dbHelper = new DBHelper(Activity_Login.this);
+		as = new Activity_Settings();
 	}
 
-	public void checkPref() {
-		if (sp.contains(CODE)) {
-			String strCode = sp.getString(CODE, "");
-			if (strCode.equals("1")) {
-				String myPass = dbHelper.checkPassword().toString();
-				if (edPassword.getText().toString().equals(myPass)) {
-					finish();
-					intent = new Intent(Activity_Login.this,
-							Activity_Home.class);
-					startActivity(intent);
-				} else {
-					Toast.makeText(Activity_Login.this, "Wrong Password",
-							Toast.LENGTH_LONG).show();
-					Toast.makeText(Activity_Login.this, "Wrong Password",
-							Toast.LENGTH_LONG).show();
-				}
+	public void checkSecurityPref() {
+		if (!sp.contains("ENABLED")) {
 
-			} else {
-				if (edPassword.getText().toString().equals("12345")) {
-					finish();
-					intent = new Intent(Activity_Login.this,
-							Activity_Home.class);
-					startActivity(intent);
-				} else {
-					Toast.makeText(Activity_Login.this,
-							"Current Security Code is 12345", Toast.LENGTH_LONG).show();
-					Toast.makeText(Activity_Login.this,
-							"Your Password is 12345", Toast.LENGTH_LONG).show();
-				}
+			finish();
+			Intent intent = new Intent(Activity_Login.this, Activity_Home.class);
+			startActivity(intent);
+
+		}
+	}
+
+	public void authenticate() {
+		String strEd = edPassword.getText().toString();
+		String strTemp = dbHelper.getPassword().toString();
+		if (dbHelper.checkRow() == 0) {
+			btn_Hint.setVisibility(View.VISIBLE);
+			dbHelper.insertPassword();
+			Toast.makeText(Activity_Login.this, "Your Security code is 12345",
+					Toast.LENGTH_LONG).show();
+			Toast.makeText(Activity_Login.this,
+					"First time Security code is 12345", Toast.LENGTH_LONG)
+					.show();
+			String strPass = String.valueOf(dbHelper.getPassword());
+
+			if (strEd.equals(strPass)) {
+				finish();
+				Intent intent = new Intent(Activity_Login.this,
+						Activity_Home.class);
+				startActivity(intent);
+			}
+		} else {
+			btn_Hint.setVisibility(View.INVISIBLE);
+			String strPass = String.valueOf(dbHelper.getPassword());
+			Toast.makeText(Activity_Login.this, strPass, Toast.LENGTH_LONG)
+					.show();
+			if (strEd.equals(strPass)) {
+				finish();
+				Intent intent = new Intent(Activity_Login.this,
+						Activity_Home.class);
+				startActivity(intent);
 			}
 		}
 	}
@@ -90,7 +93,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_authenticateNow:
-			checkPref();
+			authenticate();
 			break;
 		case R.id.btn_exitFromLogin:
 
@@ -119,6 +122,10 @@ public class Activity_Login extends Activity implements OnClickListener {
 						}
 					});
 			alert.show();
+			break;
+		case R.id.btn_passwordHint:
+			Toast.makeText(Activity_Login.this, "Your Security Code is 12345",
+					Toast.LENGTH_LONG).show();
 			break;
 		default:
 			break;

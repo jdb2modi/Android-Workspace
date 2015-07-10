@@ -88,12 +88,12 @@ public class HomeActivity extends Activity implements OnClickListener {
 	public void showBalanceAlert() {
 
 		int temp = sharedPref.getInt("minLevel", 1);
-		if (Integer.parseInt(tvBalance.getText().toString()) <= temp) {
+		/*if (Integer.parseInt(String.valueOf(tvBalance.getText().toString())) <= temp) {
 			AlertDialog.Builder al = new AlertDialog.Builder(this);
 			al.setTitle(R.string.alertBalance);
 			al.setMessage(R.string.alertBalanceMessage);
 			al.show();
-		}
+		}*/
 	}
 
 	public void setTypeface() {
