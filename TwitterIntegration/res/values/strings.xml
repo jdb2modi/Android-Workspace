@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TwitterIntegration</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello">Hello, </string>
+    <string name="login_instructions">Login to twiter</string>
+    <string name="share_instructions">Enter share message</string>
+    <string name="btn_login">Login to Twitter</string>
+    <string name="btn_share">Share</string>
+
+    <!-- Twitter Configurations -->
+    <string name="twitter_callback">http://www.zaptechsolutions.com</string>
+    <string name="twitter_consumer_key">yojF56vBNlygOK5YvG6IDMIae</string>
+    <string name="twitter_consumer_secret">gR6AY1cOSjaFjDqpvd9pmUZ2p1gVKMTNPFJiR6CMMDzbDnLglz</string>
+    <string name="twitter_oauth_verifier">oauth_verifier</string>
+    <string name="title_activity_activity__web_view">Activity_WebView</string>
+
+</resources>

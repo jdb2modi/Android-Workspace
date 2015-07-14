@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:paddingTop="0dip"
+        android:background="@drawable/ic_launcher" >
+
+        <TableRow>
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp" >
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:layout_gravity="left|top"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingTop="0dip" >
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="2dip"
+                        android:layout_span="1"
+                        android:layout_weight="1"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="4dip"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="11sp" />
+                </TableRow>
+            </TableLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_launcher"
+                android:gravity="left"
+                android:scaleType="centerCrop" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

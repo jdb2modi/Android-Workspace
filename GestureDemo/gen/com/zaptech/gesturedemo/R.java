@@ -1932,7 +1932,6 @@ containing a value of this type.
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
-        public static final int imgView1=0x7f09004f;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
         public static final int middle=0x7f090022;
@@ -1967,7 +1966,6 @@ containing a value of this type.
         public static final int src_over=0x7f090018;
         public static final int submit_area=0x7f09004b;
         public static final int tabMode=0x7f09000c;
-        public static final int textGuide=0x7f090050;
         public static final int textSpacerNoButtons=0x7f090033;
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
@@ -2032,7 +2030,7 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_select_dialog_material=0x7f030017;
         public static final int abc_simple_dropdown_hint=0x7f030018;
-        public static final int activity_main=0x7f030019;
+        public static final int activity_home=0x7f030019;
         public static final int select_dialog_item_material=0x7f03001a;
         public static final int select_dialog_multichoice_material=0x7f03001b;
         public static final int select_dialog_singlechoice_material=0x7f03001c;
@@ -2100,7 +2098,6 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
         public static final int app_name=0x7f0a0011;
         public static final int hello_world=0x7f0a0012;
-        public static final int textPinch=0x7f0a0013;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b0040;
