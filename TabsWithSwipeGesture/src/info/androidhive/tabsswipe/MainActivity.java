@@ -68,6 +68,8 @@ public class MainActivity extends FragmentActivity implements
 		// on tab selected
 		// show respected fragment view
 		viewPager.setCurrentItem(tab.getPosition());
+		
+		
 	}
 
 	@Override

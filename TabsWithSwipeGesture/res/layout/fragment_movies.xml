@@ -2,15 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="#17df0d">
-    
-    <TextView android:layout_width="fill_parent"
+    android:background="#17df0d"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rel_MoviesHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Design Movies Screen"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-    
+        android:background="#550000ff" >
+
+        <Button
+            android:id="@+id/buttonMovieList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Show Movies" />
+    </RelativeLayout>
 
 </RelativeLayout>

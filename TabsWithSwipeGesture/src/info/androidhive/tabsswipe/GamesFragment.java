@@ -28,6 +28,6 @@ public class GamesFragment extends Fragment {
 
 	private void init(View rootView) {
 		// TODO Auto-generated method stub
-		txt1 = (TextView) rootView.findViewById(R.id.txt1);
+		txt1 = (TextView) rootView.findViewById(R.id.txtGames);
 	}
 }

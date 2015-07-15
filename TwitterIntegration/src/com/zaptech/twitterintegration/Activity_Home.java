@@ -192,8 +192,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 	private void loginToTwitter() {
 		boolean isLoggedIn = sSharedPreferences.getBoolean(
 				PREF_KEY_TWITTER_LOGIN, false);
-		Toast.makeText(getApplicationContext(), ">>>>>ISLOGGEDIN" + isLoggedIn,
-				Toast.LENGTH_LONG).show();
+
 		if (!isLoggedIn) {
 			final ConfigurationBuilder builder = new ConfigurationBuilder();
 			builder.setOAuthConsumerKey(mConsumerKey);
@@ -272,12 +271,30 @@ public class Activity_Home extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_logout:
 
-			saveTwitterInfo(null);
-			
+			logoutTwitterInfo();
 
 			break;
 		}
 
+	}
+
+	private void logoutTwitterInfo() {
+		if (isLoggedIn) {
+			Toast.makeText(Activity_Home.this, "VALEU: " + isLoggedIn, 2500)
+					.show();
+			Editor e = sSharedPreferences.edit();
+			e.remove(PREF_KEY_OAUTH_TOKEN);
+			e.remove(PREF_KEY_OAUTH_SECRET);
+			e.remove(PREF_KEY_TWITTER_LOGIN);
+			e.remove(PREF_USER_NAME);
+			e.clear();
+			e.commit();
+			mLoginLayout.setVisibility(View.VISIBLE);
+			mShareLayout.setVisibility(View.GONE);
+		} else {
+			mLoginLayout.setVisibility(View.GONE);
+			mShareLayout.setVisibility(View.VISIBLE);
+		}
 	}
 
 	class updateTwitterStatus extends AsyncTask<String, String, Void> {

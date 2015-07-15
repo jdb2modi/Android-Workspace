@@ -3,5 +3,14 @@
 
     <string name="app_name">GestureDetector2</string>
     <string name="hello_world">Hello world!</string>
+    <string-array name="arrayCity">
+        <item >Ahmedabad</item>
+        <item >Surat</item>
+        <item >Baroda</item>
+        <item >Mumbai</item>
+        <item >New Delhi</item>
+        <item >Kolkata</item>
+        <item >Singapor</item>
+    </string-array>
 
 </resources>
