@@ -1,6 +1,9 @@
 package com.zaptech.gridviewdemo;
 
+import com.zaptech.gridviewdemo.R.color;
+
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +53,8 @@ public class Custom_Grid extends BaseAdapter {
 		imgWeb = (ImageView) convertView.findViewById(R.id.grid_image);
 		txtWeb.setText(web[position]);
 		imgWeb.setImageResource(images[position]);
+		
+		//convertView.setBackgroundColor(Color.BLUE);
 		return convertView;
 	}
 

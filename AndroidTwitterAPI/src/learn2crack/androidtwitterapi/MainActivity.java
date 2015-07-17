@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		pref = getPreferences(0);
+		
 		SharedPreferences.Editor edit = pref.edit();
 		edit.putString("CONSUMER_KEY", CONSUMER_KEY);
 		edit.putString("CONSUMER_SECRET", CONSUMER_SECRET);

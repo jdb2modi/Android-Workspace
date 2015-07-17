@@ -1,6 +1,5 @@
 package com.zaptech.gridviewdemo;
 
-import android.R.color;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +31,8 @@ public class Activity_Home extends Activity {
 				Toast.makeText(Activity_Home.this,
 						"You Clicked at " + strWeb[+position],
 						Toast.LENGTH_SHORT).show();
-				grid.setBackgroundColor(color.black);
+				
+				grid.setItemChecked(position, true);
 			}
 		});
 	}
