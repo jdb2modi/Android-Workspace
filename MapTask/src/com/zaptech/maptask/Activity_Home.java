@@ -120,28 +120,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 
 	}// END of the Class ParsingData
 
-	/*
-	 * // A function to Parse Json Stream.. public String GET(String url) {
-	 * InputStream inputStream = null; String result = ""; try { HttpClient
-	 * httpclient = new DefaultHttpClient(); HttpResponse httpResponse =
-	 * httpclient.execute(new HttpGet(url)); inputStream =
-	 * httpResponse.getEntity().getContent(); if (inputStream != null) result =
-	 * convertInputStreamToString(inputStream); else result = "Did not work!";
-	 * 
-	 * } catch (Exception e) { Log.d("InputStream", e.getLocalizedMessage()); }
-	 * 
-	 * return result; }
-	 * 
-	 * // convert Main inputstream to String private static String
-	 * convertInputStreamToString(InputStream inputStream) throws IOException {
-	 * BufferedReader bufferedReader = new BufferedReader( new
-	 * InputStreamReader(inputStream)); String line = ""; String result = "";
-	 * while ((line = bufferedReader.readLine()) != null) result += line;
-	 * 
-	 * inputStream.close(); return result;
-	 * 
-	 * }
-	 */
+	
 
 	// Function to Parse Main Json Stream..
 	public void parseJson(String str) {
