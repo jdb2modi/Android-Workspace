@@ -4,46 +4,45 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:id="@+id/txt_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/txt_welcome"
-        android:textColor="@color/lblue"
-        android:textStyle="bold" />
+   <RelativeLayout
+        android:id="@+id/rel_HomeHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp" >
 
-    <SlidingDrawer
-        android:id="@+id/slidingDrawer"
+        <ImageView
+            android:id="@+id/imgBtn_list"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="2dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_list"
+            android:clickable="true" />
+    </RelativeLayout>
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="left"
-        android:content="@+id/content"
-        android:handle="@+id/handle"
-        android:orientation="horizontal" >
+        android:layout_marginTop="40dp" >
 
-        <Button
-            android:id="@+id/handle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_handle" />
+        <!-- The main content view -->
 
-        <LinearLayout
-            android:id="@+id/content"
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_height="match_parent" />
+        <!-- The navigation drawer -->
 
-            <ListView
-                android:id="@+id/listview_MenuItems"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true" >
-            </ListView>
-        </LinearLayout>
-    </SlidingDrawer>
+        <ListView
+            android:id="@+id/listviewMenuItem"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="#ffffff"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/black"
+            android:dividerHeight="1dp"
+            android:scrollbars="vertical" />
+    </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

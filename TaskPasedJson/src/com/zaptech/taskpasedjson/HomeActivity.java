@@ -29,29 +29,35 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SlidingDrawer;
-import android.widget.SlidingDrawer.OnDrawerCloseListener;
-import android.widget.SlidingDrawer.OnDrawerOpenListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeActivity extends Activity implements OnClickListener {
+public class HomeActivity extends Activity implements OnClickListener,
+		OnItemClickListener {
 	ProgressDialog mProgress;
 	TextView txt_Json, txt_welcome;
-	ListView listview_MenuItems;
+	ListView drawer;
 	DBHelper dbHelper;
 	SharedPreferences shred;
+	DrawerLayout mydrawer;// This is that
+	ImageView imgBtnList;
+	ArrayList<Model_MenuItems> list_MenuItems;
+
 	int parsed = 0;
 
 	// Model Objects..
@@ -66,8 +72,6 @@ public class HomeActivity extends Activity implements OnClickListener {
 	Model_DescriptionHMTL model_DescriptionHTML;
 	Model_MenuItems model_MenuItems;
 
-	// FOR Sliding Drawer..
-	private SlidingDrawer drawer;
 	private Button handle;
 
 	// ArrayLists
@@ -83,7 +87,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
-		manageDrawer();
+
 		if (shred.contains("PARSED")) {
 			Editor editor = shred.edit();
 			editor.putInt("PARSED", 1);
@@ -93,41 +97,19 @@ public class HomeActivity extends Activity implements OnClickListener {
 			new GetData().execute();
 		}
 
-		listview_MenuItems.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-
-				String strTemp = String.valueOf(dbHelper.arrayListMenuItems
-						.get(position).item_name);
-				if (strTemp.equals("homeItems")) {
-
-					finish();
-					Intent intent;
-					intent = new Intent(HomeActivity.this,
-							Activity_HomeItems.class);
-					startActivity(intent);
-				}
-				if (strTemp.equals("newsItems")) {
-
-					finish();
-					Intent intent2;
-					intent2 = new Intent(HomeActivity.this,
-							Activity_NewsItems.class);
-					startActivity(intent2);
-
-				}
-
-			}
-		});
 	}
 
 	public void init() {
-		txt_welcome = (TextView) findViewById(R.id.txt_welcome);
+
+		drawer = (ListView) findViewById(R.id.listviewMenuItem);// This is that
+		mydrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		imgBtnList = (ImageView) findViewById(R.id.imgBtn_list);
+		imgBtnList.setOnClickListener(this);
+		drawer.setOnItemClickListener(HomeActivity.this);
+		list_MenuItems = new ArrayList<Model_MenuItems>();
+
 		mProgress = new ProgressDialog(HomeActivity.this);
 
-		listview_MenuItems = (ListView) findViewById(R.id.listview_MenuItems);
 		// MODEL
 		model_JSON = new JSON();
 		model_HomeItems = new HomeItems();
@@ -144,10 +126,6 @@ public class HomeActivity extends Activity implements OnClickListener {
 		dbHelper = new DBHelper(HomeActivity.this);
 		// dbHelper.getWritableDatabase();
 
-		// TO Handle Sliding Drawer
-		handle = (Button) findViewById(R.id.handle);
-		handle.setOnClickListener(this);
-		drawer = (SlidingDrawer) findViewById(R.id.slidingDrawer);
 		adptDataItems = new ArrayAdapter<String>(HomeActivity.this,
 				android.R.layout.simple_list_item_1, getResources()
 						.getStringArray(R.array.arrayDataItems));
@@ -189,18 +167,19 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 				JsonParsing(str);
 				getJsonKeys(str);
+				list_MenuItems = dbHelper.displayMenuItems();
+				drawer.setAdapter(new MenuItem_Adapter(HomeActivity.this));
 
 			} else {
 				Toast.makeText(HomeActivity.this,
 						"ERROR : Stream did not initialized.",
 						Toast.LENGTH_LONG).show();
 			}
-			new DisplayMenuItemAsync().execute();
+
 			super.onPostExecute(result);
 		}
 	}
 
-	// ////////////////////////ASYNKTASK_COMPLETES/////////////////////////
 	public String GET(String str) {
 		InputStream inputstream;
 		String strConverted = "";
@@ -552,112 +531,47 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 	}
 
-	// /////////////////////INSERT_PANEL_COMPLETE_HERE/////////////////////////
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		// TODO Auto-generated method stub
+		String selected = list_MenuItems.get(position).getItem_name();
 
-	// /////////////////////MANAGE_DRAWER_PANEL////////////////////
-	public void manageDrawer() {
-		drawer.setOnDrawerOpenListener(new OnDrawerOpenListener() {
-
-			@Override
-			public void onDrawerOpened() {
-				handle.setText("-");
-
-			}
-		});
-		drawer.setOnDrawerCloseListener(new OnDrawerCloseListener() {
-
-			@Override
-			public void onDrawerClosed() {
-				handle.setText("+");
-
-			}
-		});
-
-	}
-
-	// /////////////////MANAGE_DRAWER_PANEL_COMPLETES////////////////////
-
-	class DisplayMenuItems extends BaseAdapter {
-		Context context;
-
-		public DisplayMenuItems(Context context) {
-			this.context = context;
+		if (selected.equalsIgnoreCase("homeItems")) {
+			Intent intent_home = new Intent(HomeActivity.this,
+					Activity_HomeItems.class);
+			startActivity(intent_home);
+		} else if (selected.equalsIgnoreCase("newsItems")) {
+			Intent intent_login = new Intent(HomeActivity.this,
+					Activity_NewsItems.class);
+			startActivity(intent_login);
 		}
 
-		@Override
-		public int getCount() {
-
-			return dbHelper.arrayListMenuItems.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-
-			return dbHelper.arrayListMenuItems.get(position);
-		}
-
-		@Override
-		public long getItemId(int position) {
-
-			return position;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			if (inflater == null) {
-				inflater = (LayoutInflater) context
-						.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-			}
-			if (convertView == null) {
-				convertView = inflater.inflate(R.layout.custom_menuitems, null);
-			}
-			TextView txt_MenuItem = (TextView) convertView
-					.findViewById(R.id.txt_MenuItem);
-			txt_MenuItem.setText(dbHelper.arrayListMenuItems.get(position)
-					.getItem_name().toString());
-			return convertView;
-		}
-
-	}
-
-	class DisplayMenuItemAsync extends AsyncTask<Void, Void, Void> {
-		@Override
-		protected void onPreExecute() {
-			mProgress.setTitle("Menu Loader");
-			mProgress.setMessage("Please wait, Loading Menu items...");
-			mProgress.setCancelable(false);
-			mProgress.show();
-			super.onPreExecute();
-		}
-
-		@Override
-		protected Void doInBackground(Void... params) {
-			dbHelper.displayMenuItems();
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			if (mProgress.isShowing()) {
-				mProgress.dismiss();
-			}
-			listview_MenuItems.setAdapter(new DisplayMenuItems(
-					HomeActivity.this));
-
-			super.onPostExecute(result);
-		}
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.handle:
-			if (txt_welcome.getText().equals("+")) {
-				txt_welcome.setText("");
+		case R.id.imgBtn_list:
+			mydrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+			if (mydrawer.isDrawerOpen(drawer)) {
+				Animation animation1 = AnimationUtils.loadAnimation(
+						getApplicationContext(), R.anim.clockwise);
+
+				imgBtnList.startAnimation(animation1);
+
+				mydrawer.closeDrawer(drawer);
+				imgBtnList.setBackgroundResource(R.drawable.ic_list);
+
+			} else {
+				Animation animation2 = AnimationUtils.loadAnimation(
+						getApplicationContext(), R.anim.clockwise);
+				imgBtnList.startAnimation(animation2);
+				mydrawer.openDrawer(drawer);
+				imgBtnList.setBackgroundResource(R.drawable.img_back);
 			}
-			if (txt_welcome.getText().equals("-")) {
-				// txt_welcome.setVisibility(1);
-			}
+
 			break;
 
 		default:
@@ -666,4 +580,47 @@ public class HomeActivity extends Activity implements OnClickListener {
 
 	}
 
+	public class MenuItem_Adapter extends BaseAdapter {
+		Context context;
+
+		public MenuItem_Adapter(Context context) {
+			this.context = context;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return list_MenuItems.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return list_MenuItems.get(position);
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+
+			LayoutInflater inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = inflater.inflate(R.layout.custom_menuitems, null);
+
+			TextView tv_MenuItem = (TextView) convertView
+					.findViewById(R.id.txt_MenuItem);
+
+			tv_MenuItem.setText(""
+					+ list_MenuItems.get(position).getItem_name());
+
+			return convertView;
+		}
+
+	}
 }
