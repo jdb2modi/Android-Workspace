@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/aboutus_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/aboutus_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/aboutus_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/aboutus_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aboutus_linear_top"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/aboutus_txtV_aboutus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/about_us"
+            android:textColor="#FFFFFF"
+            android:textSize="7pt" />
+    </LinearLayout>
+    <ScrollView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/aboutus_bodypart">
+            
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/aboutus_txtVw_containt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           
+            android:textSize="6.5pt"
+            android:textColor="@android:color/white"
+           />
+</ScrollView>
+
+</RelativeLayout>

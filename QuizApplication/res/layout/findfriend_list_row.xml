@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@android:color/transparent" >
+
+    <ImageView
+        android:id="@+id/findFrnd_listrow_imgV"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/none"
+        android:src="@drawable/ic_launcher" />
+
+   <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/findFrnd_listRow_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/findFrnd_listrow_imgV"
+        android:textColor="#FFFFFF"
+        android:textSize="8pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/findFrnd_listRow_chlgTxtVW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/findFrnd_listRow_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/findFrnd_listrow_imgV"
+        android:textColor="#FFFFFF"
+        android:textSize="7pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/findFrnd_listRow_btnChlng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/findFrnd_listRow_name"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/orangebutton_small"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="6pt" />
+
+</RelativeLayout>

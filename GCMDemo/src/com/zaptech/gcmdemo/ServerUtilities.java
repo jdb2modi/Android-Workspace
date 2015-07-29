@@ -32,6 +32,9 @@ public final class ServerUtilities {
 	static void register(final Context context, String name, String email,
 			final String regId) {
 		Log.i(TAG, "registering device (regId = " + regId + ")");
+		System.err
+				.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+						+ regId);
 		String serverUrl = SERVER_URL;
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("regId", regId);

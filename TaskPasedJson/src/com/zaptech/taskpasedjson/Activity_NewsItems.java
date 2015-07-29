@@ -16,7 +16,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.zaptech.taskpasedjson.database.DBHelper;
 
 public class Activity_NewsItems extends Activity implements OnClickListener {
 	Button btn_backFromNewsItem;

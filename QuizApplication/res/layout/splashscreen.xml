@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgscreen"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/splash_imgVw_headerpart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+        android:contentDescription="@string/none"
+        android:src="@drawable/quiz_main_logo" />
+
+    <FrameLayout
+        android:id="@+id/splash_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/splash_imgVw_headerpart"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/splash_imgVw_spincircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/spincircle" />
+
+        <ImageView
+            android:id="@+id/splash_imgVw_spintriangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="100dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/spintriangle" />
+
+        <ImageView
+            android:id="@+id/splash_imgVw_it"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/it" />
+    </FrameLayout>
+
+</RelativeLayout>

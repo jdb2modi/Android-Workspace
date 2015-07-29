@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@android:color/transparent" >
+
+    <ImageView
+        android:id="@+id/homescreen_listrow_imgV"
+        android:layout_width="50dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/none"
+        android:src="@drawable/female_list" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_opponent_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:layout_toLeftOf="@+id/homescreen_listrow_seprater"
+        android:layout_toRightOf="@+id/homescreen_listrow_imgV"
+        android:text="dds"
+        android:textColor="#FFFFFF"
+        android:textSize="7pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_opponent_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homescreen_listrow_opponent_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/homescreen_listrow_seprater"
+        android:layout_toRightOf="@+id/homescreen_listrow_imgV"
+        android:text="111"
+        android:textColor="#FFFFFF"
+        android:textSize="6pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="3dp"
+        android:layout_toLeftOf="@+id/homescreen_listrow_state"
+        android:text="Me"
+        android:textColor="#FFFFFF"
+        android:textSize="7pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_user_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homescreen_listrow_user_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/homescreen_listrow_state"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textSize="6pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/orangebutton_small"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:textColor="#FFFFFF"
+        android:textSize="5pt" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/homescreen_listrow_seprater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/seprater"
+        android:textColor="#FFFFFF"
+        android:textSize="7pt" />
+
+</RelativeLayout>

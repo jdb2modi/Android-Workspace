@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zaptech.taskpasedjson.database.DBHelper;
+
 public class Activity_HomeItemsDetail extends Activity {
 	ImageView img_HomeItemDetail;
 	TextView txt_title, txt_text, txt_textHtml, txt_header;

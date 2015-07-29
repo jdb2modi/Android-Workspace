@@ -47,6 +47,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zaptech.taskpasedjson.database.DBHelper;
+import com.zaptech.taskpasedjson.models.HomeItemIMAGE;
+import com.zaptech.taskpasedjson.models.HomeItems;
+import com.zaptech.taskpasedjson.models.JSON;
+import com.zaptech.taskpasedjson.models.Model_Description;
+import com.zaptech.taskpasedjson.models.Model_DescriptionHMTL;
+import com.zaptech.taskpasedjson.models.Model_Headline;
+import com.zaptech.taskpasedjson.models.Model_MenuItems;
+import com.zaptech.taskpasedjson.models.Model_NewsImage;
+import com.zaptech.taskpasedjson.models.Model_NewsItem;
+import com.zaptech.taskpasedjson.models.Model_NewsItem_Items;
+
 public class HomeActivity extends Activity implements OnClickListener,
 		OnItemClickListener {
 	ProgressDialog mProgress;
@@ -217,7 +229,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 		return result;
 	}
 
-	// ////PARSING DONE HERE...
+	// ////PARSING is going to be DONE HERE...
 	public void JsonParsing(String str) {
 		try {
 
@@ -552,7 +564,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.imgBtn_list:
+		case R.id.imgBtn_list:// ////////THIS IS THAT
 			mydrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 			if (mydrawer.isDrawerOpen(drawer)) {
@@ -580,6 +592,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 
 	}
 
+	// /THIS IS THAT
 	public class MenuItem_Adapter extends BaseAdapter {
 		Context context;
 

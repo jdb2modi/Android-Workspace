@@ -8,28 +8,95 @@
         android:id="@+id/imgCollege"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/college"
-        android:layout_margin="2dp" />
+        android:layout_margin="2dp"
+        android:background="@drawable/college" />
 
     <TextView
         android:id="@+id/tvCollegeInfoHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="false"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@+id/imgCollege"
         android:padding="15dp"
         android:text="@string/tvAvailableColleges"
         android:textColor="@color/blue"
-        android:textStyle="bold" 
-        android:layout_toRightOf="@+id/imgCollege"
         android:textSize="25dp"
-        android:layout_margin="2dp"/>
+        android:textStyle="bold" />
 
-    <ListView
-        android:id="@+id/listCollege"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/imgCollege" 
-        android:layout_margin="2dp">
-    </ListView>
+    <ScrollView
+        android:id="@+id/scroll1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imgCollege" >
+
+        <LinearLayout
+            android:id="@+id/linCombine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listCollege"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="2dp" >
+            </ListView>
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+
+            <Button
+                android:id="@+id/btn10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button1" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

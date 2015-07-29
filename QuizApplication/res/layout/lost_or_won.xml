@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lost_won_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgscreen" >
+
+    <ImageView
+        android:id="@+id/lost_won_imgVw_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bar_bg"
+        android:contentDescription="@string/none"
+        android:src="@drawable/quiz_main_logo" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/lost_won_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lost_won_imgVw_top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="You Lost!"
+        android:textColor="#FFFFFF"
+        android:textSize="14pt" />
+
+    <RelativeLayout
+        android:id="@+id/lost_won_headerpart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lost_won_tv"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="15dp" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/lost_won_txt_name_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="dhara"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/lost_won_txt_score_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lost_won_txt_name_opponent"
+            android:layout_marginTop="10dp"
+            android:gravity="center|center_horizontal"
+            android:paddingTop="15dp"
+            android:text="234"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/lost_won_txt_VS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/vs"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/lost_won_txt_name_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/lost_won_imgVw_user"
+            android:text="Rutu"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+
+        <ImageView
+            android:id="@+id/lost_won_imgVw_user"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/lost_won_txt_score_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/lost_won_txt_name_user"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center|center_horizontal"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:text="400"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+    </RelativeLayout>
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/lost_won_txt_coin_earn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lost_won_headerpart"
+        android:layout_centerInParent="true"
+        android:gravity="center|center_horizontal"
+        android:text="1 Coins Earned"
+        android:textColor="#F4ED2F"
+        android:textSize="9pt" />
+    <Button 
+        android:id="@+id/lost_won_btn_next"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/yellow_button"
+        android:layout_margin="10dp"
+        android:text="@string/next"/>
+
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_showBankDetailsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#224581ff" >
+
+        <Button
+            android:id="@+id/btn_exitFromShowBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:background="@drawable/mybutton"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_backFromShowBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_toLeftOf="@+id/btn_exitFromShowBankDetails"
+            android:background="@drawable/mybutton"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_welcomeOnShowBankDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_showBankDetailsHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/strWelcome"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rel_contentOnShowBankDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_welcomeOnShowBankDetails"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/txt_contentBankDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Bank Details"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/viewSeperatorTitleOnShowBankDetails"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/txt_contentBankDetails"
+            android:layout_margin="5dp"
+            android:background="#440072B2" />
+
+        <RelativeLayout
+            android:id="@+id/rel_bankDetailsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewSeperatorTitleOnShowBankDetails" >
+
+            <TextView
+                android:id="@+id/txt_headerAccountNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:ems="7"
+                android:text="Account number"
+                android:textAllCaps="false"
+                android:textColor="#0072B2"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_headerBankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_toRightOf="@+id/txt_headerAccountNumber"
+                android:ems="7"
+                android:text="Bank Name"
+                android:textAllCaps="false"
+                android:textColor="#0072B2"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_headerCurrentBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_toRightOf="@+id/txt_headerBankName"
+                android:ems="7"
+                android:text="Balance"
+                android:textAllCaps="false"
+                android:textColor="#0072B2"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/listBankDetails"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/txt_headerCurrentBalance" >
+            </ListView>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/viewSeperatorOnShowBankDetails"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/rel_bankDetailsTitle"
+            android:layout_margin="5dp"
+            android:background="#440072B2" />
+    </RelativeLayout>
+
+</RelativeLayout>

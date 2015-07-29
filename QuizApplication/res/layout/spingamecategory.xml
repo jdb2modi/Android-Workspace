@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spingame_main"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <ImageView
+        android:id="@+id/spingame_imgVw_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bar_bg"
+        android:contentDescription="@string/none"
+        android:src="@drawable/quiz_main_logo" />
+
+    <FrameLayout
+        android:id="@+id/spingame_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spingame_imgVw_top"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/spingame_imgVw_spincircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/spincircle" />
+
+        <ImageView
+            android:id="@+id/spingame_imgVw_spintriangle"
+            android:layout_width="wrap_content"
+            android:layout_height="292dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="100dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/spintriangle" />
+
+        <ImageView
+            android:id="@+id/spingame_imgVw_it"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/it" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/spingame_footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="7dp" >
+
+        <FrameLayout
+            android:id="@+id/spingame_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/spingame_imgV_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/goldcoin" />
+
+            <Button
+                android:id="@+id/spingame_btn_spin_agin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/green_button_small"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/spin_again" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/spingame_btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/green_button_small"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/next" />
+    </LinearLayout>
+
+</RelativeLayout>

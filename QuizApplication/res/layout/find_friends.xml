@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/findFrnd_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/findFrnd_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/findFrnd_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/findFrnd_frame_txtVW"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/findFrnd_linear_top" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/findFrnd_tvInviteFrnd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@string/fb_frns_list"
+            android:textColor="@android:color/white"
+            android:textSize="10pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/findFrnd_tvPlayingFrnd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="@string/playing_frnd_list"
+            android:textColor="@android:color/white"
+            android:textSize="10pt"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/findFrnd_listVw"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/findFrnd_linearBottom"
+        android:layout_below="@+id/findFrnd_frame_txtVW"
+        android:layout_marginBottom="10dp"
+        android:divider="@android:color/white"
+        android:dividerHeight="3dp" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/findFrnd_linearBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/findFrnd_linearBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/findFrnd_btn_Invite"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/tab_white_bg"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/invite"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/findFrnd_btn_Playing"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/tab_white_bg"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/playing"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/findFrnd_btn_Share"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/tab_white_bg"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/share"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/findFrnd_imgvw_greenline"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/tab_line" />
+    </LinearLayout>
+     <LinearLayout 
+			android:orientation="vertical"
+			android:layout_below="@+id/findFrnd_linear_top"
+			android:id="@+id/sideIndex"
+			android:layout_width="wrap_content" 
+			android:layout_alignParentRight="true"
+			android:layout_height="fill_parent"
+			android:gravity="center_horizontal"
+			android:background="@android:color/transparent"
+			android:layout_above="@+id/findFrnd_linearBottom">
+		</LinearLayout>		
+
+</RelativeLayout>

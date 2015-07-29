@@ -1,0 +1,137 @@
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgscreen" >
+
+        <LinearLayout
+            android:id="@+id/advancedset_linear_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_bar_bg"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/advancedset_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/top_bar_back_button"
+                android:onClick="OnClickHandler"
+                android:text="@string/back" />
+
+            <ImageView
+                android:id="@+id/advancedset_imgVw_top"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                              android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/quiz_main_logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/advancedset_linear_bodypart"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/advancedset_linear_top"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/advancedset_txtV_advancedset"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                 android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text="@string/adv_setting"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+
+            <LinearLayout
+                android:id="@+id/advancedset_linear_notification"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/advancedset_linear"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".5"
+                    android:orientation="vertical" 
+                    android:weightSum="2">
+
+                    <com.example.quizapplication.font.TextViewFont
+                        android:id="@+id/advancedset_txtV_pushnotification"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center|left"
+                        android:text="@string/push_notification"
+                        android:textColor="@android:color/white"
+                        android:textSize="7pt"/>
+
+                    <com.example.quizapplication.font.TextViewFont
+                        android:id="@+id/advancedset_txtV_enable_disable"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center|left"
+                        android:text="@string/enable_disable_push_notification"
+                        android:textColor="@android:color/white"
+                        android:textSize="6pt"/>
+                </LinearLayout>
+
+                <ToggleButton
+                    android:id="@+id/advancedset_toggleButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:contentDescription="@string/none"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/advancedset_linear_line_pushnotification"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" >
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:background="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/advancedset_linear_footer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/advancedset_linear_bodypart"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/advancedset_btn_save"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/yellow_button_big"
+                android:layout_gravity="top"
+                android:onClick="OnClickHandler"
+                android:text="@string/save"
+                android:textColor="@android:color/black"
+                android:textSize="8pt" />
+        </LinearLayout>
+    </RelativeLayout>

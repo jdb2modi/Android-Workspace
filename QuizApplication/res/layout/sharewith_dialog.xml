@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#355E3B"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/sharewith_relative_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/greentabbar"
+        android:gravity="left|center" >
+
+        <Button
+            android:id="@+id/sharewith_btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+           android:background="@drawable/yellwocross"
+            android:gravity="center"
+            android:onClick="OnClickHandler" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/sharewith_tv_sharewith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="@string/share_with"
+            android:textColor="@android:color/white"
+            android:textSize="9pt" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/sharewith_btn_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/yellow_button_big"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:text="@string/email"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/sharewith_btn_twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/yellow_button_big"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:text="@string/twitter"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/sharewith_btn_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/yellow_button_big"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:text="@string/message"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/sharewith_btn_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/yellow_button_big"
+        android:clickable="false"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:text="@string/facebook"
+        android:textStyle="italic" />
+
+</LinearLayout>

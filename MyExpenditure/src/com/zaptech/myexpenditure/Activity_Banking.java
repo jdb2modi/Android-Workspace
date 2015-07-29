@@ -1,23 +1,33 @@
 package com.zaptech.myexpenditure;
 
-import com.ifactory.myexpenditure.R;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class Activity_Banking extends Activity implements OnClickListener {
+	private DBHelper dbHelper;
+
 	private Button mBtn_exit;
 	private Button mBtn_back;
+	private Button mBtn_addBankDetails;
+	private Button mBtn_showBankDetails;
 
+	private EditText mEd_accountNumber;
+	private EditText mEd_bankName;
+	private EditText mEd_currentBalance;
+	
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
 
@@ -29,11 +39,23 @@ public class Activity_Banking extends Activity implements OnClickListener {
 	}
 
 	public void init() {
+		dbHelper = new DBHelper(Activity_Banking.this);
+		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
+		
+
 		mBtn_exit = (Button) findViewById(R.id.btn_exitFromBankDetails);
 		mBtn_back = (Button) findViewById(R.id.btn_backFromBankDetails);
+		mBtn_addBankDetails = (Button) findViewById(R.id.btn_addBankDetailsNow);
+		mBtn_showBankDetails = (Button) findViewById(R.id.btn_showBankDetails);
+
 		mBtn_exit.setOnClickListener(this);
 		mBtn_back.setOnClickListener(this);
-		sp = getSharedPreferences(MyPREFERENCES, MODE_APPEND);
+		mBtn_addBankDetails.setOnClickListener(this);
+		mBtn_showBankDetails.setOnClickListener(this);
+
+		mEd_accountNumber = (EditText) findViewById(R.id.ed_accountNumber);
+		mEd_bankName = (EditText) findViewById(R.id.ed_bankName);
+		mEd_currentBalance = (EditText) findViewById(R.id.ed_currentBalance);
 	}
 
 	@Override
@@ -44,6 +66,20 @@ public class Activity_Banking extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_backFromBankDetails:
 			back();
+			break;
+		case R.id.btn_addBankDetailsNow:
+			dbHelper.addBankDetails(mEd_accountNumber.getText().toString(),
+					mEd_bankName.getText().toString(), mEd_currentBalance
+							.getText().toString());
+			Toast.makeText(Activity_Banking.this,
+					"Bank details added successfully", Toast.LENGTH_SHORT)
+					.show();
+			break;
+		case R.id.btn_showBankDetails:
+			finish();
+			Intent intent = new Intent(Activity_Banking.this,
+					Activity_ShowBankDetails.class);
+			startActivity(intent);
 			break;
 		default:
 			break;
@@ -84,4 +120,5 @@ public class Activity_Banking extends Activity implements OnClickListener {
 		mIntent = new Intent(Activity_Banking.this, Activity_Home.class);
 		startActivity(mIntent);
 	}
+
 }

@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/welcome_login_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/welcome_login_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/welcome_login_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/welcome_login_linear_bodyMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_login_linear_top"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/welcome_login_HearderText"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="@string/welcome_back"
+            android:textColor="@android:color/white"
+            android:textSize="9pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/welcome_login_TVw_emailadd"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="@string/email_address_createAccunt"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.EditTextFont
+            android:id="@+id/welcome_login_ed_emailadd"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ed_backgroung"
+            android:gravity="center|left"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="7pt" 
+            android:editable="false"/>
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/welcome_login_TVw_userName"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="@string/password"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.EditTextFont
+            android:id="@+id/welcome_login_ed_password"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ed_backgroung"
+            android:gravity="center|left"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingLeft="7dp"
+            android:singleLine="true"
+            android:paddingRight="7dp"
+            android:textColor="@android:color/black"
+            android:textSize="7pt" />
+
+        <Button
+            android:id="@+id/welcome_login_btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/go"
+            android:textSize="9pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/welcome_login_TVw_forgotPswd"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/forgot_ur_pswd"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+    </LinearLayout>
+
+</RelativeLayout>

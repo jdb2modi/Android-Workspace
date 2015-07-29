@@ -1,0 +1,168 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/profileSet_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/profileSet_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/profileSet_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/profileSet_linear_bottom"
+        android:layout_below="@+id/profileSet_linear_top" >
+
+        <LinearLayout
+            android:id="@+id/profileset_linear_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileSet_linear_top"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/profileSet_tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/profile_setting"
+                android:textColor="@android:color/white"
+                android:textSize="9pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profileset_linear_bodyMain"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileset_linear_text"
+            android:focusable="false"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:weightSum="3" >
+
+            <ImageView
+                android:id="@+id/profileSet_imgVw_userPhoto"
+                android:layout_width="fill_parent"
+                android:layout_height="110dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2.3"
+                android:contentDescription="@string/none"
+                android:src="@drawable/ic_launcher"
+                 android:onClick="OnClickHandler" />
+
+            <LinearLayout
+                android:id="@+id/profileSet_linear_body"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_weight=".7"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <com.example.quizapplication.font.TextViewFont
+                    android:id="@+id/profileSet_tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="7pt" />
+
+                <com.example.quizapplication.font.TextViewFont
+                    android:id="@+id/profileSet_tv_userEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Username Email id is"
+                    android:textColor="@android:color/white"
+                    android:textSize="7pt" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/profileSet_linear_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/profileSet_btn_signOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/signout"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/profileSet_btn_share_UserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/share_username"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/profileSet_btn_Adv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/adv_setting"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/profileSet_btn_chngPswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/chng_pswd"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+</RelativeLayout>

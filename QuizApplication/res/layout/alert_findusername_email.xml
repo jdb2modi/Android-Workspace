@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#355E3B"
+   
+   
+    android:gravity="left|center">
+
+    <RelativeLayout 
+         android:id="@+id/findUser_Email_dialog_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F80000" >
+        
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/findUser_Email_dialog_Top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+           android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/alert"
+            android:textColor="@android:color/white"
+            android:textSize="9pt" />
+        </RelativeLayout>
+
+
+    <LinearLayout 
+        android:layout_below="@+id/findUser_Email_dialog_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        
+  <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/findUser_Email_dialog_Body"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            
+            android:text="@string/alert_email"
+            android:textColor="@android:color/white"
+            android:textSize="9pt"
+             />
+ 
+    <Button
+        
+        android:id="@+id/findUser_Email_dialog_okBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="20dip"
+       android:layout_marginBottom="10dp"
+        android:background="@drawable/yellow_button"
+        android:clickable="false"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:onClick="OnClickHandler"
+        android:text="@string/ok"
+        android:textStyle="italic" />
+    
+    </LinearLayout>
+
+</RelativeLayout>

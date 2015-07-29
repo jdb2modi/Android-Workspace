@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/help_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/help_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/help_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/help_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help_linear_top"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/help_txtV_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/help"
+            android:textColor="#FFFFFF"
+            android:textSize="8pt" />
+
+        <ScrollView
+            android:id="@+id/help_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/help_txtV_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/help"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5pt" />
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

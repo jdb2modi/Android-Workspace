@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quizscreen"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="none" >
+
+    <RelativeLayout
+        android:id="@+id/quizscreenimage_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgscreen" >
+
+        <RelativeLayout
+            android:id="@+id/quizscreenimage_headerpart"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/quizscreenimage_imgVw_opponent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="2dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/ic_launcher" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_name_opponent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/quizscreenimage_imgVw_opponent"
+                android:text="Rutu"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_score_opponent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/quizscreenimage_txt_name_opponent"
+                android:layout_marginLeft="70dp"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_VS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/vs"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_name_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/quizscreenimage_imgVw_user"
+                android:text="Dhara"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_score_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/quizscreenimage_txt_name_user"
+                android:layout_marginRight="90dp"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+
+            <ImageView
+                android:id="@+id/quizscreenimage_imgVw_user"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="2dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/ic_launcher" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/quizscreenimage_middlepart"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quizscreenimage_headerpart"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/question"
+                android:textColor="@android:color/white"
+                android:textSize="8pt" />
+
+            <ImageView
+                android:id="@+id/quizscreenimage_imgVw_duster_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/duster_line" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreenimage_txt_ask_question"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="What country has this parrot as its national emblem?"
+                android:textColor="@android:color/white"
+                android:textSize="7pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quizscreenimage_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quizscreenimage_middlepart"
+            android:layout_margin="10dp"
+            android:background="@android:color/black" >
+
+            <ImageView
+                android:id="@+id/quizscreenimage_imgV"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/tulips" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

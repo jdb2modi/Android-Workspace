@@ -228,6 +228,19 @@
                 android:layout_below="@+id/lin_contentAddBalance"
                 android:layout_margin="5dp"
                 android:background="#440072B2" />
+
+            <Button
+                android:id="@+id/btn_showBankDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewSep2"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/mybutton"
+                android:text="Show BankDetails"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </ScrollView>
 

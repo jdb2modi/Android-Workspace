@@ -1,7 +1,5 @@
 package com.zaptech.myexpenditure;
 
-import com.ifactory.myexpenditure.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

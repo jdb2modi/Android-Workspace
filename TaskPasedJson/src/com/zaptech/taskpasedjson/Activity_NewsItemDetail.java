@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zaptech.taskpasedjson.database.DBHelper;
+import com.zaptech.taskpasedjson.models.Model_NewsItem_Items;
+
 public class Activity_NewsItemDetail extends ActionBarActivity implements
 		OnClickListener {
 	TextView txt_newsDescription;
@@ -25,8 +28,9 @@ public class Activity_NewsItemDetail extends ActionBarActivity implements
 		int strTemp = intent.getIntExtra("HeadLineId", 0);
 		Toast.makeText(getApplicationContext(), "HeadLineId" + strTemp,
 				Toast.LENGTH_LONG).show();
-		model_newsItem_Item=dbHelper.getNewsDetails(strTemp);
-		txt_newsDescription.setText(model_newsItem_Item.getModel_description().getTheString());
+		model_newsItem_Item = dbHelper.getNewsDetails(strTemp);
+		txt_newsDescription.setText(model_newsItem_Item.getModel_description()
+				.getTheString());
 	}
 
 	public void init() {

@@ -20,6 +20,7 @@ public class AddCollegeActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_college);
 		init();
+
 	}
 
 	public void init() {
@@ -52,14 +53,11 @@ public class AddCollegeActivity extends Activity implements OnClickListener {
 					&& strClgUniversity.trim().length() < 1) {
 				edCollegeName.setError("Please fill the College name");
 				edCollegeUniversity.setError("Please fill the University name");
-			}
-			else if(strClgName.trim().length()<1){
+			} else if (strClgName.trim().length() < 1) {
 				edCollegeName.setError("Please fill the College name");
-			}
-			else if(strClgUniversity.trim().length()<1){
+			} else if (strClgUniversity.trim().length() < 1) {
 				edCollegeUniversity.setError("Please fill the University name");
-			}
-			else {
+			} else {
 				dbHelper.insertCollegeData(edCollegeName.getText().toString(),
 						edCollegeUniversity.getText().toString());
 				Toast.makeText(AddCollegeActivity.this,

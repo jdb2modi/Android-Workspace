@@ -1,0 +1,233 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/accountSet_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/accountSet_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/accountSet_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accountset_linear_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accountSet_linear_top"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/accountset_txtV_accountsetting"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="@string/account_setting"
+            android:textColor="#FFFFFF"
+            android:textSize="10pt" />
+
+        <LinearLayout
+            android:id="@+id/accountset_linear_profilesetting"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:clickable="true"
+            android:onClick="OnClickHandler"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/accountset_txtV_profilesetting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:text="@string/profile_setting"
+                android:textColor="#FFFFFF"
+                android:textSize="7pt" />
+
+            <ImageButton
+                android:id="@+id/accountset_imgbtn_next_profileset"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2.5"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/arrow_white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/accountset_linear_help"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:clickable="true"
+            android:onClick="OnClickHandler"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/accountset_txtV_help"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:text="@string/help"
+                android:textColor="#FFFFFF"
+                android:textSize="7pt" />
+
+            <ImageButton
+                android:id="@+id/accountset_imgbtn_next_help"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2.5"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/arrow_white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/accountset_linear_contactus"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:clickable="true"
+            android:onClick="OnClickHandler"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/accountset_txtV_contactus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:text="@string/contact_us"
+                android:textColor="#FFFFFF"
+                android:textSize="7pt" />
+
+            <ImageButton
+                android:id="@+id/accountset_imgbtn_next_contactus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2.5"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/contact_us"
+                android:src="@drawable/arrow_white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/accountset_linear_aboutus"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:clickable="true"
+            android:onClick="OnClickHandler"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/accountset_txtV_aboutus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:text="@string/about_us"
+                android:textColor="#FFFFFF"
+                android:textSize="7pt" />
+
+            <ImageButton
+                android:id="@+id/accountset_imgbtn_next_aboutus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2.5"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:src="@drawable/arrow_white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accountset_linear_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/accountset_linear_bodypart"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/accountset_btn_advenceset"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/adv_setting"
+            android:textColor="@android:color/black"
+            android:textSize="8pt" />
+    </LinearLayout>
+
+</RelativeLayout>

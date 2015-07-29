@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zaptech.taskpasedjson.database.DBHelper;
+
 public class Activity_HomeItems extends Activity implements OnClickListener {
 	ListView listHomeItems;
 	DBHelper dbHelper;
@@ -42,6 +44,7 @@ public class Activity_HomeItems extends Activity implements OnClickListener {
 				intent.putExtra("TITLE",
 						dbHelper.arrayListHomeItems.get(position)
 								.getHomeItem_title());
+
 				startActivity(intent);
 			}
 		});

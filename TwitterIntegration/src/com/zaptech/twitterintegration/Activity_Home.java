@@ -295,6 +295,7 @@ public class Activity_Home extends Activity implements OnClickListener {
 			mLoginLayout.setVisibility(View.GONE);
 			mShareLayout.setVisibility(View.VISIBLE);
 		}
+
 	}
 
 	class updateTwitterStatus extends AsyncTask<String, String, Void> {

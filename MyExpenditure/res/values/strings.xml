@@ -209,5 +209,6 @@
     <string name="title_activity_activity__change_code">Activity_ChangeCode</string>
     <string name="title_activity_activity__about">Activity_About</string>
     <string name="strWelcome">Welcome, User</string>
+    <string name="title_activity_activity__show_bank_details">Activity_ShowBankDetails</string>
 
 </resources>

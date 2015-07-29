@@ -60,36 +60,51 @@ public class CollegeActivity extends Activity implements OnClickListener {
 		case R.id.btnAddCollege:
 			mIntent = new Intent(CollegeActivity.this, AddCollegeActivity.class);
 			startActivity(mIntent);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.btnUpdateCollege:
 			mIntent = new Intent(CollegeActivity.this,
 					UpdateCollegeActivity.class);
 			startActivity(mIntent);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.btnDeleteCollege:
 			mIntent = new Intent(CollegeActivity.this,
 					DeleteCollegeActivity.class);
-			startActivity(mIntent);
+			startActivity(mIntent);overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.btnSearchCollege:
 			mIntent = new Intent(CollegeActivity.this,
 					SearchCollegeActivity.class);
 			startActivity(mIntent);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.btnDeleteAllColleges:
 			deleteAllColleges();
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 
 			break;
 		case R.id.btnShowAllColleges:
 			mIntent = new Intent(CollegeActivity.this,
 					DisplayCollegeActivity.class);
 			startActivity(mIntent);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.gobackFromCollege:
 			this.finish();
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 		case R.id.goHomeFromCollege:
 			this.finish();
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			break;
 
 		default:

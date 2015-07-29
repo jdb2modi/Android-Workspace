@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <ImageView
+        android:id="@+id/profileSet_imgVw_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/top_bar_bg"
+        android:contentDescription="@string/none"
+        android:src="@drawable/quiz_main_logo" />
+
+    <RelativeLayout
+        android:id="@+id/gameSummary_relative_score1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileSet_imgVw_top"
+        android:layout_margin="10dp" >
+
+        <ImageView
+            android:id="@+id/gameSummary_imgVw_player1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/gameSummary_tv_PlayerName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/gameSummary_imgVw_player1"
+            android:text="0"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/gameSummary_tv_VS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/vs"
+            android:textSize="10pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/gameSummary_tv_PlayerName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/gameSummary_imgVw_player2"
+            android:text="0"
+            android:textSize="8pt" />
+
+        <ImageView
+            android:id="@+id/gameSummary_imgVw_player2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameSummary_relative_score2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameSummary_relative_score1" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/gameSummary_tv_Player1_Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"
+            android:text="0"
+            android:textSize="10pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/gameSummary_tv_Player2_Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="80dp"
+            android:text="0"
+            android:textSize="10pt" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/gameSummary_listVw"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@drawable/curving_line"
+        android:listSelector="@null"
+        android:layout_above="@+id/gameSummary_frame_bottom"
+        android:layout_below="@+id/gameSummary_relative_score2" >
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/gameSummary_frame_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/gameSummary_btnshop"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+          
+            android:background="@drawable/buttonwith_coin"
+            android:onClick="OnClickHandler"
+            android:text="@string/shop" />
+
+        <Button
+            android:id="@+id/gameSummary_btnNext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/yellow_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/next" />
+    </LinearLayout>
+
+</RelativeLayout>

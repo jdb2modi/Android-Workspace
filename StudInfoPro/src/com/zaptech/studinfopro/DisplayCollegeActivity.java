@@ -2,22 +2,23 @@ package com.zaptech.studinfopro;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class DisplayCollegeActivity extends Activity {
 	LayoutInflater infalter;
 	ProgressDialog pd;
 	CollegeAdapter clgAdapter;
+	ScrollView scroll;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +36,16 @@ public class DisplayCollegeActivity extends Activity {
 		setContentView(R.layout.display_college);
 		init();
 		new AsyCollege().execute();
+
 	}
 
 	public void init() {
+		scroll = (ScrollView) findViewById(R.id.scroll1);
 		listviewCollege = (ListView) findViewById(R.id.listCollege);
 		dbHelper = new DBHelper(this);
 		clgAdapter = new CollegeAdapter(this);
 		pd = new ProgressDialog(DisplayCollegeActivity.this);
+
 		listviewCollege.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -58,12 +63,14 @@ public class DisplayCollegeActivity extends Activity {
 				 * dbHelper.collegeList.get(position).getClgId());
 				 * alertCollegeData.show();
 				 */
+				scroll.setFocusable(false);
 				Intent i = new Intent(DisplayCollegeActivity.this,
 						MappingResultActivity.class);
 				i.putExtra("keyCollegeId", String.valueOf(dbHelper.collegeList
 						.get(position).getClgId()));
-				i.putExtra("keyCollegeName", String.valueOf(dbHelper.collegeList
-						.get(position).getClgName()));
+				i.putExtra("keyCollegeName", String
+						.valueOf(dbHelper.collegeList.get(position)
+								.getClgName()));
 				i.putExtra("keyUniversity", String.valueOf(dbHelper.collegeList
 						.get(position).getClgUniversity()));
 				startActivity(i);
@@ -71,6 +78,15 @@ public class DisplayCollegeActivity extends Activity {
 			}
 		});
 
+		listviewCollege.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				//v.getParent().requestDisallowInterceptTouchEvent(true);
+				return false;
+			}
+		});
 	}
 
 	class CollegeAdapter extends BaseAdapter {
@@ -114,11 +130,21 @@ public class DisplayCollegeActivity extends Activity {
 			TextView clgId = (TextView) convertView
 					.findViewById(R.id.tvCollegeId);
 
-			name.setText("College Name : "+dbHelper.collegeList.get(position).getClgName());
-			university.setText("University : "+dbHelper.collegeList.get(position)
-					.getClgUniversity());
-			clgId.setText(String.valueOf("College Id : "+dbHelper.collegeList.get(position)
-					.getClgId()));
+			Button btnSpecial = (Button) convertView.findViewById(R.id.button1);
+			btnSpecial.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Toast.makeText(getApplicationContext(), "Clicked", 2500)
+							.show();
+				}
+			});
+			name.setText("College Name : "
+					+ dbHelper.collegeList.get(position).getClgName());
+			university.setText("University : "
+					+ dbHelper.collegeList.get(position).getClgUniversity());
+			clgId.setText(String.valueOf("College Id : "
+					+ dbHelper.collegeList.get(position).getClgId()));
 
 			return convertView;
 		}

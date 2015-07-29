@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/result_listrow_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/none"
+        android:src="@drawable/female_list" />
+
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/result_listrow_tv_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/result_listrow_image"
+        android:gravity="center"
+        android:text="hello"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/result_listrow_imageRight"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+       
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/none"
+        android:src="@drawable/female_list" />
+    
+    <TextView 
+        android:id="@+id/roundRes_listrow_userSec"
+        android:layout_width="30dp"
+        android:layout_height="15dp"
+        android:layout_below="@+id/result_listrow_imageRight"
+        android:text="1.2s"
+          android:layout_alignParentRight="true"
+      android:layout_marginRight="5dp"
+        android:background="#F80000"/>
+
+    <ImageView
+        android:id="@+id/result_listrow_imageLeft"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+       
+       
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/result_listrow_imageRight"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/none"
+        android:src="@drawable/female_list" />
+    
+     <TextView
+         android:id="@+id/roundRes_listrow_oppSec"
+         android:layout_width="30dp"
+         android:layout_height="15dp"
+         android:layout_below="@+id/result_listrow_imageLeft"
+         android:layout_marginRight="5dp"
+         android:layout_toLeftOf="@+id/roundRes_listrow_userSec"
+         android:background="#F80000"
+         android:text="1.2s" />
+
+</RelativeLayout>

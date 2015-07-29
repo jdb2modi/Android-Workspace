@@ -1,7 +1,5 @@
 package com.zaptech.myexpenditure;
 
-import com.ifactory.myexpenditure.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

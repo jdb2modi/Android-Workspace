@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgscreen"
+    tools:context=".CreateGame" >
+
+    <LinearLayout
+        android:id="@+id/createGame_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/createGame_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/tvTop_CreateGame"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:gravity="left|center"
+            android:text="@string/create_game"
+            android:textColor="@android:color/black"
+            android:textSize="10pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/createGame_linear_body1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createGame_linear_top"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/CreateGame_tvOponent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/find_oponent1_createGame"
+            android:textColor="@android:color/white"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/CreateGame_tvOponent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/find_oponent2_createGame"
+            android:textColor="@android:color/white"
+            android:textSize="8pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/createGame_linearBody2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createGame_linear_body1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/createGame_btn_faceBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/facebook"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/createGame_btn_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/username"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/createGame_btn_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/email"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/createGame_btn_random"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/random"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+</RelativeLayout>

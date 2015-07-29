@@ -16,7 +16,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.zaptech.taskpasedjson.database.DBHelper;
+import com.zaptech.taskpasedjson.models.Model_Headline;
+import com.zaptech.taskpasedjson.models.Model_NewsItem_Items;
 
 public class Activity_NewsItem_Items extends Activity implements
 		OnClickListener {

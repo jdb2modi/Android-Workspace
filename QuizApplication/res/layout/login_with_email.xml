@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <LinearLayout
+        android:id="@+id/login_with_email_linear_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/login_with_email_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/top_bar_back_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/back" />
+
+        <ImageView
+            android:id="@+id/login_with_email_imgVw_top"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_with_email_linear_bodyMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_with_email_linear_top"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/login_with_email_HearderText"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="left"
+            android:text="@string/login_or_create_account"
+            android:textColor="@android:color/white"
+            android:textSize="8pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/login_with_email_TVw_emailadd"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="@string/email_address_createAccunt"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.EditTextFont
+            android:id="@+id/login_with_email_ed_emailadd"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ed_backgroung"
+            android:gravity="center|left"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/login_with_email_TVw_userName"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"
+            android:text="@string/username_createAccunt"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.EditTextFont
+            android:id="@+id/login_with_email_ed_userNM"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ed_backgroung"
+            android:gravity="center|left"
+            android:hint="@string/username"
+            android:singleLine="true"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:textColor="@android:color/black"
+            android:textSize="7pt" />
+
+        <Button
+            android:id="@+id/login_with_email_btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/yellow_button"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/go"
+            android:textSize="8pt" />
+
+        <ImageView
+            android:id="@+id/login_with_email_imgVw_Line"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/curving_line" />
+
+        <Button
+            android:id="@+id/login_with_email_btn_loginFb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/yellow_button"
+            android:onClick="OnClickHandler"
+            android:text="@string/login_with_fb"
+            android:textSize="8pt" />
+    </LinearLayout>
+
+</RelativeLayout>

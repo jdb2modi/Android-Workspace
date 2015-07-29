@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quizscreen_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <RelativeLayout
+        android:id="@+id/quizscreen_headerpart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/quizscreen_imgVw_opponent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="2dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_name_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/quizscreen_txt_VS"
+            android:layout_toRightOf="@+id/quizscreen_imgVw_opponent"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_score_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/quizscreen_txt_name_opponent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="70dp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_VS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/vs"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_name_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/quizscreen_imgVw_user"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_score_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/quizscreen_txt_name_user"
+            android:layout_marginRight="90dp"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <ImageView
+            android:id="@+id/quizscreen_imgVw_user"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/quizscreen_middlepart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quizscreen_headerpart"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/quizscreen_llquesTotalQuestion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/question"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_totalQues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+        </LinearLayout>
+        <!--
+             <ImageView
+            android:id="@+id/quizscreen_imgVw_duster_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/duster_line" />
+        -->
+
+        <SeekBar
+            android:id="@+id/seekBar_Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/quizscreen_txt_ask_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="In Italy,which cith is further North?"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/quizscreen_footerpart"
+        android:layout_below="@+id/quizscreen_middlepart"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/txtstartforans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="120sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/quizscreen_bodypart"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/quizscreen_footerpart"
+        android:layout_below="@+id/quizscreen_middlepart"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/quizscreen_option1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_op_A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/a"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+
+            <Button
+                android:id="@+id/quizscreen_op_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/custom_oval_w"
+                android:onClick="OnClickHandler"
+                android:text="Venice"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quizscreen_option2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_op_B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/b"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+
+            <Button
+                android:id="@+id/quizscreen_op_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/custom_oval_w"
+                android:onClick="OnClickHandler"
+                android:text="Turin"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quizscreen_option3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_op_C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/c"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+
+            <Button
+                android:id="@+id/quizscreen_op_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/custom_oval_w"
+                android:onClick="OnClickHandler"
+                android:text="Milan"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quizscreen_option4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/quizscreen_txt_op_D"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@string/d"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+
+            <Button
+                android:id="@+id/quizscreen_op_4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/custom_oval_w"
+                android:onClick="OnClickHandler"
+                android:text="Modena"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/quizscreen_footerpart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/quizscreen_goldcoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/goldcoin" />
+
+        <Button
+            android:id="@+id/quizscreen_btn_remove_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/buttonfor_coin"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/remove_2_answer"
+            android:textColor="@android:color/black"
+            android:textSize="10pt" />
+    </FrameLayout>
+
+</RelativeLayout>

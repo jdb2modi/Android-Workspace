@@ -1,0 +1,355 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bgscreen" >
+
+    <RelativeLayout
+        android:id="@+id/homeScreen_relative_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bar_bg" >
+
+        <ImageView
+            android:id="@+id/homeScreen_imgVw_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/quiz_main_logo" />
+
+        <ImageButton
+            android:id="@+id/homeScreen_imgbtn_topSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/setting_btn"
+            android:contentDescription="@string/none"
+            android:onClick="OnClickHandler" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/homeScreen_btn_creategame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homeScreen_relative_top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/yellow_button_big"
+        android:gravity="center"
+        android:onClick="OnClickHandler"
+        android:text="@string/create_game" />
+
+    <FrameLayout
+        android:id="@+id/homeScreen_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+     
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/homeScreen_btn_creategame"
+        android:background="@drawable/tournament_end_bg" >
+        
+        <ViewFlipper 
+             android:id="@+id/ViewFlipper"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:content="@+id/homeScreen_relative_ScoreCard"
+            android:handle="@+id/homeScreen_imgbtn_Slider"
+            android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/homeScreen_relative_ScoreCard"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:layout_marginLeft="15dp"
+                android:text="@string/tournament_ends_in"
+                android:textSize="7pt" />
+
+            <TextView
+                android:id="@+id/homeScreen_tv_time_Day_1"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+           <TextView
+                android:id="@+id/homeScreen_tv_time_Day_2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_Day_1"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+            <TextView
+                android:id="@+id/homeScreen_tv_time_HR_1"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_Day_2"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+            <TextView
+                android:id="@+id/homeScreen_tv_time_HR_2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_HR_1"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+            <TextView
+                android:id="@+id/homeScreen_tv_time_Min_1"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_HR_2"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+           <TextView
+                android:id="@+id/homeScreen_tv_time_Min_2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_Min_1"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+           <TextView
+                android:id="@+id/homeScreen_tv_time_Sec_1"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_Min_2"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+            <TextView
+                android:id="@+id/homeScreen_tv_time_Sec_2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_tounmnt_end"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/homeScreen_tv_time_Sec_1"
+                android:background="@drawable/blackbutton_time"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@android:color/white"
+                android:textSize="10pt" />
+
+            <ImageButton
+                android:id="@+id/homeScreen_imgbtn_Slider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:onClick="OnClickHandler"
+                android:contentDescription="@string/none"
+                android:src="@drawable/blue_btn_slider" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_tv_time_Day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/homeScreen_tv_time_Day_1"
+                android:layout_marginLeft="15dp"
+                android:text="@string/days"
+                android:textSize="6pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_tv_time_Hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/homeScreen_tv_time_Day"
+                android:layout_below="@+id/homeScreen_tv_time_HR_1"
+                android:layout_marginLeft="25dp"
+                android:text="@string/hours"
+                android:textSize="6pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_tv_time_Min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/homeScreen_tv_time_Hours"
+                android:layout_below="@+id/homeScreen_tv_time_Min_1"
+                android:layout_marginLeft="20dp"
+                android:text="@string/minutes"
+                android:textSize="6pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_txtV"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/homeScreen_tv_time_Sec"
+                android:background="@android:color/transparent" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/homeScreen_tv_time_Sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/homeScreen_tv_time_Min"
+                android:layout_below="@+id/homeScreen_tv_time_Sec_1"
+                android:layout_marginLeft="5dp"
+                android:text="@string/seconds"
+                android:textSize="6pt" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/homeScreen_relative_week_ScoreCard"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:visibility="gone" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/tv_ur_weekly_score"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="7dp"
+                android:layout_toRightOf="@+id/homeScreen_imgbtn_SliderL"
+                android:gravity="center_horizontal"
+                android:text="@string/weekly_highscore"
+                android:textSize="7pt" />
+
+           <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/weekly_tv_urScore"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ur_weekly_score"
+                android:layout_toRightOf="@+id/homeScreen_imgbtn_SliderL"
+                android:gravity="center_horizontal"
+                android:text="0" />
+
+           <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/weekly_tv_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weekly_tv_urScore"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/homeScreen_imgbtn_SliderL"
+                android:text="@string/coins"
+                android:textColor="@android:color/black" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/weekly_tv_coinsDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/weekly_tv_urScore"
+                android:layout_marginRight="10dp"
+                android:text="0"
+                android:textColor="@android:color/black" />
+
+            <ImageButton
+                android:id="@+id/homeScreen_imgbtn_SliderL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/none"
+                android:onClick="OnClickHandler"
+                android:src="@drawable/blue_btn_slider_l" />
+        </RelativeLayout>
+        </ViewFlipper>
+    </FrameLayout>
+
+    
+     <RelativeLayout
+        android:id="@+id/rel_listivew"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+      
+        android:layout_below="@+id/homeScreen_frame" >
+
+        <ListView
+            android:id="@+id/homeScreen_listVw"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+           
+            android:divider="@android:color/white"
+            android:dividerHeight="2dp" >
+        </ListView>
+    </RelativeLayout>
+   
+   <!--  <RelativeLayout
+        android:id="@+id/homeScreen_linear_Bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/homeScreen_btn_bottom_creategame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/create_game" />
+
+        <Button
+            android:id="@+id/homeScreen_btn_findFrnds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/find_friends"
+            android:layout_below="@+id/homeScreen_btn_bottom_creategame" />
+        <Button
+            android:id="@+id/homeScreen_btn_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/yellow_button_big"
+            android:gravity="center"
+            android:onClick="OnClickHandler"
+            android:text="@string/shop"
+            android:layout_below="@+id/homeScreen_btn_findFrnds" />
+    </RelativeLayout> -->
+
+</RelativeLayout>

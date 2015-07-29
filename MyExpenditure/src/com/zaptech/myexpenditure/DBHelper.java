@@ -13,9 +13,10 @@ import android.widget.BaseAdapter;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-	public static final String DBNAME = "myexpenditure.db";
+	public static final String DBNAME = "myexp.db";
 	public static final String TBEXPENCE = "tbExpense";
 	public static final String TBPASSWORD = "tbPassword";
+	public static final String TBBANKDETAILS = "tbBankDetails";
 
 	public static final String COL_EXPENSEID = "ExpenseId";
 	public static final String COL_EXPENSECATEGORY = "ExpenseCategory";
@@ -26,12 +27,17 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String COL_EXPENSEAMOUNT = "ExpenceAmount";
 	public static final String COL_DESCRIPTION = "Description";
 
+	public static final String COL_ACCOUNTNUMBER = "AccountNumber";
+	public static final String COL_BANKNAME = "BankName";
+	public static final String COL_CURRENTBALANCE = "CurrentBalance";
+
 	public static final String COL_PASSWORD = "Password";
 
 	SQLiteDatabase mDatabase;
 	ContentValues mContent;
 	Cursor cursor;
 	ArrayList<ExpenceModel> arrayListExpence = new ArrayList<ExpenceModel>();
+	ArrayList<ModelBankDetails> arrayListBankDetails = new ArrayList<ModelBankDetails>();
 
 	public DBHelper(Context context) {
 		super(context, DBNAME, null, 1);
@@ -48,8 +54,12 @@ public class DBHelper extends SQLiteOpenHelper {
 				+ COL_DESCRIPTION + " VARCHAR);";
 		String CREATE_PASSTABLE = "CREATE TABLE " + TBPASSWORD + "( "
 				+ COL_PASSWORD + " VARCHAR PRIMARY KEY);";
+		String TABLE_BANKDETAILS = "CREATE TABLE " + TBBANKDETAILS + "( "
+				+ COL_ACCOUNTNUMBER + " VARCHAR PRIMARY KEY," + COL_BANKNAME
+				+ " VARCHAR," + COL_CURRENTBALANCE + " VARCHAR);";
 		db.execSQL(TABLE_EXPENCE);
 		db.execSQL(CREATE_PASSTABLE);
+		db.execSQL(TABLE_BANKDETAILS);
 	}
 
 	@Override
@@ -229,5 +239,46 @@ public class DBHelper extends SQLiteOpenHelper {
 		mDatabase = getDB();
 		mDatabase.delete(TBEXPENCE, null, null);
 		mDatabase.close();
+	}
+
+	public void addBankDetails(String strAccountNumber, String strBankName,
+			String strCurrentBalance) {
+
+		mDatabase = getDB();
+		mContent = getContentValues();
+		mContent.put(COL_ACCOUNTNUMBER, strAccountNumber);
+		mContent.put(COL_BANKNAME, strBankName);
+		mContent.put(COL_CURRENTBALANCE, strCurrentBalance);
+		mDatabase.insert(TBBANKDETAILS, null, mContent);
+		mDatabase.close();
+		mDatabase.releaseMemory();
+
+	}
+
+	public ArrayList<ModelBankDetails> showBankDetails() {
+		mDatabase = getDB();
+
+		String strGetBankDetails = "SELECT * FROM " + TBBANKDETAILS;
+		Cursor cursor = mDatabase.rawQuery(strGetBankDetails, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					String strAccountNumber, strBankName, strCurrentBalance;
+					strAccountNumber = cursor.getString(cursor
+							.getColumnIndex(COL_ACCOUNTNUMBER));
+					strBankName = cursor.getString(cursor
+							.getColumnIndex(COL_BANKNAME));
+					strCurrentBalance = cursor.getString(cursor
+							.getColumnIndex(COL_CURRENTBALANCE));
+					ModelBankDetails modelBankDetails = new ModelBankDetails();
+					modelBankDetails.setAccountNumber(strAccountNumber);
+					modelBankDetails.setBankName(strBankName);
+					modelBankDetails.setCurrentBalance(strCurrentBalance);
+					arrayListBankDetails.add(modelBankDetails);
+				} while (cursor.moveToNext());
+			}
+
+		}
+		return arrayListBankDetails;
 	}
 }

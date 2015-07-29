@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgscreen" >
+
+    <ImageView
+        android:id="@+id/welcome_imgVw_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:background="@drawable/top_bar_bg"
+        android:contentDescription="@string/none"
+        android:src="@drawable/quiz_main_logo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none" 
+        android:layout_below="@+id/welcome_imgVw_top">
+
+        <LinearLayout
+            android:id="@+id/welcome_linear_bodypart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_imgVw_top"
+         
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/welcome_txtV_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:text="@string/welcome_quizit"
+                android:textColor="#FFFFFF"
+                android:textSize="12pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/welcome_txtV_connect_with_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:text="@string/connect_with_fb"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+
+            <Button
+                android:id="@+id/welcome_btn_facebook_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/yellow_button_big"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/facebook_login"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+
+            <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/welcome_txtV_find_fb_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:text="@string/find_fb_friend"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+
+            <FrameLayout
+                android:id="@+id/welcome_frame_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" >
+
+                <ImageView
+                    android:id="@+id/welcome_imgV_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/none"
+                    android:src="@drawable/line_or" />
+
+                <com.example.quizapplication.font.TextViewFont
+                    android:id="@+id/welcome_txtV_or"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/or"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12pt" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/welcome_btn_email_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/yellow_button_big"
+                android:gravity="center"
+                android:onClick="OnClickHandler"
+                android:text="@string/email_login"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+
+           <com.example.quizapplication.font.TextViewFont
+                android:id="@+id/welcome_txtV_do_not_have_fb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/do_not_have_fb"
+                android:textColor="#FFFFFF"
+                android:textSize="10pt" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

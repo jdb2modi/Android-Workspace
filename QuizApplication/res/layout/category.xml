@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestionDemo"
+    android:background="@drawable/bgscreen" >
+
+    <RelativeLayout
+        android:id="@+id/category_headerpart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/category_imgVw_opponent"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="2dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/category_txt_name_opponent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/category_imgVw_opponent"
+            android:layout_toLeftOf="@+id/category_txt_VS"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+      
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/category_txt_VS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/vs"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <com.example.quizapplication.font.TextViewFont
+            android:id="@+id/category_txt_name_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/category_imgVw_user"
+            android:textColor="@android:color/white"
+            android:textSize="7pt" />
+
+        <ImageView
+            android:id="@+id/category_imgVw_user"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/none"
+            android:src="@drawable/ic_launcher" />
+    </RelativeLayout>
+
+        
+ <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/txt_Category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:visibility="visible" />
+ 
+ 
+    <com.example.quizapplication.font.TextViewFont
+        android:id="@+id/txtstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/white"
+        android:textSize="100sp"
+        android:visibility="visible" />
+
+</RelativeLayout>
