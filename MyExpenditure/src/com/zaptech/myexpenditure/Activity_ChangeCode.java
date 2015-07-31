@@ -71,6 +71,11 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 				Toast.makeText(Activity_ChangeCode.this,
 						"Security Code changed successfully..!",
 						Toast.LENGTH_SHORT).show();
+				mEdCurrent.setText("");
+				mEdNew.setText("");
+				mEdConfirm.setText("");
+				mEdCurrent.setFocusable(true);
+
 			} else {
 				Toast.makeText(Activity_ChangeCode.this,
 						"Password does not matched..!", Toast.LENGTH_SHORT)
@@ -95,7 +100,16 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_changeAuthentication:
-			changeCode();
+			if (mEdConfirm.getText().toString().trim().length() <= 0
+					|| mEdCurrent.getText().toString().trim().length() <= 0
+					|| mEdNew.getText().toString().trim().length() <= 0) {
+				Toast.makeText(Activity_ChangeCode.this,
+						"Authetication code never be null", Toast.LENGTH_SHORT)
+						.show();
+			} else {
+				changeCode();
+			}
+
 			break;
 		case R.id.btn_exitFromChangeCode:
 			exit();

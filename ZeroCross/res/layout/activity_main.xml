@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_mainBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="60dp" >
+
+        <ImageButton
+            android:id="@+id/imgBtnOne"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtnTwo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/imgBtnOne" />
+
+        <ImageButton
+            android:id="@+id/imgBtnThree"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/imgBtnTwo" />
+
+        <ImageButton
+            android:id="@+id/imgBtnFour"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnOne" />
+
+        <ImageButton
+            android:id="@+id/imgBtnFive"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnTwo"
+            android:layout_toRightOf="@+id/imgBtnFour" />
+
+        <ImageButton
+            android:id="@+id/imgBtnSix"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnThree"
+            android:layout_toRightOf="@+id/imgBtnFive" />
+
+        <ImageButton
+            android:id="@+id/imgBtnSeven"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnFour" />
+
+        <ImageButton
+            android:id="@+id/imgBtnEight"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnFive"
+            android:layout_toRightOf="@+id/imgBtnSeven" />
+
+        <ImageButton
+            android:id="@+id/imgBtnNine"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/imgBtnSix"
+            android:layout_toRightOf="@+id/imgBtnEight" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnPlayAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_mainBox"
+        android:text="Play Again"
+        android:visibility="invisible" />
+
+</RelativeLayout>

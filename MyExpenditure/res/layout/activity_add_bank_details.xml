@@ -32,24 +32,11 @@
             android:textColor="@android:color/white" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txt_welcomeOnAddBankDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_bankDetailsHeader"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
-        android:text="@string/strWelcome"
-        android:textAllCaps="false"
-        android:textColor="#0072B2"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
     <ScrollView
         android:id="@+id/scrollContentOfBankDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_welcomeOnAddBankDetail" >
+        android:layout_below="@+id/rel_bankDetailsHeader" >
 
         <RelativeLayout
             android:id="@+id/rel_contentOnBankDetails"

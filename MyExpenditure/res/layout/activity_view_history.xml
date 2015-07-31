@@ -32,11 +32,38 @@
             android:textColor="@android:color/white" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/listHistory"
+    <TextView
+        android:id="@+id/txt_contentExpenceDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_historyHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="Expence Details"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/viewSeperatorTitleOnShowExpenceDetails"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rel_historyHeader" >
-    </ListView>
+        android:layout_height="2dp"
+        android:layout_below="@+id/txt_contentExpenceDetails"
+        android:layout_margin="5dp"
+        android:background="#440072B2" />
+
+    <RelativeLayout
+        android:id="@+id/rel_bankDetailsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewSeperatorTitleOnShowExpenceDetails" >
+
+        <ListView
+            android:id="@+id/listHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </RelativeLayout>
 
 </RelativeLayout>

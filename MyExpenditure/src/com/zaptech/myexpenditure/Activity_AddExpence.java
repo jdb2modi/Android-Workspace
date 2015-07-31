@@ -32,6 +32,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 	// FOR DATE-PICKER...
 
 	private Button mBtn_addExpence;
+	private Button mBtn_cancelExpence;
 	private Button mBtn_exit;
 	private Button mBtn_back;
 	private Calendar mCalendar;
@@ -90,6 +91,8 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		ed_ExpenceAmount = (EditText) findViewById(R.id.ed_Amount);
 		mBtn_addExpence = (Button) findViewById(R.id.btn_saveOnAddExpence);
 		mBtn_addExpence.setOnClickListener(this);
+		mBtn_cancelExpence = (Button) findViewById(R.id.btn_cancelOnAddExpence);
+		mBtn_cancelExpence.setOnClickListener(this);
 		mBtn_exit = (Button) findViewById(R.id.btn_exitFromAddExpence);
 		mBtn_exit.setOnClickListener(this);
 		mBtn_back = (Button) findViewById(R.id.btn_backFromAddExpence);
@@ -130,6 +133,9 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 
 		case R.id.btn_backFromAddExpence:
 			back();
+			break;
+		case R.id.btn_cancelOnAddExpence:
+			cancel();
 			break;
 		default:
 			break;
@@ -334,4 +340,9 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		}
 	}
 
+	private void cancel() {
+		ed_ExpenceDescription.setText("");
+		ed_ExpenceAmount.setText("");
+		ed_ExpenceDescription.setFocusable(true);
+	}
 }
