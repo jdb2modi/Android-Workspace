@@ -38,6 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	Cursor cursor;
 	ArrayList<ExpenceModel> arrayListExpence = new ArrayList<ExpenceModel>();
 	ArrayList<ModelBankDetails> arrayListBankDetails = new ArrayList<ModelBankDetails>();
+	ArrayList<String> arrayListBankNames = new ArrayList<String>();
 
 	public DBHelper(Context context) {
 		super(context, DBNAME, null, 1);
@@ -102,6 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		mDatabase.update(TBPASSWORD, mContent, null, null);
 
 		mDatabase.close();
+		mDatabase.releaseMemory();
 	}
 
 	public void insertPassword() {
@@ -235,7 +237,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		return arrayListExpence;
 	}
 
-	public void deleteHistory() {
+	public void deleteExpenceHistory() {
 		mDatabase = getDB();
 		mDatabase.delete(TBEXPENCE, null, null);
 		mDatabase.close();
@@ -280,5 +282,84 @@ public class DBHelper extends SQLiteOpenHelper {
 
 		}
 		return arrayListBankDetails;
+	}
+
+	public void deletebankHistory() {
+		mDatabase = getDB();
+		mDatabase.delete(TBBANKDETAILS, null, null);
+		mDatabase.close();
+	}
+
+	public void removeSpecificBank(String strBankName) {
+		mDatabase = getDB();
+		mDatabase.delete(TBBANKDETAILS, COL_BANKNAME + " = ?",
+				new String[] { strBankName });
+		mDatabase.close();
+	}
+
+	public void updateBankDetails(String accountNo, String bankName,
+			String currentBalance) {
+		mDatabase = getDB();
+		mContent = getContentValues();
+		mContent.put(COL_ACCOUNTNUMBER, accountNo);
+		mContent.put(COL_BANKNAME, bankName);
+		mContent.put(COL_CURRENTBALANCE, currentBalance);
+
+		mDatabase.update(TBBANKDETAILS, mContent, COL_ACCOUNTNUMBER + " = "
+				+ accountNo, null);
+
+		mDatabase.close();
+		mDatabase.releaseMemory();
+	}
+
+	public ArrayList<String> getBankDetailsToUpdate(String accountNumber) {
+
+		ArrayList<String> arrayListBankDetails = new ArrayList<String>();
+		String strGetDetails = "SELECT * FROM " + TBBANKDETAILS + " WHERE "
+				+ COL_ACCOUNTNUMBER + " = " + accountNumber;
+		mDatabase = getDB();
+		Cursor cursor = mDatabase.rawQuery(strGetDetails, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					String strAccountNumber = cursor.getString(cursor
+							.getColumnIndex(COL_ACCOUNTNUMBER));
+					String strBankName = cursor.getString(cursor
+							.getColumnIndex(COL_BANKNAME));
+					String strCurrentBalance = cursor.getString(cursor
+							.getColumnIndex(COL_CURRENTBALANCE));
+
+					arrayListBankDetails.add(strAccountNumber);
+					arrayListBankDetails.add(strBankName);
+					arrayListBankDetails.add(strCurrentBalance);
+				} while (cursor.moveToNext());
+			}
+
+		}
+
+		return arrayListBankDetails;
+	}
+
+	public ArrayList<String> getBankNames() {
+
+		String strGetDetails = "SELECT * FROM " + TBBANKDETAILS;
+		mDatabase = getDB();
+		Cursor cursor = mDatabase.rawQuery(strGetDetails, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					String strBankName = cursor.getString(cursor
+							.getColumnIndex(COL_BANKNAME));
+					System.err
+							.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+									+ strBankName);
+					arrayListBankNames.add(strBankName);
+
+				} while (cursor.moveToNext());
+			}
+
+		}
+
+		return arrayListBankNames;
 	}
 }

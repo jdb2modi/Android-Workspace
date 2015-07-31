@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_toLeftOf="@+id/btn_exitFromBankDetails"
             android:background="@drawable/mybutton"
             android:text="Back"
             android:textAllCaps="false"
@@ -95,7 +94,8 @@
                 android:layout_centerHorizontal="true"
                 android:hint="Account Number"
                 android:textAllCaps="false"
-                android:textColor="#0072B2" />
+                android:textColor="#0072B2"
+                android:numeric="integer" />
 
             <EditText
                 android:id="@+id/ed_bankName"
@@ -115,7 +115,8 @@
                 android:layout_centerHorizontal="true"
                 android:hint="Current Balance"
                 android:textAllCaps="false"
-                android:textColor="#0072B2" />
+                android:textColor="#0072B2"
+                android:numeric="integer" />
 
             <LinearLayout
                 android:id="@+id/lin_contentBankDetails"
@@ -234,13 +235,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/viewSep2"
+                android:layout_centerHorizontal="true"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/mybutton"
                 android:text="Show BankDetails"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:layout_centerHorizontal="true" />
+                android:textColor="@android:color/white" />
         </RelativeLayout>
     </ScrollView>
 

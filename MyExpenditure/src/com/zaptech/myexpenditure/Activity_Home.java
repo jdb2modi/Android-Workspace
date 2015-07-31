@@ -13,14 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_Home extends Activity implements OnClickListener {
-	private Button btn_logout, btn_addExpence, btn_history, btn_banking,
-			btn_settings, btn_about;
+	private Button btn_logout, btn_manageBanking, btn_settings, btn_about,
+			btn_manageExpence;
 	private TextView txt_dailyExpence;
 
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";
 
-	DBHelper dbHelper;
 	Intent intent;
 
 	@Override
@@ -28,23 +27,26 @@ public class Activity_Home extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		init();
-
+		setTypeface();
 	}
 
 	public void init() {
-		dbHelper = new DBHelper(this);
+
 		btn_logout = (Button) findViewById(R.id.btn_homeExit);
 		btn_logout.setOnClickListener(this);
-		btn_addExpence = (Button) findViewById(R.id.btn_addExpence);
-		btn_addExpence.setOnClickListener(this);
-		btn_banking = (Button) findViewById(R.id.btn_banking);
-		btn_banking.setOnClickListener(this);
-		btn_history = (Button) findViewById(R.id.btn_history);
-		btn_history.setOnClickListener(this);
+
+		btn_manageBanking = (Button) findViewById(R.id.btn_manageBanking);
+		btn_manageBanking.setOnClickListener(this);
+
 		btn_settings = (Button) findViewById(R.id.btn_Settings);
 		btn_settings.setOnClickListener(this);
+
 		btn_about = (Button) findViewById(R.id.btn_homeAbout);
 		btn_about.setOnClickListener(this);
+
+		btn_manageExpence = (Button) findViewById(R.id.btn_manageExpence);
+		btn_manageExpence.setOnClickListener(this);
+
 		txt_dailyExpence = (TextView) findViewById(R.id.txt_dailyExpence);
 
 	}
@@ -80,30 +82,35 @@ public class Activity_Home extends Activity implements OnClickListener {
 					});
 			alert.show();
 			break;
-		case R.id.btn_addExpence:
+
+		case R.id.btn_manageBanking:
 			finish();
-			intent = new Intent(getApplicationContext(),
-					Activity_AddExpence.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_history:
-			finish();
-			intent = new Intent(Activity_Home.this, Activity_History.class);
-			startActivity(intent);
-			break;
-		case R.id.btn_banking:
-			finish();
-			intent = new Intent(Activity_Home.this, Activity_Banking.class);
+			intent = new Intent(Activity_Home.this,
+					Activity_ManageBanking.class);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		case R.id.btn_Settings:
 			finish();
 			intent = new Intent(Activity_Home.this, Activity_Settings.class);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		case R.id.btn_homeAbout:
 			finish();
 			intent = new Intent(Activity_Home.this, Activity_About.class);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
+			startActivity(intent);
+			break;
+		case R.id.btn_manageExpence:
+			finish();
+			intent = new Intent(Activity_Home.this,
+					Activity_ManageExpence.class);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		default:
@@ -117,9 +124,8 @@ public class Activity_Home extends Activity implements OnClickListener {
 				"fonts/Tahoma.ttf");
 
 		btn_logout.setTypeface(tyFace);
-		btn_addExpence.setTypeface(tyFace);
-		btn_history.setTypeface(tyFace);
-		btn_banking.setTypeface(tyFace);
+
+		btn_manageBanking.setTypeface(tyFace);
 		txt_dailyExpence.setTypeface(tyFace);
 
 	}

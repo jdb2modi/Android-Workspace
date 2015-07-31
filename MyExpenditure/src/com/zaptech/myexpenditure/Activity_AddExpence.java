@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import android.widget.Toast;
 
 public class Activity_AddExpence extends Activity implements OnClickListener {
 	// FOR DATE-PICKER...
-	private Button mBtn_date;
+
 	private Button mBtn_addExpence;
 	private Button mBtn_exit;
 	private Button mBtn_back;
@@ -63,40 +64,14 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		// DATABASE object..
 		dbHelper = new DBHelper(Activity_AddExpence.this);
 		init();
+
 		initExpenceList();
+		setTypeface();
 		// FOR DATE-PICKER
 		mInt_year = mCalendar.get(Calendar.YEAR);
 		mInt_month = mCalendar.get(Calendar.MONTH);
 		mInt_day = mCalendar.get(Calendar.DAY_OF_MONTH);
 		showDate(mInt_year, mInt_month + 1, mInt_day);
-
-		/*
-		 * spin_ExpenceCategory.setOnItemClickListener(new OnItemClickListener()
-		 * {
-		 * 
-		 * @Override public void onItemClick(AdapterView<?> parent, View view,
-		 * int position, long id) { // TODO Auto-generated method stub
-		 * 
-		 * } });
-		 */
-		/*
-		 * spin_ExpenceCategory .setOnItemSelectedListener(new
-		 * OnItemSelectedListener() {
-		 * 
-		 * @Override public void onItemSelected(AdapterView<?> parent, View
-		 * view, int position, long id) { // TODO Auto-generated method stub
-		 * 
-		 * 
-		 * String string= expenceList.get(position).toString();
-		 * spin_ExpenceCategory.setSelection();
-		 * 
-		 * }
-		 * 
-		 * @Override public void onNothingSelected(AdapterView<?> parent) { //
-		 * TODO Auto-generated method stub
-		 * 
-		 * } });
-		 */
 
 	}
 
@@ -109,6 +84,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		// FOR ADD EXPENCE...
 		spin_ExpenceCategory = (Spinner) findViewById(R.id.spin_expenceOnAddExpence);
 		spin_ExpenceCurrency = (Spinner) findViewById(R.id.spin_currency);
+		spin_ExpenceCurrency.setSelection(50);
 		spin_ExpenceMode = (Spinner) findViewById(R.id.spin_paymentMode);
 		ed_ExpenceDescription = (EditText) findViewById(R.id.ed_Description);
 		ed_ExpenceAmount = (EditText) findViewById(R.id.ed_Amount);
@@ -144,7 +120,8 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_saveOnAddExpence:
-			addExpence();
+
+			mValidate();
 			break;
 
 		case R.id.btn_exitFromAddExpence:
@@ -186,7 +163,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 	};
 
 	private void showDate(int year, int month, int day) {
-		
+
 		if (day < 10) {
 
 			if (month < 10) {
@@ -250,7 +227,10 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 
 	private void back() {
 		finish();
-		intent = new Intent(Activity_AddExpence.this, Activity_Home.class);
+		intent = new Intent(Activity_AddExpence.this,
+				Activity_ManageExpence.class);
+		overridePendingTransition(R.anim.in_from_left_activity,
+				R.anim.out_to_right_activity);
 		startActivity(intent);
 	}
 
@@ -328,6 +308,30 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		 * imgExpence.setBackgroundResource(imageExpences[position]); return
 		 * convertView; }
 		 */
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		mBtn_addExpence.setTypeface(tyFace);
+		mBtn_exit.setTypeface(tyFace);
+		mBtn_back.setTypeface(tyFace);
+		mTxt_ExpenseDate.setTypeface(tyFace);
+		ed_ExpenceDescription.setTypeface(tyFace);
+		ed_ExpenceAmount.setTypeface(tyFace);
+
+	}
+
+	private void mValidate() {
+		if (ed_ExpenceAmount.getText().toString().trim().length() == 0) {
+			Toast.makeText(Activity_AddExpence.this, "Please enter Amount",
+					Toast.LENGTH_SHORT).show();
+			ed_ExpenceAmount.setFocusable(true);
+
+		} else {
+			addExpence();
+		}
 	}
 
 }

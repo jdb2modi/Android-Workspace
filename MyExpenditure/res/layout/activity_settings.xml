@@ -27,7 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_toLeftOf="@+id/btn_exitFromSettings"
             android:background="@drawable/mybutton"
             android:text="Back"
             android:textAllCaps="false"
@@ -85,13 +84,24 @@
                 android:textColor="#ffffff" />
 
             <Button
-                android:id="@+id/btn_clearAllHistory"
+                android:id="@+id/btn_clearExpenceHistory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Clear All History"
+                android:text="Clear Expence History"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_clearBankHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Clear Bank History"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 

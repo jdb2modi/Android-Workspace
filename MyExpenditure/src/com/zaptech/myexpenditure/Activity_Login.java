@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,7 +29,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity__login);
 		init();
-
+		setTypeface();
 		checkSecurityPref();
 	}
 
@@ -50,6 +51,8 @@ public class Activity_Login extends Activity implements OnClickListener {
 
 			finish();
 			Intent intent = new Intent(Activity_Login.this, Activity_Home.class);
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 
 		}
@@ -64,7 +67,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 			Toast.makeText(Activity_Login.this, "Your Security code is 12345",
 					Toast.LENGTH_LONG).show();
 			Toast.makeText(Activity_Login.this,
-					"First time Security code is 12345", Toast.LENGTH_LONG)
+					"First time Security code is 12345", Toast.LENGTH_SHORT)
 					.show();
 			String strPass = String.valueOf(dbHelper.getPassword());
 
@@ -72,18 +75,27 @@ public class Activity_Login extends Activity implements OnClickListener {
 				finish();
 				Intent intent = new Intent(Activity_Login.this,
 						Activity_Home.class);
+				overridePendingTransition(R.anim.in_from_right_activity,
+						R.anim.out_to_left_activity);
 				startActivity(intent);
 			}
 		} else {
 			btn_Hint.setVisibility(View.INVISIBLE);
 			String strPass = String.valueOf(dbHelper.getPassword());
-			Toast.makeText(Activity_Login.this, strPass, Toast.LENGTH_LONG)
-					.show();
+
 			if (strEd.equals(strPass)) {
 				finish();
 				Intent intent = new Intent(Activity_Login.this,
 						Activity_Home.class);
+				overridePendingTransition(R.anim.in_from_right_activity,
+						R.anim.out_to_left_activity);
 				startActivity(intent);
+			} else {
+				Toast.makeText(Activity_Login.this,
+						"Wrong Authentication Code.!", Toast.LENGTH_LONG)
+						.show();
+				edPassword.setText("");
+				edPassword.setFocusable(true);
 			}
 		}
 	}
@@ -129,6 +141,17 @@ public class Activity_Login extends Activity implements OnClickListener {
 		default:
 			break;
 		}
+
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		edPassword.setTypeface(tyFace);
+		btn_Login.setTypeface(tyFace);
+		btn_Exit.setTypeface(tyFace);
+		btn_Hint.setTypeface(tyFace);
 
 	}
 }

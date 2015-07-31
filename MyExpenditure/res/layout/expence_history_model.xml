@@ -3,66 +3,166 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/txt_ExpenceCategoryH"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        android:layout_centerInParent="true"
+        android:background="@drawable/roundcorner"
+        android:layout_margin="3dp" >
 
-    <TextView
-        android:id="@+id/txt_ExpenceDateH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ExpenceCategoryH"
-        android:text="Expence Date to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceCategoryHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:text="Category :"
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txt_ExpenceModeH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ExpenceDateH"
-        android:text="Mode to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceCategoryH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txt_ExpenceCategoryHeader"
+            android:ems="8"
+            android:text="Category to display"
+            android:textColor="#0072B2"
+            android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/txt_ChequeNoH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ExpenceModeH"
-        android:text="CheckNo to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceDateHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceCategoryHeader"
+            android:ems="8"
+            android:text="Date of Expence : "
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txt_TransactionIdH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ChequeNoH"
-        android:text="TransactionId to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceDateH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceCategoryH"
+            android:layout_toRightOf="@+id/txt_ExpenceDateHeader"
+            android:ems="8"
+            android:text="Expence Date to display"
+            android:textColor="#ff2112"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txt_ExpenceAmountH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_TransactionIdH"
-        android:text="Amount to display"
-        android:textColor="#ff2112"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceModeHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceDateHeader"
+            android:ems="8"
+            android:text="Expence Mode : "
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txt_ExpenceDescriptionH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ExpenceAmountH"
-        android:text="Description to display"
-        android:textColor="#0072B2"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txt_ExpenceModeH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceDateH"
+            android:layout_toRightOf="@+id/txt_ExpenceModeHeader"
+            android:ems="8"
+            android:text="Mode to display"
+            android:textColor="#0072B2"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_ChequeNoHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceModeHeader"
+            android:ems="8"
+            android:text="Check Number : "
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_ChequeNoH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceModeH"
+            android:layout_toRightOf="@+id/txt_ChequeNoHeader"
+            android:ems="8"
+            android:text="CheckNo to display"
+            android:textColor="#0072B2"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_TransactionIdHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ChequeNoHeader"
+            android:ems="8"
+            android:text="TransactionId : "
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_TransactionIdH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ChequeNoH"
+            android:layout_toRightOf="@+id/txt_TransactionIdHeader"
+            android:ems="8"
+            android:text="TransactionId to display"
+            android:textColor="#0072B2"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_ExpenceAmountHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_TransactionIdHeader"
+            android:ems="8"
+            android:text="Amount : "
+            android:textColor="#ff2112"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_ExpenceAmountH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_TransactionIdH"
+            android:layout_toRightOf="@+id/txt_ExpenceAmountHeader"
+            android:ems="8"
+            android:text="Amount to display"
+            android:textColor="#ff2112"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_ExpenceDescriptionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceAmountHeader"
+            android:ems="8"
+            android:text="Description : "
+            android:textColor="#0072B2"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_ExpenceDescriptionH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ExpenceAmountH"
+            android:layout_toRightOf="@+id/txt_ExpenceDescriptionHeader"
+            android:ems="8"
+            android:text="Description to display"
+            android:textColor="#0072B2"
+            android:textSize="18dp" />
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}"
-    android:background="#110072B2" >
+    android:background="#110072B2"
+    tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
         android:id="@+id/rel_historyHeader"
@@ -27,7 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_toLeftOf="@+id/btn_exitFromViewHistory"
             android:background="@drawable/mybutton"
             android:text="Back"
             android:textColor="@android:color/white" />

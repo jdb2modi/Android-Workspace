@@ -50,11 +50,11 @@
             android:label="@string/title_activity_activity__add_expence" >
         </activity>
         <activity
-            android:name=".Activity_History"
+            android:name=".Activity_ExpenceHistory"
             android:label="@string/title_activity_activity__history" >
         </activity>
         <activity
-            android:name=".Activity_ViewHistory"
+            android:name=".Activity_ViewExpenceHistory"
             android:label="@string/title_activity_activity__view_history" >
         </activity>
         <activity
@@ -72,6 +72,18 @@
         <activity
             android:name=".Activity_ShowBankDetails"
             android:label="@string/title_activity_activity__show_bank_details" >
+        </activity>
+        <activity
+            android:name=".Activity_ManageBanking"
+            android:label="@string/title_activity_activity__manage_banking" >
+        </activity>
+        <activity
+            android:name=".Activity_UpdateBankDetails"
+            android:label="@string/title_activity_activity__update_bank_details" >
+        </activity>
+        <activity
+            android:name=".Activity_ManageExpence"
+            android:label="@string/title_activity_activity__manage_expence" >
         </activity>
     </application>
 

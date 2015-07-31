@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class Activity_ShowBankDetails extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_showbankdetails);
 		init();
+		setTypeface();
 		new DisplayBankDetailsAsync().execute();
 	}
 
@@ -143,12 +145,23 @@ public class Activity_ShowBankDetails extends Activity implements
 		case R.id.btn_backFromShowBankDetails:
 			finish();
 			Intent intent = new Intent(Activity_ShowBankDetails.this,
-					Activity_Banking.class);
+					Activity_ManageBanking.class);
+			overridePendingTransition(R.anim.in_from_left_activity,
+					R.anim.out_to_right_activity);
 			startActivity(intent);
 			break;
 		default:
 			break;
 		}
+
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		mBtn_exit.setTypeface(tyFace);
+		mBtn_back.setTypeface(tyFace);
 
 	}
 }

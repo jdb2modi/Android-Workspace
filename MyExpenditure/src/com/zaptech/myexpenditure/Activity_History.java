@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Activity_History extends Activity implements OnClickListener {
-	private Button btn_date, btn_showAllHistory, btn_showSpecificHistory;
+	private Button btn_showAllHistory, btn_showSpecificHistory;
 	private DatePicker datePicker;
 	private Calendar calendar;
 	private int int_year, int_month, int_day;
@@ -40,7 +41,7 @@ public class Activity_History extends Activity implements OnClickListener {
 
 		showDate(int_year, int_month + 1, int_day);
 		showDate2(int_year2, int_month2 + 1, int_day2);
-
+		setTypeface();
 	}
 
 	public void init() {
@@ -179,6 +180,8 @@ public class Activity_History extends Activity implements OnClickListener {
 			intent = new Intent(Activity_History.this,
 					Activity_ViewHistory.class);
 			intent.putExtra("HISTORY", "ALL");
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		case R.id.btn_showSpecificHistory:
@@ -188,6 +191,8 @@ public class Activity_History extends Activity implements OnClickListener {
 			intent.putExtra("HISTORY", "SPECIFIC");
 			intent.putExtra("SDate", txt_startDate.getText().toString());
 			intent.putExtra("EDate", txt_endDate.getText().toString());
+			overridePendingTransition(R.anim.in_from_right_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		case R.id.btn_exitFromHistory:
@@ -223,6 +228,8 @@ public class Activity_History extends Activity implements OnClickListener {
 		case R.id.btn_backFromHistory:
 			finish();
 			intent = new Intent(Activity_History.this, Activity_Home.class);
+			overridePendingTransition(R.anim.in_from_left_activity,
+					R.anim.out_to_right_activity);
 			startActivity(intent);
 			break;
 		default:
@@ -231,4 +238,15 @@ public class Activity_History extends Activity implements OnClickListener {
 
 	}
 
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		btn_showAllHistory.setTypeface(tyFace);
+		btn_showSpecificHistory.setTypeface(tyFace);
+
+		txt_startDate.setTypeface(tyFace);
+		txt_endDate.setTypeface(tyFace);
+
+	}
 }

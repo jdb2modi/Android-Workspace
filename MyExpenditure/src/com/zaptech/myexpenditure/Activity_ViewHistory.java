@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_history);
 		init();
+		setTypeface();
 		dbHelper = new DBHelper(Activity_ViewHistory.this);
 		dbHelper.getWritableDatabase();
 		intent = getIntent();
@@ -114,23 +116,20 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			TextView txt_DescriptionD = (TextView) convertView
 					.findViewById(R.id.txt_ExpenceDescriptionH);
 
-			txt_ExpenseCategoryD.setText("Expence Category : "
-					+ dbHelper.arrayListExpence.get(position)
-							.getExpenseCategory());
-			txt_ExpenseDateD.setText("Expence Date : "
-					+ dbHelper.arrayListExpence.get(position).getExpenseDate());
-			txt_ExpenseModeD.setText("Expence Mode : "
-					+ dbHelper.arrayListExpence.get(position).getExpenseMode());
-			txt_ChequeNoD.setText("Cheque Number : "
-					+ dbHelper.arrayListExpence.get(position).getChequeNo());
-			txt_TransactionIdD.setText("Transaction Id : "
-					+ dbHelper.arrayListExpence.get(position)
-							.getTransactionId());
-			txt_ExpenseAmountD.setText(String.valueOf("Expence Amount : "
-					+ dbHelper.arrayListExpence.get(position)
-							.getExpenseAmount()));
-			txt_DescriptionD.setText("Expence Description : "
-					+ dbHelper.arrayListExpence.get(position).getDescription());
+			txt_ExpenseCategoryD.setText(dbHelper.arrayListExpence
+					.get(position).getExpenseCategory());
+			txt_ExpenseDateD.setText(dbHelper.arrayListExpence.get(position)
+					.getExpenseDate());
+			txt_ExpenseModeD.setText(dbHelper.arrayListExpence.get(position)
+					.getExpenseMode());
+			txt_ChequeNoD.setText(dbHelper.arrayListExpence.get(position)
+					.getChequeNo());
+			txt_TransactionIdD.setText(dbHelper.arrayListExpence.get(position)
+					.getTransactionId());
+			txt_ExpenseAmountD.setText(String.valueOf(dbHelper.arrayListExpence
+					.get(position).getExpenseAmount()));
+			txt_DescriptionD.setText(dbHelper.arrayListExpence.get(position)
+					.getDescription());
 			return convertView;
 		}
 	}
@@ -214,11 +213,21 @@ public class Activity_ViewHistory extends Activity implements OnClickListener {
 			finish();
 			intent = new Intent(Activity_ViewHistory.this,
 					Activity_History.class);
+			overridePendingTransition(R.anim.in_from_left_activity,
+					R.anim.out_to_left_activity);
 			startActivity(intent);
 			break;
 		default:
 			break;
 		}
+
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+		btnExit.setTypeface(tyFace);
+		btnBack.setTypeface(tyFace);
 
 	}
 }

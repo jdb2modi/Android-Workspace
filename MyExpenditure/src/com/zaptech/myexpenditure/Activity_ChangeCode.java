@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +32,9 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_code);
 		init();
+		setTypeface();
 		savePreferences();
+
 	}
 
 	public void init() {
@@ -42,11 +45,11 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 		mEdConfirm = (EditText) findViewById(R.id.ed_confirmCode);
 		mBtnChangeCode = (Button) findViewById(R.id.btn_changeAuthentication);
 		mBtnChangeCode.setOnClickListener(this);
-		mBtnExit=(Button) findViewById(R.id.btn_exitFromChangeCode);
+		mBtnExit = (Button) findViewById(R.id.btn_exitFromChangeCode);
 		mBtnExit.setOnClickListener(this);
-		mBtnBack=(Button)findViewById(R.id.btn_backFromChangeCode);
+		mBtnBack = (Button) findViewById(R.id.btn_backFromChangeCode);
 		mBtnBack.setOnClickListener(this);
-		mDbHelper.insertPassword();
+
 	}
 
 	public void savePreferences() {
@@ -137,6 +140,21 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 		finish();
 		Intent mIntent;
 		mIntent = new Intent(Activity_ChangeCode.this, Activity_Settings.class);
+		overridePendingTransition(R.anim.in_from_left_activity,
+				R.anim.out_to_right_activity);
 		startActivity(mIntent);
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		mEdCurrent.setTypeface(tyFace);
+		mEdNew.setTypeface(tyFace);
+		mEdConfirm.setTypeface(tyFace);
+		mBtnChangeCode.setTypeface(tyFace);
+		mBtnExit.setTypeface(tyFace);
+		mBtnBack.setTypeface(tyFace);
+
 	}
 }

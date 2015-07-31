@@ -3,6 +3,7 @@ package com.zaptech.myexpenditure;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +22,7 @@ public class Activity_About extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 		init();
+		setTypeface();
 	}
 
 	public void init() {
@@ -77,5 +79,15 @@ public class Activity_About extends Activity implements OnClickListener {
 					}
 				});
 		alert.show();
+	}
+
+	public void setTypeface() {
+		Typeface tyFace = Typeface.createFromAsset(getAssets(),
+				"fonts/Tahoma.ttf");
+
+		mBtn_1.setTypeface(tyFace);
+		mBtn_2.setTypeface(tyFace);
+		mBtn_exit.setTypeface(tyFace);
+
 	}
 }

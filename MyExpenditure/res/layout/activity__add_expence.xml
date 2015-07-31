@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_toLeftOf="@+id/btn_exitFromAddExpence"
             android:background="@drawable/mybutton"
             android:text="Back"
             android:textAllCaps="false"
@@ -141,6 +140,7 @@
             android:layout_below="@+id/ed_Description"
             android:ems="10"
             android:hint="Amount"
+            android:numeric="integer"
             android:textAllCaps="false"
             android:textColor="#0072B2" />
 
@@ -150,7 +150,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ed_Description"
             android:layout_toRightOf="@+id/ed_Amount"
-            android:ems="10" />
+            android:ems="10"
+            android:entries="@array/arrayCurrency" />
 
         <View
             android:id="@+id/view2OnAddExpence"

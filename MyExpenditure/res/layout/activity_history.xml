@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#110072B2"
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
@@ -26,7 +27,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:layout_toLeftOf="@+id/btn_exitFromHistory"
             android:background="@drawable/mybutton"
             android:text="Back"
             android:textAllCaps="false"

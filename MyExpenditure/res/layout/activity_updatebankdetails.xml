@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/rel_updateBankHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#224581ff" >
+
+        <Button
+            android:id="@+id/btn_backFromUpdateBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mybutton"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btn_exitFromUpdateBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/mybutton"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_welcomeOnUpdateBank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_updateBankHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/strWelcome"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rel_homeContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_HomeHeader"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/txt_updateBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Update Bank Details"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lin_updateBankTxts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_updateBank"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/ed_updateaccountNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:enabled="false"
+                android:hint="Account Number"
+                android:numeric="integer"
+                android:textAllCaps="false"
+                android:textColor="#0072B2" />
+
+            <EditText
+                android:id="@+id/ed_updatebankName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ed_updateaccountNumber"
+                android:layout_centerHorizontal="true"
+                android:hint="Bank Name"
+                android:textAllCaps="false"
+                android:textColor="#0072B2" />
+
+            <EditText
+                android:id="@+id/ed_updatecurrentBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ed_updatebankName"
+                android:layout_centerHorizontal="true"
+                android:hint="Current Balance"
+                android:numeric="integer"
+                android:textAllCaps="false"
+                android:textColor="#0072B2" />
+
+            <Button
+                android:id="@+id/btn_updateBankDetailsNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/mybutton"
+                android:text="Update Now"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
