@@ -66,7 +66,7 @@
             android:label="@string/title_activity_activity__change_code" >
         </activity>
         <activity
-            android:name=".Activity_About"
+            android:name=".fragment_about"
             android:label="@string/title_activity_activity__about" >
         </activity>
         <activity
@@ -84,6 +84,14 @@
         <activity
             android:name=".Activity_ManageExpence"
             android:label="@string/title_activity_activity__manage_expence" >
+        </activity>
+        <activity
+            android:name=".Activity_UpdateExpenceDetails"
+            android:label="@string/title_activity_activity__update_expence_details" >
+        </activity>
+        <activity
+            android:name=".Activity_MenuDrawer"
+            android:label="@string/title_activity_activity__menu_drawer" >
         </activity>
     </application>
 

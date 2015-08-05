@@ -17,13 +17,12 @@ public class Activity_About extends Activity implements OnClickListener {
 	private Button mBtn_exit;
 	private WebView mWebView;
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_about);
 		init();
 		setTypeface();
-	}
+	};
 
 	public void init() {
 		mBtn_1 = (Button) findViewById(R.id.btn_getStarted);
@@ -35,6 +34,7 @@ public class Activity_About extends Activity implements OnClickListener {
 		mWebView = (WebView) findViewById(R.id.webview_About);
 
 		mWebView.loadUrl("file:///android_asset/1.html");
+
 	}
 
 	@Override

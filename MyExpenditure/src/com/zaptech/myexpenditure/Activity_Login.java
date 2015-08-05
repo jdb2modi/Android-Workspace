@@ -50,7 +50,8 @@ public class Activity_Login extends Activity implements OnClickListener {
 		if (!sp.contains("ENABLED")) {
 
 			finish();
-			Intent intent = new Intent(Activity_Login.this, Activity_Home.class);
+			Intent intent = new Intent(Activity_Login.this,
+					Activity_MenuDrawer.class);
 			overridePendingTransition(R.anim.in_from_right_activity,
 					R.anim.out_to_left_activity);
 			startActivity(intent);
@@ -74,7 +75,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 			if (strEd.equals(strPass)) {
 				finish();
 				Intent intent = new Intent(Activity_Login.this,
-						Activity_Home.class);
+						Activity_MenuDrawer.class);
 				overridePendingTransition(R.anim.in_from_right_activity,
 						R.anim.out_to_left_activity);
 				startActivity(intent);
@@ -86,7 +87,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 			if (strEd.equals(strPass)) {
 				finish();
 				Intent intent = new Intent(Activity_Login.this,
-						Activity_Home.class);
+						Activity_MenuDrawer.class);
 				overridePendingTransition(R.anim.in_from_right_activity,
 						R.anim.out_to_left_activity);
 				startActivity(intent);

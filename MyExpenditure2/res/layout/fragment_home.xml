@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/rel_homeHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_drawerlayout"
+        android:background="#224581ff" >
+
+        <Button
+            android:id="@+id/btn_homeAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mybutton"
+            android:text="About"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btn_homeExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/mybutton"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_welcomeOnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_homeHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/strWelcome"
+        android:textAllCaps="false"
+        android:textColor="#0072B2"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rel_homeContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_welcomeOnHome"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/txt_dailyExpence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Daily Expence"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lin_mainButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_dailyExpence"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_manageExpence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Manage Expence"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_manageBanking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Manage Banking"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_Settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Settings"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

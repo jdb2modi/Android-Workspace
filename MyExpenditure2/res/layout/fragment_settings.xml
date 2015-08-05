@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rel_settingsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#224581ff" >
+
+        <Button
+            android:id="@+id/btn_exitFromSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dp"
+            android:background="@drawable/mybutton"
+            android:text="Exit"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_backFromSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/mybutton"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_settingsContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/txt_dailyExpence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Settings"
+            android:textAllCaps="false"
+            android:textColor="#0072B2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lin_settingsButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_dailyExpence"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_changeCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Change Security Code"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/btn_clearExpenceHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Clear Expence History"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_clearBankHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Clear Bank History"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_setAuthentication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/mybutton"
+                android:ems="10"
+                android:text="Set Authentication"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Switch
+                android:id="@+id/switch_SecurityCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JsonTask</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="content">Content</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer">Drawer</string>
+    <string name="DB_NAME">HomeItems</string>
+    <string name="DB_PATH">/data/data/com.zaptech.jsontask/databases/</string>
+
+    <string-array name="listItems">
+        <item>Root</item>
+        <item>Contact Items</item>
+        <item>News Items</item>
+        <item>Gallery Items</item>
+        <item>Youtube Items</item>
+        <item>Twitter Items</item>
+        <item>Rss Items</item>
+        <item>Web Items</item>
+        <item>Home Items</item>
+        <item>Feedback Items</item>
+        <item>Geolocation Items</item>
+        <item>Datagraph Items</item>
+        <item>Video Items</item>
+        <item>In App Settings</item>
+        <item>App Settings</item>
+    </string-array>
+
+    <array name="listIcons">
+        <item>@drawable/home</item>
+        <item>@drawable/contact</item>
+        <item>@drawable/news</item>
+        <item>@drawable/gallery</item>
+        <item>@drawable/youtube</item>
+        <item>@drawable/twitter</item>
+        <item>@drawable/rss</item>
+        <item>@drawable/web</item>
+        <item>@drawable/homesub</item>
+        <item>@drawable/feedback</item>
+        <item>@drawable/geolocation</item>
+        <item>@drawable/datagraph</item>
+        <item>@drawable/video</item>
+        <item>@drawable/inappsetting</item>
+        <item>@drawable/appsetting</item>
+    </array>
+
+    <string name="title_activity_display_main">DisplayMainActivity</string>
+    <string name="title_activity_displayhome_item">DisplayhomeItem</string>
+    <string name="title_activity_display_first_title">DisplayFirstTitle</string>
+    <string name="title_activity_display_news_item">DisplayNewsItem</string>
+    <string name="title_activity_display_head_line">DisplayHeadLine</string>
+    <string name="title_activity_display_description">DisplayDescription</string>
+
+</resources>

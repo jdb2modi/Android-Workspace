@@ -25,7 +25,7 @@ public class Activity_Splash extends Activity {
 				/* Create an Intent that will start the Menu-Activity. */
 				if (sp.contains(PASSWORD)) {
 					Intent mainIntent = new Intent(Activity_Splash.this,
-							Activity_Home.class);
+							Activity_MenuDrawer.class);
 					Activity_Splash.this.startActivity(mainIntent);
 					Activity_Splash.this.finish();
 				}
