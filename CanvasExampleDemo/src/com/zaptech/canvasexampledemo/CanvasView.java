@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class CanvasView extends View {
-
+	
 	public int width;
 	public int height;
 	private Bitmap mBitmap;

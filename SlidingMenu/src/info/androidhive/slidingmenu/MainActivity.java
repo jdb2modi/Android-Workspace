@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			// display view for selected nav drawer item
-			displayView(position);
+			//displayView(0);
 		}
 	}
 

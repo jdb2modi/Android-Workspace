@@ -1947,7 +1947,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09003d;
         public static final int action_mode_bar_stub=0x7f09003c;
         public static final int action_mode_close_button=0x7f090025;
-        public static final int action_settings=0x7f090056;
+        public static final int action_settings=0x7f090057;
         public static final int activity_chooser_view_content=0x7f090026;
         public static final int alertTitle=0x7f090030;
         public static final int always=0x7f090019;
@@ -1976,9 +1976,11 @@ containing a value of this type.
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f09001b;
         public static final int image=0x7f090028;
+        public static final int img1=0x7f090056;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f09002a;
         public static final int list_slidermenu=0x7f090051;
+        public static final int mContent=0x7f090053;
         public static final int middle=0x7f090022;
         public static final int multiply=0x7f090014;
         public static final int never=0x7f09001c;
@@ -2016,7 +2018,6 @@ containing a value of this type.
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
         public static final int topPanel=0x7f09002e;
-        public static final int txtLabel=0x7f090053;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
         public static final int withText=0x7f09001d;
@@ -2079,16 +2080,11 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030018;
         public static final int activity_home=0x7f030019;
         public static final int drawer_list_item=0x7f03001a;
-        public static final int fragment_community=0x7f03001b;
-        public static final int fragment_find_people=0x7f03001c;
-        public static final int fragment_home=0x7f03001d;
-        public static final int fragment_pages=0x7f03001e;
-        public static final int fragment_photoes=0x7f03001f;
-        public static final int fragment_whats_hot=0x7f030020;
-        public static final int select_dialog_item_material=0x7f030021;
-        public static final int select_dialog_multichoice_material=0x7f030022;
-        public static final int select_dialog_singlechoice_material=0x7f030023;
-        public static final int support_simple_spinner_dropdown_item=0x7f030024;
+        public static final int fragment_home=0x7f03001b;
+        public static final int select_dialog_item_material=0x7f03001c;
+        public static final int select_dialog_multichoice_material=0x7f03001d;
+        public static final int select_dialog_singlechoice_material=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
