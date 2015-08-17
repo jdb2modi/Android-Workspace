@@ -3,9 +3,8 @@ package com.javacodegeeks.googleanalyticsexample;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
 import com.javacodegeeks.googleanalyticsexample.GoogleAnalyticsApp.TrackerName;
 
 public class GoogleAnalyticsExample extends Activity {

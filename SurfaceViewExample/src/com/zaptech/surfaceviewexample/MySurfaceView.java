@@ -47,13 +47,11 @@ public class MySurfaceView extends SurfaceView {
 			@Override
 			public void surfaceChanged(SurfaceHolder holder, int format,
 					int width, int height) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void surfaceDestroyed(SurfaceHolder holder) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -71,8 +69,8 @@ public class MySurfaceView extends SurfaceView {
 		paint.setStrokeWidth(16);
 		paint.setAlpha(100);
 
-		
-		canvas.drawCircle(500, 500, 500, paint);
+		canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2,
+				paint);
 		canvas.drawBitmap(bmpIcon, getWidth() / 2, getHeight() / 2, null);
 	}
 

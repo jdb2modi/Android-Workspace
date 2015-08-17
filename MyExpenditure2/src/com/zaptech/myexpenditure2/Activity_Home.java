@@ -18,10 +18,11 @@ import android.widget.ListView;
 public class Activity_Home extends FragmentActivity {
 	final String[] data = { "Home", "Manage Expences", "Manage Banking",
 			"Settings" };
-	final String[] fragments = { "com.zaptech.myexpenditure2.FragmentHome",
-			"com.zaptech.myexpenditure2.FragmentManageExpence",
-			"com.zaptech.myexpenditure2.FragmentManageBanking",
-			"com.zaptech.myexpenditure2.FragmentSettings" };
+	final String[] fragments = {
+			"com.zaptech.myexpenditure2.fragment.FragmentHome",
+			"com.zaptech.myexpenditure2.fragment.FragmentManageExpence",
+			"com.zaptech.myexpenditure2.fragment.FragmentManageBanking",
+			"com.zaptech.myexpenditure2.fragment.FragmentSettings" };
 	DrawerLayout drawer;
 	ListView navList;
 	ImageView imgBtnList;

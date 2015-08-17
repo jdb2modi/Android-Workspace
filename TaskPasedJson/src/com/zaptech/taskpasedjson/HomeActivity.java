@@ -114,10 +114,11 @@ public class HomeActivity extends Activity implements OnClickListener,
 	public void init() {
 
 		drawer = (ListView) findViewById(R.id.listviewMenuItem);// This is that
-		mydrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-		imgBtnList = (ImageView) findViewById(R.id.imgBtn_list);
-		imgBtnList.setOnClickListener(this);
-		drawer.setOnItemClickListener(HomeActivity.this);
+		mydrawer = (DrawerLayout) findViewById(R.id.drawer_layout);// This is
+																	// that
+		imgBtnList = (ImageView) findViewById(R.id.imgBtn_list);// This is that
+		imgBtnList.setOnClickListener(this);// This is that
+		drawer.setOnItemClickListener(HomeActivity.this);// This is that
 		list_MenuItems = new ArrayList<Model_MenuItems>();
 
 		mProgress = new ProgressDialog(HomeActivity.this);
@@ -155,7 +156,7 @@ public class HomeActivity extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			mProgress.setTitle("Stream Loader");
+
 			mProgress.setMessage("Please wait, Loading Stream...");
 			mProgress.setCancelable(false);
 			mProgress.show();

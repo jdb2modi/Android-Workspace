@@ -1,7 +1,6 @@
 package com.zaptech.andipaint;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -21,16 +20,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.flurry.android.FlurryAgent;
 import com.zaptech.andipaint.adapter.NavDrawerListAdapter;
+import com.zaptech.andipaint.fragment.HomeFragment;
 import com.zaptech.andipaint.model.NavDrawerItem;
 
 public class HomeActivity extends Activity {
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
+	private DrawerLayout mdrawerLayout;
+	private ListView mdrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-	private CanvasView customCanvas;
-	private SharedPreferences mShared;
+	private CanvasView mcustomCanvas;
+	private SharedPreferences msharedPref;
 	public static final String MyPREFERENCES = "MyPrefs";
 
 	// nav drawer title
@@ -52,7 +51,7 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 
 		init();
-		initFlurry();
+
 		addNavDrawerItems();
 
 		navMenuIcons.recycle();
@@ -63,9 +62,9 @@ public class HomeActivity extends Activity {
 		// setting the nav drawer list adapter
 		adapter = new NavDrawerListAdapter(getApplicationContext(),
 				navDrawerItems);
-		mDrawerList.setAdapter(adapter);
+		mdrawerList.setAdapter(adapter);
 
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+		mDrawerToggle = new ActionBarDrawerToggle(this, mdrawerLayout,
 				R.drawable.ic_drawer, R.string.app_name, R.string.app_name) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
@@ -79,34 +78,26 @@ public class HomeActivity extends Activity {
 				invalidateOptionsMenu();
 			}
 		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mdrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
-			// displayView(0);
+			displayView(0);
 		}
 
 	}
 
 	public void init() {
-		mShared = getSharedPreferences(MyPREFERENCES, Context.MODE_APPEND);
+		msharedPref = getSharedPreferences(MyPREFERENCES, Context.MODE_APPEND);
 		mTitle = mDrawerTitle = getTitle();
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 		// nav drawer icons from resources
 		navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+		mdrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mdrawerList = (ListView) findViewById(R.id.list_slidermenu);
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-	}
-
-	public void initFlurry() {
-		// configure Flurry
-		FlurryAgent.setLogEnabled(false);
-
-		// init Flurry
-		FlurryAgent.init(this, "TNHBJ85F24N8MNK8KMPQ");
 	}
 
 	public void addNavDrawerItems() {
@@ -139,7 +130,7 @@ public class HomeActivity extends Activity {
 		// Save Image
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons
 				.getResourceId(8, -1)));
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+		mdrawerList.setOnItemClickListener(new SlideMenuClickListener());
 	}
 
 	/**
@@ -151,11 +142,11 @@ public class HomeActivity extends Activity {
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			// display view for selected nav drawer item
-			Editor editor = mShared.edit();
+			Editor editor = msharedPref.edit();
 			switch (position) {
 			case 0:
-				FlurryAgent.logEvent("Button1 Clicked", true);
-				displayView(0);
+
+				// displayView(0);
 				editor.putString("draw", "home");
 				editor.commit();
 				break;
@@ -230,10 +221,10 @@ public class HomeActivity extends Activity {
 					.replace(R.id.frame_container, fragment).commit();
 
 			// update selected item and title, then close the drawer
-			mDrawerList.setItemChecked(position, true);
-			mDrawerList.setSelection(position);
+			mdrawerList.setItemChecked(position, true);
+			mdrawerList.setSelection(position);
 			setTitle(navMenuTitles[position]);
-			mDrawerLayout.closeDrawer(mDrawerList);
+			mdrawerLayout.closeDrawer(mdrawerList);
 		} else {
 			// error in creating fragment
 			Log.e("MainActivity", "Error in creating fragment");
@@ -248,7 +239,7 @@ public class HomeActivity extends Activity {
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		boolean drawerOpen = mdrawerLayout.isDrawerOpen(mdrawerList);
 		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -269,20 +260,6 @@ public class HomeActivity extends Activity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		FlurryAgent.onStartSession(HomeActivity.this, "TNHBJ85F24N8MNK8KMPQ");
-
-	}
-
-	@Override
-	protected void onStop() {
-
-		FlurryAgent.onEndSession(HomeActivity.this);
-		super.onStop();
 	}
 
 }

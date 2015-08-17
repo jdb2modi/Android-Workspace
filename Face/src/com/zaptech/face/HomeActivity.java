@@ -60,65 +60,72 @@ public class HomeActivity extends Activity implements SurfaceHolder.Callback {
 		public void onFaceDetection(android.hardware.Camera.Face[] faces,
 				Camera camera) {
 			// TODO Auto-generated method stub
-			
+
 			Log.d("onFaceDetection", "Number of Faces:" + faces.length);
 			// Update the view now!
 			mFaceView.setFaces(faces);
-			if(faces.length>0)
-			{
-				mCamera.takePicture(myShutterCallback, 
-					      myPictureCallback_RAW, myPictureCallback_JPG);
+
+			if (faces.length > 0) {
+				
 				mCamera.startPreview();
+//				mCamera.takePicture(myShutterCallback, myPictureCallback_RAW,
+//						myPictureCallback_JPG);
 			}
-			
+
 		}
 	};
-    ShutterCallback myShutterCallback = new ShutterCallback(){
+	ShutterCallback myShutterCallback = new ShutterCallback() {
 
-	  @Override
-	  public void onShutter() {
-	   // TODO Auto-generated method stub
-	   
-	  }};
-	  
-	 PictureCallback myPictureCallback_RAW = new PictureCallback(){
+		@Override
+		public void onShutter() {
+			// TODO Auto-generated method stub
 
-	  @Override
-	  public void onPictureTaken(byte[] arg0, Camera arg1) {
-	   // TODO Auto-generated method stub
-	   
-	  }};
-	  
-	 PictureCallback myPictureCallback_JPG = new PictureCallback(){
+		}
+	};
 
-	  @Override
-	  public void onPictureTaken(byte[] arg0, Camera arg1) {
-	   // TODO Auto-generated method stub
-	   /*Bitmap bitmapPicture 
-	    = BitmapFactory.decodeByteArray(arg0, 0, arg0.length); */
-	   
-	   Uri uriTarget = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI, new ContentValues());
+	PictureCallback myPictureCallback_RAW = new PictureCallback() {
 
-	   OutputStream imageFileOS;
-	   try {
-	    imageFileOS = getContentResolver().openOutputStream(uriTarget);
-	    imageFileOS.write(arg0);
-	    imageFileOS.flush();
-	    imageFileOS.close();
-	    
-	  //  prompt.setText("Image saved: " + uriTarget.toString());
-	    
-	   } catch (FileNotFoundException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	   } catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	   }
+		@Override
+		public void onPictureTaken(byte[] arg0, Camera arg1) {
+			// TODO Auto-generated method stub
 
-	   mCamera.startPreview();
-	   mCamera.startFaceDetection();
-	  }};
+		}
+	};
+
+	PictureCallback myPictureCallback_JPG = new PictureCallback() {
+
+		@Override
+		public void onPictureTaken(byte[] arg0, Camera arg1) {
+			// TODO Auto-generated method stub
+			/*
+			 * Bitmap bitmapPicture = BitmapFactory.decodeByteArray(arg0, 0,
+			 * arg0.length);
+			 */
+
+			Uri uriTarget = getContentResolver().insert(
+					Media.EXTERNAL_CONTENT_URI, new ContentValues());
+
+			OutputStream imageFileOS;
+			try {
+				imageFileOS = getContentResolver().openOutputStream(uriTarget);
+				imageFileOS.write(arg0);
+				imageFileOS.flush();
+				imageFileOS.close();
+
+				// prompt.setText("Image saved: " + uriTarget.toString());
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			mCamera.startPreview();
+			mCamera.startFaceDetection();
+		}
+	};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -156,22 +163,22 @@ public class HomeActivity extends Activity implements SurfaceHolder.Callback {
 
 	@Override
 	public void surfaceCreated(SurfaceHolder surfaceHolder) {
-		mCamera = Camera.open();
-//		Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
-//        Log.d("No of cameras",Camera.getNumberOfCameras()+"");
-//        for (int camNo = 0; camNo < Camera.getNumberOfCameras(); camNo++) {
-//            CameraInfo camInfo = new CameraInfo();
-//            Camera.getCameraInfo(camNo, camInfo);
-//           
-//            if (camInfo.facing==(Camera.CameraInfo.CAMERA_FACING_FRONT)) {
-//                mCamera = Camera.open(camNo);
-//            }
-//        }
-//        if (mCamera == null) {
-//           // no front-facing camera, use the first back-facing camera instead.
-//           // you may instead wish to inform the user of an error here...
-//             mCamera = Camera.open();
-//        }
+	//	mCamera = Camera.open();
+		 Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+		 Log.d("No of cameras",Camera.getNumberOfCameras()+"");
+		 for (int camNo = 0; camNo < Camera.getNumberOfCameras(); camNo++) {
+		 CameraInfo camInfo = new CameraInfo();
+		 Camera.getCameraInfo(camNo, camInfo);
+		
+		 if (camInfo.facing==(Camera.CameraInfo.CAMERA_FACING_FRONT)) {
+		 mCamera = Camera.open(camNo);
+		 }
+		 }
+		 if (mCamera == null) {
+		 // no front-facing camera, use the first back-facing camera instead.
+		 // you may instead wish to inform the user of an error here...
+		 mCamera = Camera.open();
+		 }
 		mCamera.setFaceDetectionListener(faceDetectionListener);
 		mCamera.startFaceDetection();
 		try {

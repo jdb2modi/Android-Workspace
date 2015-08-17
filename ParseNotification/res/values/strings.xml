@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ParseNotification</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_logout">Logout</string>
+    <string name="parse_notifications">Parse Notifications</string>
+    <string name="email_subscribe">Enter your email address to subscribe to parse channel!</string>
+    <string name="email_address">Your email address</string>
+    <string name="login">Login</string>
+
+</resources>
