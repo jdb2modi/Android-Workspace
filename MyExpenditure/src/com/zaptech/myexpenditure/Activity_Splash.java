@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 public class Activity_Splash extends Activity {
-	private final int SPLASH_DISPLAY_LENGTH = 1200;
+	private final int SPLASH_DISPLAY_LENGTH = 1000;
 	SharedPreferences sp;
 	public static final String MyPREFERENCES = "MyPrefs";
 	public static final String PASSWORD = "password";

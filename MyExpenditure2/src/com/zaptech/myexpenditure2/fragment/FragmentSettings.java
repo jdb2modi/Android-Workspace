@@ -29,8 +29,7 @@ public class FragmentSettings extends Fragment {
 	private Button mBtnClearExpenceHistory;
 	private Button mBtnClearBankHistory;
 	private Button mBtnSetAuthentication;
-	private Button mBtnBack;
-	private Button mBtnExit;
+
 	private Switch mSwitchSecurityCode;
 	SharedPreferences spAuthentication;
 	DBHelper dbHelper;
@@ -52,8 +51,7 @@ public class FragmentSettings extends Fragment {
 	}
 
 	public void init(View rootView) {
-		mBtnBack = (Button) rootView.findViewById(R.id.btn_backFromSettings);
-		mBtnExit = (Button) rootView.findViewById(R.id.btn_exitFromSettings);
+
 		mBtnSetAuthentication = (Button) rootView
 				.findViewById(R.id.btn_setAuthentication);
 		mBtnClearBankHistory = (Button) rootView
@@ -69,26 +67,7 @@ public class FragmentSettings extends Fragment {
 	}
 
 	public void onClick() {
-		mBtnBack.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				Fragment fHome = new FragmentHome();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction();
-				ft.replace(R.id.main, fHome);
-				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
-		});
-		mBtnExit.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
 		mBtnSetAuthentication.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -155,7 +134,7 @@ public class FragmentSettings extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-
+				clearExpenceHistory();
 			}
 		});
 		mBtnCahngeCode.setOnClickListener(new OnClickListener() {
@@ -165,9 +144,12 @@ public class FragmentSettings extends Fragment {
 				Fragment fChangeCode = new FragmentChangeCode();
 				FragmentTransaction ft = getFragmentManager()
 						.beginTransaction();
+
+				ft.setCustomAnimations(R.anim.in_from_right_activity,
+						R.anim.out_to_left_activity);
 				ft.replace(R.id.main, fChangeCode);
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				ft.addToBackStack(null);
+				ft.addToBackStack("FragmentSettings");
 				ft.commit();
 			}
 		});
@@ -186,11 +168,38 @@ public class FragmentSettings extends Fragment {
 				"fonts/Tahoma.ttf");
 
 		mBtnSetAuthentication.setTypeface(tyFace);
-		mBtnExit.setTypeface(tyFace);
-		mBtnBack.setTypeface(tyFace);
 		mBtnCahngeCode.setTypeface(tyFace);
 		mBtnClearExpenceHistory.setTypeface(tyFace);
 		mBtnClearBankHistory.setTypeface(tyFace);
 
+	}
+
+	public void clearExpenceHistory() {
+		AlertDialog.Builder alertDeleteHistory = new AlertDialog.Builder(
+				getActivity());
+		alertDeleteHistory.setTitle("Delete Confirmation");
+		alertDeleteHistory
+				.setMessage("Are you want to clear Expence history ?");
+		alertDeleteHistory.setCancelable(false);
+		alertDeleteHistory.setPositiveButton("DELETE NOW",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dbHelper.deleteExpenceHistory();
+						Toast.makeText(getActivity(),
+								"All Expence history deleted.",
+								Toast.LENGTH_SHORT).show();
+					}
+				});
+		alertDeleteHistory.setNegativeButton("CANCEL",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				});
+		alertDeleteHistory.show();
 	}
 }

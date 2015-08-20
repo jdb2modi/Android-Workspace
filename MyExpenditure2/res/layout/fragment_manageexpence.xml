@@ -1,41 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff" >
-
-    <RelativeLayout
-        android:id="@+id/rel_manageExpenceHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#224581ff" >
-
-        <Button
-            android:id="@+id/btn_backOnManageExpence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/mybutton"
-            android:text="Back"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/btn_exitOnManageExpence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/mybutton"
-            android:text="Exit"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-    </RelativeLayout>
+    android:background="#ffffff"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/rel_manageExpenceContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_HomeHeader"
         android:layout_centerInParent="true" >
 
         <TextView
@@ -115,4 +88,4 @@
         </LinearLayout>
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

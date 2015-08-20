@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zaptech.myexpenditure2.R;
+import com.zaptech.myexpenditure2.database.DBHelper;
 
 public class FragmentManageExpence extends Fragment {
 	private Button mBtnAddExpence;
@@ -21,8 +23,8 @@ public class FragmentManageExpence extends Fragment {
 	private Button mBtnUpdateExpenceDetails;
 	private Button mBtnRemoveExpence;
 	private Button mBtnClearExpenceHistory;
-	private Button mBtnBack;
-	private Button mBtnExit;
+
+	private DBHelper dbHelper;
 
 	@Override
 	@Nullable
@@ -37,6 +39,7 @@ public class FragmentManageExpence extends Fragment {
 	}
 
 	public void init(View rootView) {
+		dbHelper = new DBHelper(getActivity());
 		mBtnAddExpence = (Button) rootView
 				.findViewById(R.id.btn_addExpenceOnManageExpence);
 		mBtnExpenceHistory = (Button) rootView
@@ -47,60 +50,11 @@ public class FragmentManageExpence extends Fragment {
 				.findViewById(R.id.btn_removeExpenceOnManageExpence);
 		mBtnClearExpenceHistory = (Button) rootView
 				.findViewById(R.id.btn_removeAllExpenceOnManageExpence);
-		mBtnBack = (Button) rootView.findViewById(R.id.btn_backOnManageExpence);
-		mBtnExit = (Button) rootView.findViewById(R.id.btn_exitOnManageExpence);
+
 	}
 
 	public void onClick() {
-		mBtnBack.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				Fragment fHome = new FragmentHome();
-				Fragment fManageExpence = new FragmentManageExpence();
-				FragmentTransaction ft = getFragmentManager()
-						.beginTransaction();
-				ft.replace(R.id.main, fHome);
-				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-
-				ft.addToBackStack(null);
-				ft.commit();
-			}
-		});
-		mBtnExit.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Exiting...", Toast.LENGTH_SHORT)
-						.show();
-				AlertDialog.Builder alert = new AlertDialog.Builder(
-						getActivity().getApplicationContext());
-				alert.setTitle("Exit Confirmation");
-				alert.setMessage("Are you want to Close the Application ?");
-				alert.setCancelable(false);
-				alert.setPositiveButton("EXIT",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-								getActivity().finish();
-
-							}
-						});
-				alert.setNegativeButton("CANCEL",
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-
-							}
-						});
-				alert.show();
-			}
-		});
 		mBtnAddExpence.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -108,10 +62,14 @@ public class FragmentManageExpence extends Fragment {
 				Fragment fAddExpence = new FragmentAddExpence();
 				FragmentTransaction ft = getFragmentManager()
 						.beginTransaction();
+
+				ft.setCustomAnimations(R.anim.in_from_right_activity,
+						R.anim.out_to_left_activity);
+
 				ft.replace(R.id.main, fAddExpence);
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				ft.addToBackStack(null);
-				ft.commit();
+				ft.addToBackStack(null).commit();
+				
 			}
 		});
 		mBtnExpenceHistory.setOnClickListener(new OnClickListener() {
@@ -121,9 +79,13 @@ public class FragmentManageExpence extends Fragment {
 				Fragment fExpenceHistory = new FragmentExpenceHistory();
 				FragmentTransaction ft = getFragmentManager()
 						.beginTransaction();
+
+				ft.setCustomAnimations(R.anim.in_from_right_activity,
+						R.anim.out_to_left_activity);
+
 				ft.replace(R.id.main, fExpenceHistory);
-				// ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				// ft.addToBackStack(null);
+				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+				ft.addToBackStack("FragmentManageExpence");
 				ft.commit();
 			}
 		});
@@ -131,7 +93,7 @@ public class FragmentManageExpence extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-
+				updateAlert();
 			}
 		});
 		mBtnRemoveExpence.setOnClickListener(new OnClickListener() {
@@ -145,9 +107,90 @@ public class FragmentManageExpence extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-
+				clearExpenceHistory();
 			}
 		});
+
+	}
+
+	public void clearExpenceHistory() {
+		AlertDialog.Builder alertDeleteHistory = new AlertDialog.Builder(
+				getActivity());
+		alertDeleteHistory.setTitle("Delete Confirmation");
+		alertDeleteHistory
+				.setMessage("Are you want to clear Expence history ?");
+		alertDeleteHistory.setCancelable(false);
+		alertDeleteHistory.setPositiveButton("DELETE NOW",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dbHelper.deleteExpenceHistory();
+						Toast.makeText(getActivity(),
+								"All Expence history deleted.",
+								Toast.LENGTH_SHORT).show();
+					}
+				});
+		alertDeleteHistory.setNegativeButton("CANCEL",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+					}
+				});
+		alertDeleteHistory.show();
+	}
+
+	private void updateAlert() {
+		LayoutInflater li = LayoutInflater.from(getActivity());
+		View promptsView = li.inflate(R.layout.custom_update_expence, null);
+
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				getActivity());
+
+		// set prompts.xml to alertdialog builder
+		alertDialogBuilder.setView(promptsView);
+
+		final EditText userInput = (EditText) promptsView
+				.findViewById(R.id.ed_expenceTitleToUpdate);
+
+		// set dialog message
+		alertDialogBuilder
+				.setCancelable(false)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+
+						Fragment fUpdateExpence = new FragmentUpdateExpenceDetail();
+						FragmentTransaction ft = getFragmentManager()
+								.beginTransaction();
+
+						getActivity().overridePendingTransition(
+								R.anim.in_from_right_activity,
+								R.anim.out_to_left_activity);
+
+						ft.replace(R.id.main, fUpdateExpence);
+						ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+						ft.addToBackStack("FragmentManageExpence");
+						ft.commit();
+						Bundle bundle = new Bundle();
+						bundle.putString("ExpenceTitleToUpdate", userInput
+								.getText().toString().trim());
+						fUpdateExpence.setArguments(bundle);
+					}
+				})
+				.setNegativeButton("CANCEL",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.cancel();
+							}
+						});
+
+		// create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+
+		// show it
+		alertDialog.show();
 
 	}
 }

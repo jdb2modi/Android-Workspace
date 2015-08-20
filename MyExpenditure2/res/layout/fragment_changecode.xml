@@ -1,37 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff" >
-
-    <RelativeLayout
-        android:id="@+id/rel_changeCodeHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#224581ff" >
-
-        <Button
-            android:id="@+id/btn_exitFromChangeCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="2dp"
-            android:background="@drawable/mybutton"
-            android:text="Exit"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/btn_backFromChangeCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/mybutton"
-            android:text="Back"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
-    </RelativeLayout>
+    android:background="#ffffff"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/rel_ChangeCodeContent"
@@ -102,4 +74,4 @@
         </LinearLayout>
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

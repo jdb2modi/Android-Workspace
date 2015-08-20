@@ -5,34 +5,6 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
-        android:id="@+id/rel_showBankDetailsHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#224581ff" >
-
-        <Button
-            android:id="@+id/btn_exitFromShowBankDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="2dp"
-            android:background="@drawable/mybutton"
-            android:text="Exit"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/btn_backFromShowBankDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@drawable/mybutton"
-            android:text="Back"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/rel_contentOnShowBankDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -22,7 +22,6 @@ public class Activity_Login extends Activity implements OnClickListener {
 	Button btn_Login, btn_Exit, btn_Hint;
 	Intent intent;
 	DBHelper dbHelper;
-	Activity_Settings as;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class Activity_Login extends Activity implements OnClickListener {
 		btn_Hint = (Button) findViewById(R.id.btn_passwordHint);
 		btn_Hint.setOnClickListener(this);
 		dbHelper = new DBHelper(Activity_Login.this);
-		as = new Activity_Settings();
+
 	}
 
 	public void checkSecurityPref() {

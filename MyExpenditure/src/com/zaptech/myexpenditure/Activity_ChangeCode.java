@@ -34,7 +34,6 @@ public class Activity_ChangeCode extends Activity implements OnClickListener {
 		init();
 		setTypeface();
 		savePreferences();
-
 	}
 
 	public void init() {

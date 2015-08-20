@@ -253,7 +253,12 @@ public class Activity_ManageBanking extends Activity implements OnClickListener 
 		AlertDialog alertDialog = alertDialogBuilder.create();
 
 		// show it
-		alertDialog.show();
+		if (dbHelper.getBankNames().size() > 0) {
+			alertDialog.show();
+		} else {
+			Toast.makeText(Activity_ManageBanking.this,
+					"No Record found to update", Toast.LENGTH_SHORT).show();
+		}
 
 	}
 

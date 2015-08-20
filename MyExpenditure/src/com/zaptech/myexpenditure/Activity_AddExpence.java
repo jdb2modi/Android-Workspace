@@ -63,7 +63,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity__add_expence);
 		// DATABASE object..
-		dbHelper = new DBHelper(Activity_AddExpence.this);
+
 		init();
 
 		initExpenceList();
@@ -82,6 +82,8 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		mTxt_ExpenseDate = (TextView) findViewById(R.id.txt_date);
 		mCalendar = Calendar.getInstance();
 
+		// DATAVBASE
+		dbHelper = new DBHelper(Activity_AddExpence.this);
 		// FOR ADD EXPENCE...
 		spin_ExpenceCategory = (Spinner) findViewById(R.id.spin_expenceOnAddExpence);
 		spin_ExpenceCurrency = (Spinner) findViewById(R.id.spin_currency);
@@ -267,7 +269,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 
 		public myExpenceAdapter(Activity_AddExpence activity_AddExpence,
 				String[] arrayExpence, int customExpences) {
-			// TODO Auto-generated constructor stub
+			
 
 			super(activity_AddExpence, customExpences, arrayExpence);
 			this.context = activity_AddExpence;
@@ -284,7 +286,7 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 		}
 
 		private View getCustomView(int pos, View cnvtView, ViewGroup prnt) {
-			// TODO Auto-generated method stub
+
 
 			LayoutInflater inflater = getLayoutInflater();
 			View mySpinner = inflater.inflate(R.layout.custom_expences, prnt,
@@ -301,19 +303,6 @@ public class Activity_AddExpence extends Activity implements OnClickListener {
 			return mySpinner;
 		}
 
-		/*
-		 * @Override public View getView(int position, View convertView,
-		 * ViewGroup parent) { if (inflater == null) { inflater =
-		 * (LayoutInflater) context .getSystemService(LAYOUT_INFLATER_SERVICE);
-		 * } if (convertView == null) { convertView =
-		 * inflater.inflate(R.layout.custom_expences, null); } TextView
-		 * tvExpenceTitle = (TextView) convertView
-		 * .findViewById(R.id.txt_customExpence); ImageView imgExpence =
-		 * (ImageView) convertView .findViewById(R.id.img_customExpence);
-		 * tvExpenceTitle.setText(arrayExpence[position]);
-		 * imgExpence.setBackgroundResource(imageExpences[position]); return
-		 * convertView; }
-		 */
 	}
 
 	public void setTypeface() {

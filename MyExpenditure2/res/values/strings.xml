@@ -215,5 +215,27 @@
     <string name="title_activity_activity__manage_expence">Activity_ManageExpence</string>
     <string name="title_activity_activity__update_expence_details">Activity_UpdateExpenceDetails</string>
     <string name="title_activity_activity__menu_drawer">Activity_MenuDrawer</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Manage Expences</item>
+        <item>Manage Banking</item>
+        <item>Settings</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/home</item>
+        <item>@drawable/expence</item>
+        <item>@drawable/bank</item>
+        <item>@drawable/settings</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
 
 </resources>

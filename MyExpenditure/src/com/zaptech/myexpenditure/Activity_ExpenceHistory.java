@@ -98,10 +98,7 @@ public class Activity_ExpenceHistory extends Activity implements
 	private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-			// TODO Auto-generated method stub
-			// arg1 = year
-			// arg2 = month
-			// arg3 = day
+		
 			showDate(arg1, arg2 + 1, arg3);
 
 		}
@@ -109,10 +106,7 @@ public class Activity_ExpenceHistory extends Activity implements
 	private DatePickerDialog.OnDateSetListener myDateListener2 = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-			// TODO Auto-generated method stub
-			// arg1 = year
-			// arg2 = month
-			// arg3 = dayshowDate(arg1, arg2 + 1, arg3);
+
 			showDate2(arg1, arg2 + 1, arg3);
 		}
 	};

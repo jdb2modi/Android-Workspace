@@ -2,41 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff" >
-
-    <RelativeLayout
-        android:id="@+id/rel_homeHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_drawerlayout"
-        android:background="#224581ff" >
-
-        <Button
-            android:id="@+id/btn_homeAbout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/mybutton"
-            android:text="About"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/btn_homeExit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/mybutton"
-            android:text="Exit"
-            android:textAllCaps="false"
-            android:textColor="#ffffff" />
-    </RelativeLayout>
+    android:background="#ffffff"
+    android:orientation="vertical" 
+    android:id="@+id/rel_FragmentHome">
 
     <TextView
         android:id="@+id/txt_welcomeOnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_homeHeader"
+        android:layout_below="@+id/rel_drawerlayout"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         android:text="@string/strWelcome"
@@ -49,7 +23,6 @@
         android:id="@+id/rel_homeContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_welcomeOnHome"
         android:layout_centerInParent="true" >
 
         <TextView

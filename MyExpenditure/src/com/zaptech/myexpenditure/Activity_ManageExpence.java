@@ -173,8 +173,7 @@ public class Activity_ManageExpence extends Activity implements OnClickListener 
 				.setCancelable(false)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						// get user input and set it to result
-						// edit text
+
 						finish();
 						Intent intentUpdateExpenceDetails = new Intent(
 								Activity_ManageExpence.this,
