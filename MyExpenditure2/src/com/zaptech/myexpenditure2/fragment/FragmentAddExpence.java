@@ -31,7 +31,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import com.zaptech.myexpenditure2.R;
 
 public class FragmentAddExpence extends Fragment implements OnClickListener {
-
+	int setDate = 0;
 	private Button mbtnDateOfExpence;
 	private Button mbtnSave;
 	private Button mbtnCancel;
@@ -45,14 +45,16 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 	private int mimageExpences[] = { R.drawable.travel, R.drawable.food,
 			R.drawable.glossary, R.drawable.cloths, R.drawable.medical,
 			R.drawable.fuel, R.drawable.entertainment, R.drawable.telephone,
-			R.drawable.electric, R.drawable.gas, R.drawable.emi,
+			R.drawable.expence, R.drawable.gas, R.drawable.emi,
 			R.drawable.shopping, R.drawable.others };
 	private String marrayExpence[] = { "Expence Title", "Travel", "Food",
 			"Glossary", "Cloths", "Medical", "Fuel", "Entertainment",
 			"Telephone Bill", "Electric Bill", "Gas Bill", "EMI", "Shopping",
 			"Others" };
 	// FOR ADD EXPENCE...
-	Spinner spin_ExpenceCategory, spin_ExpenceCurrency, spin_ExpenceMode;
+	private Spinner mspinExpenceCategory;
+	private Spinner mspinExpenceCurrency;
+	private Spinner mspinExpenceMode;
 	EditText ed_ExpenceDescription, ed_ExpenceAmount;
 	com.zaptech.myexpenditure2.database.DBHelper dbHelper;
 	Intent intent;
@@ -77,13 +79,17 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 	public void init(View rootView) {
 		mexpenceList = new ArrayList<String>();
 		// FOR ADD EXPENCE...
-		spin_ExpenceCategory = (Spinner) rootView
+		mspinExpenceCategory = (Spinner) rootView
 				.findViewById(R.id.spin_expenceOnAddExpence);
-		spin_ExpenceCurrency = (Spinner) rootView
+
+		System.err.println("+++++++++++++++++++++++++++++++++++++++");
+
+		mspinExpenceCurrency = (Spinner) rootView
 				.findViewById(R.id.spin_currency);
-		spin_ExpenceCurrency.setSelection(50);
-		spin_ExpenceMode = (Spinner) rootView
+		mspinExpenceCurrency.setSelection(50);
+		mspinExpenceMode = (Spinner) rootView
 				.findViewById(R.id.spin_paymentMode);
+		mspinExpenceMode.setSelection(1);
 		ed_ExpenceDescription = (EditText) rootView
 				.findViewById(R.id.ed_Description);
 		ed_ExpenceAmount = (EditText) rootView.findViewById(R.id.ed_Amount);
@@ -103,9 +109,9 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 
 	public void clearInputs() {
 		// spin_ExpenceCategory.setSelected(false);
-		spin_ExpenceCategory.setSelection(0);
-		spin_ExpenceCurrency.setSelected(false);
-		spin_ExpenceMode.setSelected(false);
+		mspinExpenceCategory.setSelection(1);
+		mspinExpenceCurrency.setSelected(false);
+		mspinExpenceMode.setSelected(false);
 		ed_ExpenceDescription.setText("");
 		ed_ExpenceAmount.setText("");
 	}
@@ -141,7 +147,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 
 		dbHelper.insertExpence(String.valueOf(mstrTemp),
 				String.valueOf(mTxt_ExpenseDate.getText().toString()),
-				String.valueOf(spin_ExpenceMode.getSelectedItem().toString()),
+				String.valueOf(mspinExpenceMode.getSelectedItem().toString()),
 				"NULL", "NULL",
 				Integer.parseInt(ed_ExpenceAmount.getText().toString()),
 				String.valueOf(ed_ExpenceDescription.getText().toString()));
@@ -149,6 +155,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 		clearInputs();
 		Toast.makeText(getActivity().getApplicationContext(),
 				"Expence Successfully Added", 500).show();
+		mTxt_ExpenseDate.setText("");
 	}
 
 	class myExpenceAdapter extends ArrayAdapter<String> {
@@ -211,6 +218,9 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 					Toast.LENGTH_SHORT).show();
 			ed_ExpenceAmount.setFocusable(true);
 
+		} else if (setDate == 0) {
+			Toast.makeText(getActivity().getApplicationContext(),
+					"Please, Set Expence Date", Toast.LENGTH_SHORT).show();
 		} else {
 			addExpence();
 		}
@@ -220,6 +230,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_setDate:
+			setDate = 1;
 			showDatePicker();
 			break;
 		case R.id.btn_saveOnAddExpence:
@@ -290,13 +301,13 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 	};
 
 	public void selectExpenceCategory() {
-		spin_ExpenceCategory
+		mspinExpenceCategory
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 					@Override
 					public void onItemSelected(AdapterView<?> parent,
 							View view, int position, long id) {
-						mstrTemp = marrayExpence[position];
+						mstrTemp = marrayExpence[position+1];
 
 					}
 

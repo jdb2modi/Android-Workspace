@@ -29,6 +29,7 @@ public class FragmentManageBanking extends Fragment implements OnClickListener {
 	private Button mBtnRemoveBankDetails;
 	private Button mBtnClearAll;
 	private DBHelper dbHelper;
+	private ArrayAdapter<String> adptAno;
 
 	@Override
 	@Nullable
@@ -62,6 +63,9 @@ public class FragmentManageBanking extends Fragment implements OnClickListener {
 	}
 
 	private void updateAlert() {
+		adptAno = new ArrayAdapter<String>(getActivity(),
+				android.R.layout.simple_dropdown_item_1line,
+				dbHelper.getAccountNumbers());
 		LayoutInflater li = LayoutInflater.from(getActivity());
 		View promptsView = li.inflate(R.layout.custom_update_bankdetails, null);
 
@@ -71,9 +75,9 @@ public class FragmentManageBanking extends Fragment implements OnClickListener {
 		// set prompts.xml to alertdialog builder
 		alertDialogBuilder.setView(promptsView);
 
-		final EditText userInput = (EditText) promptsView
-				.findViewById(R.id.ed_accountNoUpdateBank);
-
+		final Spinner userInput = (Spinner) promptsView
+				.findViewById(R.id.spinAccountNumberToUpdate);
+		userInput.setAdapter(adptAno);
 		// set dialog message
 		alertDialogBuilder
 				.setCancelable(false)
@@ -94,8 +98,8 @@ public class FragmentManageBanking extends Fragment implements OnClickListener {
 						ft.addToBackStack(null);
 						ft.commit();
 						Bundle bundle = new Bundle();
-						bundle.putString("BankDetail", userInput.getText()
-								.toString().trim());
+						bundle.putString("BankDetail", userInput
+								.getSelectedItem().toString().trim());
 						fUpdateBankDetails.setArguments(bundle);
 
 					}

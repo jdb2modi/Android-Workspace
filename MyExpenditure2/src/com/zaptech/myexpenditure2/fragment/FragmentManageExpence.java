@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.zaptech.myexpenditure2.R;
@@ -69,7 +70,7 @@ public class FragmentManageExpence extends Fragment {
 				ft.replace(R.id.main, fAddExpence);
 				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 				ft.addToBackStack(null).commit();
-				
+
 			}
 		});
 		mBtnExpenceHistory.setOnClickListener(new OnClickListener() {
@@ -152,9 +153,8 @@ public class FragmentManageExpence extends Fragment {
 		// set prompts.xml to alertdialog builder
 		alertDialogBuilder.setView(promptsView);
 
-		final EditText userInput = (EditText) promptsView
-				.findViewById(R.id.ed_expenceTitleToUpdate);
-
+		final Spinner spinExpenceToUpdate = (Spinner) promptsView
+				.findViewById(R.id.spinExpenceToUpdate);
 		// set dialog message
 		alertDialogBuilder
 				.setCancelable(false)
@@ -174,8 +174,9 @@ public class FragmentManageExpence extends Fragment {
 						ft.addToBackStack("FragmentManageExpence");
 						ft.commit();
 						Bundle bundle = new Bundle();
-						bundle.putString("ExpenceTitleToUpdate", userInput
-								.getText().toString().trim());
+						bundle.putString("ExpenceTitleToUpdate",
+								spinExpenceToUpdate.getSelectedItem()
+										.toString().trim());
 						fUpdateExpence.setArguments(bundle);
 					}
 				})

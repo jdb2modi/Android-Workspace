@@ -224,6 +224,7 @@
         <item>Manage Expences</item>
         <item>Manage Banking</item>
         <item>Settings</item>
+        <item>Exit</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
@@ -233,6 +234,7 @@
         <item>@drawable/expence</item>
         <item>@drawable/bank</item>
         <item>@drawable/settings</item>
+        <item>@drawable/exit</item>
     </array>
 
     <!-- Content Description -->

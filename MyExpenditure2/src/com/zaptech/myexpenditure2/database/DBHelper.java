@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.zaptech.myexpenditure2.model.ExpenceModel;
 import com.zaptech.myexpenditure2.model.ModelBankDetails;
@@ -192,8 +193,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		String strFetchExpence = "SELECT * FROM " + TBEXPENCE + " where "
 				+ COL_EXPENSEDATE + " > " + strSDate + " AND "
 				+ COL_EXPENSEDATE + " < " + strEDate;
-		System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + strSDate);
-		System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + strEDate);
+
 		cursor = mDatabase.rawQuery(strFetchExpence, null);
 
 		if (cursor != null) {
@@ -229,8 +229,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				} while (cursor.moveToNext());
 			}
 		}
-		System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>thids"
-				+ arrayListExpence.size());
+
 		mDatabase.close();
 		return arrayListExpence;
 	}
@@ -357,5 +356,71 @@ public class DBHelper extends SQLiteOpenHelper {
 		}
 
 		return arrayListBankNames;
+	}
+
+	public ArrayList<String> getExpenceDetailsToUpdate(String strCategory) {
+		ArrayList<String> arrayListExpenceDetails = new ArrayList<String>();
+		String strGetDetails = "SELECT * FROM " + TBEXPENCE + " WHERE "
+				+ COL_EXPENSECATEGORY + " = " + "'" + strCategory + "'";
+		mDatabase = getDB();
+		Cursor cursor = mDatabase.rawQuery(strGetDetails, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					String strExpenceCategory = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSECATEGORY));
+					String strExpenceMode = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEMODE));
+					String strExpenceAmount = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEAMOUNT));
+					String strExpenceDate = cursor.getString(cursor
+							.getColumnIndex(COL_EXPENSEDATE));
+					arrayListExpenceDetails.add(strExpenceCategory);
+					arrayListExpenceDetails.add(strExpenceMode);
+					arrayListExpenceDetails.add(strExpenceAmount);
+					arrayListExpenceDetails.add(strExpenceDate);
+				} while (cursor.moveToNext());
+			}
+
+		}
+
+		return arrayListExpenceDetails;
+	}
+
+	public void updateExpenceDetails(String strExpenceCategory,
+			String strDateOfExpence, String strExpenceMode,
+			String strExpenceAmount) {
+		mDatabase = getDB();
+		mContent = getContentValues();
+		mContent.put(COL_EXPENSEDATE, strDateOfExpence);
+		mContent.put(COL_EXPENSEMODE, strExpenceMode);
+		mContent.put(COL_EXPENSEAMOUNT, strExpenceAmount);
+
+		mDatabase.update(TBEXPENCE, mContent, COL_EXPENSECATEGORY + " = " + "'"
+				+ strExpenceCategory + "'", null);
+		mDatabase.update(TBEXPENCE, mContent, COL_EXPENSECATEGORY + "=?",
+				new String[] { strExpenceCategory });
+		mDatabase.close();
+		mDatabase.releaseMemory();
+	}
+
+	public ArrayList<String> getAccountNumbers() {
+		ArrayList<String> arrayListAccountNo = new ArrayList<String>();
+		String strGetDetails = "SELECT * FROM " + TBBANKDETAILS;
+		mDatabase = getDB();
+		Cursor cursor = mDatabase.rawQuery(strGetDetails, null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				do {
+					String strAccountNo = cursor.getString(cursor
+							.getColumnIndex(COL_ACCOUNTNUMBER));
+
+					arrayListAccountNo.add(strAccountNo);
+				} while (cursor.moveToNext());
+			}
+
+		}
+
+		return arrayListAccountNo;
 	}
 }

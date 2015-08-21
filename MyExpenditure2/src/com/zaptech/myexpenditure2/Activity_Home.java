@@ -2,6 +2,10 @@ package com.zaptech.myexpenditure2;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -16,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.zaptech.myexpenditure2.adapter.NavDrawerListAdapter;
 import com.zaptech.myexpenditure2.fragment.FragmentHome;
@@ -26,6 +31,10 @@ import com.zaptech.myexpenditure2.model.NavDrawerItem;
 
 public class Activity_Home extends FragmentActivity {
 
+	SharedPreferences sp;
+	public static final String MyPREFERENCES = "MyPrefs";
+
+	int temp = 99;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -47,7 +56,7 @@ public class Activity_Home extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-
+		sp = getSharedPreferences(MyPREFERENCES, Context.MODE_APPEND);
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items
@@ -66,16 +75,18 @@ public class Activity_Home extends FragmentActivity {
 		// Home
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
 				.getResourceId(0, -1)));
-		// Find People
+		// Manage Expences
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
 				.getResourceId(1, -1)));
-		// Photos
+		// Manage Banking
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
 				.getResourceId(2, -1)));
-		// Communities, Will add a counter here
+		// Settings
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
 				.getResourceId(3, -1), true, "22"));
-
+		// Exit
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons
+				.getResourceId(4, -1)));
 		// Recycle the typed array
 		navMenuIcons.recycle();
 
@@ -158,6 +169,10 @@ public class Activity_Home extends FragmentActivity {
 		case R.id.bank:
 			displayView(2);
 			return true;
+		case R.id.exit:
+			// displayView(3);
+			exitNow();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -184,41 +199,52 @@ public class Activity_Home extends FragmentActivity {
 
 		switch (position) {
 		case 0:
+
 			fragment = new FragmentHome();
 			getFragmentManager().popBackStack(null,
 					FragmentManager.POP_BACK_STACK_INCLUSIVE);
 			flag = 1;
-
+			temp = 0;
 			break;
 		case 1:
 			fragment = new FragmentManageExpence();
+			temp = 1;
 			break;
+
 		case 2:
 			fragment = new FragmentManageBanking();
+			temp = 2;
 			break;
 		case 3:
 			fragment = new FragmentSettings();
+			temp = 3;
 			break;
-
+		case 4:
+			/*
+			 * fragment = new FragmentSettings(); temp = 4;
+			 */
+			exitNow();
+			break;
 		default:
 			break;
 		}
+
 		if (flag == 1) {
 
-			FragmentManager fragmentManager1 = getSupportFragmentManager();
-
+			FragmentManager fragmentManager1 = getSupportFragmentManager(); //
+			// To Make the BackStackes null
 			for (int i = fragmentManager1.getBackStackEntryCount(); i >= 0; i--) {
 				fragmentManager1.popBackStack();
 
-			}
-
+			} // Load or sets the HomeFragment after clearing all the backstacks
 			fragmentManager1.beginTransaction().replace(R.id.main, fragment)
-					.commit();
+					.commit();// addToBackStack
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
 			setTitle(navMenuTitles[position]);
 			mDrawerLayout.closeDrawer(mDrawerList);
 			flag = 0;
+
 		}
 
 		else if (fragment != null) {
@@ -237,6 +263,19 @@ public class Activity_Home extends FragmentActivity {
 
 	}
 
+	/*
+	 * @Override public void onBackPressed() { if (temp == 0) {
+	 * 
+	 * FragmentManager fragmentManager1 = getSupportFragmentManager(); for (int
+	 * i = fragmentManager1.getBackStackEntryCount(); i >= 0; i--) {
+	 * fragmentManager1.popBackStack();
+	 * 
+	 * }
+	 * 
+	 * this.finish(); }
+	 * 
+	 * super.onBackPressed(); }
+	 */
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
@@ -257,4 +296,28 @@ public class Activity_Home extends FragmentActivity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
+	public void exitNow() {
+		Toast.makeText(getApplicationContext(), "Exiting...",
+				Toast.LENGTH_SHORT).show();
+		AlertDialog.Builder alert = new AlertDialog.Builder(Activity_Home.this);
+		alert.setTitle("Exit Confirmation");
+		alert.setMessage("Want to Exit ?");
+		alert.setCancelable(false);
+		alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+
+			}
+		});
+		alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+		alert.show();
+	}
 }

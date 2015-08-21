@@ -32,36 +32,48 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/ed_updateExpenceTitle"
+                android:id="@+id/ed_updateExpenceCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:enabled="false"
-                android:hint=" Expence Title"
-                android:numeric="integer"
+                android:hint="Expence Category"
                 android:textAllCaps="false"
                 android:textColor="#0072B2" />
 
             <EditText
-                android:id="@+id/ed_updateExpenceDescription"
+                android:id="@+id/ed_updateExpenceMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ed_updateaccountNumber"
                 android:layout_centerHorizontal="true"
-                android:hint="Expence Description"
                 android:textAllCaps="false"
+                android:hint="Expence Mode"
                 android:textColor="#0072B2" />
 
             <EditText
                 android:id="@+id/ed_updateExpenceAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ed_updatebankName"
                 android:layout_centerHorizontal="true"
-                android:hint="Expence Amount"
                 android:numeric="integer"
+                android:hint="Expence Amount"
                 android:textAllCaps="false"
                 android:textColor="#0072B2" />
+
+            <EditText
+                android:id="@+id/ed_updateExpenceDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:hint="Expence Date"
+                android:textAllCaps="false"
+                android:textColor="#0072B2" />
+
+            <Button
+                android:id="@+id/btnUpdateExpenceNow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update Now" />
         </LinearLayout>
     </RelativeLayout>
 

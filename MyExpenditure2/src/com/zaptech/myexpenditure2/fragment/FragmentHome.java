@@ -3,8 +3,6 @@ package com.zaptech.myexpenditure2.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +14,7 @@ import android.widget.Toast;
 import com.zaptech.myexpenditure2.Activity_Home;
 import com.zaptech.myexpenditure2.R;
 
-public class FragmentHome extends Fragment implements OnKeyListener {
+public class FragmentHome extends Fragment {
 	private Button mBtn_manageExpence;
 	private Button mBtn_manageBanking;
 	private Button mBtn_settings;
@@ -39,7 +37,7 @@ public class FragmentHome extends Fragment implements OnKeyListener {
 		mBtn_manageExpence = (Button) rootView
 				.findViewById(R.id.btn_manageExpence);
 		mBtn_settings = (Button) rootView.findViewById(R.id.btn_Settings);
-		Toast.makeText(getActivity(), "Welcome", Toast.LENGTH_SHORT).show();
+
 	}
 
 	public void onClick() {
@@ -80,16 +78,4 @@ public class FragmentHome extends Fragment implements OnKeyListener {
 
 	}
 
-	@Override
-	public boolean onKey(View v, int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			getActivity().finish();
-
-		}
-		return false;
-	}
-
-	public void acccess() {
-		Toast.makeText(getActivity(), "Called", Toast.LENGTH_SHORT).show();
-	}
 }
