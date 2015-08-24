@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="Manage Expence"
+            android:text="Manage Expense"
             android:textAllCaps="false"
             android:textColor="#0072B2"
             android:textSize="20dp"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Add Expence"
+                android:text="Add Expense"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
@@ -49,7 +49,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Expence History"
+                android:text="Expense History"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
@@ -60,7 +60,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Update Expence Details"
+                android:text="Update Expense Details"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
@@ -71,7 +71,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Remove Expence Detail"
+                android:text="Remove Expense Detail"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
@@ -82,7 +82,7 @@
                 android:layout_marginTop="2dp"
                 android:background="@drawable/mybutton"
                 android:ems="10"
-                android:text="Clear Expence History"
+                android:text="Clear Expense History"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </LinearLayout>

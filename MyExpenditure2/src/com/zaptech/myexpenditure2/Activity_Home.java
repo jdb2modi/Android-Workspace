@@ -2,6 +2,8 @@ package com.zaptech.myexpenditure2;
 
 import java.util.ArrayList;
 
+import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,16 +11,21 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -56,6 +63,7 @@ public class Activity_Home extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+
 		sp = getSharedPreferences(MyPREFERENCES, Context.MODE_APPEND);
 		mTitle = mDrawerTitle = getTitle();
 
@@ -320,4 +328,5 @@ public class Activity_Home extends FragmentActivity {
 		});
 		alert.show();
 	}
+
 }

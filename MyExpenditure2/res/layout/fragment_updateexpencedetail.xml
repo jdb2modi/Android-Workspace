@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:text="Update Expence Details"
+            android:text="Update Expense Details"
             android:textAllCaps="false"
             android:textColor="#0072B2"
             android:textSize="20dp"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:enabled="false"
-                android:hint="Expence Category"
+                android:hint="Expense Category"
                 android:textAllCaps="false"
                 android:textColor="#0072B2" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textAllCaps="false"
-                android:hint="Expence Mode"
+                android:hint="Expense Mode"
                 android:textColor="#0072B2" />
 
             <EditText
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:numeric="integer"
-                android:hint="Expence Amount"
+                android:hint="Expense Amount"
                 android:textAllCaps="false"
                 android:textColor="#0072B2" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:hint="Expence Date"
+                android:hint="Expense Date"
                 android:textAllCaps="false"
                 android:textColor="#0072B2" />
 

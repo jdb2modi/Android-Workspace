@@ -55,7 +55,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 	private Spinner mspinExpenceCategory;
 	private Spinner mspinExpenceCurrency;
 	private Spinner mspinExpenceMode;
-	EditText ed_ExpenceDescription, ed_ExpenceAmount;
+	private EditText medExpenceDescription, medExpenceAmount;
 	com.zaptech.myexpenditure2.database.DBHelper dbHelper;
 	Intent intent;
 	SharedPreferences sp;
@@ -70,9 +70,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 				false);
 
 		init(rootView);
-
-		selectExpenceCategory();
-
+		setCurrentDate();
 		return rootView;
 	}
 
@@ -90,9 +88,9 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 		mspinExpenceMode = (Spinner) rootView
 				.findViewById(R.id.spin_paymentMode);
 		mspinExpenceMode.setSelection(1);
-		ed_ExpenceDescription = (EditText) rootView
+		medExpenceDescription = (EditText) rootView
 				.findViewById(R.id.ed_Description);
-		ed_ExpenceAmount = (EditText) rootView.findViewById(R.id.ed_Amount);
+		medExpenceAmount = (EditText) rootView.findViewById(R.id.ed_Amount);
 
 		mbtnDateOfExpence = (Button) rootView.findViewById(R.id.btn_setDate);
 		mbtnDateOfExpence.setOnClickListener(this);
@@ -112,8 +110,8 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 		mspinExpenceCategory.setSelection(1);
 		mspinExpenceCurrency.setSelected(false);
 		mspinExpenceMode.setSelected(false);
-		ed_ExpenceDescription.setText("");
-		ed_ExpenceAmount.setText("");
+		medExpenceDescription.setText("");
+		medExpenceAmount.setText("");
 	}
 
 	private void exit() {
@@ -149,9 +147,9 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 				String.valueOf(mTxt_ExpenseDate.getText().toString()),
 				String.valueOf(mspinExpenceMode.getSelectedItem().toString()),
 				"NULL", "NULL",
-				Integer.parseInt(ed_ExpenceAmount.getText().toString()),
-				String.valueOf(ed_ExpenceDescription.getText().toString()));
-		ed_ExpenceDescription.requestFocus();
+				Integer.parseInt(medExpenceAmount.getText().toString()),
+				String.valueOf(medExpenceDescription.getText().toString()));
+		medExpenceDescription.requestFocus();
 		clearInputs();
 		Toast.makeText(getActivity().getApplicationContext(),
 				"Expence Successfully Added", 500).show();
@@ -205,22 +203,19 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 		mbtnSave.setTypeface(tyFace);
 
 		mTxt_ExpenseDate.setTypeface(tyFace);
-		ed_ExpenceDescription.setTypeface(tyFace);
-		ed_ExpenceAmount.setTypeface(tyFace);
+		medExpenceDescription.setTypeface(tyFace);
+		medExpenceAmount.setTypeface(tyFace);
 
 	}
 
 	private void mValidate() {
-		String strExpence = ed_ExpenceAmount.getText().toString().trim();
+		String strExpence = medExpenceAmount.getText().toString().trim();
 		if (strExpence.length() == 0 || Integer.parseInt(strExpence) <= 0) {
 			Toast.makeText(getActivity().getApplicationContext(),
 					"Expence cannot be null or less than zero",
 					Toast.LENGTH_SHORT).show();
-			ed_ExpenceAmount.setFocusable(true);
+			medExpenceAmount.setFocusable(true);
 
-		} else if (setDate == 0) {
-			Toast.makeText(getActivity().getApplicationContext(),
-					"Please, Set Expence Date", Toast.LENGTH_SHORT).show();
 		} else {
 			addExpence();
 		}
@@ -307,7 +302,7 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 					@Override
 					public void onItemSelected(AdapterView<?> parent,
 							View view, int position, long id) {
-						mstrTemp = marrayExpence[position+1];
+						mstrTemp = marrayExpence[position + 1];
 
 					}
 
@@ -316,5 +311,17 @@ public class FragmentAddExpence extends Fragment implements OnClickListener {
 
 					}
 				});
+	}
+
+	public void setCurrentDate() {
+		final Calendar c = Calendar.getInstance();
+		mint_year = c.get(Calendar.YEAR);
+		mint_month = c.get(Calendar.MONTH);
+		mint_day = c.get(Calendar.DAY_OF_MONTH);
+		mTxt_ExpenseDate.setText(new StringBuilder()
+
+		.append(mint_day).append("/").append(mint_month + 1).append("/")
+				.append(mint_year));
+		selectExpenceCategory();
 	}
 }
