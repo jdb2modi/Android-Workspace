@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyRecycler</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="content">Content</string>
+    <string name="description">Description</string>
+    <string name="example_application">Example Application</string>
+</resources>

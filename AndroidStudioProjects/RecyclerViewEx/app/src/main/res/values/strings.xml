@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="content">Content</string>
+    <string name="description">Description</string>
+    <string name="example_application">Example Application</string>
+</resources>
